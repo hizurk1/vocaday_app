@@ -1,0 +1,64 @@
+{
+  "on_board": {
+    "select_language": "Select language",
+    "select_language_content": "Don't worry! You can change it later on Settings.",
+    "onboard_title": "Let's learn!",
+    "onboard_body": "We will help you learn English vocabulary everyday, effectively. Trust me, this is really fun!",
+    "get_started": "Get started"
+  },
+  "app_language": {
+    "english": "English",
+    "vietnamese": "Vietnamese"
+  },
+  "common": {
+    "next": "Next",
+    "accept": "Accept",
+    "cancel": "Cancel",
+    "skip": "Skip",
+    "done": "Done",
+    "browse": "Browse",
+    "other_k": "Other"
+  },
+  "auth": {
+    "already_have_an_account": "Already have an account?",
+    "sign_in": "Sign in",
+    "sign_up": "Sign up",
+    "welcome": "Welcome",
+    "enter_email": "Enter email",
+    "enter_password": "Enter password",
+    "forgot_password": "Forgot password?",
+    "or_sign_in_with": "Or sign in with:",
+    "create_an_account": "Create an account",
+    "confirm_password": "Confirm password",
+    "please_enter_and_password": "Please enter email and password!",
+    "password_does_not_match": "Password does not match",
+    "sign_in_as_email": "Sign in as {email}",
+    "invalid_email": "Email could only contains . - _ as the special characters",
+    "invalid_password": "Password must contains 8 characters and numbers.",
+    "sign_out": "Sign out"
+  },
+  "app_log": {
+    "on_restart": "Welcome back!"
+  },
+  "user_data": {
+    "point": {
+      "zero": "0 point",
+      "one": "1 point",
+      "many": "{} points",
+      "other": "{} points"
+    }
+  },
+  "page": {
+    "home": "Home",
+    "search": "Search",
+    "activity": "Activity",
+    "profile": "Profile",
+    "setting": "Setting"
+  },
+  "search": {
+    "search_for_words": "Search for words",
+    "type_something": "Type something",
+    "not_found": "Not found",
+    "are_you_looking_for": "Are you looking for?"
+  }
+}

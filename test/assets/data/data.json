@@ -1,0 +1,260 @@
+{
+    "C": {
+        "ANTONYMS": [],
+        "MEANINGS": [
+            [
+                "Noun",
+                "a general-purpose programing language closely associated with the UNIX operating system",
+                [
+                    "Programming language",
+                    "Programing language"
+                ],
+                []
+            ],
+            [
+                "Noun",
+                "(music) the keynote of the scale of C major",
+                [
+                    "Tonic",
+                    "Keynote"
+                ],
+                []
+            ],
+            [
+                "Noun",
+                "the 3rd letter of the Roman alphabet",
+                [
+                    "Letter",
+                    "Letter of the alphabet",
+                    "Alphabetic character"
+                ],
+                []
+            ]
+        ],
+        "SYNONYMS": [
+            "One c",
+            "Light speed",
+            "100",
+            "Vitamin c",
+            "One hundred"
+        ]
+    },
+    "COLD": {
+        "ANTONYMS": [
+            "hotness",
+            "hot"
+        ],
+        "MEANINGS": [
+            [
+                "Adjective",
+                "having a low or inadequate temperature or feeling a sensation of coldness or having been made cold by e.g. ice or refrigeration",
+                [],
+                [
+                    "a cold climate",
+                    "a cold room",
+                    "dinner has gotten cold",
+                    "cold fingers",
+                    "if you are cold, turn up the heat",
+                    "a cold beer"
+                ]
+            ],
+            [
+                "Adjective",
+                "having lost freshness through passage of time",
+                [],
+                [
+                    "a cold trail",
+                    "dogs attempting to catch a cold scent"
+                ]
+            ],
+            [
+                "Adjective",
+                "extended meanings; especially of psychological coldness; without human warmth or emotion",
+                [],
+                [
+                    "a cold unfriendly nod",
+                    "a cold and unaffectionate person",
+                    "a cold impersonal manner",
+                    "cold logic",
+                    "the concert left me cold"
+                ]
+            ],
+            [
+                "Adjective",
+                "(color) giving no sensation of warmth",
+                [],
+                [
+                    "a cold bluish grey"
+                ]
+            ],
+            [
+                "Adjective",
+                "marked by errorless familiarity",
+                [],
+                [
+                    "had her lines cold before rehearsals started"
+                ]
+            ],
+            [
+                "Adjective",
+                "lacking originality or spontaneity; no longer new",
+                [],
+                [
+                    "moth-eaten theories about race",
+                    "stale news"
+                ]
+            ],
+            [
+                "Adjective",
+                "so intense as to be almost uncontrollable",
+                [],
+                [
+                    "cold fury gripped him"
+                ]
+            ],
+            [
+                "Adjective",
+                "sexually unresponsive",
+                [],
+                [
+                    "was cold to his advances",
+                    "a frigid woman"
+                ]
+            ],
+            [
+                "Adjective",
+                "without compunction or human feeling",
+                [],
+                [
+                    "in cold blood",
+                    "cold-blooded killing",
+                    "insensate destruction"
+                ]
+            ],
+            [
+                "Adjective",
+                "feeling or showing no enthusiasm",
+                [],
+                [
+                    "a cold audience",
+                    "a cold response to the new play"
+                ]
+            ],
+            [
+                "Adjective",
+                "unconscious from a blow or shock or intoxication",
+                [],
+                [
+                    "the boxer was out cold",
+                    "pass out cold"
+                ]
+            ],
+            [
+                "Adjective",
+                "of a seeker; far from the object sought",
+                [],
+                []
+            ],
+            [
+                "Adjective",
+                "lacking the warmth of life",
+                [],
+                [
+                    "cold in his grave"
+                ]
+            ]
+        ],
+        "SYNONYMS": [
+            "Cold-blooded",
+            "Frigid",
+            "Frigidity",
+            "Dusty",
+            "Insensate"
+        ]
+    },
+    "DO": {
+        "ANTONYMS": [
+            "unmake"
+        ],
+        "MEANINGS": [
+            [
+                "Noun",
+                "the syllable naming the first (tonic) note of any major scale in solmization",
+                [
+                    "Solfa syllable"
+                ],
+                []
+            ],
+            [
+                "Verb",
+                "get (something) done",
+                [
+                    "Carry through",
+                    "Accomplish",
+                    "Execute",
+                    "Carry out",
+                    "Action",
+                    "Fulfill",
+                    "Fulfil"
+                ],
+                [
+                    "I did my job"
+                ]
+            ],
+            [
+                "Verb",
+                "proceed or get along",
+                [
+                    "Proceed",
+                    "Go"
+                ],
+                [
+                    "How is she doing in her new job?",
+                    "How are you making out in graduate school?",
+                    "He's come a long way"
+                ]
+            ],
+            [
+                "Verb",
+                "create or design, often in a certain way",
+                [
+                    "Create",
+                    "Make"
+                ],
+                [
+                    "Do my room in blue",
+                    "I did this piece in wood to express my love for the forest"
+                ]
+            ],
+            [
+                "Verb",
+                "carry on or function",
+                [],
+                [
+                    "We could do with a little more help around here"
+                ]
+            ],
+            [
+                "Verb",
+                "travel or traverse (a distance)",
+                [
+                    "Travel",
+                    "Go",
+                    "Move",
+                    "Locomote"
+                ],
+                [
+                    "This car does 150 miles per hour",
+                    "We did 6 miles on our hike every day"
+                ]
+            ]
+        ],
+        "SYNONYMS": [
+            "Answer",
+            "Practice",
+            "Perform",
+            "Serve",
+            "Do"
+        ]
+    }
+}
