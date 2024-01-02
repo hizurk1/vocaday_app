@@ -1,6 +1,6 @@
 
 
-// void main() {
+void main() {
 //   late SharedPreferences prefs;
 //   late SharedPrefManager prefService;
 //   setUp(() async {
@@ -12,4 +12,4 @@
 //   });
 
 //   group('Shared Preference Service', () {});
-// }
+}
