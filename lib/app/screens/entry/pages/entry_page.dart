@@ -17,7 +17,7 @@ class EntryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
-      listenWhen: (previous, current) => previous.user != current.user,
+      listenWhen: (previous, current) => previous != current,
       listener: (_, state) {
         if (state is AuthenticatedState) {
           Navigators().showMessage(
@@ -28,10 +28,9 @@ class EntryPage extends StatelessWidget {
           );
         }
       },
-      buildWhen: (previous, current) => previous.user != current.user,
+      buildWhen: (previous, current) => previous != current,
       builder: (_, state) {
-        if (state.user != null) {
-          //* Authenticated
+        if (state is AuthenticatedState) {
           return MultiBlocProvider(
             providers: [
               BlocProvider(
@@ -44,9 +43,7 @@ class EntryPage extends StatelessWidget {
             ],
             child: const MainPage(),
           );
-        }
-        //* Unauthenticated
-        else {
+        } else {
           return const AuthenticationPage();
         }
       },

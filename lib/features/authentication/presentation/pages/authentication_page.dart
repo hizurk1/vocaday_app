@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/build_context.dart';
+import '../../../../app/routes/route_manager.dart';
 import '../../../../app/widgets/status_bar.dart';
 import '../../../../injection_container.dart';
+import '../blocs/auth/auth_bloc.dart';
 import '../blocs/sign_in/sign_in_bloc.dart';
 import '../blocs/sign_up/sign_up_bloc.dart';
 import '../widgets/auth_background_widget.dart';
@@ -33,15 +36,22 @@ class AuthenticationPage extends StatelessWidget {
                 SafeArea(
                   child: Padding(
                     padding: EdgeInsets.only(top: 25.h),
-                    child: const Column(
+                    child: Column(
                       children: [
-                        TopTabBar(),
+                        const TopTabBar(),
                         Expanded(
-                          child: TabBarView(
-                            children: [
-                              SignInPage(),
-                              SignUpPage(),
-                            ],
+                          child: BlocListener<AuthBloc, AuthState>(
+                            listenWhen: (previous, current) =>
+                                previous != current,
+                            listener: (context, state) {
+                              context.replace(AppRoutes.init);
+                            },
+                            child: const TabBarView(
+                              children: [
+                                SignInPage(),
+                                SignUpPage(),
+                              ],
+                            ),
                           ),
                         ),
                       ],

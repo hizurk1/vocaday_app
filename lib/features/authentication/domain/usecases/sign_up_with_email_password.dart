@@ -22,7 +22,7 @@ class SignUpWithEmailPasswordUsecase
     final signUpResult =
         await authRepository.signUpWithEmailAndPassword(params.$1, params.$2);
 
-    return await signUpResult.fold(
+    return signUpResult.fold(
       (failure) async => Left(failure),
       (authEntity) async {
         if (!authEntity.isNewUser) {

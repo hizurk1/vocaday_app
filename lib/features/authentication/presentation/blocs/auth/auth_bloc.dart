@@ -17,7 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   late StreamSubscription _streamSubscription;
 
   AuthBloc(this.authStateChangedUsecase, this.signOutUsecase)
-      : super(const UnknownAuthState()) {
+      : super(const UnauthenticatedState()) {
     _streamSubscription = authStateChangedUsecase.user.listen((user) {
       add(AuthStateChangedEvent(user));
     });

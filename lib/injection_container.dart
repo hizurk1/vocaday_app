@@ -71,7 +71,7 @@ Future<void> setUpServiceLocator() async {
   //! Features - authentication
   // Data source
   sl.registerLazySingleton<AuthRemoteDataSource>(
-    () => AuthRemoteDataSourceImpl(auth: sl()),
+    () => AuthRemoteDataSourceImpl(sl()),
   );
   // Repository
   sl.registerLazySingleton<AuthRepository>(

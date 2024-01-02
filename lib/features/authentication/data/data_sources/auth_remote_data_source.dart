@@ -18,12 +18,12 @@ abstract interface class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final FirebaseAuth auth;
+  final FirebaseAuth _auth;
 
-  AuthRemoteDataSourceImpl({required this.auth});
+  AuthRemoteDataSourceImpl(this._auth);
 
   @override
-  Stream<User?> get user => auth.authStateChanges().map((user) => user);
+  Stream<User?> get user => _auth.authStateChanges();
 
   @override
   Future<AuthModel> signUpWithEmailAndPassword(
@@ -31,7 +31,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     String password,
   ) async {
     try {
-      final userCredential = await auth.createUserWithEmailAndPassword(
+      final userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -65,7 +65,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> signInWithEmailAndPassword(String email, String password) async {
     try {
-      await auth.signInWithEmailAndPassword(
+      await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -93,7 +93,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         );
 
         final UserCredential userCredential =
-            await auth.signInWithCredential(credential);
+            await _auth.signInWithCredential(credential);
 
         final User? user = userCredential.user;
 
@@ -129,7 +129,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> signOut() async {
     try {
-      await auth.signOut();
+      await _auth.signOut();
     } on FirebaseAuthException {
       rethrow;
     } catch (e) {

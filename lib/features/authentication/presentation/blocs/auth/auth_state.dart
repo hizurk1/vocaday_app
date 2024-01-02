@@ -9,10 +9,6 @@ sealed class AuthState extends Equatable {
   List<Object?> get props => [user];
 }
 
-final class UnknownAuthState extends AuthState {
-  const UnknownAuthState() : super(null);
-}
-
 final class UnauthenticatedState extends AuthState {
   const UnauthenticatedState() : super(null);
 }

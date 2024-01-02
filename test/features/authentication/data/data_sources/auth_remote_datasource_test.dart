@@ -17,9 +17,10 @@ class MockFirebaseAuth extends Mock implements FirebaseAuth {
 void main() {
   late AuthRemoteDataSourceImpl authRemoteDataSourceImpl;
   late MockFirebaseAuth mockAuth;
+
   setUp(() {
     mockAuth = MockFirebaseAuth();
-    authRemoteDataSourceImpl = AuthRemoteDataSourceImpl(auth: mockAuth);
+    authRemoteDataSourceImpl = AuthRemoteDataSourceImpl(mockAuth);
   });
   group('User state changed', () {
     test('should get user state changed', () {

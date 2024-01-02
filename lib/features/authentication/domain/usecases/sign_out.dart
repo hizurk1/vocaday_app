@@ -8,7 +8,5 @@ class SignOutUsecase extends UsecasesNoParam<void> {
   SignOutUsecase({required this.repository});
 
   @override
-  FutureEither<void> call() async {
-    return await repository.signOut();
-  }
+  FutureEither<void> call() => repository.signOut();
 }
