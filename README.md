@@ -105,6 +105,20 @@ vocaday_app/
 |-- pubspec.yaml
 ```
 
+## 🪲 Debug/Release
+
+Generate `debug.keystore`:
+
+```
+keytool -genkey -v -keystore debug.keystore -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey -dname "CN=Android Debug,O=Android,C=US"
+```
+
+Get `SHA-1` or `SHA256`:
+
+```
+keytool -list -v -keystore "android\app\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+```
+
 ## 👀 User Interface
 
 Vocaday currently offers a clean and intuitive user interface with two main pages:

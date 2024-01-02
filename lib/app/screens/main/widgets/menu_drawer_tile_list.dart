@@ -34,6 +34,7 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
         context.push(AppRoutes.setting);
         break;
       case 2:
+      case 3:
         context.read<AuthBloc>().add(RequestSignOutEvent());
         break;
       default:
