@@ -54,7 +54,7 @@ void main() {
         (f) => fail(f.message),
         (list) {
           expect(
-            list.$1.length > 0,
+            list.$1.isNotEmpty,
             true,
             reason: "Has data contains '$testKeyword' keyword",
           );
