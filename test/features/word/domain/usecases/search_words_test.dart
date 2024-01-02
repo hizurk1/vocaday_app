@@ -44,9 +44,11 @@ void main() {
     )
   ];
 
+  const testKeyword = 'lost';
+
   group('Search Word by keyword', () {
     test('should get list of words contains keyword', () async {
-      final result = await searchWordsUsecase(('lost', tList));
+      final result = await searchWordsUsecase((testKeyword, tList));
 
       result.fold(
         (f) => fail(f.message),
