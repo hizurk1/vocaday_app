@@ -30,6 +30,22 @@ Get started with Vocaday by following these simple steps:
     flutter build apk
     ```
 
+
+## 🪲 Debug/Release
+
+Generate `debug.keystore`:
+
+```
+keytool -genkey -v -keystore "android\app\debug.keystore" -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey -dname "CN=Android Debug,O=Android,C=US"
+```
+
+Get `SHA-1` or `SHA256`:
+
+```
+keytool -list -v -keystore "android\app\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+```
+
+
 ## 💻 Code Generation
 
 - ### Easy_localization:
@@ -70,6 +86,7 @@ Here's some sources for `assets` folder.
 - `jsons` [Lotties](https://lottiefiles.com/)
 - `translations` created with the support of [i18n Manager](https://github.com/gilmarsquinelato/i18n-manager)
 
+
 ## 📂 Folder Structure
 
 Here's a simple folder structure of this project.
@@ -105,19 +122,6 @@ vocaday_app/
 |-- pubspec.yaml
 ```
 
-## 🪲 Debug/Release
-
-Generate `debug.keystore`:
-
-```
-keytool -genkey -v -keystore debug.keystore -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey -dname "CN=Android Debug,O=Android,C=US"
-```
-
-Get `SHA-1` or `SHA256`:
-
-```
-keytool -list -v -keystore "android\app\debug.keystore" -alias androiddebugkey -storepass android -keypass android
-```
 
 ## 👀 User Interface
 
