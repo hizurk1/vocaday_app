@@ -29,13 +29,14 @@ class SearchWordsUsecase extends Usecases<
         .take(maxAmount)
         .toList();
 
-    if (keyword.length >= 3) {
-      return Right((
+    if (keyword.length < 3) {
+        return Right((searchResult, []));
+    } else {
+        return Right((
         searchResult,
         _findSimilarWords(keyword, list).take(maxAmount).toList()
       ));
     }
-    return Right((searchResult, []));
   }
 
   List<WordEntity> _findSimilarWords(
