@@ -2,6 +2,7 @@ import 'package:fpdart/fpdart.dart';
 
 import '../../../../../core/typedef/typedefs.dart';
 import '../../../../../core/usecases/usecases.dart';
+import '../../../../app/utils/util_functions.dart';
 import '../../../user/domain/entities/user_entity.dart';
 import '../../../user/domain/repositories/user_repository.dart';
 import '../entities/auth_entity.dart';
@@ -33,7 +34,7 @@ class SignUpWithEmailPasswordUsecase
 
         final userEntity = UserEntity(
           uid: authEntity.uid,
-          name: user.displayName ?? '',
+          name: user.displayName ?? UtilFunction.splitFirst(user.email, '@'),
           email: user.email ?? '',
           method: authEntity.signInMethod.name,
           avatar: user.photoURL,
