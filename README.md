@@ -110,7 +110,7 @@ vocaday_app/
 Generate `debug.keystore`:
 
 ```
-keytool -genkey -v -keystore debug.keystore -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey -dname "CN=Android Debug,O=Android,C=US"
+keytool -genkey -v -keystore "android\app\debug.keystore" -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey -dname "CN=Android Debug,O=Android,C=US"
 ```
 
 Get `SHA-1` or `SHA256`:
