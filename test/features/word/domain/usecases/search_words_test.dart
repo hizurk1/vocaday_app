@@ -43,12 +43,10 @@ void main() {
       antonyms: ['antonyms'],
     )
   ];
-  
-  const testKeyword = 'boss';
 
   group('Search Word by keyword', () {
     test('should get list of words contains keyword', () async {
-      final result = await searchWordsUsecase((testKeyword, tList));
+      final result = await searchWordsUsecase(('lost', tList));
 
       result.fold(
         (f) => fail(f.message),
@@ -56,7 +54,7 @@ void main() {
           expect(
             list.$1.isNotEmpty,
             true,
-            reason: "Has data contains '$testKeyword' keyword",
+            reason: "Should has data contains '$testKeyword' keyword",
           );
         },
       );
