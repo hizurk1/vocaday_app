@@ -54,7 +54,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 200),
-    )..addListener(() => setState(() {}));
+    );
 
     animation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
@@ -111,61 +111,66 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     menuSize = context.screenWidth * 0.65;
     bottomNavSize = 52.h;
 
-    return PopScope(
-      canPop: false,
-      child: GestureDetector(
-        onHorizontalDragUpdate: _onSwipeScreen,
-        child: Scaffold(
-          backgroundColor: AppColor.drawer.darken(
-            context.isDarkTheme ? 0.05 : 0,
-          ),
-          body: Stack(
-            children: [
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.fastOutSlowIn,
-                width: menuSize,
-                left: isMenuOpen ? 0 : -menuSize,
-                height: context.screenHeight,
-                child: MenuDrawer(
-                  onClosed: _onMenuDrawer,
-                ),
+    return AnimatedBuilder(
+      animation: _animationController,
+      builder: (_, child) {
+        return PopScope(
+          canPop: false,
+          child: GestureDetector(
+            onHorizontalDragUpdate: _onSwipeScreen,
+            child: Scaffold(
+              backgroundColor: AppColor.drawer.darken(
+                context.isDarkTheme ? 0.05 : 0,
               ),
-              Transform(
-                transform: Matrix4.identity(),
-                child: Transform.translate(
-                  offset: Offset(animation.value * menuSize, 0),
-                  child: Transform.scale(
-                    scale: scaleAnimation.value,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(
-                        isMenuOpen ? 25.r : 0.0,
-                      ),
-                      child: pages[currentPage],
+              body: Stack(
+                children: [
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.fastOutSlowIn,
+                    width: menuSize,
+                    left: isMenuOpen ? 0 : -menuSize,
+                    height: context.screenHeight,
+                    child: MenuDrawer(
+                      onClosed: _onMenuDrawer,
                     ),
                   ),
-                ),
+                  Transform(
+                    transform: Matrix4.identity(),
+                    child: Transform.translate(
+                      offset: Offset(animation.value * menuSize, 0),
+                      child: Transform.scale(
+                        scale: scaleAnimation.value,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                            isMenuOpen ? 25.r : 0.0,
+                          ),
+                          child: pages[currentPage],
+                        ),
+                      ),
+                    ),
+                  ),
+                  // if (!isMenuOpen && currentPage == 0)
+                  //   SafeArea(
+                  //     child: GestureDetector(
+                  //       onTap: () {
+                  //         _animationController.forward();
+                  //         setState(() => isMenuOpen = true);
+                  //       },
+                  //       child: Container(
+                  //         width: context.screenWidth / 3,
+                  //         height: 80.h,
+                  //         color: Colors.transparent,
+                  //       ),
+                  //     ),
+                  //   ),
+                ],
               ),
-              // if (!isMenuOpen && currentPage == 0)
-              //   SafeArea(
-              //     child: GestureDetector(
-              //       onTap: () {
-              //         _animationController.forward();
-              //         setState(() => isMenuOpen = true);
-              //       },
-              //       child: Container(
-              //         width: context.screenWidth / 3,
-              //         height: 80.h,
-              //         color: Colors.transparent,
-              //       ),
-              //     ),
-              //   ),
-            ],
+              extendBody: true,
+              bottomNavigationBar: _buildBottomNavigationBar(),
+            ),
           ),
-          extendBody: true,
-          bottomNavigationBar: _buildBottomNavigationBar(),
-        ),
-      ),
+        );
+      },
     );
   }
 
