@@ -50,7 +50,7 @@ keytool -list -v -keystore "android\app\debug.keystore" -alias androiddebugkey -
 
 - ### Easy_localization:
 
-    If you make any changes from any translation file. To update the new changes, run those commands below in order:
+    If you make any changes from any translation files. To update the new changes, run those commands below in order:
 
 1. Generate Loader class:
 
@@ -111,9 +111,9 @@ vocaday_app/
 |   |   |   |   |-- entities/        # entity that be used in the app
 |   |   |   |   |-- usecases/        # the usecase for each requirements
 |   |   |   |-- presentation/
-|   |   |   |   |-- blocs/            # state management
-|   |   |   |   |-- pages/            # includes concrete screen of this feature
-|   |   |   |   |-- widgets/          # includes local widget of this feature
+|   |   |   |   |-- blocs/           # state management
+|   |   |   |   |-- pages/           # includes concrete screen of this feature
+|   |   |   |   |-- widgets/         # includes local widget of this feature
 |   |   |-- feature-2/
 |   |   |-- ...
 |   |-- app.dart    # whole app endpoint, for setup
