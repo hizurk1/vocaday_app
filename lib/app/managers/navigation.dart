@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/extensions/build_context.dart';
 import '../widgets/gap.dart';
@@ -18,8 +19,10 @@ class Navigators {
     navigationKey = GlobalKey<NavigatorState>();
   }
 
+  BuildContext? get currentContext => navigationKey.currentContext;
+
   showMessage(String text, {MessageType type = MessageType.byDefault}) {
-    ScaffoldMessenger.of(navigationKey.currentContext!).showSnackBar(
+    ScaffoldMessenger.of(currentContext!).showSnackBar(
       SnackBar(
         backgroundColor: switch (type) {
           MessageType.byDefault => Colors.black.withOpacity(0.65),
@@ -43,39 +46,42 @@ class Navigators {
     String? subtitle,
     String? acceptText,
     String? cancelText,
-    bool oneButton = false,
+    bool isHideAccept = false,
+    bool isHideCancel = false,
     bool isShowIcon = true,
+    bool dissmisable = true,
     String? icon,
     IconData? iconData,
+    VoidCallback? onAccept,
+    VoidCallback? onCancel,
   }) {
     showDialog(
-      context: navigationKey.currentContext!,
-      barrierDismissible: true,
+      context: currentContext!,
+      barrierDismissible: dissmisable,
       builder: (context) => Dialog(
         elevation: 1,
-        backgroundColor:
-            navigationKey.currentContext!.theme.dialogBackgroundColor,
+        backgroundColor: context.theme.dialogBackgroundColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Container(
-          width: navigationKey.currentContext!.screenWidth / 1.4,
-          height: navigationKey.currentContext!.screenHeight / 4,
+          width: context.screenWidth / 1.4,
+          height: context.screenHeight / 4,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-              boxShadow: [
-                BoxShadow(
-                    offset: const Offset(12, 26),
-                    blurRadius: 50,
-                    spreadRadius: 0,
-                    color: Colors.grey.withOpacity(.1)),
-              ]),
+            borderRadius: BorderRadius.circular(15.0),
+            boxShadow: [
+              BoxShadow(
+                  offset: const Offset(12, 26),
+                  blurRadius: 50,
+                  spreadRadius: 0,
+                  color: Colors.grey.withOpacity(.1)),
+            ],
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (isShowIcon) ...[
                 CircleAvatar(
-                  backgroundColor:
-                      navigationKey.currentContext!.theme.primaryColor,
+                  backgroundColor: context.theme.primaryColor,
                   radius: 25,
                   child: icon != null
                       ? SvgPicture.asset(icon)
@@ -89,31 +95,36 @@ class Navigators {
                 title,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color:
-                    navigationKey.currentContext!.textTheme.bodyMedium?.color,
+                color: context.textTheme.bodyMedium?.color,
               ),
               if (subtitle != null) ...[
                 const Gap(height: 10),
                 TextCustom(
                   subtitle,
                   fontWeight: FontWeight.w300,
-                  color: navigationKey.currentContext!.theme.dividerColor
-                      .withOpacity(.4),
+                  color: context.theme.dividerColor.withOpacity(.4),
                 ),
               ],
               const Gap(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  PushableButton(
-                    onPressed: () {},
-                    height: 45,
-                    width: 90,
-                    text: acceptText ?? 'Okay',
-                  ),
-                  if (!oneButton)
+                  if (!isHideAccept)
                     PushableButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        onAccept?.call();
+                        context.pop();
+                      },
+                      height: 45,
+                      width: 90,
+                      text: acceptText ?? 'Okay',
+                    ),
+                  if (!isHideCancel)
+                    PushableButton(
+                      onPressed: () {
+                        onCancel?.call();
+                        context.pop();
+                      },
                       height: 45,
                       width: 90,
                       text: cancelText ?? 'Cancel',
@@ -131,7 +142,7 @@ class Navigators {
     Future.delayed(
       Duration.zero,
       () => showDialog(
-        context: navigationKey.currentContext!,
+        context: currentContext!,
         barrierDismissible: false,
         builder: (context) => const Center(
           child: CircularProgressIndicator(color: Colors.white),
@@ -142,7 +153,7 @@ class Navigators {
 
   showPleaseWaitDialog() {
     showDialog(
-      context: navigationKey.currentContext!,
+      context: currentContext!,
       barrierDismissible: false,
       builder: (context) {
         return Dialog(

@@ -114,6 +114,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     return AnimatedBuilder(
       animation: _animationController,
       builder: (_, child) {
+        debugPrint('rebuild-child');
         return PopScope(
           canPop: false,
           child: GestureDetector(
