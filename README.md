@@ -39,7 +39,7 @@ Generate `debug.keystore`:
 keytool -genkey -v -keystore "android\app\debug.keystore" -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey -dname "CN=Android Debug,O=Android,C=US"
 ```
 
-Get `SHA-1` or `SHA256`:
+Get `SHA-1` or `SHA256` fingerprint:
 
 ```
 keytool -list -v -keystore "android\app\debug.keystore" -alias androiddebugkey -storepass android -keypass android
@@ -50,7 +50,7 @@ keytool -list -v -keystore "android\app\debug.keystore" -alias androiddebugkey -
 
 - ### Easy_localization:
 
-    If you make any changes from the translation file. To update the new changes, run those commands below:
+    If you make any changes from any translation file. To update the new changes, run those commands below in order:
 
 1. Generate Loader class:
 
@@ -95,30 +95,31 @@ Here's a simple folder structure of this project.
 
 ```plaintext
 vocaday_app/
-|-- assets/
+|-- assets/    # includes all asset or resource files
 |-- lib/
-|   |-- app/
-|   |-- core/
-|   |-- features/
+|   |-- app/    # main 'things' in the app, will be changed dynamically
+|   |-- core/    # core interface or other base things
+|   |-- config/    # configs for the whole app
+|   |-- features/    # the main features in the app, it should be independent on each other
 |   |   |-- feature-1/
 |   |   |   |-- data/
-|   |   |   |   |-- data_sources/
-|   |   |   |   |-- models/
-|   |   |   |   |-- repositories/
+|   |   |   |   |-- data_sources/    # local or remote data call
+|   |   |   |   |-- models/          # model for mapping json data
+|   |   |   |   |-- repositories/    # implement interface of repositories in 'domain'
 |   |   |   |-- domain/
-|   |   |   |   |-- repositories/
-|   |   |   |   |-- entities/
-|   |   |   |   |-- usecases/
+|   |   |   |   |-- repositories/    # main function to handle result from 'data_source' and catch Exception then throw Failure
+|   |   |   |   |-- entities/        # entity that be used in the app
+|   |   |   |   |-- usecases/        # the usecase for each requirements
 |   |   |   |-- presentation/
-|   |   |   |   |-- blocs/
-|   |   |   |   |-- pages/
-|   |   |   |   |-- widgets/
+|   |   |   |   |-- blocs/            # state management
+|   |   |   |   |-- pages/            # includes concrete screen of this feature
+|   |   |   |   |-- widgets/          # includes local widget of this feature
 |   |   |-- feature-2/
 |   |   |-- ...
-|   |-- app.dart
+|   |-- app.dart    # whole app endpoint, for setup
 |   |   ...
 |   |-- main.dart
-|-- test/
+|-- test/    # to test (currently unit test)
 |-- pubspec.yaml
 ```
 
