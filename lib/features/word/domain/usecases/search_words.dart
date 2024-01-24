@@ -47,11 +47,11 @@ class SearchWordsUsecase extends Usecases<
       {},
       (previousMap, element) {
         if (element.word.length >= keyword.length) {
-          final steps = SearchAlgorithm.calculateWagnerFischer(
+          final int steps = SearchAlgorithm.calculateWagnerFischer(
             keyword,
             element.word,
           );
-          if (steps <= keyword.length / 2) {
+          if (steps <= keyword.length ~/ 2) {
             previousMap[element.word] = steps;
           }
         }
