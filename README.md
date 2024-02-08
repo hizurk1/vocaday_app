@@ -60,7 +60,7 @@ keytool -list -v -keystore "android\app\debug.keystore" -alias androiddebugkey -
 
 2. Generate Keys class:
     ```bash
-    dart run easy_localization:generate -S "assets/translations" -O "lib/app/translations" -o "local_keys.g.dart" -f keys -u true
+    dart run easy_localization:generate -S "assets/translations" -O "lib/app/translations" -o "locale_keys.g.dart" -f keys -u true
     ```
 
     For detailed information, refer to the [easy_localization documentation](https://pub.dev/packages/easy_localization#-code-generation).
