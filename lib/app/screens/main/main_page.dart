@@ -25,7 +25,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   ValueNotifier<bool> isMenuOpen = ValueNotifier(false);
 
   late AnimationController _animationController;
-  late Animation<double> animation;
+  late Animation<double> movingAnimation;
   late Animation<double> scaleAnimation;
   late double menuSize;
   late double bottomNavSize;
@@ -55,7 +55,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 200),
     );
 
-    animation = Tween<double>(begin: 0, end: 1).animate(
+    movingAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: _animationController,
         curve: Curves.fastOutSlowIn,
@@ -130,14 +130,19 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                       Transform(
                         transform: Matrix4.identity(),
                         child: Transform.translate(
-                          offset: Offset(animation.value * menuSize, 0),
+                          offset: Offset(movingAnimation.value * menuSize, 0),
                           child: Transform.scale(
                             scale: scaleAnimation.value,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(
                                 menuOpen ? 25.r : 0.0,
                               ),
-                              child: pages[currentPage.value],
+                              child: ValueListenableBuilder<int>(
+                                valueListenable: currentPage,
+                                builder: (context, index, _) {
+                                  return pages[index];
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -157,7 +162,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   Widget _buildBottomNavigationBar() {
     return Transform.translate(
-      offset: Offset(0, bottomNavSize * 1.5 * animation.value),
+      offset: Offset(0, bottomNavSize * 1.5 * movingAnimation.value),
       child: SafeArea(
         child: Container(
           height: bottomNavSize,
@@ -190,7 +195,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   (index, icons) => Material(
                     color: Colors.transparent,
                     child: InkWell(
-                      onTap: () => setState(() => currentPage.value = index),
+                      onTap: () => currentPage.value = index,
                       borderRadius: BorderRadius.circular(8.r),
                       child: Container(
                         height: 50.h,
