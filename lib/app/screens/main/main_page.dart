@@ -21,9 +21,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
-  int currentPage = 0;
-  bool isMenuOpen = false;
-  bool _isSwipeRight = false;
+  ValueNotifier<int> currentPage = ValueNotifier(0);
+  ValueNotifier<bool> isMenuOpen = ValueNotifier(false);
+  final ValueNotifier<bool> _isSwipeRight = ValueNotifier(false);
 
   late AnimationController _animationController;
   late Animation<double> animation;
@@ -77,33 +77,31 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   void _onSwipeScreen(DragUpdateDetails swiping) {
-    if (!_isSwipeRight && !isMenuOpen) {
+    if (!_isSwipeRight.value && !isMenuOpen.value) {
       if (swiping.delta.dx > 0) {
-        _isSwipeRight = true;
+        _isSwipeRight.value = true;
         _animationController.forward();
-        setState(() => isMenuOpen = true);
+        isMenuOpen.value = true;
       }
     }
-    if (_isSwipeRight && isMenuOpen) {
+    if (_isSwipeRight.value && isMenuOpen.value) {
       if (swiping.delta.dx < 0) {
-        _isSwipeRight = false;
+        _isSwipeRight.value = false;
         _animationController.reverse();
-        setState(() => isMenuOpen = false);
+        isMenuOpen.value = false;
       }
     }
   }
 
   void _onMenuDrawer() {
-    if (isMenuOpen) {
+    if (isMenuOpen.value) {
       _animationController.reverse();
     } else {
       _animationController.forward();
     }
-    setState(() {
-      isMenuOpen = false;
-      _isSwipeRight = false;
-      currentPage = 0;
-    });
+    isMenuOpen.value = false;
+    _isSwipeRight.value = false;
+    currentPage.value = 0;
   }
 
   @override
@@ -129,7 +127,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.fastOutSlowIn,
                     width: menuSize,
-                    left: isMenuOpen ? 0 : -menuSize,
+                    left: isMenuOpen.value ? 0 : -menuSize,
                     height: context.screenHeight,
                     child: MenuDrawer(
                       onClosed: _onMenuDrawer,
@@ -143,9 +141,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                         scale: scaleAnimation.value,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(
-                            isMenuOpen ? 25.r : 0.0,
+                            isMenuOpen.value ? 25.r : 0.0,
                           ),
-                          child: pages[currentPage],
+                          child: pages[currentPage.value],
                         ),
                       ),
                     ),
@@ -196,7 +194,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   (index, icons) => Material(
                     color: Colors.transparent,
                     child: InkWell(
-                      onTap: () => setState(() => currentPage = index),
+                      onTap: () => setState(() => currentPage.value = index),
                       borderRadius: BorderRadius.circular(8.r),
                       child: Container(
                         height: 50.h,
@@ -212,11 +210,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                           //     : Colors.transparent,
                         ),
                         child: SvgPicture.asset(
-                          currentPage == index ? icons.$1 : icons.$2,
+                          currentPage.value == index ? icons.$1 : icons.$2,
                           height: 25,
                           width: 25,
                           colorFilter: ColorFilter.mode(
-                            currentPage == index
+                            currentPage.value == index
                                 ? context.theme.primaryColor
                                 : context.theme.dividerColor,
                             BlendMode.srcIn,

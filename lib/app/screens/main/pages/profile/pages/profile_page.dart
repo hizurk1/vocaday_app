@@ -37,6 +37,7 @@ class _ProfilePageState extends State<ProfilePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildTopAppBar(),
+      backgroundColor: context.colors.background,
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
