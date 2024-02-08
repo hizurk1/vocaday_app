@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/extensions/build_context.dart';
+import '../../../themes/app_text_theme.dart';
 import '../../../widgets/gap.dart';
 import '../../../widgets/text.dart';
 
@@ -65,11 +66,9 @@ class LanguageOptionWidget extends StatelessWidget {
             const Gap(width: 20),
             TextCustom(
               text,
-              fontWeight: FontWeight.w500,
-              fontSize: 15,
-              color: isSelected
-                  ? context.textTheme.bodyMedium?.color
-                  : context.textTheme.bodyMedium?.color,
+              style: isSelected
+                  ? context.textStyle.bodyS.bold.primary
+                  : context.textStyle.bodyS.bold.grey,
             ),
             const Spacer(),
             SvgPicture.asset(

@@ -10,6 +10,10 @@ class AppTheme {
     cardColor: AppColor().white,
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: AppColor().scaffoldBackground,
+      modalBackgroundColor: AppColor().scaffoldBackground,
+    ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColor().blue,
       brightness: Brightness.light,
@@ -28,6 +32,10 @@ class AppTheme {
     cardColor: AppColor().grey600,
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: AppColor().scaffoldBackgroundDark,
+      modalBackgroundColor: AppColor().scaffoldBackgroundDark,
+    ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColor().blue,
       brightness: Brightness.dark,

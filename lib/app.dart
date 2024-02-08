@@ -40,7 +40,8 @@ class MainApp extends StatelessWidget {
         listenWhen: (previous, current) => previous != current,
         listener: (context, internet) => checkInternet(internet, context),
         child: BlocBuilder<ThemeCubit, ThemeState>(
-          buildWhen: (previous, current) => previous != current,
+          buildWhen: (previous, current) =>
+              previous.themeMode != current.themeMode,
           builder: (_, state) {
             return MaterialApp.router(
               debugShowCheckedModeBanner: false,

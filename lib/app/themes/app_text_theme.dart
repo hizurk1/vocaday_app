@@ -10,15 +10,34 @@ extension TextThemeExt on BuildContext {
 }
 
 extension TextStyleExt on TextStyle {
+  /// fontWeight: bold
+  TextStyle get bold => copyWith(fontWeight: FontWeight.bold);
+
+  /// color: white
+  TextStyle get white => copyWith(color: AppColor().white);
+
+  /// color: black
+  TextStyle get black => copyWith(color: AppColor().black);
+
+  /// color: blue/primary
+  TextStyle get primary => copyWith(
+        color: Navigators().currentContext!.isDarkTheme
+            ? AppColor().blue300
+            : AppColor().blue,
+      );
+
+  /// color: black & white
   TextStyle get bw => copyWith(
         color: Navigators().currentContext!.isDarkTheme
-            ? Colors.white
-            : Colors.black,
+            ? AppColor().white
+            : AppColor().black,
       );
-  TextStyle get g => copyWith(
+
+  /// color: grey
+  TextStyle get grey => copyWith(
         color: Navigators().currentContext!.isDarkTheme
-            ? AppColor().grey
-            : AppColor().grey700,
+            ? AppColor().grey300
+            : AppColor().grey,
       );
 }
 
@@ -28,67 +47,63 @@ class AppTextStyle {
   factory AppTextStyle() => _instance;
 
   //! Title
+  /// fontSize: 20 [normal]
   final TextStyle titleS = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeight.normal,
-    letterSpacing: 1,
-    wordSpacing: 1,
   );
+
+  /// fontSize: 24 [w500]
   final TextStyle titleM = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeight.w500,
-    letterSpacing: 1,
-    wordSpacing: 1,
   );
+
+  /// fontSize: 28 [bold]
   final TextStyle titleL = TextStyle(
     fontSize: 28.sp,
     fontWeight: FontWeight.bold,
-    letterSpacing: 1,
-    wordSpacing: 1,
   );
   //! Body
+  /// fontSize: 14 [normal]
   final TextStyle bodyS = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.normal,
-    letterSpacing: 1,
-    wordSpacing: 1,
   );
+
+  /// fontSize: 16 [normal]
   final TextStyle bodyM = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.normal,
-    letterSpacing: 1,
-    wordSpacing: 1,
   );
+
+  /// fontSize: 18 [normal]
   final TextStyle bodyL = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeight.normal,
-    letterSpacing: 1,
-    wordSpacing: 1,
   );
   //! Label
+  /// fontSize: 10 [normal]
   final TextStyle labelS = TextStyle(
-    fontSize: 14.sp,
+    fontSize: 10.sp,
     fontWeight: FontWeight.normal,
-    letterSpacing: 1,
-    wordSpacing: 1,
   );
+
+  /// fontSize: 11 [w500]
   final TextStyle labelM = TextStyle(
-    fontSize: 16.sp,
+    fontSize: 11.sp,
     fontWeight: FontWeight.w500,
-    letterSpacing: 1,
-    wordSpacing: 1,
   );
+
+  /// fontSize: 12 [bold]
   final TextStyle labelL = TextStyle(
-    fontSize: 18.sp,
+    fontSize: 12.sp,
     fontWeight: FontWeight.bold,
-    letterSpacing: 1,
-    wordSpacing: 1,
   );
   //! Caption
+  /// fontSize: 12 [w300]
   final TextStyle caption = TextStyle(
     fontSize: 12.sp,
-    fontWeight: FontWeight.w200,
-    letterSpacing: 1,
-    wordSpacing: 1,
+    fontWeight: FontWeight.w300,
   );
 }

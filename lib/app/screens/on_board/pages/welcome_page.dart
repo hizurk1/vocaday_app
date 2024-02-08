@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../constants/app_asset.dart';
+import '../../../themes/app_text_theme.dart';
 import '../../../translations/translations.dart';
 import '../../../widgets/gap.dart';
 import '../../../widgets/text.dart';
@@ -31,16 +32,15 @@ class WelcomePage extends StatelessWidget {
                 children: [
                   TextCustom(
                     LocaleKeys.on_board_onboard_title.tr(),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28,
                     textAlign: TextAlign.center,
+                    style: context.textStyle.titleL.bw,
                   ),
                   Gap(height: 20.h),
                   TextCustom(
                     LocaleKeys.on_board_onboard_body.tr(),
                     textAlign: TextAlign.center,
-                    height: 1.5,
                     maxLines: 3,
+                    style: context.textStyle.bodyM.grey,
                   ),
                 ],
               ),

@@ -1,29 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/extensions/build_context.dart';
+import '../themes/app_text_theme.dart';
 
 class TextCustom extends StatelessWidget {
+  /// Style by default is bodyS with bw
   const TextCustom(
     this.text, {
-    this.color,
-    this.fontWeight,
-    this.fontSize = 16,
     this.maxLines = 2,
     this.textAlign = TextAlign.start,
-    this.height = 1,
     this.style,
     super.key,
   });
 
   final String text;
-  final Color? color;
-  final FontWeight? fontWeight;
   final TextStyle? style;
-  final double fontSize;
   final TextAlign textAlign;
   final int maxLines;
-  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +23,7 @@ class TextCustom extends StatelessWidget {
       text,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
-      style: style ??
-          context.theme.textTheme.bodyMedium!.copyWith(
-            color: color,
-            height: height,
-            fontSize: fontSize.sp,
-            fontWeight: fontWeight ?? FontWeight.normal,
-          ),
+      style: style ?? context.textStyle.bodyS.bw,
       textAlign: textAlign,
     );
   }

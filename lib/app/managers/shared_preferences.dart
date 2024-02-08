@@ -15,7 +15,8 @@ class SharedPrefManager {
     );
   }
 
-  int getTheme() => prefs.getInt(AppPrefsKey.themeState) ?? 0;
+  /// by default: system
+  int getTheme() => prefs.getInt(AppPrefsKey.themeState) ?? 2;
 
   //! First Choosen Language
   Future<void> saveOnboardCheckedIn() async {

@@ -10,7 +10,7 @@ import '../../../managers/shared_preferences.dart';
 import '../../../routes/route_manager.dart';
 import '../../../translations/translations.dart';
 import '../../../widgets/pushable_button.dart';
-import 'choose_language_page.dart';
+import 'select_language_page.dart';
 import 'welcome_page.dart';
 
 class OnBoardPage extends StatefulWidget {
@@ -23,7 +23,7 @@ class OnBoardPage extends StatefulWidget {
 class _OnBoardPageState extends State<OnBoardPage> {
   int currentPage = 0;
   final pages = [
-    const ChooseLanguagePage(),
+    const SelectLanguagePage(),
     const WelcomePage(),
   ];
 
@@ -45,26 +45,32 @@ class _OnBoardPageState extends State<OnBoardPage> {
       builder: (context, state) {
         return PopScope(
           canPop: false,
+          onPopInvoked: (didPop) {
+            setState(() => currentPage = 0);
+          },
           child: Scaffold(
-            body: PageView.builder(
-              itemCount: pages.length,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (_, index) => pages[currentPage],
-            ),
-            bottomSheet: SafeArea(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30.w,
-                  vertical: 30.h,
-                ),
-                child: PushableButton(
-                  onPressed: onButtonPress,
-                  width: context.screenWidth,
-                  text: currentPage == 0
-                      ? LocaleKeys.common_next.tr()
-                      : LocaleKeys.on_board_get_started.tr(),
-                ),
-              ),
+            body: Stack(
+              children: [
+                pages[currentPage],
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SafeArea(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 30.w,
+                        vertical: 30.h,
+                      ),
+                      child: PushableButton(
+                        onPressed: onButtonPress,
+                        width: context.screenWidth,
+                        text: currentPage == 0
+                            ? LocaleKeys.common_next.tr()
+                            : LocaleKeys.on_board_get_started.tr(),
+                      ),
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
         );

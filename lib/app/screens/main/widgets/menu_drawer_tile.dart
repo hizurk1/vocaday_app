@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/extensions/build_context.dart';
 import '../../../themes/app_color.dart';
+import '../../../themes/app_text_theme.dart';
 import '../../../widgets/text.dart';
 
 class MenuDrawerTile extends StatelessWidget {
@@ -51,7 +52,7 @@ class MenuDrawerTile extends StatelessWidget {
               horizontalTitleGap: 15.w,
               title: TextCustom(
                 title,
-                color: context.colors.white,
+                style: context.textStyle.bodyS.white,
               ),
             ),
           ],

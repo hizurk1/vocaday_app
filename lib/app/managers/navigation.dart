@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/extensions/build_context.dart';
+import '../themes/app_text_theme.dart';
 import '../widgets/gap.dart';
 import '../widgets/pushable_button.dart';
 import '../widgets/text.dart';
@@ -34,7 +35,7 @@ class Navigators {
           padding: const EdgeInsets.all(4),
           child: TextCustom(
             text,
-            color: Colors.white,
+            style: navigationKey.currentContext?.textStyle.bodyS.white,
           ),
         ),
       ),
@@ -93,16 +94,13 @@ class Navigators {
               ],
               TextCustom(
                 title,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: context.textTheme.bodyMedium?.color,
+                style: navigationKey.currentContext?.textStyle.bodyL.bw,
               ),
               if (subtitle != null) ...[
                 const Gap(height: 10),
                 TextCustom(
                   subtitle,
-                  fontWeight: FontWeight.w300,
-                  color: context.theme.dividerColor.withOpacity(.4),
+                  style: navigationKey.currentContext?.textStyle.bodyS.grey,
                 ),
               ],
               const Gap(height: 25),

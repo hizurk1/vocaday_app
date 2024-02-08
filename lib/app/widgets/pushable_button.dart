@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/extensions/build_context.dart';
 import '../../core/extensions/color.dart';
 import '../themes/app_color.dart';
+import '../themes/app_text_theme.dart';
 import 'text.dart';
 
 enum PushableButtonType { primary, accent, grey, disable }
@@ -52,9 +53,9 @@ class _PushableButtonState extends State<PushableButton> {
 
   Decoration? get _boxDecoration {
     final backgroundColor = switch (widget.type) {
-      PushableButtonType.primary => context.theme.primaryColor,
+      PushableButtonType.primary => context.colors.blue,
       PushableButtonType.accent => context.colors.red400,
-      PushableButtonType.grey => context.theme.dividerColor.withOpacity(.7),
+      PushableButtonType.grey => context.colors.grey300.withOpacity(.7),
       PushableButtonType.disable => context.colors.grey,
     };
     return BoxDecoration(
@@ -98,8 +99,10 @@ class _PushableButtonState extends State<PushableButton> {
               child: widget.child ??
                   TextCustom(
                     widget.text,
-                    fontWeight: FontWeight.w500,
-                    color: widget.textColor ?? context.colors.white,
+                    style: context.textStyle.bodyM.copyWith(
+                      color: widget.textColor ?? context.colors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
             ),
           ),

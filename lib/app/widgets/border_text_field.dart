@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/extensions/build_context.dart';
+import '../themes/app_text_theme.dart';
 
 class BorderTextField extends StatefulWidget {
   const BorderTextField({
@@ -60,9 +61,7 @@ class _BorderTextFieldState extends State<BorderTextField> {
         maxLength: widget.maxLength,
         enabled: widget.enable,
         textCapitalization: widget.textCapitalization,
-        style: context.textTheme.bodyMedium?.copyWith(
-          fontSize: 16,
-        ),
+        style: context.textStyle.bodyS.bw,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(bottom: 2.h),
@@ -74,9 +73,7 @@ class _BorderTextFieldState extends State<BorderTextField> {
                 )
               : null,
           hintText: widget.hintText,
-          hintStyle: context.textTheme.bodyMedium?.copyWith(
-            color: widget.hintColor ?? context.theme.hintColor.withOpacity(.5),
-          ),
+          hintStyle: context.textStyle.bodyS.grey,
           counterText: '',
           suffixIcon: widget.isPasswordField
               ? GestureDetector(

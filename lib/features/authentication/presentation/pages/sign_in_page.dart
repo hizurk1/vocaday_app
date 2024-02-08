@@ -6,6 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../app/constants/app_asset.dart';
 import '../../../../app/managers/navigation.dart';
+import '../../../../app/themes/app_color.dart';
+import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/widgets/border_text_field.dart';
 import '../../../../app/widgets/gap.dart';
@@ -77,8 +79,7 @@ class _SignInPageState extends State<SignInPage> {
                         children: [
                           TextCustom(
                             LocaleKeys.auth_welcome.tr(),
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
+                            style: context.textStyle.titleM.bw,
                           ),
                           const Gap(height: 30),
                           BorderTextField(
@@ -103,8 +104,7 @@ class _SignInPageState extends State<SignInPage> {
                                 onTap: () {},
                                 child: TextCustom(
                                   LocaleKeys.auth_forgot_password.tr(),
-                                  color:
-                                      context.theme.hintColor.withOpacity(.45),
+                                  style: context.textStyle.bodyS.grey,
                                 ),
                               ),
                             ),
@@ -119,8 +119,9 @@ class _SignInPageState extends State<SignInPage> {
                                 ? const LoadingIndicatorWidget()
                                 : TextCustom(
                                     LocaleKeys.auth_sign_in.tr(),
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
+                                    style: context.textStyle.labelL.copyWith(
+                                      color: context.colors.white,
+                                    ),
                                   ),
                           ),
                           const Gap(height: 20),
@@ -129,7 +130,9 @@ class _SignInPageState extends State<SignInPage> {
                             children: [
                               TextCustom(
                                 LocaleKeys.auth_or_sign_in_with.tr(),
-                                color: context.theme.hintColor.withOpacity(.45),
+                                style: context.textStyle.labelL.copyWith(
+                                  color: context.colors.grey300,
+                                ),
                               ),
                               GestureDetector(
                                 onTap: () => _onSignInGoogleButton(state),

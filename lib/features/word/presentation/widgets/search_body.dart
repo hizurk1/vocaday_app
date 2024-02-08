@@ -6,7 +6,7 @@ import 'package:lottie/lottie.dart';
 import '../../../../app/constants/app_asset.dart';
 import '../../../../app/constants/app_element.dart';
 import '../../../../app/managers/navigation.dart';
-import '../../../../app/themes/app_color.dart';
+import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/widgets/gap.dart';
 import '../../../../app/widgets/loading_indicator.dart';
@@ -50,7 +50,7 @@ class SearchBodyWidget extends StatelessWidget {
                       ),
                       child: TextCustom(
                         LocaleKeys.search_are_you_looking_for.tr(),
-                        color: context.colors.grey600,
+                        style: context.textStyle.bodyS.grey,
                       ),
                     ),
                     ...state.similarWords
@@ -83,7 +83,7 @@ class SearchBodyWidget extends StatelessWidget {
           Gap(height: 5.h),
           TextCustom(
             text,
-            color: context.colors.grey300,
+            style: context.textStyle.bodyS.grey,
           ),
         ],
       ),

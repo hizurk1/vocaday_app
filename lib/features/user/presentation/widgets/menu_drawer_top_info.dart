@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../app/themes/app_color.dart';
+import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/widgets/cached_network_image.dart';
 import '../../../../app/widgets/text.dart';
@@ -25,13 +26,14 @@ class MenuDrawerTopInfo extends StatelessWidget {
             ),
             title: TextCustom(
               state.entity.name,
-              fontWeight: FontWeight.bold,
-              color: context.colors.white,
+              style: context.textStyle.bodyS.copyWith(
+                color: context.colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             subtitle: TextCustom(
               LocaleKeys.user_data_point.plural(state.entity.point),
-              fontSize: 13,
-              color: context.colors.grey,
+              style: context.textStyle.bodyS.grey,
             ),
             trailing: GestureDetector(
               onTap: onClosed,

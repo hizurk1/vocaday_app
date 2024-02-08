@@ -8,6 +8,7 @@ import '../../../../features/authentication/presentation/blocs/auth/auth_bloc.da
 import '../../../constants/app_asset.dart';
 import '../../../routes/route_manager.dart';
 import '../../../themes/app_color.dart';
+import '../../../themes/app_text_theme.dart';
 import '../../../translations/translations.dart';
 import '../../../widgets/text.dart';
 import 'menu_drawer_tile.dart';
@@ -88,7 +89,7 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
           padding: EdgeInsets.only(left: 20.w, top: 20.h, bottom: 15.h),
           child: TextCustom(
             text.toUpperCase(),
-            color: context.colors.white,
+            style: context.textStyle.bodyS.white,
           ),
         )
       ],
