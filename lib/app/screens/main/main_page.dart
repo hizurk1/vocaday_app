@@ -114,7 +114,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               ),
               body: ValueListenableBuilder<bool>(
                 valueListenable: isMenuOpen,
-                builder: (context, menuOpen, child) {
+                builder: (context, menuOpen, _) {
                   return Stack(
                     children: [
                       AnimatedPositioned(

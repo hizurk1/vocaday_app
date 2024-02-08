@@ -75,7 +75,7 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
   Widget _buildDividerMenu() => Padding(
         padding: EdgeInsets.only(left: 5.w),
         child: Divider(
-          color: context.colors.green200.withOpacity(0.25),
+          color: context.colors.blue200.withOpacity(0.2),
           height: 1,
         ),
       );
