@@ -6,7 +6,7 @@ class TextCustom extends StatelessWidget {
   /// Style by default is bodyS with bw
   const TextCustom(
     this.text, {
-    this.maxLines = 2,
+    this.maxLines = 1,
     this.textAlign = TextAlign.start,
     this.style,
     super.key,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../app/themes/app_color.dart';
-
 extension BuildContextExtension on BuildContext {
   Size get screenSize => MediaQuery.of(this).size;
   double get screenWidth => MediaQuery.of(this).size.width;
@@ -15,6 +13,7 @@ extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   Brightness get brightness => Theme.of(this).brightness;
   bool get isDarkTheme => Theme.of(this).brightness == Brightness.dark;
-  Color get backgroundColor =>
-      isDarkTheme ? colors.scaffoldBackgroundDark : colors.scaffoldBackground;
+  Color get backgroundColor => isDarkTheme
+      ? theme.scaffoldBackgroundColor
+      : theme.scaffoldBackgroundColor;
 }

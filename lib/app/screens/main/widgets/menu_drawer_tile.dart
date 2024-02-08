@@ -52,7 +52,7 @@ class MenuDrawerTile extends StatelessWidget {
               horizontalTitleGap: 15.w,
               title: TextCustom(
                 title,
-                style: context.textStyle.bodyS.white,
+                style: context.textStyle.bodyM.white,
               ),
             ),
           ],

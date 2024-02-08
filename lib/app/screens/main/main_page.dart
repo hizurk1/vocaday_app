@@ -23,7 +23,6 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   ValueNotifier<int> currentPage = ValueNotifier(0);
   ValueNotifier<bool> isMenuOpen = ValueNotifier(false);
-  final ValueNotifier<bool> _isSwipeRight = ValueNotifier(false);
 
   late AnimationController _animationController;
   late Animation<double> animation;
@@ -76,20 +75,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  void _onSwipeScreen(DragUpdateDetails swiping) {
-    if (!_isSwipeRight.value && !isMenuOpen.value) {
-      if (swiping.delta.dx > 0) {
-        _isSwipeRight.value = true;
-        _animationController.forward();
-        isMenuOpen.value = true;
-      }
+  void _onSwipeScreen(DragUpdateDetails details) {
+    if (!isMenuOpen.value && details.delta.dx > 0) {
+      _animationController.forward();
+      isMenuOpen.value = true;
     }
-    if (_isSwipeRight.value && isMenuOpen.value) {
-      if (swiping.delta.dx < 0) {
-        _isSwipeRight.value = false;
-        _animationController.reverse();
-        isMenuOpen.value = false;
-      }
+    if (isMenuOpen.value && details.delta.dx < 0) {
+      _animationController.reverse();
+      isMenuOpen.value = false;
     }
   }
 
@@ -100,7 +93,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       _animationController.forward();
     }
     isMenuOpen.value = false;
-    _isSwipeRight.value = false;
     currentPage.value = 0;
   }
 
@@ -115,42 +107,44 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         return PopScope(
           canPop: false,
           child: GestureDetector(
-            onHorizontalDragUpdate: _onSwipeScreen,
-            onPanUpdate: (details) {
-              debugPrint(details.delta.toString());
-            },
+            onPanUpdate: _onSwipeScreen,
             child: Scaffold(
               backgroundColor: context.colors.blue900.darken(
                 context.isDarkTheme ? 0.05 : 0,
               ),
-              body: Stack(
-                children: [
-                  AnimatedPositioned(
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.fastOutSlowIn,
-                    width: menuSize,
-                    left: isMenuOpen.value ? 0 : -menuSize,
-                    height: context.screenHeight,
-                    child: MenuDrawer(
-                      onClosed: _onMenuDrawer,
-                    ),
-                  ),
-                  Transform(
-                    transform: Matrix4.identity(),
-                    child: Transform.translate(
-                      offset: Offset(animation.value * menuSize, 0),
-                      child: Transform.scale(
-                        scale: scaleAnimation.value,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                            isMenuOpen.value ? 25.r : 0.0,
-                          ),
-                          child: pages[currentPage.value],
+              body: ValueListenableBuilder<bool>(
+                valueListenable: isMenuOpen,
+                builder: (context, menuOpen, child) {
+                  return Stack(
+                    children: [
+                      AnimatedPositioned(
+                        duration: const Duration(milliseconds: 200),
+                        curve: Curves.fastOutSlowIn,
+                        width: menuSize,
+                        left: menuOpen ? 0 : -menuSize,
+                        height: context.screenHeight,
+                        child: MenuDrawer(
+                          onClosed: _onMenuDrawer,
                         ),
                       ),
-                    ),
-                  ),
-                ],
+                      Transform(
+                        transform: Matrix4.identity(),
+                        child: Transform.translate(
+                          offset: Offset(animation.value * menuSize, 0),
+                          child: Transform.scale(
+                            scale: scaleAnimation.value,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                menuOpen ? 25.r : 0.0,
+                              ),
+                              child: pages[currentPage.value],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
               extendBody: true,
               bottomNavigationBar: _buildBottomNavigationBar(),
