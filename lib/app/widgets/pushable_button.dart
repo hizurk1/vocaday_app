@@ -53,9 +53,9 @@ class _PushableButtonState extends State<PushableButton> {
   Decoration? get _boxDecoration {
     final backgroundColor = switch (widget.type) {
       PushableButtonType.primary => context.theme.primaryColor,
-      PushableButtonType.accent => AppColor.accent,
+      PushableButtonType.accent => context.colors.accent,
       PushableButtonType.grey => context.theme.dividerColor.withOpacity(.7),
-      PushableButtonType.disable => AppColor.grey,
+      PushableButtonType.disable => context.colors.grey,
     };
     return BoxDecoration(
       color: backgroundColor,
@@ -99,7 +99,7 @@ class _PushableButtonState extends State<PushableButton> {
                   TextCustom(
                     widget.text,
                     fontWeight: FontWeight.w500,
-                    color: widget.textColor ?? AppColor.white,
+                    color: widget.textColor ?? context.colors.white,
                   ),
             ),
           ),

@@ -120,7 +120,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           child: GestureDetector(
             onHorizontalDragUpdate: _onSwipeScreen,
             child: Scaffold(
-              backgroundColor: AppColor.drawer.darken(
+              backgroundColor: context.colors.drawer.darken(
                 context.isDarkTheme ? 0.05 : 0,
               ),
               body: Stack(
@@ -150,20 +150,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  // if (!isMenuOpen && currentPage == 0)
-                  //   SafeArea(
-                  //     child: GestureDetector(
-                  //       onTap: () {
-                  //         _animationController.forward();
-                  //         setState(() => isMenuOpen = true);
-                  //       },
-                  //       child: Container(
-                  //         width: context.screenWidth / 3,
-                  //         height: 80.h,
-                  //         color: Colors.transparent,
-                  //       ),
-                  //     ),
-                  //   ),
                 ],
               ),
               extendBody: true,
@@ -194,7 +180,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             color: context.theme.dialogBackgroundColor,
             boxShadow: [
               BoxShadow(
-                color: AppColor.cardDark.withOpacity(.05),
+                color: context.colors.cardDark.withOpacity(.05),
               )
             ],
             border: Border.all(

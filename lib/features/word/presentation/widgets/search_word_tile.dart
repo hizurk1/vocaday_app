@@ -45,7 +45,7 @@ class SearchWordTileWidget extends StatelessWidget {
             subtitle: TextCustom(
               word.meanings.first.type.toLowerCase(),
               fontSize: 12,
-              color: AppColor.secondaryText,
+              color: context.colors.secondaryText,
             ),
             trailing: GestureDetector(
               onTap: _onCopyToClipboard,
@@ -53,8 +53,8 @@ class SearchWordTileWidget extends StatelessWidget {
                 AppAssets.copyIcon,
                 width: 25.w,
                 height: 25.h,
-                colorFilter: const ColorFilter.mode(
-                  AppColor.secondaryText,
+                colorFilter: ColorFilter.mode(
+                  context.colors.secondaryText,
                   BlendMode.srcIn,
                 ),
               ),

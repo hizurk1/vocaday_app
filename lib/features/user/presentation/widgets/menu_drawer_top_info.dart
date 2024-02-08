@@ -26,12 +26,12 @@ class MenuDrawerTopInfo extends StatelessWidget {
             title: TextCustom(
               state.entity.name,
               fontWeight: FontWeight.bold,
-              color: AppColor.white,
+              color: context.colors.white,
             ),
             subtitle: TextCustom(
               LocaleKeys.user_data_point.plural(state.entity.point),
               fontSize: 13,
-              color: AppColor.grey,
+              color: context.colors.grey,
             ),
             trailing: GestureDetector(
               onTap: onClosed,

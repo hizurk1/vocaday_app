@@ -41,6 +41,8 @@ class AppAssets {
   static const profileIconOutline = '$_icon/profile_outline.svg';
   static const bookIconFill = '$_icon/book_fill.svg';
   static const bookIconOutline = '$_icon/book_outline.svg';
+  static const profileCheckUpdate = '$_icon/check_update.svg';
+  static const profilePencil = '$_icon/pencil.svg';
 
   //! Lottie json
   static const manPaperAirPlane =

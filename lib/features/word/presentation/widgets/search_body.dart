@@ -26,7 +26,8 @@ class SearchBodyWidget extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is SearchWordEmptyState) {
-          return _buildEmptySearch(LocaleKeys.search_type_something.tr());
+          return _buildEmptySearch(
+              LocaleKeys.search_type_something.tr(), context);
         }
         if (state is SearchWordLoadingState) {
           return const Center(child: LoadingIndicatorWidget());
@@ -48,7 +49,7 @@ class SearchBodyWidget extends StatelessWidget {
                       ),
                       child: TextCustom(
                         LocaleKeys.search_are_you_looking_for.tr(),
-                        color: AppColor.secondaryText,
+                        color: context.colors.secondaryText,
                       ),
                     ),
                     ...state.similarWords
@@ -59,7 +60,7 @@ class SearchBodyWidget extends StatelessWidget {
               ),
             );
           } else {
-            return _buildEmptySearch(LocaleKeys.search_not_found.tr());
+            return _buildEmptySearch(LocaleKeys.search_not_found.tr(), context);
           }
         }
         return Container();
@@ -67,7 +68,7 @@ class SearchBodyWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildEmptySearch(String text) {
+  Widget _buildEmptySearch(String text, BuildContext context) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -81,7 +82,7 @@ class SearchBodyWidget extends StatelessWidget {
           Gap(height: 5.h),
           TextCustom(
             text,
-            color: AppColor.secondaryText,
+            color: context.colors.secondaryText,
           ),
         ],
       ),

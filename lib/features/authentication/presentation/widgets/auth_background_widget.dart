@@ -21,7 +21,7 @@ class AuthBackgroundWidget extends StatelessWidget {
           Container(
             width: context.screenWidth,
             height: context.screenHeight,
-            color: AppColor.black.withOpacity(
+            color: context.colors.black.withOpacity(
               context.isDarkTheme ? 0.85 : 0,
             ),
           ),

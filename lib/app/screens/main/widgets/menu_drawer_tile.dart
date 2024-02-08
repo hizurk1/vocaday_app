@@ -46,12 +46,12 @@ class MenuDrawerTile extends StatelessWidget {
                 height: 25,
                 width: 25,
                 colorFilter:
-                    const ColorFilter.mode(AppColor.white, BlendMode.srcIn),
+                    ColorFilter.mode(context.colors.white, BlendMode.srcIn),
               ),
               horizontalTitleGap: 15.w,
               title: TextCustom(
                 title,
-                color: AppColor.white,
+                color: context.colors.white,
               ),
             ),
           ],

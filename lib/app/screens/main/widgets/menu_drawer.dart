@@ -19,7 +19,7 @@ class MenuDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.drawer.darken(
+      backgroundColor: context.colors.drawer.darken(
         context.isDarkTheme ? 0.05 : 0,
       ),
       body: Container(
