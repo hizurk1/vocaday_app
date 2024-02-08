@@ -17,7 +17,8 @@
     "skip": "Skip",
     "done": "Done",
     "browse": "Browse",
-    "other_k": "Other"
+    "other_k": "Other",
+    "is_copied_to_clipboard": "'{word}' is copied to clipboard."
   },
   "auth": {
     "already_have_an_account": "Already have an account?",

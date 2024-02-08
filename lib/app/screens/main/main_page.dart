@@ -112,13 +112,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     return AnimatedBuilder(
       animation: _animationController,
       builder: (_, child) {
-        debugPrint('rebuild-child');
         return PopScope(
           canPop: false,
           child: GestureDetector(
             onHorizontalDragUpdate: _onSwipeScreen,
+            onPanUpdate: (details) {
+              debugPrint(details.delta.toString());
+            },
             child: Scaffold(
-              backgroundColor: context.colors.drawer.darken(
+              backgroundColor: context.colors.blue900.darken(
                 context.isDarkTheme ? 0.05 : 0,
               ),
               body: Stack(
@@ -178,7 +180,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
             color: context.theme.dialogBackgroundColor,
             boxShadow: [
               BoxShadow(
-                color: context.colors.cardDark.withOpacity(.05),
+                color: context.colors.grey800.withOpacity(.05),
               )
             ],
             border: Border.all(

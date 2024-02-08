@@ -15,6 +15,7 @@ abstract class  LocaleKeys {
   static const common_done = 'common.done';
   static const common_browse = 'common.browse';
   static const common_other_k = 'common.other_k';
+  static const common_is_copied_to_clipboard = 'common.is_copied_to_clipboard';
   static const auth_already_have_an_account = 'auth.already_have_an_account';
   static const auth_sign_in = 'auth.sign_in';
   static const auth_sign_up = 'auth.sign_up';

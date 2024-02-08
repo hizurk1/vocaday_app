@@ -7,6 +7,7 @@ import '../../../../../core/extensions/build_context.dart';
 import '../../../../app/constants/app_asset.dart';
 import '../../../../app/managers/navigation.dart';
 import '../../../../app/themes/app_color.dart';
+import '../../../../app/translations/translations.dart';
 import '../../../../app/widgets/text.dart';
 import '../../domain/entities/word_entity.dart';
 
@@ -20,7 +21,9 @@ class SearchWordTileWidget extends StatelessWidget {
 
   void _onCopyToClipboard() {
     Clipboard.setData(ClipboardData(text: word.word.toLowerCase())).then((_) {
-      Navigators().showMessage("'${word.word.toLowerCase()}' is copied!");
+      Navigators().showMessage(LocaleKeys.common_is_copied_to_clipboard.tr(
+        namedArgs: {'word': word.word.toLowerCase()},
+      ));
     });
   }
 
@@ -45,7 +48,7 @@ class SearchWordTileWidget extends StatelessWidget {
             subtitle: TextCustom(
               word.meanings.first.type.toLowerCase(),
               fontSize: 12,
-              color: context.colors.secondaryText,
+              color: context.colors.grey,
             ),
             trailing: GestureDetector(
               onTap: _onCopyToClipboard,
@@ -54,7 +57,7 @@ class SearchWordTileWidget extends StatelessWidget {
                 width: 25.w,
                 height: 25.h,
                 colorFilter: ColorFilter.mode(
-                  context.colors.secondaryText,
+                  context.colors.grey300,
                   BlendMode.srcIn,
                 ),
               ),

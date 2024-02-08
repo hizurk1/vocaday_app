@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/extensions/build_context.dart';
 import '../../../../core/extensions/color.dart';
 import '../../../../features/user/presentation/widgets/menu_drawer_top_info.dart';
+import '../../../constants/app_element.dart';
 import '../../../themes/app_color.dart';
 import '../../../widgets/gap.dart';
 import 'menu_drawer_tile_list.dart';
@@ -19,11 +20,11 @@ class MenuDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.colors.drawer.darken(
+      backgroundColor: context.colors.blue900.darken(
         context.isDarkTheme ? 0.05 : 0,
       ),
       body: Container(
-        width: context.screenWidth * 0.65,
+        width: context.screenWidth * AppElement.drawerRatio,
         height: context.screenHeight,
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: SingleChildScrollView(

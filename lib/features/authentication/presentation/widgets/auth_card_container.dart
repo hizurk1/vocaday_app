@@ -22,7 +22,7 @@ class AuthCardContainerWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.r),
         boxShadow: [
           BoxShadow(
-            color: context.colors.cardDark.withOpacity(.05),
+            color: context.colors.grey800.withOpacity(.05),
             spreadRadius: 10,
             blurRadius: 10,
           ),

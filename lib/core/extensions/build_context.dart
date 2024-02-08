@@ -13,4 +13,5 @@ extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   Brightness get brightness => Theme.of(this).brightness;
   bool get isDarkTheme => Theme.of(this).brightness == Brightness.dark;
+  Color get backgroundColor => theme.colorScheme.background;
 }

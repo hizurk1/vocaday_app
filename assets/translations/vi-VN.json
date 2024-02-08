@@ -17,7 +17,8 @@
     "skip": "Huỷ",
     "done": "Xong",
     "browse": "Duyệt",
-    "other_k": "Khác"
+    "other_k": "Khác",
+    "is_copied_to_clipboard": "'{word}' đã sao chép vào bộ nhớ tạm."
   },
   "auth": {
     "already_have_an_account": "Bạn đã có tài khoản chưa?",

@@ -100,6 +100,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                     ));
                               }
                             },
+                            type: state is SignUpLoadingState
+                                ? PushableButtonType.disable
+                                : PushableButtonType.primary,
                             child: state is SignUpLoadingState
                                 ? const LoadingIndicatorWidget()
                                 : TextCustom(

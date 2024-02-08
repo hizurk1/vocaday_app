@@ -81,7 +81,7 @@ class _SearchTopAppBarState extends State<SearchTopAppBar> {
                 hintText: LocaleKeys.search_search_for_words.tr(),
                 hintStyle: context.textTheme.bodyMedium?.copyWith(
                   fontSize: 16.sp,
-                  color: context.colors.secondaryText,
+                  color: context.colors.grey,
                 ),
                 counterText: '',
                 contentPadding: EdgeInsets.zero,

@@ -12,12 +12,14 @@ class TextCustom extends StatelessWidget {
     this.maxLines = 2,
     this.textAlign = TextAlign.start,
     this.height = 1,
+    this.style,
     super.key,
   });
 
   final String text;
   final Color? color;
   final FontWeight? fontWeight;
+  final TextStyle? style;
   final double fontSize;
   final TextAlign textAlign;
   final int maxLines;
@@ -29,12 +31,13 @@ class TextCustom extends StatelessWidget {
       text,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
-      style: context.theme.textTheme.bodyMedium!.copyWith(
-        color: color,
-        height: height,
-        fontSize: fontSize.sp,
-        fontWeight: fontWeight ?? FontWeight.normal,
-      ),
+      style: style ??
+          context.theme.textTheme.bodyMedium!.copyWith(
+            color: color,
+            height: height,
+            fontSize: fontSize.sp,
+            fontWeight: fontWeight ?? FontWeight.normal,
+          ),
       textAlign: textAlign,
     );
   }

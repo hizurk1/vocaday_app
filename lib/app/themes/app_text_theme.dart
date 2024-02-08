@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../core/extensions/build_context.dart';
+import '../managers/navigation.dart';
+import 'app_color.dart';
+
 extension TextThemeExt on BuildContext {
-  AppTextTheme get textTheme => AppTextTheme();
+  AppTextStyle get textStyle => AppTextStyle();
 }
 
-class AppTextTheme {
-  AppTextTheme._init();
-  static final AppTextTheme _instance = AppTextTheme._init();
-  factory AppTextTheme() => _instance;
+extension TextStyleExt on TextStyle {
+  TextStyle get bw => copyWith(
+        color: Navigators().currentContext!.isDarkTheme
+            ? Colors.white
+            : Colors.black,
+      );
+  TextStyle get g => copyWith(
+        color: Navigators().currentContext!.isDarkTheme
+            ? AppColor().grey
+            : AppColor().grey700,
+      );
+}
+
+class AppTextStyle {
+  AppTextStyle._init();
+  static final AppTextStyle _instance = AppTextStyle._init();
+  factory AppTextStyle() => _instance;
 
   //! Title
   final TextStyle titleS = TextStyle(

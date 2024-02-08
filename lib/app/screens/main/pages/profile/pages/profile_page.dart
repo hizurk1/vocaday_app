@@ -37,7 +37,6 @@ class _ProfilePageState extends State<ProfilePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildTopAppBar(),
-      backgroundColor: context.colors.background,
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -151,10 +150,10 @@ class _ProfilePageState extends State<ProfilePage>
         unselectedLabelStyle: context.textTheme.bodyMedium,
         indicator: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-          color: context.colors.background,
+          color: context.theme.colorScheme.background,
           boxShadow: [
             BoxShadow(
-              color: context.colors.drawer,
+              color: context.colors.green200,
               offset: const Offset(1, 1),
               blurRadius: 1,
             ),

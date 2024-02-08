@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../app/constants/app_asset.dart';
+import '../../../../app/constants/app_element.dart';
 import '../../../../app/managers/navigation.dart';
 import '../../../../app/themes/app_color.dart';
 import '../../../../app/translations/translations.dart';
@@ -49,13 +50,13 @@ class SearchBodyWidget extends StatelessWidget {
                       ),
                       child: TextCustom(
                         LocaleKeys.search_are_you_looking_for.tr(),
-                        color: context.colors.secondaryText,
+                        color: context.colors.grey600,
                       ),
                     ),
                     ...state.similarWords
                         .map((word) => SearchWordTileWidget(word: word))
                   ],
-                  Gap(height: 72.h),
+                  Gap(height: AppElement.navBarSafeSize.h),
                 ],
               ),
             );
@@ -82,7 +83,7 @@ class SearchBodyWidget extends StatelessWidget {
           Gap(height: 5.h),
           TextCustom(
             text,
-            color: context.colors.secondaryText,
+            color: context.colors.grey300,
           ),
         ],
       ),
