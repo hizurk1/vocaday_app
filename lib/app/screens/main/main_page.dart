@@ -180,8 +180,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                context.backgroundColor,
-                context.backgroundColor.darken(.025),
+                context.theme.scaffoldBackgroundColor,
+                context.theme.scaffoldBackgroundColor.darken(.025),
               ],
             ),
             boxShadow: [

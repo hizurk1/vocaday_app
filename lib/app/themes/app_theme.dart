@@ -11,8 +11,8 @@ class AppTheme {
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
     bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: AppColor().scaffoldBackground,
-      modalBackgroundColor: AppColor().scaffoldBackground,
+      backgroundColor: AppColor().backgroundLight,
+      modalBackgroundColor: AppColor().backgroundLight,
     ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColor().blue,
@@ -33,8 +33,8 @@ class AppTheme {
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
     bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: AppColor().scaffoldBackgroundDark,
-      modalBackgroundColor: AppColor().scaffoldBackgroundDark,
+      backgroundColor: AppColor().backgroundDark,
+      modalBackgroundColor: AppColor().backgroundDark,
     ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColor().blue,

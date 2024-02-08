@@ -78,6 +78,11 @@ class CodegenLoader extends AssetLoader{
     "type_something": "Type something",
     "not_found": "Not found",
     "are_you_looking_for": "Are you looking for?"
+  },
+  "profile": {
+    "profile_title": "My profile",
+    "personal_info": "Personal info",
+    "completion_progress": "Completion progress"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -144,6 +149,11 @@ static const Map<String,dynamic> vi_VN = {
     "type_something": "Nhập gì đó",
     "not_found": "Không tìm thấy",
     "are_you_looking_for": "Có phải bạn đang tìm?"
+  },
+  "profile": {
+    "profile_title": "Hồ sơ của tôi",
+    "personal_info": "Thông tin cá nhân",
+    "completion_progress": "Tiến độ hoàn thành"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

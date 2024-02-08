@@ -12,7 +12,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.child,
     this.leading,
-    this.trailing,
+    this.action,
     this.title,
     this.textTitle,
     this.centerTitle = true,
@@ -20,7 +20,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
 
   final Widget? child;
   final Widget? leading;
-  final Widget? trailing;
+  final Widget? action;
   final Widget? title;
   final String? textTitle;
   final bool centerTitle;
@@ -33,7 +33,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     return Container(
       width: context.screenWidth,
       decoration: BoxDecoration(
-        color: context.backgroundColor,
+        color: context.theme.scaffoldBackgroundColor,
         boxShadow: [
           BoxShadow(
             color: context.colors.grey400.withOpacity(.5),
@@ -45,7 +45,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
         child: child ??
             Row(
               children: [
-                leading ?? const SizedBox(),
+                leading ?? SizedBox(width: 50.w),
                 Expanded(
                   child: centerTitle
                       ? Center(
@@ -53,7 +53,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
                               TextCustom(
                                 textTitle ?? '',
                                 textAlign: TextAlign.center,
-                                style: context.textStyle.titleM.bw,
+                                style: context.textStyle.bodyL.bw,
                               ),
                         )
                       : title ??
@@ -63,7 +63,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
                             style: context.textStyle.titleM.bw,
                           ),
                 ),
-                trailing ?? const SizedBox(),
+                action ?? SizedBox(width: 50.w),
               ],
             ),
       ),

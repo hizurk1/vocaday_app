@@ -62,5 +62,10 @@
     "type_something": "Type something",
     "not_found": "Not found",
     "are_you_looking_for": "Are you looking for?"
+  },
+  "profile": {
+    "profile_title": "My profile",
+    "personal_info": "Personal info",
+    "completion_progress": "Completion progress"
   }
 }

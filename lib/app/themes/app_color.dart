@@ -11,11 +11,12 @@ class AppColor {
 
   final Color white = const Color(0xFFFFFFFF);
   final Color black = const Color(0xFF000000);
-  final Color scaffoldBackground = const Color.fromARGB(255, 242, 242, 242);
-  final Color scaffoldBackgroundDark = const Color(0xFF222222);
+  final Color backgroundLight = const Color(0xFFfafafa);
+  final Color backgroundDark = const Color(0xFF0f0f0f);
   //* Grey
   final Color grey = const Color(0xFF8c8c8c); // 500
   final Color grey100 = const Color(0xFFf2f2f2);
+  final Color grey150 = const Color(0xFFececec);
   final Color grey200 = const Color(0xFFd9d9d9);
   final Color grey300 = const Color(0xFFbfbfbf);
   final Color grey400 = const Color(0xFFa6a6a6);

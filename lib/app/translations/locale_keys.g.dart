@@ -44,5 +44,8 @@ abstract class  LocaleKeys {
   static const search_type_something = 'search.type_something';
   static const search_not_found = 'search.not_found';
   static const search_are_you_looking_for = 'search.are_you_looking_for';
+  static const profile_profile_title = 'profile.profile_title';
+  static const profile_personal_info = 'profile.personal_info';
+  static const profile_completion_progress = 'profile.completion_progress';
 
 }

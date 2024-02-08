@@ -17,7 +17,7 @@ class AuthCardContainerWidget extends StatelessWidget {
           .copyWith(bottom: 30.h),
       width: context.screenWidth - 60.w,
       decoration: BoxDecoration(
-        color: context.backgroundColor,
+        color: context.theme.scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(20.r),
         boxShadow: [
           BoxShadow(
