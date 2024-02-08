@@ -52,7 +52,9 @@ class SearchBodyWidget extends StatelessWidget {
                         vertical: 10.h,
                       ),
                       decoration: BoxDecoration(
-                        color: context.colors.grey500.withOpacity(.08),
+                        color: state.exactWords.isNotEmpty
+                            ? context.colors.grey500.withOpacity(.08)
+                            : Colors.transparent,
                         border: Border(
                           bottom: BorderSide(
                             color: context.colors.grey500.withOpacity(.1),

@@ -176,15 +176,21 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
-            color: context.theme.dialogBackgroundColor,
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                context.backgroundColor,
+                context.backgroundColor.darken(.025),
+              ],
+            ),
             boxShadow: [
               BoxShadow(
                 color: context.colors.grey800.withOpacity(.05),
               )
             ],
             border: Border.all(
-              color: context.theme.dividerColor
-                  .withOpacity(context.isDarkTheme ? 0.5 : 0.25),
+              color: context.colors.grey400.withOpacity(0.3),
             ),
           ),
           child: Row(
@@ -206,20 +212,22 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.r),
-                          // color: currentPage == index
-                          //     ? COLOR_LIGHT_PRIMARY.withOpacity(0.2)
-                          //     : Colors.transparent,
                         ),
-                        child: SvgPicture.asset(
-                          currentPage.value == index ? icons.$1 : icons.$2,
-                          height: 25,
-                          width: 25,
-                          colorFilter: ColorFilter.mode(
-                            currentPage.value == index
-                                ? context.theme.primaryColor
-                                : context.theme.dividerColor,
-                            BlendMode.srcIn,
-                          ),
+                        child: ValueListenableBuilder<int>(
+                          valueListenable: currentPage,
+                          builder: (context, pageIndex, _) {
+                            return SvgPicture.asset(
+                              pageIndex == index ? icons.$1 : icons.$2,
+                              height: 25,
+                              width: 25,
+                              colorFilter: ColorFilter.mode(
+                                pageIndex == index
+                                    ? context.colors.blue
+                                    : context.colors.grey600,
+                                BlendMode.srcIn,
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),
