@@ -34,7 +34,8 @@ class CodegenLoader extends AssetLoader{
     "done": "Done",
     "browse": "Browse",
     "other_k": "Other",
-    "is_copied_to_clipboard": "'{word}' is copied to clipboard."
+    "is_copied_to_clipboard": "'{word}' is copied to clipboard.",
+    "error": "Error"
   },
   "auth": {
     "already_have_an_account": "Already have an account?",
@@ -99,7 +100,8 @@ static const Map<String,dynamic> vi_VN = {
     "done": "Xong",
     "browse": "Duyệt",
     "other_k": "Khác",
-    "is_copied_to_clipboard": "'{word}' đã sao chép vào bộ nhớ tạm."
+    "is_copied_to_clipboard": "'{word}' đã sao chép vào bộ nhớ tạm.",
+    "error": "Lỗi"
   },
   "auth": {
     "already_have_an_account": "Bạn đã có tài khoản chưa?",

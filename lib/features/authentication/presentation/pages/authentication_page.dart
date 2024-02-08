@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/extensions/build_context.dart';
 import '../../../../app/routes/route_manager.dart';
 import '../../../../app/widgets/status_bar.dart';
 import '../../../../injection_container.dart';
@@ -29,7 +28,6 @@ class AuthenticationPage extends StatelessWidget {
         child: DefaultTabController(
           length: 2,
           child: Scaffold(
-            backgroundColor: context.theme.scaffoldBackgroundColor,
             body: Stack(
               children: [
                 const AuthBackgroundWidget(),

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../app/constants/app_asset.dart';
 import '../../../../app/managers/navigation.dart';
-import '../../../../app/themes/app_color.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/widgets/border_text_field.dart';
@@ -51,7 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     listener: (context, state) {
                       if (state is SignUpErrorState) {
                         Navigators().showMessage(
-                          'Error: ${state.message}',
+                          '${LocaleKeys.common_error.tr()}: ${state.message}',
                           type: MessageType.error,
                         );
                       }
@@ -108,9 +107,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ? const LoadingIndicatorWidget()
                                 : TextCustom(
                                     LocaleKeys.auth_sign_up.tr(),
-                                    style: context.textStyle.labelL.copyWith(
-                                      color: context.colors.white,
-                                    ),
+                                    style: context.textStyle.bodyS.white,
                                   ),
                           ),
                         ],

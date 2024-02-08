@@ -1,3 +1,5 @@
+import 'dart:ui' show ImageFilter;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,11 +20,23 @@ class AuthBackgroundWidget extends StatelessWidget {
             AppAssets.loginBackground,
             fit: BoxFit.cover,
           ),
-          Container(
-            width: context.screenWidth,
-            height: context.screenHeight,
-            color: context.colors.black.withOpacity(
-              context.isDarkTheme ? 0.85 : 0,
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+            child: Container(
+              width: context.screenWidth,
+              height: context.screenHeight,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    context.colors.black
+                        .withOpacity(context.isDarkTheme ? 0.9 : 0),
+                    context.colors.black
+                        .withOpacity(context.isDarkTheme ? 0.9 : 0.2),
+                  ],
+                ),
+              ),
             ),
           ),
         ],

@@ -6,7 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../app/constants/app_asset.dart';
 import '../../../../app/managers/navigation.dart';
-import '../../../../app/themes/app_color.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/widgets/border_text_field.dart';
@@ -119,9 +118,7 @@ class _SignInPageState extends State<SignInPage> {
                                 ? const LoadingIndicatorWidget()
                                 : TextCustom(
                                     LocaleKeys.auth_sign_in.tr(),
-                                    style: context.textStyle.labelL.copyWith(
-                                      color: context.colors.white,
-                                    ),
+                                    style: context.textStyle.bodyS.white,
                                   ),
                           ),
                           const Gap(height: 20),
@@ -130,9 +127,7 @@ class _SignInPageState extends State<SignInPage> {
                             children: [
                               TextCustom(
                                 LocaleKeys.auth_or_sign_in_with.tr(),
-                                style: context.textStyle.labelL.copyWith(
-                                  color: context.colors.grey300,
-                                ),
+                                style: context.textStyle.bodyS.grey,
                               ),
                               GestureDetector(
                                 onTap: () => _onSignInGoogleButton(state),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/extensions/build_context.dart';
+import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 
 class BorderTextField extends StatefulWidget {
@@ -51,7 +52,10 @@ class _BorderTextFieldState extends State<BorderTextField> {
       ),
       decoration: BoxDecoration(
         border: Border.all(
-          color: widget.borderColor ?? context.theme.hintColor.withOpacity(.2),
+          color: widget.borderColor ??
+              (context.isDarkTheme
+                  ? context.colors.grey700
+                  : context.colors.grey300),
         ),
         borderRadius: BorderRadius.circular(10.r),
       ),
@@ -70,6 +74,8 @@ class _BorderTextFieldState extends State<BorderTextField> {
                   widget.icon,
                   height: 25,
                   width: 25,
+                  colorFilter:
+                      ColorFilter.mode(context.colors.grey400, BlendMode.srcIn),
                 )
               : null,
           hintText: widget.hintText,

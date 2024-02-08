@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/extensions/build_context.dart';
-import '../../../../../core/extensions/color.dart';
 import '../../../../app/themes/app_color.dart';
 
 class AuthCardContainerWidget extends StatelessWidget {
@@ -18,7 +17,7 @@ class AuthCardContainerWidget extends StatelessWidget {
           .copyWith(bottom: 30.h),
       width: context.screenWidth - 60.w,
       decoration: BoxDecoration(
-        color: context.theme.cardColor.lighten(.05),
+        color: context.backgroundColor,
         borderRadius: BorderRadius.circular(20.r),
         boxShadow: [
           BoxShadow(

@@ -6,7 +6,7 @@ class AppTheme {
   AppTheme._();
   static final lightTheme = ThemeData(
     fontFamily: 'Roboto',
-    scaffoldBackgroundColor: AppColor().scaffoldBackground,
+    scaffoldBackgroundColor: AppColor().white,
     cardColor: AppColor().white,
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
@@ -28,7 +28,7 @@ class AppTheme {
 
   static final darkTheme = ThemeData(
     fontFamily: 'Roboto',
-    scaffoldBackgroundColor: AppColor().scaffoldBackgroundDark,
+    scaffoldBackgroundColor: AppColor().black,
     cardColor: AppColor().grey600,
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
