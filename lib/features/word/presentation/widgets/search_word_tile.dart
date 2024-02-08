@@ -45,6 +45,7 @@ class SearchWordTileWidget extends StatelessWidget {
           child: ListTile(
             title: TextCustom(
               word.word.toLowerCase(),
+              style: context.textStyle.bodyM.bw,
             ),
             subtitle: TextCustom(
               word.meanings.first.type.toLowerCase(),

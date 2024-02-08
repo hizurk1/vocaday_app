@@ -30,9 +30,9 @@ class SearchWordsUsecase extends Usecases<
         .toList();
 
     if (keyword.length < 3) {
-        return Right((searchResult, []));
+      return Right((searchResult, []));
     } else {
-        return Right((
+      return Right((
         searchResult,
         _findSimilarWords(keyword, list).take(maxAmount).toList()
       ));
@@ -43,26 +43,23 @@ class SearchWordsUsecase extends Usecases<
     String keyword,
     List<WordEntity> wordList,
   ) {
-    final results = wordList.fold<Map<String, int>>(
-      {},
-      (previousMap, element) {
-        if (element.word.length >= keyword.length) {
-          final int steps = SearchAlgorithm.calculateWagnerFischer(
-            keyword,
-            element.word,
-          );
-          if (steps <= keyword.length ~/ 2) {
-            previousMap[element.word] = steps;
-          }
-        }
-        return previousMap;
-      },
-    );
+    Map<WordEntity, int> results = {};
 
-    List<WordEntity> sortedList = wordList
-        .where((entity) => results.containsKey(entity.word))
-        .toList()
-      ..sort((a, b) => results[b.word]!.compareTo(results[a.word]!));
+    for (WordEntity entity in wordList) {
+      if (keyword.length <= entity.word.length &&
+          entity.word.length <= keyword.length * 2) {
+        final int steps = SearchAlgorithm.calculateWagnerFischer(
+          keyword,
+          entity.word,
+        );
+        if (steps <= keyword.length ~/ 2) {
+          results[entity] = steps;
+        }
+      }
+    }
+
+    List<WordEntity> sortedList = results.keys.toList()
+      ..sort((a, b) => results[b]!.compareTo(results[a]!));
 
     return sortedList;
   }

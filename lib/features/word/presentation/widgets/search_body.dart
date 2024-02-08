@@ -6,11 +6,13 @@ import 'package:lottie/lottie.dart';
 import '../../../../app/constants/app_asset.dart';
 import '../../../../app/constants/app_element.dart';
 import '../../../../app/managers/navigation.dart';
+import '../../../../app/themes/app_color.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/widgets/gap.dart';
 import '../../../../app/widgets/loading_indicator.dart';
 import '../../../../app/widgets/text.dart';
+import '../../../../core/extensions/build_context.dart';
 import '../blocs/search_word/search_word_bloc.dart';
 import 'search_word_tile.dart';
 
@@ -43,10 +45,20 @@ class SearchBodyWidget extends StatelessWidget {
                   ...state.exactWords
                       .map((word) => SearchWordTileWidget(word: word)),
                   if (state.similarWords.isNotEmpty) ...[
-                    Padding(
+                    Container(
+                      width: context.screenWidth,
                       padding: EdgeInsets.symmetric(
                         horizontal: 20.w,
                         vertical: 10.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: context.colors.grey500.withOpacity(.08),
+                        border: Border(
+                          bottom: BorderSide(
+                            color: context.colors.grey500.withOpacity(.1),
+                            width: 1,
+                          ),
+                        ),
                       ),
                       child: TextCustom(
                         LocaleKeys.search_are_you_looking_for.tr(),

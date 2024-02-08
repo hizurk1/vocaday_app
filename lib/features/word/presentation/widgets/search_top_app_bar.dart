@@ -77,6 +77,10 @@ class _SearchTopAppBarState extends State<SearchTopAppBar> {
                   AppAssets.searchIcon,
                   height: 25.h,
                   width: 25.w,
+                  colorFilter: ColorFilter.mode(
+                    context.colors.grey300,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 hintText: LocaleKeys.search_search_for_words.tr(),
                 hintStyle: context.textTheme.bodyMedium?.copyWith(
@@ -90,9 +94,9 @@ class _SearchTopAppBarState extends State<SearchTopAppBar> {
                     _onSubmitEvent(context, '', state);
                     _textController.clear();
                   },
-                  child: const Icon(
+                  child: Icon(
                     Icons.clear,
-                    color: Colors.black54,
+                    color: context.colors.grey600,
                   ),
                 ),
               ),
