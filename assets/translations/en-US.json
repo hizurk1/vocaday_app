@@ -19,7 +19,9 @@
     "browse": "Browse",
     "other_k": "Other",
     "is_copied_to_clipboard": "'{word}' is copied to clipboard.",
-    "error": "Error"
+    "error": "Error",
+    "okay": "Okay",
+    "close": "Close"
   },
   "auth": {
     "already_have_an_account": "Already have an account?",

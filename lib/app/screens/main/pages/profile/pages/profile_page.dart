@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../core/extensions/build_context.dart';
 import '../../../../../constants/app_asset.dart';
+import '../../../../../managers/navigation.dart';
 import '../../../../../translations/translations.dart';
 import '../../../../../widgets/app_bar.dart';
 import '../../../../../widgets/sliver_tab_view.dart';
@@ -21,7 +22,13 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBarCustom(
         textTitle: LocaleKeys.profile_profile_title.tr(),
         action: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigators().showMessage(
+              "Hello from profile",
+              type: MessageType.success,
+              showClose: true,
+            );
+          },
           child: Container(
             padding: EdgeInsets.all(5.w),
             margin: EdgeInsets.only(right: 20.w),

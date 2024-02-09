@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/extensions/build_context.dart';
+import '../../core/extensions/color.dart';
+import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
+import '../translations/translations.dart';
 import '../widgets/gap.dart';
 import '../widgets/pushable_button.dart';
 import '../widgets/text.dart';
@@ -22,22 +26,59 @@ class Navigators {
 
   BuildContext? get currentContext => navigationKey.currentContext;
 
-  showMessage(String text, {MessageType type = MessageType.byDefault}) {
+  showMessage(
+    String text, {
+    MessageType type = MessageType.byDefault,
+    bool showAction = false,
+    bool showClose = false,
+    Duration duration = const Duration(seconds: 5),
+    DismissDirection dismissDirection = DismissDirection.down,
+    VoidCallback? onAction,
+  }) {
+    final msgColor = switch (type) {
+      MessageType.byDefault =>
+        currentContext!.isDarkTheme ? AppColor().grey400 : AppColor().grey900,
+      MessageType.info => AppColor().blue400,
+      MessageType.success => AppColor().green400,
+      MessageType.error => AppColor().red400,
+    };
+    final textColor = type == MessageType.byDefault
+        ? AppColor().white
+        : currentContext!.isDarkTheme
+            ? msgColor.lighten(.25)
+            : msgColor.darken(.35);
     ScaffoldMessenger.of(currentContext!).showSnackBar(
       SnackBar(
-        backgroundColor: switch (type) {
-          MessageType.byDefault => Colors.black.withOpacity(0.65),
-          MessageType.info => Colors.blueAccent.withOpacity(0.65),
-          MessageType.success => Colors.green.withOpacity(0.65),
-          MessageType.error => Colors.redAccent.withOpacity(0.65),
-        },
+        backgroundColor: msgColor.withOpacity(0.75),
+        elevation: 0,
+        margin: EdgeInsets.symmetric(horizontal: 10.w),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
         content: Padding(
           padding: const EdgeInsets.all(4),
           child: TextCustom(
             text,
-            style: navigationKey.currentContext?.textStyle.bodyS.white,
+            style: navigationKey.currentContext?.textStyle.bodyS.copyWith(
+              color: textColor,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
+        showCloseIcon: showClose,
+        closeIconColor: textColor,
+        duration: duration,
+        dismissDirection: dismissDirection,
+        action: showAction
+            ? SnackBarAction(
+                label: LocaleKeys.common_close.tr(),
+                textColor: textColor,
+                onPressed: () {
+                  onAction?.call();
+                  ScaffoldMessenger.of(currentContext!).hideCurrentSnackBar(
+                      reason: SnackBarClosedReason.dismiss);
+                },
+              )
+            : null,
       ),
     );
   }
@@ -60,20 +101,20 @@ class Navigators {
       context: currentContext!,
       barrierDismissible: dissmisable,
       builder: (context) => Dialog(
-        elevation: 1,
-        backgroundColor: context.theme.dialogBackgroundColor,
+        backgroundColor: context.theme.scaffoldBackgroundColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Container(
-          width: context.screenWidth / 1.4,
-          height: context.screenHeight / 4,
+          padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
+            color: context.theme.scaffoldBackgroundColor,
             boxShadow: [
               BoxShadow(
-                  offset: const Offset(12, 26),
-                  blurRadius: 50,
-                  spreadRadius: 0,
-                  color: Colors.grey.withOpacity(.1)),
+                color: currentContext!.colors.grey600.withOpacity(.5),
+                offset: const Offset(1, 1),
+                blurRadius: 4,
+                spreadRadius: 3,
+              )
             ],
           ),
           child: Column(
@@ -85,16 +126,23 @@ class Navigators {
                   backgroundColor: context.theme.primaryColor,
                   radius: 25,
                   child: icon != null
-                      ? SvgPicture.asset(icon)
-                      : iconData != null
-                          ? Icon(iconData)
-                          : const Icon(Icons.info),
+                      ? SvgPicture.asset(
+                          icon,
+                          colorFilter: ColorFilter.mode(
+                            currentContext!.colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        )
+                      : Icon(
+                          iconData ?? Icons.info,
+                          color: currentContext!.colors.white,
+                        ),
                 ),
                 const Gap(height: 25),
               ],
               TextCustom(
                 title,
-                style: navigationKey.currentContext?.textStyle.bodyL.bw,
+                style: navigationKey.currentContext?.textStyle.bodyL.bold.bw,
               ),
               if (subtitle != null) ...[
                 const Gap(height: 10),
@@ -113,9 +161,9 @@ class Navigators {
                         onAccept?.call();
                         context.pop();
                       },
-                      height: 45,
-                      width: 90,
-                      text: acceptText ?? 'Okay',
+                      height: 45.w,
+                      width: 90.h,
+                      text: acceptText ?? LocaleKeys.common_okay.tr(),
                     ),
                   if (!isHideCancel)
                     PushableButton(
@@ -123,9 +171,9 @@ class Navigators {
                         onCancel?.call();
                         context.pop();
                       },
-                      height: 45,
-                      width: 90,
-                      text: cancelText ?? 'Cancel',
+                      height: 45.h,
+                      width: 90.w,
+                      text: cancelText ?? LocaleKeys.common_cancel.tr(),
                     ),
                 ],
               )

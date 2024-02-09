@@ -15,18 +15,10 @@ class MainApp extends StatelessWidget {
 
   void checkInternet(InternetState internet, BuildContext context) {
     if (internet.status == ConnectionStatus.offline) {
-      Navigators().showDialogWithButton(
-        title: 'Network lost!',
-        subtitle: 'Check your network...',
-        cancelText: 'Retry',
-        isHideAccept: true,
-        isShowIcon: true,
-        iconData: Icons.wifi,
-        dissmisable: false,
-        onCancel: () {
-          checkInternet(context.read<ConnectionBloc>().state, context);
-        },
-      );
+      Navigators().showMessage("Internet was lost!", type: MessageType.error);
+    }
+    if (internet.status == ConnectionStatus.online) {
+      Navigators().showMessage("Back to online", type: MessageType.success);
     }
   }
 
@@ -37,7 +29,7 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, __) => BlocListener<ConnectionBloc, InternetState>(
-        listenWhen: (previous, current) => previous != current,
+        listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, internet) => checkInternet(internet, context),
         child: BlocBuilder<ThemeCubit, ThemeState>(
           buildWhen: (previous, current) =>
