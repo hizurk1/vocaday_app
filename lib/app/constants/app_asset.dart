@@ -3,17 +3,12 @@ class AppAssets {
   //! Root
   static const String translations = 'assets/translations';
   static const String _data = 'assets/data';
-  static const String _theme = 'assets/themes';
   static const String _image = 'assets/images';
   static const String _icon = 'assets/icons';
   static const String _json = 'assets/jsons';
 
   //! Data
   static const wordData = '$_data/selected.json';
-
-  //! Theme
-  static const lightTheme = '$_theme/appainter_light.json';
-  static const darkTheme = '$_theme/appainter_dark.json';
 
   //! Image
   static const defaultAvatar = '$_image/default_avatar.png';
@@ -48,4 +43,8 @@ class AppAssets {
   static const manPaperAirPlane =
       '$_json/116048-man-flying-on-paper-airplane.json';
   static const notFound = '$_json/93134-not-found.json';
+  static const notFoundDog = '$_json/not_found_dog.json';
+  static const redWarning = '$_json/red_warning.json';
+  static const networkError = '$_json/network_error.json';
+  static const errorCat = '$_json/error.json';
 }

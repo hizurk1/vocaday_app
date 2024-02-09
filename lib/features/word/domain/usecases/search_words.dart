@@ -6,9 +6,8 @@ import '../../../../app/utils/search_algorithm.dart';
 import '../entities/word_entity.dart';
 import '../repositories/word_repository.dart';
 
-class SearchWordsUsecase extends Usecases<
-    (List<WordEntity> sameWords, List<WordEntity> similarWords),
-    (String keyword, List<WordEntity>)> {
+class SearchWordsUsecase
+    extends Usecases<(List<WordEntity>, List<WordEntity>), String> {
   final WordRepository repository;
 
   SearchWordsUsecase({required this.repository});
@@ -16,27 +15,33 @@ class SearchWordsUsecase extends Usecases<
   @override
   FutureEither<(List<WordEntity> sameWords, List<WordEntity> similarWords)>
       call(
-    (String keyword, List<WordEntity>) params,
+    String params,
   ) async {
-    final keyword = params.$1.toUpperCase();
-    final list = params.$2;
+    final keyword = params.toUpperCase();
     int maxAmount = 10;
 
-    final searchResult = list
-        .where(
-          (object) => object.word.contains(keyword),
-        )
-        .take(maxAmount)
-        .toList();
+    final getAllWordsResult = await repository.getAllWords();
 
-    if (keyword.length < 3) {
-      return Right((searchResult, []));
-    } else {
-      return Right((
-        searchResult,
-        _findSimilarWords(keyword, list).take(maxAmount).toList()
-      ));
-    }
+    return getAllWordsResult.fold(
+      (fail) => Left(fail),
+      (wordList) {
+        final searchResult = wordList
+            .where(
+              (object) => object.word.contains(keyword),
+            )
+            .take(maxAmount)
+            .toList();
+
+        if (keyword.length < 3) {
+          return Right((searchResult, []));
+        } else {
+          return Right((
+            searchResult,
+            _findSimilarWords(keyword, wordList).take(maxAmount).toList()
+          ));
+        }
+      },
+    );
   }
 
   List<WordEntity> _findSimilarWords(

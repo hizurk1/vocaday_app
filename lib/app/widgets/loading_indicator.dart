@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../core/extensions/build_context.dart';
+
 class LoadingIndicatorWidget extends StatelessWidget {
   const LoadingIndicatorWidget({
     super.key,
@@ -19,8 +21,8 @@ class LoadingIndicatorWidget extends StatelessWidget {
       width: size?.width.w ?? 20.w,
       height: size?.height.h ?? 20.h,
       child: CircularProgressIndicator(
-        color: color ?? Colors.white,
-        strokeWidth: strokeWidth ?? 3,
+        color: color ?? context.bwColor,
+        strokeWidth: strokeWidth ?? 2.5,
       ),
     );
   }

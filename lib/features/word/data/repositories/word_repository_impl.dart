@@ -19,7 +19,7 @@ class WordRepositoryImpl implements WordRepository {
       return Right(
         wordList.map((e) => e.toEntity()).toList(),
       );
-    } on UnimplementedError catch (e) {
+    } catch (e) {
       return Left(
         UnknownFailure(e.toString()),
       );

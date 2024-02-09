@@ -8,6 +8,7 @@ import '../../../../features/user/presentation/blocs/user_data/user_data_bloc.da
 import '../../../../injection_container.dart';
 import '../../../managers/navigation.dart';
 import '../../../translations/translations.dart';
+import '../../../widgets/status_bar.dart';
 import '../../main/main_page.dart';
 
 class EntryPage extends StatelessWidget {
@@ -15,36 +16,38 @@ class EntryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthBloc, AuthState>(
-      listenWhen: (previous, current) => previous != current,
-      listener: (_, state) {
-        if (state is AuthenticatedState) {
-          Navigators().showMessage(
-            LocaleKeys.auth_sign_in_as_email.tr(
-              namedArgs: {'email': state.user?.email ?? ''},
-            ),
-            type: MessageType.success,
-          );
-        }
-      },
-      buildWhen: (previous, current) => previous != current,
-      builder: (_, state) {
-        if (state is AuthenticatedState) {
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (_) => UserDataBloc(
-                  sl<GetUserDataUsecase>(),
-                  context.read<AuthBloc>().state.user?.uid ?? '',
-                ),
+    return StatusBar(
+      child: BlocConsumer<AuthBloc, AuthState>(
+        listenWhen: (previous, current) => previous != current,
+        listener: (_, state) {
+          if (state is AuthenticatedState) {
+            Navigators().showMessage(
+              LocaleKeys.auth_sign_in_as_email.tr(
+                namedArgs: {'email': state.user?.email ?? ''},
               ),
-            ],
-            child: const MainPage(),
-          );
-        } else {
-          return const AuthenticationPage();
-        }
-      },
+              type: MessageType.success,
+            );
+          }
+        },
+        buildWhen: (previous, current) => previous != current,
+        builder: (_, state) {
+          if (state is AuthenticatedState) {
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (_) => UserDataBloc(
+                    sl<GetUserDataUsecase>(),
+                    context.read<AuthBloc>().state.user?.uid ?? '',
+                  ),
+                ),
+              ],
+              child: const MainPage(),
+            );
+          } else {
+            return const AuthenticationPage();
+          }
+        },
+      ),
     );
   }
 }

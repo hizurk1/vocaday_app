@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../app/routes/route_manager.dart';
-import '../../../../app/widgets/status_bar.dart';
 import '../../../../injection_container.dart';
 import '../blocs/auth/auth_bloc.dart';
 import '../blocs/sign_in/sign_in_bloc.dart';
@@ -24,40 +23,38 @@ class AuthenticationPage extends StatelessWidget {
         BlocProvider(create: (_) => sl<SignInBloc>()),
         BlocProvider(create: (_) => sl<SignUpBloc>()),
       ],
-      child: StatusBar(
-        child: DefaultTabController(
-          length: 2,
-          child: Scaffold(
-            body: Stack(
-              children: [
-                const AuthBackgroundWidget(),
-                SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 25.h),
-                    child: Column(
-                      children: [
-                        const TopTabBar(),
-                        Expanded(
-                          child: BlocListener<AuthBloc, AuthState>(
-                            listenWhen: (previous, current) =>
-                                previous != current,
-                            listener: (context, state) {
-                              context.replace(AppRoutes.init);
-                            },
-                            child: const TabBarView(
-                              children: [
-                                SignInPage(),
-                                SignUpPage(),
-                              ],
-                            ),
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          body: Stack(
+            children: [
+              const AuthBackgroundWidget(),
+              SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 25.h),
+                  child: Column(
+                    children: [
+                      const TopTabBar(),
+                      Expanded(
+                        child: BlocListener<AuthBloc, AuthState>(
+                          listenWhen: (previous, current) =>
+                              previous != current,
+                          listener: (context, state) {
+                            context.replace(AppRoutes.init);
+                          },
+                          child: const TabBarView(
+                            children: [
+                              SignInPage(),
+                              SignUpPage(),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -9,13 +9,9 @@ sealed class SearchWordEvent extends Equatable {
 
 final class SearchWordByKeywordEvent extends SearchWordEvent {
   final String keyword;
-  final List<WordEntity> list;
 
-  const SearchWordByKeywordEvent({
-    required this.keyword,
-    required this.list,
-  });
+  const SearchWordByKeywordEvent({required this.keyword});
 
   @override
-  List<Object> get props => [keyword, list];
+  List<Object> get props => [keyword];
 }

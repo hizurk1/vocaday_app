@@ -13,34 +13,34 @@ void main() {
   final mockSearchWordsUsecase = MockSearchWordsUsecase();
   final searchWordBloc = SearchWordBloc(mockSearchWordsUsecase);
 
-  final tList = [
-    const WordEntity(
-      word: 'lost',
-      meanings: [
-        MeaningEntity(
-          type: 'type',
-          meaning: 'meaning',
-          synonyms: ['synonyms'],
-          examples: ['examples'],
-        )
-      ],
-      synonyms: ['synonyms'],
-      antonyms: ['antonyms'],
-    ),
-    const WordEntity(
-      word: 'most',
-      meanings: [
-        MeaningEntity(
-          type: 'type',
-          meaning: 'meaning',
-          synonyms: ['synonyms'],
-          examples: ['examples'],
-        )
-      ],
-      synonyms: ['synonyms'],
-      antonyms: ['antonyms'],
-    )
-  ];
+  // final tList = [
+  //   const WordEntity(
+  //     word: 'lost',
+  //     meanings: [
+  //       MeaningEntity(
+  //         type: 'type',
+  //         meaning: 'meaning',
+  //         synonyms: ['synonyms'],
+  //         examples: ['examples'],
+  //       )
+  //     ],
+  //     synonyms: ['synonyms'],
+  //     antonyms: ['antonyms'],
+  //   ),
+  //   const WordEntity(
+  //     word: 'most',
+  //     meanings: [
+  //       MeaningEntity(
+  //         type: 'type',
+  //         meaning: 'meaning',
+  //         synonyms: ['synonyms'],
+  //         examples: ['examples'],
+  //       )
+  //     ],
+  //     synonyms: ['synonyms'],
+  //     antonyms: ['antonyms'],
+  //   )
+  // ];
 
   final testEntities = [
     const WordEntity(
@@ -68,12 +68,11 @@ void main() {
     blocTest<SearchWordBloc, SearchWordState>(
       'emits [SearchWordEmptyState] when SearchWordByKeywordEvent is added.',
       build: () {
-        when(() => mockSearchWordsUsecase((testKeyword, tList)))
+        when(() => mockSearchWordsUsecase(testKeyword))
             .thenAnswer((_) async => const Right(([], [])));
         return SearchWordBloc(mockSearchWordsUsecase);
       },
-      act: (bloc) =>
-          bloc.add(SearchWordByKeywordEvent(keyword: '', list: tList)),
+      act: (bloc) => bloc.add(const SearchWordByKeywordEvent(keyword: '')),
       expect: () => <SearchWordState>[
         const SearchWordEmptyState(),
       ],
@@ -81,14 +80,13 @@ void main() {
     blocTest<SearchWordBloc, SearchWordState>(
       'emits [SearchWordLoadingState] & [SearchWordLoadedState] when SearchWordByKeywordEvent is added.',
       build: () {
-        when(() => mockSearchWordsUsecase((testKeyword, tList)))
+        when(() => mockSearchWordsUsecase(testKeyword))
             .thenAnswer((_) async => Right((testEntities, [])));
         return SearchWordBloc(mockSearchWordsUsecase);
       },
       wait: const Duration(milliseconds: 800),
-      act: (bloc) => bloc.add(SearchWordByKeywordEvent(
+      act: (bloc) => bloc.add(const SearchWordByKeywordEvent(
         keyword: testKeyword,
-        list: tList,
       )),
       expect: () => <SearchWordState>[
         const SearchWordLoadingState(),
@@ -98,14 +96,13 @@ void main() {
     blocTest<SearchWordBloc, SearchWordState>(
       'emits [SearchWordLoadingState] & [SearchWordErrorState] when SearchWordByKeywordEvent is added.',
       build: () {
-        when(() => mockSearchWordsUsecase((testKeyword, tList)))
+        when(() => mockSearchWordsUsecase(testKeyword))
             .thenAnswer((_) async => const Left(UnknownFailure('')));
         return SearchWordBloc(mockSearchWordsUsecase);
       },
       wait: const Duration(milliseconds: 800),
-      act: (bloc) => bloc.add(SearchWordByKeywordEvent(
+      act: (bloc) => bloc.add(const SearchWordByKeywordEvent(
         keyword: testKeyword,
-        list: tList,
       )),
       expect: () => <SearchWordState>[
         const SearchWordLoadingState(),

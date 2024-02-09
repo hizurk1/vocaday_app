@@ -19,8 +19,8 @@ Future<void> main() async {
   );
   await di.setUpServiceLocator();
   runApp(
-    const BlocProviderScope(
-      child: GlobalWidget(
+    const GlobalWidget(
+      child: BlocProviderScope(
         child: MainApp(),
       ),
     ),

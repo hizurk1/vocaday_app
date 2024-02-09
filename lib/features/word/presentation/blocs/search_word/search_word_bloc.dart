@@ -15,7 +15,7 @@ class SearchWordBloc extends Bloc<SearchWordEvent, SearchWordState> {
       : super(const SearchWordEmptyState()) {
     on<SearchWordByKeywordEvent>(
       _onSearchWordByKeyword,
-      transformer: debounce(const Duration(milliseconds: 250)),
+      transformer: debounce(const Duration(milliseconds: 300)),
     );
   }
 
@@ -23,11 +23,10 @@ class SearchWordBloc extends Bloc<SearchWordEvent, SearchWordState> {
     SearchWordByKeywordEvent event,
     Emitter<SearchWordState> emit,
   ) async {
-    if (event.keyword.isNotEmpty && event.list.isNotEmpty) {
-      emit(const SearchWordLoadingState());
-
-      final searchResult =
-          await searchWordsUsecase((event.keyword, event.list));
+    emit(const SearchWordLoadingState());
+    if (event.keyword.isNotEmpty) {
+      final searchResult = await searchWordsUsecase(event.keyword);
+      // await Future.delayed(Durations.long2);
 
       searchResult.fold(
         (failure) => emit(SearchWordErrorState(failure.message)),
