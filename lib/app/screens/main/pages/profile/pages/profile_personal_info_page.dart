@@ -28,8 +28,7 @@ class ProfilePersonalInfoPage extends StatelessWidget {
         if (state is UserDataLoadedState) {
           return Container(
             padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 30.w),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            child: Wrap(
               children: [
                 ProfileInfoItemWidget(
                   icon: AppAssets.emailIcon,

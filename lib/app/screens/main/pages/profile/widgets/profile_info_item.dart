@@ -58,7 +58,7 @@ class ProfileInfoItemWidget extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(top: 8.h),
                   height: 1,
-                  color: context.colors.grey150,
+                  color: context.colors.grey300.withOpacity(.25),
                 ),
               ],
             ),
