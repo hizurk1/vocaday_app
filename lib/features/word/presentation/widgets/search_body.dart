@@ -4,8 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../app/constants/app_asset.dart';
-import '../../../../app/constants/app_element.dart';
-import '../../../../app/managers/navigation.dart';
 import '../../../../app/themes/app_color.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
@@ -21,12 +19,7 @@ class SearchBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SearchWordBloc, SearchWordState>(
-      listener: (context, state) {
-        if (state is SearchWordErrorState) {
-          Navigators().showMessage(state.message, type: MessageType.error);
-        }
-      },
+    return BlocBuilder<SearchWordBloc, SearchWordState>(
       builder: (context, state) {
         if (state is SearchWordEmptyState) {
           return _buildEmptySearch(
@@ -35,51 +28,56 @@ class SearchBodyWidget extends StatelessWidget {
         if (state is SearchWordLoadingState) {
           return const Center(child: LoadingIndicatorWidget());
         }
+        if (state is SearchWordErrorState) {
+          return Center(child: TextCustom(state.message));
+        }
         if (state is SearchWordLoadedState) {
           if (state.exactWords.isNotEmpty || state.similarWords.isNotEmpty) {
-            return SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ...state.exactWords
-                      .map((word) => SearchWordTileWidget(word: word)),
-                  if (state.similarWords.isNotEmpty) ...[
-                    Container(
-                      width: context.screenWidth,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.w,
-                        vertical: 10.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: state.exactWords.isNotEmpty
-                            ? context.colors.grey500.withOpacity(.08)
-                            : Colors.transparent,
-                        border: Border(
-                          bottom: BorderSide(
-                            color: context.colors.grey500.withOpacity(.1),
-                            width: 1,
-                          ),
-                        ),
-                      ),
-                      child: TextCustom(
-                        LocaleKeys.search_are_you_looking_for.tr(),
-                        style: context.textStyle.bodyS.grey,
-                      ),
-                    ),
-                    ...state.similarWords
-                        .map((word) => SearchWordTileWidget(word: word))
-                  ],
-                  Gap(height: AppElement.navBarSafeSize.h),
-                ],
-              ),
+            final list = state.exactWords + state.similarWords;
+            return ListView.builder(
+              itemCount: list.length,
+              itemBuilder: (context, index) {
+                if (state.similarWords.isNotEmpty &&
+                    index == state.exactWords.length - 1) {
+                  return _buildSeparateText(state, context);
+                }
+                return SearchWordTileWidget(word: list[index]);
+              },
             );
           } else {
             return _buildEmptySearch(LocaleKeys.search_not_found.tr(), context);
           }
         }
-        return Container();
+        return const SizedBox();
       },
+    );
+  }
+
+  Widget _buildSeparateText(
+    SearchWordLoadedState state,
+    BuildContext context,
+  ) {
+    return Container(
+      width: context.screenWidth,
+      padding: EdgeInsets.symmetric(
+        horizontal: 20.w,
+        vertical: 10.h,
+      ),
+      decoration: BoxDecoration(
+        color: state.exactWords.isNotEmpty
+            ? context.colors.grey500.withOpacity(.08)
+            : Colors.transparent,
+        border: Border(
+          bottom: BorderSide(
+            color: context.colors.grey500.withOpacity(.1),
+            width: 1,
+          ),
+        ),
+      ),
+      child: TextCustom(
+        LocaleKeys.search_are_you_looking_for.tr(),
+        style: context.textStyle.bodyS.grey,
+      ),
     );
   }
 

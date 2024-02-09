@@ -15,7 +15,7 @@ class SearchWordBloc extends Bloc<SearchWordEvent, SearchWordState> {
       : super(const SearchWordEmptyState()) {
     on<SearchWordByKeywordEvent>(
       _onSearchWordByKeyword,
-      transformer: debounce(const Duration(milliseconds: 300)),
+      transformer: debounce(const Duration(milliseconds: 250)),
     );
   }
 
