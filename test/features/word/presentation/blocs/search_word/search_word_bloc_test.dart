@@ -74,6 +74,7 @@ void main() {
       },
       act: (bloc) => bloc.add(const SearchWordByKeywordEvent(keyword: '')),
       expect: () => <SearchWordState>[
+        const SearchWordLoadingState(),
         const SearchWordEmptyState(),
       ],
     );

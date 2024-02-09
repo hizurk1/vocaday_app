@@ -10,7 +10,6 @@ class UserModel extends Equatable {
   final String? avatar;
   final String? phone;
   final DateTime? birthday;
-  final String? job;
   final String? gender;
   final int point;
   final int gold;
@@ -25,7 +24,6 @@ class UserModel extends Equatable {
     this.avatar,
     this.phone,
     this.birthday,
-    this.job,
     this.gender,
     this.point = 0,
     this.gold = 0,
@@ -41,7 +39,6 @@ class UserModel extends Equatable {
     String? avatar,
     String? phone,
     DateTime? birthday,
-    String? job,
     String? gender,
     int point = 0,
     int gold = 0,
@@ -56,7 +53,6 @@ class UserModel extends Equatable {
       avatar: avatar ?? this.avatar,
       phone: phone ?? this.phone,
       birthday: birthday ?? this.birthday,
-      job: job ?? this.job,
       gender: gender ?? this.gender,
       point: point,
       gold: gold,
@@ -74,7 +70,6 @@ class UserModel extends Equatable {
       avatar: avatar,
       phone: phone,
       birthday: birthday,
-      job: job,
       gender: gender,
       point: point,
       gold: gold,
@@ -92,7 +87,6 @@ class UserModel extends Equatable {
       avatar: entity.avatar,
       phone: entity.phone,
       birthday: entity.birthday,
-      job: entity.job,
       gender: entity.gender,
       point: entity.point,
       gold: entity.gold,
@@ -110,7 +104,6 @@ class UserModel extends Equatable {
       'avatar': avatar,
       'phone': phone,
       'birthday': birthday?.millisecondsSinceEpoch,
-      'job': job,
       'gender': gender,
       'point': point,
       'gold': gold,
@@ -126,12 +119,11 @@ class UserModel extends Equatable {
       email: map['email'] != null ? map['email'] as String : '',
       method: map['method'] as String,
       avatar: map['avatar'] != null ? map['avatar'] as String : null,
-      phone: map['phone'] != null ? map['phone'] as String : null,
+      phone: map['phone'],
       birthday: map['birthday'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['birthday'] as int)
           : null,
-      job: map['job'] != null ? map['job'] as String : null,
-      gender: map['gender'] != null ? map['gender'] as String : null,
+      gender: map['gender'],
       point: map['point'] as int,
       gold: map['gold'] as int,
       checkIn: map['checkIn'] != null
@@ -157,7 +149,6 @@ class UserModel extends Equatable {
         avatar,
         phone,
         birthday,
-        job,
         gender,
         point,
         gold,

@@ -39,6 +39,9 @@ extension TextStyleExt on TextStyle {
             ? AppColor().grey300
             : AppColor().grey,
       );
+
+  /// color: grey300
+  TextStyle get grey300 => copyWith(color: AppColor().grey300);
 }
 
 class AppTextStyle {

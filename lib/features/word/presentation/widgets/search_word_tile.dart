@@ -35,6 +35,7 @@ class SearchWordTileWidget extends StatelessWidget {
         onLongPress: _onCopyToClipboard,
         child: Container(
           decoration: BoxDecoration(
+            color: context.backgroundColor,
             border: Border(
               bottom: BorderSide(
                 color: context.theme.dividerColor.withOpacity(.2),

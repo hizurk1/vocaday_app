@@ -85,7 +85,12 @@ class CodegenLoader extends AssetLoader{
   "profile": {
     "profile_title": "My profile",
     "personal_info": "Personal info",
-    "completion_progress": "Completion progress"
+    "completion_progress": "Completion progress",
+    "phone": "Phone",
+    "birthday": "Birthday",
+    "gender": "Gender",
+    "created_date": "Created date",
+    "no_info": "No info"
   },
   "utils": {
     "no_internet_connection": "No internet connection",
@@ -164,7 +169,12 @@ static const Map<String,dynamic> vi_VN = {
   "profile": {
     "profile_title": "Hồ sơ của tôi",
     "personal_info": "Thông tin cá nhân",
-    "completion_progress": "Tiến độ hoàn thành"
+    "completion_progress": "Tiến độ hoàn thành",
+    "phone": "Số điện thoại",
+    "birthday": "Sinh nhật",
+    "gender": "Giới tính",
+    "created_date": "Ngày tạo",
+    "no_info": "Không có thông tin"
   },
   "utils": {
     "no_internet_connection": "Không có kết nối mạng",

@@ -9,8 +9,8 @@ import '../../../../../widgets/cached_network_image.dart';
 import '../../../../../widgets/gap.dart';
 import '../../../../../widgets/text.dart';
 
-class ProfilePersonalInfo extends StatelessWidget {
-  const ProfilePersonalInfo({super.key});
+class ProfilePersonalInfoTile extends StatelessWidget {
+  const ProfilePersonalInfoTile({super.key});
 
   @override
   Widget build(BuildContext context) {

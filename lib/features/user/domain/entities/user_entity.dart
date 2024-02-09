@@ -8,7 +8,6 @@ class UserEntity extends Equatable {
   final String? avatar;
   final String? phone;
   final DateTime? birthday;
-  final String? job;
   final String? gender;
   final int point;
   final int gold;
@@ -23,7 +22,6 @@ class UserEntity extends Equatable {
     this.avatar,
     this.phone,
     this.birthday,
-    this.job,
     this.gender,
     this.point = 0,
     this.gold = 0,
@@ -40,7 +38,6 @@ class UserEntity extends Equatable {
         avatar,
         phone,
         birthday,
-        job,
         gender,
         point,
         gold,

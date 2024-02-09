@@ -33,7 +33,8 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     return Container(
       width: context.screenWidth,
       decoration: BoxDecoration(
-        color: context.theme.scaffoldBackgroundColor,
+        color:
+            context.isDarkTheme ? AppColor().backgroundDark : AppColor().white,
         boxShadow: [
           BoxShadow(
             color: context.colors.grey400.withOpacity(.5),

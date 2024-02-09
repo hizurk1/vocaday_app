@@ -50,6 +50,11 @@ abstract class  LocaleKeys {
   static const profile_profile_title = 'profile.profile_title';
   static const profile_personal_info = 'profile.personal_info';
   static const profile_completion_progress = 'profile.completion_progress';
+  static const profile_phone = 'profile.phone';
+  static const profile_birthday = 'profile.birthday';
+  static const profile_gender = 'profile.gender';
+  static const profile_created_date = 'profile.created_date';
+  static const profile_no_info = 'profile.no_info';
   static const utils_no_internet_connection = 'utils.no_internet_connection';
   static const utils_check_your_internet_connection = 'utils.check_your_internet_connection';
   static const utils_you_back_online = 'utils.you_back_online';

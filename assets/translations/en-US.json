@@ -69,7 +69,12 @@
   "profile": {
     "profile_title": "My profile",
     "personal_info": "Personal info",
-    "completion_progress": "Completion progress"
+    "completion_progress": "Completion progress",
+    "phone": "Phone",
+    "birthday": "Birthday",
+    "gender": "Gender",
+    "created_date": "Created date",
+    "no_info": "No info"
   },
   "utils": {
     "no_internet_connection": "No internet connection",

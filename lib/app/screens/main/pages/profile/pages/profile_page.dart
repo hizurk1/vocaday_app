@@ -8,8 +8,9 @@ import '../../../../../translations/translations.dart';
 import '../../../../../widgets/app_bar.dart';
 import '../../../../../widgets/sliver_tab_view.dart';
 import '../../../../../widgets/tab_bar_custom.dart';
-import '../../../../../widgets/text.dart';
 import '../widgets/profile_personal_info.dart';
+import 'profile_completion_progress_page.dart';
+import 'profile_personal_info_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -37,7 +38,7 @@ class ProfilePage extends StatelessWidget {
           onRefresh: () async {
             await Future.delayed(Durations.extralong2);
           },
-          topChild: const ProfilePersonalInfo(),
+          topChild: const ProfilePersonalInfoTile(),
           tabBar: TabBarCustom(
             tabs: [
               Tab(text: LocaleKeys.profile_personal_info.tr()),
@@ -47,8 +48,8 @@ class ProfilePage extends StatelessWidget {
           tabBarView: const TabBarView(
             physics: BouncingScrollPhysics(),
             children: [
-              Center(child: TextCustom('Info')),
-              Center(child: TextCustom('Progress')),
+              ProfilePersonalInfoPage(),
+              ProfileCompletionProgressPage(),
             ],
           ),
         ),

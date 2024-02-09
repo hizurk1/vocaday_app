@@ -25,7 +25,11 @@ class AppAssets {
   static const signOut = '$_icon/logout.svg';
   static const searchIcon = '$_icon/search_outline.svg';
   static const copyIcon = '$_icon/copy.svg';
+  static const phoneOutline = '$_icon/phone.svg';
+  static const calendarOutline = '$_icon/calendar_outline.svg';
+  static const genderOutline = '$_icon/gender.svg';
 
+  // Bottom nav
   static const homeIconFill = '$_icon/home_fill.svg';
   static const homeIconOutline = '$_icon/home_outline.svg';
   static const searchIconFill = '$_icon/search_fill.svg';
