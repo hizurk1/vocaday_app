@@ -37,7 +37,8 @@ class CodegenLoader extends AssetLoader{
     "is_copied_to_clipboard": "'{word}' is copied to clipboard.",
     "error": "Error",
     "okay": "Okay",
-    "close": "Close"
+    "close": "Close",
+    "retry": "Retry"
   },
   "auth": {
     "already_have_an_account": "Already have an account?",
@@ -85,6 +86,11 @@ class CodegenLoader extends AssetLoader{
     "profile_title": "My profile",
     "personal_info": "Personal info",
     "completion_progress": "Completion progress"
+  },
+  "utils": {
+    "no_internet_connection": "No internet connection",
+    "check_your_internet_connection": "Check your internet connection",
+    "you_back_online": "Woohoo! You are back online."
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -110,7 +116,8 @@ static const Map<String,dynamic> vi_VN = {
     "is_copied_to_clipboard": "'{word}' đã sao chép vào bộ nhớ tạm.",
     "error": "Lỗi",
     "okay": "Đồng ý",
-    "close": "Đóng"
+    "close": "Đóng",
+    "retry": "Thử lại"
   },
   "auth": {
     "already_have_an_account": "Bạn đã có tài khoản chưa?",
@@ -158,6 +165,11 @@ static const Map<String,dynamic> vi_VN = {
     "profile_title": "Hồ sơ của tôi",
     "personal_info": "Thông tin cá nhân",
     "completion_progress": "Tiến độ hoàn thành"
+  },
+  "utils": {
+    "no_internet_connection": "Không có kết nối mạng",
+    "check_your_internet_connection": "Kiểm tra kết nối mạng của bạn",
+    "you_back_online": "Hú hú! Đã có kết nối mạng."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

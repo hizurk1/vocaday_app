@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +7,7 @@ import 'app/managers/navigation.dart';
 import 'app/managers/theme.dart';
 import 'app/routes/route_manager.dart';
 import 'app/themes/app_theme.dart';
+import 'app/translations/translations.dart';
 import 'injection_container.dart';
 
 class MainApp extends StatelessWidget {
@@ -15,10 +15,25 @@ class MainApp extends StatelessWidget {
 
   void checkInternet(InternetState internet, BuildContext context) {
     if (internet.status == ConnectionStatus.offline) {
-      Navigators().showMessage("Internet was lost!", type: MessageType.error);
+      Navigators().showMessage(
+        LocaleKeys.utils_no_internet_connection.tr(),
+        type: MessageType.error,
+        showAction: true,
+        actionText: LocaleKeys.common_retry.tr(),
+        onAction: () {
+          final state = context.read<ConnectionBloc>().state;
+          if (state.status == ConnectionStatus.offline) {
+            checkInternet(state, context);
+          }
+        },
+      );
     }
     if (internet.status == ConnectionStatus.online) {
-      Navigators().showMessage("Back to online", type: MessageType.success);
+      Navigators().showMessage(
+        LocaleKeys.utils_you_back_online.tr(),
+        type: MessageType.success,
+        showClose: true,
+      );
     }
   }
 
@@ -29,7 +44,7 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, __) => BlocListener<ConnectionBloc, InternetState>(
-        listenWhen: (previous, current) => previous.status != current.status,
+        listenWhen: (previous, current) => previous != current,
         listener: (context, internet) => checkInternet(internet, context),
         child: BlocBuilder<ThemeCubit, ThemeState>(
           buildWhen: (previous, current) =>

@@ -33,6 +33,7 @@ class Navigators {
     bool showClose = false,
     Duration duration = const Duration(seconds: 5),
     DismissDirection dismissDirection = DismissDirection.down,
+    String? actionText,
     VoidCallback? onAction,
   }) {
     final msgColor = switch (type) {
@@ -70,7 +71,7 @@ class Navigators {
         dismissDirection: dismissDirection,
         action: showAction
             ? SnackBarAction(
-                label: LocaleKeys.common_close.tr(),
+                label: actionText ?? LocaleKeys.common_close.tr(),
                 textColor: textColor,
                 onPressed: () {
                   onAction?.call();

@@ -3,7 +3,7 @@ import 'package:fpdart/fpdart.dart';
 
 import '../../core/errors/failure.dart';
 import '../../core/typedef/typedefs.dart';
-import '../constants/app_string.dart';
+import '../translations/translations.dart';
 
 class ConnectionChecker {
   FutureEither<bool> get isConnected async {
@@ -12,8 +12,8 @@ class ConnectionChecker {
         result != ConnectivityResult.bluetooth) {
       return const Right(true);
     } else {
-      return const Left(ConnectionFailure(
-        AppStringConst.internetFailureMessage,
+      return Left(ConnectionFailure(
+        LocaleKeys.utils_no_internet_connection.tr(),
       ));
     }
   }

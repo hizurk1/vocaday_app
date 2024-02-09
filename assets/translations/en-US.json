@@ -21,7 +21,8 @@
     "is_copied_to_clipboard": "'{word}' is copied to clipboard.",
     "error": "Error",
     "okay": "Okay",
-    "close": "Close"
+    "close": "Close",
+    "retry": "Retry"
   },
   "auth": {
     "already_have_an_account": "Already have an account?",
@@ -69,5 +70,10 @@
     "profile_title": "My profile",
     "personal_info": "Personal info",
     "completion_progress": "Completion progress"
+  },
+  "utils": {
+    "no_internet_connection": "No internet connection",
+    "check_your_internet_connection": "Check your internet connection",
+    "you_back_online": "Woohoo! You are back online."
   }
 }

@@ -21,7 +21,8 @@
     "is_copied_to_clipboard": "'{word}' đã sao chép vào bộ nhớ tạm.",
     "error": "Lỗi",
     "okay": "Đồng ý",
-    "close": "Đóng"
+    "close": "Đóng",
+    "retry": "Thử lại"
   },
   "auth": {
     "already_have_an_account": "Bạn đã có tài khoản chưa?",
@@ -69,5 +70,10 @@
     "profile_title": "Hồ sơ của tôi",
     "personal_info": "Thông tin cá nhân",
     "completion_progress": "Tiến độ hoàn thành"
+  },
+  "utils": {
+    "no_internet_connection": "Không có kết nối mạng",
+    "check_your_internet_connection": "Kiểm tra kết nối mạng của bạn",
+    "you_back_online": "Hú hú! Đã có kết nối mạng."
   }
 }
