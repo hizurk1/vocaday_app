@@ -27,10 +27,7 @@ class BlocProviderScope extends StatelessWidget {
         //* Internet connection controller
         BlocProvider(create: (_) => sl<ConnectionBloc>()),
         //* Word List Bloc
-        BlocProvider(
-          create: (_) => sl<WordListBloc>()..add(GetAllWordsEvent()),
-          lazy: false,
-        ),
+        BlocProvider(create: (_) => sl<WordListBloc>()),
         //* Authentication Bloc
         BlocProvider(create: (_) => sl<AuthBloc>()),
         //* User Cubit
