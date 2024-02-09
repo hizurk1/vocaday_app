@@ -25,6 +25,12 @@ class MenuDrawerTileList extends StatefulWidget {
 class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
   int selectedIndex = 0;
 
+  _resetIndex() {
+    Future.delayed(Durations.medium2, () {
+      if (mounted) setState(() => selectedIndex = 0);
+    });
+  }
+
   void _onSelectedTile(int index) {
     setState(() => selectedIndex = index);
     switch (index) {
@@ -32,6 +38,7 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
         widget.onClosed();
         break;
       case 1:
+        _resetIndex();
         context.push(AppRoutes.setting);
         break;
       case 2:

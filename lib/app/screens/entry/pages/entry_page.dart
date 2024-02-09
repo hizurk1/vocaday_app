@@ -5,7 +5,6 @@ import '../../../../features/authentication/presentation/blocs/auth/auth_bloc.da
 import '../../../../features/authentication/presentation/pages/authentication_page.dart';
 import '../../../../features/user/domain/usecases/get_user_data.dart';
 import '../../../../features/user/presentation/blocs/user_data/user_data_bloc.dart';
-import '../../../../features/word/presentation/blocs/search_word/search_word_bloc.dart';
 import '../../../../injection_container.dart';
 import '../../../managers/navigation.dart';
 import '../../../translations/translations.dart';
@@ -39,7 +38,6 @@ class EntryPage extends StatelessWidget {
                   context.read<AuthBloc>().state.user?.uid ?? '',
                 ),
               ),
-              BlocProvider(create: (_) => sl<SearchWordBloc>()),
             ],
             child: const MainPage(),
           );

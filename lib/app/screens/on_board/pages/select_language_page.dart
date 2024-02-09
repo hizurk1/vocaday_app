@@ -36,6 +36,7 @@ class SelectLanguagePage extends StatelessWidget {
                 LocaleKeys.on_board_select_language_content.tr(),
                 textAlign: TextAlign.center,
                 style: context.textStyle.bodyM.grey,
+                maxLines: 3,
               ),
             ),
             const Gap(height: 30),

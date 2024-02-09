@@ -17,21 +17,27 @@ class CachedNetworkImageCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipOval(
-      child: CachedNetworkImage(
-        imageUrl: url,
-        placeholder: (context, url) => Placeholder(
-          fallbackHeight: size.h,
-          fallbackWidth: size.w,
-        ),
-        errorWidget: (context, url, error) => Image.asset(
-          AppAssets.defaultAvatar,
-          height: size.h,
-          width: size.w,
-        ),
-        width: size.w,
-        height: size.h,
-        fit: BoxFit.cover,
-      ),
+      child: url.isEmpty
+          ? Image.asset(
+              AppAssets.defaultAvatar,
+              height: size.h,
+              width: size.w,
+            )
+          : CachedNetworkImage(
+              imageUrl: url,
+              placeholder: (context, url) => Placeholder(
+                fallbackHeight: size.h,
+                fallbackWidth: size.w,
+              ),
+              errorWidget: (context, url, error) => Image.asset(
+                AppAssets.defaultAvatar,
+                height: size.h,
+                width: size.w,
+              ),
+              width: size.w,
+              height: size.h,
+              fit: BoxFit.cover,
+            ),
     );
   }
 }
