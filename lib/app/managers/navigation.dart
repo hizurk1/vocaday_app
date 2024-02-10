@@ -132,6 +132,7 @@ class Navigators {
       builder: (context) {
         return AlertDialog(
           surfaceTintColor: context.theme.cardColor,
+          backgroundColor: context.theme.cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.r),
           ),
