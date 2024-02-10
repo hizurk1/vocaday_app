@@ -7,12 +7,19 @@ import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 import 'text.dart';
 
+/// A custom app bar that can be used in the application.
+///
+/// This app bar has a customizable title, leading widget, and actions. The
+/// title and leading widget can be centered or aligned to the start or end of
+/// the app bar. The actions can be placed on the right or left of the title.
+///
+/// The app bar also has an optional padding on the left and right sides, which
+/// can be disabled. By default, the padding is enabled.
+///
+/// The app bar uses the [SafeArea] widget to ensure that the content is
+/// displayed correctly on different devices.
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
-  /// If [child] is null; [leading], [title] and [action] will take
-  /// the whole space and otherwise.
-  ///
-  /// If [title] is null; it will has a text widget to show the title
-  /// of the app bar. Then you will need to pass [textTitle].
+  /// Creates a custom app bar.
   const AppBarCustom({
     super.key,
     this.child,
@@ -24,12 +31,35 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     this.centerTitle = true,
   });
 
+  /// If this widget is null. By default, the app bar uses the [Row] widget
+  /// with [leading], [title] and [action] to show the content of the appbar.
   final Widget? child;
+
+  /// A widget to display in the leading position.
   final Widget? leading;
+
+  /// A widget to display in the trailing position.
   final Widget? action;
+
+  /// The primary content of the app bar.
+  ///
+  /// Typically a [Text] widget.
   final Widget? title;
+
+  /// The text to display in the app bar.
+  ///
+  /// If this is specified, [title] is ignored.
   final String? textTitle;
+
+  /// Whether to add padding to the left and right of the app bar.
+  ///
+  /// The default value is false.
   final bool enablePadding;
+
+  /// Whether to center the title within the app bar.
+  ///
+  /// If false, the title is aligned to the start of the app bar.
+  /// The default value is true.
   final bool centerTitle;
 
   @override

@@ -27,6 +27,17 @@ class Navigators {
 
   BuildContext? get currentContext => navigationKey.currentContext;
 
+  /// Shows a message to the user.
+  ///
+  /// * [text]: The message to show.
+  /// * [type]: The type of message to show.
+  /// * [showAction]: Whether to show an action button.
+  /// * [showClose]: Whether to show a close button.
+  /// * [maxLines]: The maximum number of lines to show.
+  /// * [duration]: The duration of the message.
+  /// * [dismissDirection]: The direction to dismiss the message.
+  /// * [actionText]: The text of the action button.
+  /// * [onAction]: The action to take when the action button is pressed.
   showMessage(
     String text, {
     MessageType type = MessageType.byDefault,
@@ -87,7 +98,20 @@ class Navigators {
     );
   }
 
-  /// [acceptText] by default is "Okay". [cancelText] by default is "Cancel".
+  /// Shows a dialog with buttons.
+  ///
+  /// * [title]: The title of the dialog.
+  /// * [subtitle]: The optional subtitle of the dialog.
+  /// * [acceptText]: The optional text of the accept button.
+  /// * [cancelText]: The optional text of the cancel button.
+  /// * [showAccept]: Whether to show the accept button.
+  /// * [showCancel]: Whether to show the cancel button.
+  /// * [showIcon]: Whether to show an icon.
+  /// * [dissmisable]: Whether the dialog is dismissable.
+  /// * [icon]: The icon asset path.
+  /// * [iconData]: The icon data.
+  /// * [onAccept]: The function to call when the accept button is pressed.
+  /// * [onCancel]: The function to call when the cancel button is pressed.
   showDialogWithButton({
     required String title,
     String? subtitle,
@@ -107,7 +131,7 @@ class Navigators {
       barrierDismissible: dissmisable,
       builder: (context) {
         return AlertDialog(
-          surfaceTintColor: context.theme.scaffoldBackgroundColor,
+          surfaceTintColor: context.theme.cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.r),
           ),

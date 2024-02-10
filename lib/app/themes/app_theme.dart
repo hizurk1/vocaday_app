@@ -30,7 +30,7 @@ class AppTheme {
   static final darkTheme = ThemeData(
     fontFamily: 'Roboto',
     scaffoldBackgroundColor: AppColor().black,
-    cardColor: AppColor().grey600,
+    cardColor: AppColor().grey,
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
     dialogBackgroundColor: AppColor().black,

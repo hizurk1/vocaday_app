@@ -2,8 +2,26 @@ import 'package:flutter/material.dart';
 
 import '../themes/app_text_theme.dart';
 
+/// A custom text widget that provides a consistent look and feel throughout the app.
+///
+/// This widget can be used to display body text, headings, or other types of text. It
+/// supports customizing the font size, color, and other properties. By default, it
+/// uses the text style with body small and bw style.
+///
+/// ```dart
+/// TextCustom(
+///   'This is body text',
+///   style: TextStyle(),
+///   maxLines: 3,
+///   textAlign: TextAlign.center,
+/// )
+/// ```
 class TextCustom extends StatelessWidget {
-  /// Style by default is bodyS with bw
+  /// Creates a custom text widget.
+  ///
+  /// The [text] parameter is the text that will be displayed. The [style] parameter
+  /// is the text style to use. The [maxLines] parameter is the maximum number of lines
+  /// to display. The [textAlign] parameter is the alignment of the text.
   const TextCustom(
     this.text, {
     this.maxLines = 1,

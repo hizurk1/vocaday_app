@@ -13,7 +13,7 @@ import '../screens/main/pages/home/home_page.dart';
 import '../screens/main/pages/profile/profile_page.dart';
 import '../screens/main/pages/search/search_page.dart';
 import '../screens/on_board/pages/on_board_page.dart';
-import '../screens/setting/pages/setting_page.dart';
+import '../screens/setting/setting_page.dart';
 
 part 'routes.dart';
 

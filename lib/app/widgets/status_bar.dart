@@ -5,6 +5,17 @@ import 'package:flutter/services.dart';
 
 import '../../core/extensions/build_context.dart';
 
+/// A widget that sets the status bar to transparent and adjusts
+/// the icon color based on the current theme.
+///
+/// This widget is useful for creating an app bar that overlaps
+/// the status bar on Android and iOS.
+///
+/// ```dart
+/// StatusBar(
+///   child: Scaffold(),
+/// )
+/// ```
 class StatusBar extends StatelessWidget {
   const StatusBar({
     super.key,

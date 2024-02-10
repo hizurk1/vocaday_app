@@ -6,7 +6,7 @@ import '../managers/navigation.dart';
 import 'app_color.dart';
 
 extension TextThemeExt on BuildContext {
-  AppTextStyle get textStyle => AppTextStyle();
+  AppTextStyle get textStyle => AppTextStyle(); // context.textStyle
 }
 
 extension TextStyleExt on TextStyle {

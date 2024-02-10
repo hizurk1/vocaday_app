@@ -1,6 +1,40 @@
+/// A utility class containing various utility functions.
 class UtilFunction {
+  /// Constructs a new instance of [UtilFunction].
+  ///
+  /// This constructor is private to prevent direct instantiation of the class.
+  /// Instead, use the [UtilFunction.splitFirst] method to access the instance.
   UtilFunction._();
 
+  /// Splits the given [text] by the first occurrence of the [pattern] and returns
+  /// the first element of the list.
+  ///
+  /// If [text] is null, this method returns an empty string.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// String? text = 'hello+world';
+  /// String pattern = '+';
+  /// String result = UtilFunction.splitFirst(text, pattern);
+  /// print(result); // Output: hello
+  /// ```
   static String splitFirst(String? text, String pattern) =>
       text?.split(pattern).first ?? '';
+
+  /// Splits the given [text] by the last occurrence of the [pattern] and returns
+  /// the last element of the list.
+  ///
+  /// If [text] is null, this method returns an empty string.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// String? text = 'hello/world';
+  /// String pattern = '/';
+  /// String result = UtilFunction.splitLast(text, pattern);
+  /// print(result); // Output: world
+  /// ```
+  static String splitLast(String? text, String pattern) =>
+      text?.split(pattern).last ?? '';
 }
