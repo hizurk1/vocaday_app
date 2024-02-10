@@ -57,7 +57,8 @@ class CodegenLoader extends AssetLoader{
     "sign_in_as_email": "Sign in as {email}",
     "invalid_email": "Email could only contains . - _ as the special characters",
     "invalid_password": "Password must contains 8 characters and numbers.",
-    "sign_out": "Sign out"
+    "sign_out": "Sign out",
+    "are_you_want_to_sign_out": "Are you sure you want to sign out?"
   },
   "app_log": {
     "on_restart": "Welcome back!"
@@ -144,7 +145,8 @@ static const Map<String,dynamic> vi_VN = {
     "sign_in_as_email": "Đăng nhập với {email}",
     "invalid_email": "Email chỉ có thể chứa . - _ là ký tự đặc biệt",
     "invalid_password": "Mật khẩu phải bao gồm 8 ký tự và chữ số.",
-    "sign_out": "Đăng xuất"
+    "sign_out": "Đăng xuất",
+    "are_you_want_to_sign_out": "Bạn có chắc chắn muốn đăng xuất?"
   },
   "app_log": {
     "on_restart": "Mừng bạn quay lại!"

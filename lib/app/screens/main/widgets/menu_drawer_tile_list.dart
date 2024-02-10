@@ -45,9 +45,9 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
       case 2:
       case 3:
         Navigators().showDialogWithButton(
-          title: "Sign out",
-          subtitle: "Are you sure logout?",
-          acceptText: "Sign out",
+          title: LocaleKeys.auth_sign_out.tr(),
+          subtitle: LocaleKeys.auth_are_you_want_to_sign_out.tr(),
+          acceptText: LocaleKeys.auth_sign_out.tr(),
           onAccept: () {
             context.read<AuthBloc>().add(RequestSignOutEvent());
           },

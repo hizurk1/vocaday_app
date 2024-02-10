@@ -37,6 +37,7 @@ abstract class  LocaleKeys {
   static const auth_invalid_email = 'auth.invalid_email';
   static const auth_invalid_password = 'auth.invalid_password';
   static const auth_sign_out = 'auth.sign_out';
+  static const auth_are_you_want_to_sign_out = 'auth.are_you_want_to_sign_out';
   static const app_log_on_restart = 'app_log.on_restart';
   static const user_data_point = 'user_data.point';
   static const page_home = 'page.home';

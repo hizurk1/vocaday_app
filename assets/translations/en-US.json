@@ -41,7 +41,8 @@
     "sign_in_as_email": "Sign in as {email}",
     "invalid_email": "Email could only contains . - _ as the special characters",
     "invalid_password": "Password must contains 8 characters and numbers.",
-    "sign_out": "Sign out"
+    "sign_out": "Sign out",
+    "are_you_want_to_sign_out": "Are you sure you want to sign out?"
   },
   "app_log": {
     "on_restart": "Welcome back!"

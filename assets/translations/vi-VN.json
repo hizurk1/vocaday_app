@@ -41,7 +41,8 @@
     "sign_in_as_email": "Đăng nhập với {email}",
     "invalid_email": "Email chỉ có thể chứa . - _ là ký tự đặc biệt",
     "invalid_password": "Mật khẩu phải bao gồm 8 ký tự và chữ số.",
-    "sign_out": "Đăng xuất"
+    "sign_out": "Đăng xuất",
+    "are_you_want_to_sign_out": "Bạn có chắc chắn muốn đăng xuất?"
   },
   "app_log": {
     "on_restart": "Mừng bạn quay lại!"

@@ -107,8 +107,10 @@ class Navigators {
       barrierDismissible: dissmisable,
       builder: (context) {
         return AlertDialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          surfaceTintColor: context.theme.scaffoldBackgroundColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.r),
+          ),
           icon: showIcon
               ? CircleAvatar(
                   backgroundColor: context.theme.primaryColor,
