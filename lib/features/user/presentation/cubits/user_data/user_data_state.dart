@@ -1,4 +1,4 @@
-part of 'user_data_bloc.dart';
+part of 'user_data_cubit.dart';
 
 sealed class UserDataState extends Equatable {
   const UserDataState();

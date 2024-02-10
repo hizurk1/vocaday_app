@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../core/extensions/date_time.dart';
-import '../../../../../../features/user/presentation/blocs/user_data/user_data_bloc.dart';
-import '../../../../../constants/app_asset.dart';
-import '../../../../../translations/translations.dart';
-import '../../../../../widgets/error_page.dart';
-import '../../../../../widgets/loading_indicator.dart';
-import '../widgets/profile_info_item.dart';
+import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/screens/main/pages/profile/widgets/profile_info_item.dart';
+import '../../../../../app/translations/translations.dart';
+import '../../../../../app/widgets/error_page.dart';
+import '../../../../../app/widgets/loading_indicator.dart';
+import '../../../../../core/extensions/date_time.dart';
+import '../../cubits/user_data/user_data_cubit.dart';
 
 enum EGender { male, female, other }
 
@@ -17,7 +17,7 @@ class ProfilePersonalInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserDataBloc, UserDataState>(
+    return BlocBuilder<UserDataCubit, UserDataState>(
       builder: (context, state) {
         if (state is UserDataLoadingState) {
           return const Center(child: LoadingIndicatorWidget());

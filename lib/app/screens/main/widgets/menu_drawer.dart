@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/extensions/build_context.dart';
 import '../../../../core/extensions/color.dart';
-import '../../../../features/user/presentation/widgets/menu_drawer_top_info.dart';
+import '../../../../features/user/presentation/widgets/main_menu/menu_drawer_top_info.dart';
 import '../../../constants/app_element.dart';
 import '../../../themes/app_color.dart';
 import '../../../widgets/gap.dart';

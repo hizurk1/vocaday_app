@@ -8,6 +8,11 @@ import '../themes/app_text_theme.dart';
 import 'text.dart';
 
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
+  /// If [child] is null; [leading], [title] and [action] will take
+  /// the whole space and otherwise.
+  ///
+  /// If [title] is null; it will has a text widget to show the title
+  /// of the app bar. Then you will need to pass [textTitle].
   const AppBarCustom({
     super.key,
     this.child,
@@ -15,6 +20,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     this.action,
     this.title,
     this.textTitle,
+    this.enablePadding = false,
     this.centerTitle = true,
   });
 
@@ -23,6 +29,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   final Widget? action;
   final Widget? title;
   final String? textTitle;
+  final bool enablePadding;
   final bool centerTitle;
 
   @override
@@ -32,6 +39,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.screenWidth,
+      padding: enablePadding ? EdgeInsets.symmetric(horizontal: 10.w) : null,
       decoration: BoxDecoration(
         color:
             context.isDarkTheme ? AppColor().backgroundDark : AppColor().white,

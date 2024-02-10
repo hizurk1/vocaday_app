@@ -1,15 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/authentication/presentation/pages/authentication_page.dart';
+import '../../features/user/presentation/pages/main_profile/profile_edit_personal_info_page.dart';
 import '../../injection_container.dart';
 import '../managers/navigation.dart';
 import '../managers/shared_preferences.dart';
-import '../screens/entry/pages/entry_page.dart';
+import '../screens/entry/entry_page.dart';
 import '../screens/main/main_page.dart';
-import '../screens/main/pages/activity/pages/activity_page.dart';
-import '../screens/main/pages/home/pages/home_page.dart';
-import '../screens/main/pages/profile/pages/profile_page.dart';
-import '../screens/main/pages/search/pages/search_page.dart';
+import '../screens/main/pages/activity/activity_page.dart';
+import '../screens/main/pages/home/home_page.dart';
+import '../screens/main/pages/profile/profile_page.dart';
+import '../screens/main/pages/search/search_page.dart';
 import '../screens/on_board/pages/on_board_page.dart';
 import '../screens/setting/pages/setting_page.dart';
 
@@ -69,10 +71,42 @@ class AppRouter {
           GoRoute(
             path: "profile",
             builder: (context, state) => const ProfilePage(),
-            routes: const [],
+            routes: [
+              //? Route: '/main/profile/edit'
+              GoRoute(
+                path: "edit",
+                pageBuilder: (context, state) => slideTransitionPage<void>(
+                  context: context,
+                  state: state,
+                  child: const ProfileEditPersonalInfoPage(),
+                ),
+              ),
+            ],
           ),
         ],
       ),
     ],
+  );
+}
+
+CustomTransitionPage slideTransitionPage<T>({
+  required BuildContext context,
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage<T>(
+    key: state.pageKey,
+    child: child,
+    transitionsBuilder: (context, animation, _, child) {
+      return SlideTransition(
+        position: animation.drive(
+          Tween<Offset>(
+            begin: const Offset(1, 0),
+            end: Offset.zero,
+          ).chain(CurveTween(curve: Curves.easeIn)),
+        ),
+        child: child,
+      );
+    },
   );
 }

@@ -22,7 +22,8 @@
     "error": "Lỗi",
     "okay": "Đồng ý",
     "close": "Đóng",
-    "retry": "Thử lại"
+    "retry": "Thử lại",
+    "save": "Lưu"
   },
   "auth": {
     "already_have_an_account": "Bạn đã có tài khoản chưa?",
@@ -74,7 +75,9 @@
     "birthday": "Sinh nhật",
     "gender": "Giới tính",
     "created_date": "Ngày tạo",
-    "no_info": "Không có thông tin"
+    "no_info": "Không có thông tin",
+    "edit_profile": "Chỉnh sửa hồ sơ",
+    "display_name": "Tên hiển thị"
   },
   "utils": {
     "no_internet_connection": "Không có kết nối mạng",

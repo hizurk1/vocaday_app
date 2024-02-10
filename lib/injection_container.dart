@@ -25,6 +25,7 @@ import 'features/user/data/repositories/user_repository_impl.dart';
 import 'features/user/domain/repositories/user_repository.dart';
 import 'features/user/domain/usecases/get_user_data.dart';
 import 'features/user/domain/usecases/update_user_profile.dart';
+import 'features/user/presentation/cubits/user_data/user_data_cubit.dart';
 import 'features/word/data/data_sources/word_local_data_source.dart';
 import 'features/word/data/repositories/word_repository_impl.dart';
 import 'features/word/domain/repositories/word_repository.dart';
@@ -104,7 +105,7 @@ Future<void> setUpServiceLocator() async {
   sl.registerFactory(() => SignInBloc(sl(), sl()));
   sl.registerFactory(() => SignUpBloc(sl()));
 
-  //! Features - user profile
+  //! Features - user
   // Data source
   sl.registerLazySingleton<UserRemoteDataSource>(
     () => UserRemoteDataSourceImpl(sl()),
@@ -120,4 +121,6 @@ Future<void> setUpServiceLocator() async {
   sl.registerLazySingleton(
     () => GetUserDataUsecase(repository: sl()),
   );
+  // Bloc/Cubit
+  sl.registerFactory(() => UserDataCubit(sl()));
 }

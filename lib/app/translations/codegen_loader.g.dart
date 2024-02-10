@@ -38,7 +38,8 @@ class CodegenLoader extends AssetLoader{
     "error": "Error",
     "okay": "Okay",
     "close": "Close",
-    "retry": "Retry"
+    "retry": "Retry",
+    "save": "Save"
   },
   "auth": {
     "already_have_an_account": "Already have an account?",
@@ -90,7 +91,9 @@ class CodegenLoader extends AssetLoader{
     "birthday": "Birthday",
     "gender": "Gender",
     "created_date": "Created date",
-    "no_info": "No info"
+    "no_info": "No info",
+    "edit_profile": "Edit profile",
+    "display_name": "Display name"
   },
   "utils": {
     "no_internet_connection": "No internet connection",
@@ -122,7 +125,8 @@ static const Map<String,dynamic> vi_VN = {
     "error": "Lỗi",
     "okay": "Đồng ý",
     "close": "Đóng",
-    "retry": "Thử lại"
+    "retry": "Thử lại",
+    "save": "Lưu"
   },
   "auth": {
     "already_have_an_account": "Bạn đã có tài khoản chưa?",
@@ -174,7 +178,9 @@ static const Map<String,dynamic> vi_VN = {
     "birthday": "Sinh nhật",
     "gender": "Giới tính",
     "created_date": "Ngày tạo",
-    "no_info": "Không có thông tin"
+    "no_info": "Không có thông tin",
+    "edit_profile": "Chỉnh sửa hồ sơ",
+    "display_name": "Tên hiển thị"
   },
   "utils": {
     "no_internet_connection": "Không có kết nối mạng",

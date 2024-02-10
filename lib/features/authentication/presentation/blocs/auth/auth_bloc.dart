@@ -14,14 +14,10 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthStateChangedUsecase authStateChangedUsecase;
   final SignOutUsecase signOutUsecase;
-  late StreamSubscription _streamSubscription;
+  StreamSubscription? _streamSubscription;
 
   AuthBloc(this.authStateChangedUsecase, this.signOutUsecase)
       : super(const UnauthenticatedState()) {
-    _streamSubscription = authStateChangedUsecase.user.listen((user) {
-      add(AuthStateChangedEvent(user));
-    });
-
     on<AuthStateChangedEvent>((event, emit) {
       if (event.user != null) {
         emit(AuthenticatedState(event.user!));
@@ -42,9 +38,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
+  void initStream() {
+    _streamSubscription ??= authStateChangedUsecase.user.listen((user) {
+      add(AuthStateChangedEvent(user));
+    });
+  }
+
   @override
   Future<void> close() {
-    _streamSubscription.cancel();
+    _streamSubscription?.cancel();
     return super.close();
   }
 }

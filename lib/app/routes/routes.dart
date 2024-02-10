@@ -2,7 +2,7 @@ part of 'route_manager.dart';
 
 class AppRoutes {
   AppRoutes._();
-  static const init = '/';
+  static const init = '/'; // Entry page
   static const authentication = '/authentication';
   static const setting = '/setting';
   static const main = '/main';
@@ -10,4 +10,5 @@ class AppRoutes {
   static const search = '$main/search';
   static const activity = '$main/activity';
   static const profile = '$main/profile';
+  static const profileEdit = '$profile/edit';
 }

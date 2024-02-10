@@ -7,10 +7,10 @@ import '../../../core/extensions/build_context.dart';
 import '../../../core/extensions/color.dart';
 import '../../constants/app_asset.dart';
 import '../../themes/app_color.dart';
-import 'pages/activity/pages/activity_page.dart';
-import 'pages/home/pages/home_page.dart';
-import 'pages/profile/pages/profile_page.dart';
-import 'pages/search/pages/search_page.dart';
+import 'pages/activity/activity_page.dart';
+import 'pages/home/home_page.dart';
+import 'pages/profile/profile_page.dart';
+import 'pages/search/search_page.dart';
 import 'widgets/menu_drawer.dart';
 
 class MainPage extends StatefulWidget {

@@ -1,3 +1,16 @@
+extension StringNullExt on String? {
+  bool get isNotNullOrEmpty {
+    if (this != null && this!.isNotEmpty) return true;
+    return false;
+  }
+
+  bool get isNullOrEmpty {
+    if (this == null) return true;
+    if (this!.isEmpty) return true;
+    return false;
+  }
+}
+
 extension StringExtension on String {
   String get capitalizeFirstLetter {
     if (length < 2) return this;

@@ -22,7 +22,8 @@
     "error": "Error",
     "okay": "Okay",
     "close": "Close",
-    "retry": "Retry"
+    "retry": "Retry",
+    "save": "Save"
   },
   "auth": {
     "already_have_an_account": "Already have an account?",
@@ -74,7 +75,9 @@
     "birthday": "Birthday",
     "gender": "Gender",
     "created_date": "Created date",
-    "no_info": "No info"
+    "no_info": "No info",
+    "edit_profile": "Edit profile",
+    "display_name": "Display name"
   },
   "utils": {
     "no_internet_connection": "No internet connection",

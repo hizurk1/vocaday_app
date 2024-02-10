@@ -28,6 +28,7 @@ class AppAssets {
   static const phoneOutline = '$_icon/phone.svg';
   static const calendarOutline = '$_icon/calendar_outline.svg';
   static const genderOutline = '$_icon/gender.svg';
+  static const camera = '$_icon/camera.svg';
 
   // Bottom nav
   static const homeIconFill = '$_icon/home_fill.svg';

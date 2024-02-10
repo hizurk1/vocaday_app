@@ -5,7 +5,7 @@ import 'app/managers/connection.dart';
 import 'app/managers/language.dart';
 import 'app/managers/theme.dart';
 import 'features/authentication/presentation/blocs/auth/auth_bloc.dart';
-import 'features/user/presentation/blocs/user_data/user_data_bloc.dart';
+import 'features/user/presentation/cubits/user_data/user_data_cubit.dart';
 import 'features/word/presentation/blocs/word_list/word_list_bloc.dart';
 import 'injection_container.dart';
 
@@ -26,12 +26,14 @@ class BlocProviderScope extends StatelessWidget {
         BlocProvider(create: (_) => sl<LanguageBloc>()),
         //* Internet connection controller
         BlocProvider(create: (_) => sl<ConnectionBloc>()),
+        //* Authentication Bloc
+        BlocProvider(
+          create: (_) => sl<AuthBloc>()..initStream(),
+        ),
         //* Word List Bloc
         BlocProvider(create: (_) => sl<WordListBloc>()),
-        //* Authentication Bloc
-        BlocProvider(create: (_) => sl<AuthBloc>()),
         //* User Cubit
-        BlocProvider(create: (_) => sl<UserDataBloc>()),
+        BlocProvider(create: (_) => sl<UserDataCubit>()),
       ],
       child: child,
     );
