@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/translations/translations.dart';
 import '../../../domain/usecases/sign_in_with_email_password.dart';
 import '../../../domain/usecases/sign_in_with_google.dart';
@@ -41,9 +40,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     RequestSignInEvent event,
     Emitter<SignInState> emit,
   ) async {
+    emit(SignInLoadingState());
     if (event.email.isNotEmpty && event.password.isNotEmpty) {
-      emit(SignInLoadingState());
-
       final result = await signInWithEmailPasswordUsecase(
         (event.email, event.password),
       );
@@ -51,18 +49,13 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       result.fold(
         (failure) {
           emit(SignInErrorState(failure.message));
-          Navigators().showMessage(
-            failure.message,
-            type: MessageType.error,
-          );
         },
         (_) => emit(SignInSuccessState()),
       );
     } else {
-      Navigators().showMessage(
+      emit(SignInErrorState(
         LocaleKeys.auth_please_enter_and_password.tr(),
-        type: MessageType.error,
-      );
+      ));
     }
   }
 }

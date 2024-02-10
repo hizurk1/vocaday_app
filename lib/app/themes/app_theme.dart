@@ -10,6 +10,7 @@ class AppTheme {
     cardColor: AppColor().white,
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
+    dialogBackgroundColor: AppColor().white,
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: AppColor().backgroundLight,
       modalBackgroundColor: AppColor().backgroundLight,
@@ -32,6 +33,7 @@ class AppTheme {
     cardColor: AppColor().grey600,
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
+    dialogBackgroundColor: AppColor().black,
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: AppColor().backgroundDark,
       modalBackgroundColor: AppColor().backgroundDark,

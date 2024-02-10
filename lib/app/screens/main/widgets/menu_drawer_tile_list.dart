@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../features/authentication/presentation/blocs/auth/auth_bloc.dart';
 import '../../../constants/app_asset.dart';
+import '../../../managers/navigation.dart';
 import '../../../routes/route_manager.dart';
 import '../../../themes/app_color.dart';
 import '../../../themes/app_text_theme.dart';
@@ -43,7 +44,15 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
         break;
       case 2:
       case 3:
-        context.read<AuthBloc>().add(RequestSignOutEvent());
+        Navigators().showDialogWithButton(
+          title: "Sign out",
+          subtitle: "Are you sure logout?",
+          acceptText: "Sign out",
+          onAccept: () {
+            context.read<AuthBloc>().add(RequestSignOutEvent());
+          },
+          onCancel: _resetIndex,
+        );
         break;
       default:
         break;

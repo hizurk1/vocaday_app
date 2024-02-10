@@ -32,7 +32,6 @@ class MainApp extends StatelessWidget {
       Navigators().showMessage(
         LocaleKeys.utils_you_back_online.tr(),
         type: MessageType.success,
-        showClose: true,
       );
     }
   }

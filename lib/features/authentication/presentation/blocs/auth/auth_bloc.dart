@@ -38,7 +38,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
-  void initStream() {
+  void initAuthStream() {
     _streamSubscription ??= authStateChangedUsecase.user.listen((user) {
       add(AuthStateChangedEvent(user));
     });

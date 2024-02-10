@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/extensions/build_context.dart';
 import '../../core/extensions/color.dart';
+import '../../core/extensions/string.dart';
 import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 import '../translations/translations.dart';
@@ -30,7 +31,8 @@ class Navigators {
     String text, {
     MessageType type = MessageType.byDefault,
     bool showAction = false,
-    bool showClose = false,
+    bool showClose = true,
+    int maxLines = 5,
     Duration duration = const Duration(seconds: 5),
     DismissDirection dismissDirection = DismissDirection.down,
     String? actionText,
@@ -52,13 +54,14 @@ class Navigators {
       SnackBar(
         backgroundColor: msgColor.withOpacity(0.75),
         elevation: 0,
-        margin: EdgeInsets.symmetric(horizontal: 10.w),
+        margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
         content: Padding(
           padding: const EdgeInsets.all(4),
           child: TextCustom(
             text,
+            maxLines: maxLines,
             style: navigationKey.currentContext?.textStyle.bodyS.copyWith(
               color: textColor,
               fontWeight: FontWeight.w500,
@@ -84,14 +87,15 @@ class Navigators {
     );
   }
 
+  /// [acceptText] by default is "Okay". [cancelText] by default is "Cancel".
   showDialogWithButton({
     required String title,
     String? subtitle,
     String? acceptText,
     String? cancelText,
-    bool isHideAccept = false,
-    bool isHideCancel = false,
-    bool isShowIcon = true,
+    bool showAccept = true,
+    bool showCancel = true,
+    bool showIcon = true,
     bool dissmisable = true,
     String? icon,
     IconData? iconData,
@@ -101,29 +105,12 @@ class Navigators {
     showDialog(
       context: currentContext!,
       barrierDismissible: dissmisable,
-      builder: (context) => Dialog(
-        backgroundColor: context.theme.scaffoldBackgroundColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            color: context.theme.scaffoldBackgroundColor,
-            boxShadow: [
-              BoxShadow(
-                color: currentContext!.colors.grey600.withOpacity(.5),
-                offset: const Offset(1, 1),
-                blurRadius: 4,
-                spreadRadius: 3,
-              )
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (isShowIcon) ...[
-                CircleAvatar(
+      builder: (context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          icon: showIcon
+              ? CircleAvatar(
                   backgroundColor: context.theme.primaryColor,
                   radius: 25,
                   child: icon != null
@@ -138,50 +125,48 @@ class Navigators {
                           iconData ?? Icons.info,
                           color: currentContext!.colors.white,
                         ),
-                ),
-                const Gap(height: 25),
-              ],
-              TextCustom(
-                title,
-                style: navigationKey.currentContext?.textStyle.bodyL.bold.bw,
-              ),
-              if (subtitle != null) ...[
-                const Gap(height: 10),
-                TextCustom(
-                  subtitle,
+                )
+              : null,
+          title: Center(
+            child: TextCustom(
+              title,
+              textAlign: TextAlign.center,
+              style: navigationKey.currentContext?.textStyle.bodyL.bold.bw,
+            ),
+          ),
+          content: subtitle.isNotNullOrEmpty
+              ? TextCustom(
+                  subtitle ?? '',
+                  textAlign: TextAlign.center,
                   style: navigationKey.currentContext?.textStyle.bodyS.grey,
-                ),
-              ],
-              const Gap(height: 25),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  if (!isHideAccept)
+                )
+              : null,
+          actionsOverflowButtonSpacing: 15.h,
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+          actions: showAccept || showCancel
+              ? [
+                  if (showAccept)
                     PushableButton(
                       onPressed: () {
                         onAccept?.call();
                         context.pop();
                       },
-                      height: 45.w,
-                      width: 90.h,
                       text: acceptText ?? LocaleKeys.common_okay.tr(),
+                      type: PushableButtonType.primary,
                     ),
-                  if (!isHideCancel)
+                  if (showCancel)
                     PushableButton(
                       onPressed: () {
                         onCancel?.call();
                         context.pop();
                       },
-                      height: 45.h,
-                      width: 90.w,
                       text: cancelText ?? LocaleKeys.common_cancel.tr(),
+                      type: PushableButtonType.grey,
                     ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
+                ]
+              : null,
+        );
+      },
     );
   }
 

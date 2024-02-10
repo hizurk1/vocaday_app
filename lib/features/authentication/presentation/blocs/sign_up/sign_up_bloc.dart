@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/translations/translations.dart';
 import '../../../../../app/utils/validator.dart';
 import '../../../domain/entities/auth_entity.dart';
@@ -16,29 +15,24 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc(this.signUpWithEmailPasswordUsecase)
       : super(SignUpInitialState()) {
     on<RequestSignUpEvent>((event, emit) async {
+      emit(SignUpLoadingState());
       if (event.email.isEmpty || event.password.isEmpty) {
-        Navigators().showMessage(
+        emit(SignUpErrorState(
           LocaleKeys.auth_please_enter_and_password.tr(),
-          type: MessageType.error,
-        );
+        ));
       } else if (!Validator.validateEmail(event.email)) {
-        Navigators().showMessage(
+        emit(SignUpErrorState(
           LocaleKeys.auth_invalid_email.tr(),
-          type: MessageType.error,
-        );
+        ));
       } else if (!Validator.validatePassword(event.password)) {
-        Navigators().showMessage(
+        emit(SignUpErrorState(
           LocaleKeys.auth_invalid_password.tr(),
-          type: MessageType.error,
-        );
+        ));
       } else if (event.password != event.rePassword) {
-        Navigators().showMessage(
+        emit(SignUpErrorState(
           LocaleKeys.auth_password_does_not_match.tr(),
-          type: MessageType.error,
-        );
+        ));
       } else {
-        emit(SignUpLoadingState());
-
         final result = await signUpWithEmailPasswordUsecase(
           (event.email, event.password),
         );

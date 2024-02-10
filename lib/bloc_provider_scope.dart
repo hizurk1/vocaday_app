@@ -28,7 +28,7 @@ class BlocProviderScope extends StatelessWidget {
         BlocProvider(create: (_) => sl<ConnectionBloc>()),
         //* Authentication Bloc
         BlocProvider(
-          create: (_) => sl<AuthBloc>()..initStream(),
+          create: (_) => sl<AuthBloc>()..initAuthStream(),
         ),
         //* Word List Bloc
         BlocProvider(create: (_) => sl<WordListBloc>()),
