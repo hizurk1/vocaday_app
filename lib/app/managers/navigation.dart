@@ -126,72 +126,86 @@ class Navigators {
     VoidCallback? onAccept,
     VoidCallback? onCancel,
   }) {
-    showDialog(
+    showGeneralDialog(
       context: currentContext!,
       barrierDismissible: dissmisable,
-      builder: (context) {
-        return AlertDialog(
-          surfaceTintColor: context.theme.cardColor,
-          backgroundColor: context.theme.cardColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.r),
-          ),
-          icon: showIcon
-              ? CircleAvatar(
-                  backgroundColor: context.theme.primaryColor,
-                  radius: 25,
-                  child: icon != null
-                      ? SvgPicture.asset(
-                          icon,
-                          colorFilter: ColorFilter.mode(
-                            currentContext!.colors.white,
-                            BlendMode.srcIn,
-                          ),
-                        )
-                      : Icon(
-                          iconData ?? Icons.info,
-                          color: currentContext!.colors.white,
-                        ),
-                )
-              : null,
-          title: Center(
-            child: TextCustom(
-              title,
-              textAlign: TextAlign.center,
-              style: navigationKey.currentContext?.textStyle.bodyL.bold.bw,
+      barrierLabel: '',
+      transitionDuration: Durations.medium1,
+      pageBuilder: (context, animation, _) => const SizedBox(),
+      transitionBuilder: (context, animation, _, widget) {
+        return ScaleTransition(
+          scale: Tween<double>(begin: 0.75, end: 1.0).animate(
+            CurvedAnimation(
+              parent: animation,
+              curve: Curves.fastOutSlowIn,
             ),
           ),
-          content: subtitle.isNotNullOrEmpty
-              ? TextCustom(
-                  subtitle ?? '',
+          child: FadeTransition(
+            opacity: Tween<double>(begin: 0, end: 1.0).animate(animation),
+            child: AlertDialog(
+              surfaceTintColor: context.theme.cardColor,
+              backgroundColor: context.theme.cardColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.r),
+              ),
+              icon: showIcon
+                  ? CircleAvatar(
+                      backgroundColor: context.theme.primaryColor,
+                      radius: 25,
+                      child: icon != null
+                          ? SvgPicture.asset(
+                              icon,
+                              colorFilter: ColorFilter.mode(
+                                currentContext!.colors.white,
+                                BlendMode.srcIn,
+                              ),
+                            )
+                          : Icon(
+                              iconData ?? Icons.info,
+                              color: currentContext!.colors.white,
+                            ),
+                    )
+                  : null,
+              title: Center(
+                child: TextCustom(
+                  title,
                   textAlign: TextAlign.center,
-                  style: navigationKey.currentContext?.textStyle.bodyS.grey,
-                )
-              : null,
-          actionsOverflowButtonSpacing: 15.h,
-          actionsAlignment: MainAxisAlignment.spaceBetween,
-          actions: showAccept || showCancel
-              ? [
-                  if (showAccept)
-                    PushableButton(
-                      onPressed: () {
-                        onAccept?.call();
-                        context.pop();
-                      },
-                      text: acceptText ?? LocaleKeys.common_okay.tr(),
-                      type: PushableButtonType.primary,
-                    ),
-                  if (showCancel)
-                    PushableButton(
-                      onPressed: () {
-                        onCancel?.call();
-                        context.pop();
-                      },
-                      text: cancelText ?? LocaleKeys.common_cancel.tr(),
-                      type: PushableButtonType.grey,
-                    ),
-                ]
-              : null,
+                  style: navigationKey.currentContext?.textStyle.bodyL.bold.bw,
+                ),
+              ),
+              content: subtitle.isNotNullOrEmpty
+                  ? TextCustom(
+                      subtitle ?? '',
+                      textAlign: TextAlign.center,
+                      style: navigationKey.currentContext?.textStyle.bodyS.grey,
+                    )
+                  : null,
+              actionsOverflowButtonSpacing: 15.h,
+              actionsAlignment: MainAxisAlignment.spaceBetween,
+              actions: showAccept || showCancel
+                  ? [
+                      if (showAccept)
+                        PushableButton(
+                          onPressed: () {
+                            onAccept?.call();
+                            context.pop();
+                          },
+                          text: acceptText ?? LocaleKeys.common_okay.tr(),
+                          type: PushableButtonType.primary,
+                        ),
+                      if (showCancel)
+                        PushableButton(
+                          onPressed: () {
+                            onCancel?.call();
+                            context.pop();
+                          },
+                          text: cancelText ?? LocaleKeys.common_cancel.tr(),
+                          type: PushableButtonType.grey,
+                        ),
+                    ]
+                  : null,
+            ),
+          ),
         );
       },
     );

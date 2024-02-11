@@ -54,8 +54,8 @@ class _ProfileEditPersonalInfoPageState
     debugPrint('result: $result');
   }
 
-  void _onActionPressed() {
-    debugPrint('_onActionPressed: ${_nameController.text}');
+  void _onSavePressed() {
+    debugPrint('_onSavePressed: ${_nameController.text}');
     context.pop();
   }
 
@@ -72,7 +72,7 @@ class _ProfileEditPersonalInfoPageState
     return BottomSheetCustom(
       fullScreen: true, //! Change this if you want to fullscreen bottom sheet
       textTitle: LocaleKeys.profile_edit_profile.tr(),
-      onAction: _onActionPressed,
+      onAction: _onSavePressed,
       body: SingleChildScrollView(
         child: BlocBuilder<UserDataCubit, UserDataState>(
           builder: (context, state) {
@@ -130,7 +130,7 @@ class _ProfileEditPersonalInfoPageState
             icon: AppAssets.calendarOutline,
           ),
           _buildDropdownItem(
-            initialValue: EGender.male.value,
+            initialValue: _selectedGender,
             values: EGender.values.map((e) => e.value).toList(),
             icon: AppAssets.genderOutline,
             label: LocaleKeys.profile_gender.tr(),
