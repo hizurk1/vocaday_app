@@ -13,6 +13,7 @@ class AppTheme {
     dialogBackgroundColor: AppColor().white,
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: AppColor().backgroundLight,
+      surfaceTintColor: AppColor().backgroundLight,
       modalBackgroundColor: AppColor().backgroundLight,
     ),
     colorScheme: ColorScheme.fromSeed(
@@ -36,6 +37,7 @@ class AppTheme {
     dialogBackgroundColor: AppColor().black,
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: AppColor().backgroundDark,
+      surfaceTintColor: AppColor().backgroundDark,
       modalBackgroundColor: AppColor().backgroundDark,
     ),
     colorScheme: ColorScheme.fromSeed(

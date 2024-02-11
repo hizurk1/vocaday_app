@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/authentication/presentation/pages/authentication_page.dart';
-import '../../features/user/presentation/pages/main_profile/profile_edit_personal_info_page.dart';
 import '../../injection_container.dart';
 import '../managers/navigation.dart';
 import '../managers/shared_preferences.dart';
@@ -71,17 +70,7 @@ class AppRouter {
           GoRoute(
             path: "profile",
             builder: (context, state) => const ProfilePage(),
-            routes: [
-              //? Route: '/main/profile/edit'
-              GoRoute(
-                path: "edit",
-                pageBuilder: (context, state) => slideTransitionPage<void>(
-                  context: context,
-                  state: state,
-                  child: const ProfileEditPersonalInfoPage(),
-                ),
-              ),
-            ],
+            routes: const [],
           ),
         ],
       ),

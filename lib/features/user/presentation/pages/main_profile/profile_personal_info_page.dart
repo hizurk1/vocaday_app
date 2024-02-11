@@ -10,8 +10,6 @@ import '../../../../../app/widgets/loading_indicator.dart';
 import '../../../../../core/extensions/date_time.dart';
 import '../../cubits/user_data/user_data_cubit.dart';
 
-enum EGender { male, female, other }
-
 class ProfilePersonalInfoPage extends StatelessWidget {
   const ProfilePersonalInfoPage({super.key});
 

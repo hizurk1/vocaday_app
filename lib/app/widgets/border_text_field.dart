@@ -3,15 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/extensions/build_context.dart';
+import '../constants/app_asset.dart';
 import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 
-class BorderTextField extends StatefulWidget {
-  const BorderTextField({
+class BorderTextField extends StatelessWidget {
+  BorderTextField({
     super.key,
-    required TextEditingController controller,
+    required this.controller,
     required this.hintText,
-    required this.icon,
+    this.icon,
     this.hintColor,
     this.enable = true,
     this.borderColor,
@@ -20,12 +21,12 @@ class BorderTextField extends StatefulWidget {
     this.inputType = TextInputType.text,
     this.isPasswordField = false,
     this.textCapitalization = TextCapitalization.none,
-    this.hasLeading = true,
-  }) : _controller = controller;
+    this.onTap,
+  });
 
-  final TextEditingController _controller;
+  final TextEditingController controller;
   final Color? borderColor;
-  final String icon;
+  final String? icon;
   final String hintText;
   final Color? hintColor;
   final TextInputType inputType;
@@ -33,26 +34,24 @@ class BorderTextField extends StatefulWidget {
   final TextCapitalization textCapitalization;
   final int maxLength;
   final int maxLines;
+
+  /// If this value is set to `false`, the user can't type in this text field
+  /// and an [InkWell] widget with [onTap] function will be available.
   final bool enable;
-  final bool hasLeading;
+  final VoidCallback? onTap;
 
-  @override
-  State<BorderTextField> createState() => _BorderTextFieldState();
-}
-
-class _BorderTextFieldState extends State<BorderTextField> {
-  bool eyeState = false;
+  final ValueNotifier<bool> eyeState = ValueNotifier(false);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final child = Container(
       padding: EdgeInsets.symmetric(
         horizontal: 10.w,
-        vertical: widget.maxLines > 1 ? 10.w : 0,
+        vertical: maxLines > 1 ? 10.w : 0,
       ),
       decoration: BoxDecoration(
         border: Border.all(
-          color: widget.borderColor ??
+          color: borderColor ??
               (context.isDarkTheme
                   ? context.colors.grey700
                   : context.colors.grey300),
@@ -60,50 +59,57 @@ class _BorderTextFieldState extends State<BorderTextField> {
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: TextField(
-        controller: widget._controller,
-        maxLines: widget.maxLines,
-        maxLength: widget.maxLength,
-        enabled: widget.enable,
-        textCapitalization: widget.textCapitalization,
+        controller: controller,
+        maxLines: maxLines,
+        maxLength: maxLength,
+        enabled: enable,
+        textCapitalization: textCapitalization,
         style: context.textStyle.bodyS.bw,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(bottom: 2.h),
-          icon: widget.hasLeading
-              ? SvgPicture.asset(
-                  widget.icon,
-                  height: 25,
-                  width: 25,
-                  colorFilter:
-                      ColorFilter.mode(context.colors.grey400, BlendMode.srcIn),
-                )
-              : null,
-          hintText: widget.hintText,
-          hintStyle: context.textStyle.bodyS.grey,
+          icon: SvgPicture.asset(
+            icon ?? AppAssets.copyIcon,
+            height: 25.h,
+            width: 25.w,
+            colorFilter:
+                ColorFilter.mode(context.colors.grey400, BlendMode.srcIn),
+          ),
+          hintText: hintText,
+          hintStyle: context.textStyle.bodyS.grey80,
           counterText: '',
-          suffixIcon: widget.isPasswordField
+          suffixIcon: isPasswordField
               ? GestureDetector(
-                  onTap: () => setState(() {
-                    eyeState = !eyeState;
-                  }),
+                  onTap: () => eyeState.value = !eyeState.value,
                   child: Opacity(
                     opacity: .5,
-                    child: SvgPicture.asset(
-                      'assets/icons/eye_${eyeState ? 'open' : 'close'}.svg',
-                      fit: BoxFit.scaleDown,
+                    child: ValueListenableBuilder(
+                      valueListenable: eyeState,
+                      builder: (context, value, _) {
+                        return SvgPicture.asset(
+                          'assets/icons/eye_${value ? 'open' : 'close'}.svg',
+                          fit: BoxFit.scaleDown,
+                        );
+                      },
                     ),
                   ),
                 )
               : null,
         ),
-        obscureText: widget.isPasswordField ? !eyeState : false,
-        keyboardType: widget.inputType,
+        obscureText: isPasswordField ? !eyeState.value : false,
+        keyboardType: inputType,
         cursorWidth: 2,
         cursorColor: context.textTheme.bodyMedium?.color,
-        textAlignVertical: widget.isPasswordField
-            ? TextAlignVertical.center
-            : TextAlignVertical.top,
+        textAlignVertical:
+            isPasswordField ? TextAlignVertical.center : TextAlignVertical.top,
       ),
     );
+    return enable
+        ? child
+        : InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(10.r),
+            child: child,
+          );
   }
 }

@@ -33,15 +33,18 @@ extension TextStyleExt on TextStyle {
             : AppColor().black,
       );
 
-  /// color: grey
+  /// color: `grey`
   TextStyle get grey => copyWith(
         color: Navigators().currentContext!.isDarkTheme
             ? AppColor().grey300
             : AppColor().grey,
       );
 
-  /// color: grey300
+  /// color: `grey300`
   TextStyle get grey300 => copyWith(color: AppColor().grey300);
+
+  /// color: `grey` with opacity 80%
+  TextStyle get grey80 => copyWith(color: AppColor().grey.withOpacity(.8));
 }
 
 class AppTextStyle {
@@ -101,7 +104,7 @@ class AppTextStyle {
   /// fontSize: 12 [bold]
   final TextStyle labelL = TextStyle(
     fontSize: 12.sp,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.normal,
   );
   //! Caption
   /// fontSize: 12 [w300]

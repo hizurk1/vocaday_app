@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/build_context.dart';
+import '../../../../../features/user/presentation/cubits/user_data/user_data_cubit.dart';
+import '../../../../../features/user/presentation/pages/main_profile/profile_edit_personal_info_page.dart';
 import '../../../../../features/user/presentation/pages/main_profile/profile_personal_info_page.dart';
 import '../../../../../features/user/presentation/widgets/main_profile/profile_personal_info.dart';
 import '../../../../constants/app_asset.dart';
-import '../../../../routes/route_manager.dart';
+import '../../../../managers/navigation.dart';
 import '../../../../translations/translations.dart';
 import '../../../../widgets/app_bar.dart';
 import '../../../../widgets/sliver_tab_view.dart';
@@ -17,6 +19,19 @@ import 'profile_completion_progress_page.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
+  void _onEditPressed(BuildContext context) {
+    final state = context.read<UserDataCubit>().state;
+    if (state is UserDataErrorState) {
+      Navigators().showMessage(state.message, type: MessageType.error);
+    }
+    if (state is UserDataLoadedState) {
+      context.showBottomSheet(
+        child: const ProfileEditPersonalInfoPage(),
+        isFullScreen: false,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +39,7 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBarCustom(
         textTitle: LocaleKeys.profile_profile_title.tr(),
         action: GestureDetector(
-          onTap: () => context.push(AppRoutes.profileEdit),
+          onTap: () => _onEditPressed(context),
           child: Container(
             padding: EdgeInsets.all(5.w),
             margin: EdgeInsets.only(right: 20.w),

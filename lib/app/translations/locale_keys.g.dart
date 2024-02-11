@@ -21,6 +21,7 @@ abstract class  LocaleKeys {
   static const common_close = 'common.close';
   static const common_retry = 'common.retry';
   static const common_save = 'common.save';
+  static const common_select = 'common.select';
   static const auth_already_have_an_account = 'auth.already_have_an_account';
   static const auth_sign_in = 'auth.sign_in';
   static const auth_sign_up = 'auth.sign_up';
@@ -59,6 +60,9 @@ abstract class  LocaleKeys {
   static const profile_no_info = 'profile.no_info';
   static const profile_edit_profile = 'profile.edit_profile';
   static const profile_display_name = 'profile.display_name';
+  static const profile_enter_display_name = 'profile.enter_display_name';
+  static const profile_enter_phone_number = 'profile.enter_phone_number';
+  static const profile_select = 'profile.select';
   static const utils_no_internet_connection = 'utils.no_internet_connection';
   static const utils_check_your_internet_connection = 'utils.check_your_internet_connection';
   static const utils_you_back_online = 'utils.you_back_online';

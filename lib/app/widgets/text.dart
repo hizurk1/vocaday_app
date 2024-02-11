@@ -22,6 +22,8 @@ class TextCustom extends StatelessWidget {
   /// The [text] parameter is the text that will be displayed. The [style] parameter
   /// is the text style to use. The [maxLines] parameter is the maximum number of lines
   /// to display. The [textAlign] parameter is the alignment of the text.
+  ///
+  /// By default, it uses the text style with body small and bw style.
   const TextCustom(
     this.text, {
     this.maxLines = 1,

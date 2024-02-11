@@ -27,6 +27,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     this.action,
     this.title,
     this.textTitle,
+    this.appBarHeight,
     this.enablePadding = false,
     this.centerTitle = true,
   });
@@ -62,13 +63,21 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   /// The default value is true.
   final bool centerTitle;
 
+  /// The height of the app bar.
+  ///
+  /// The default value is [AppElement.appBarHeight]
+  final double? appBarHeight;
+
   @override
-  Size get preferredSize => Size.fromHeight(AppElement.appBarSize.h);
+  Size get preferredSize => Size.fromHeight(
+        appBarHeight ?? AppElement.appBarHeight.h,
+      );
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: context.screenWidth,
+      height: appBarHeight,
       padding: enablePadding ? EdgeInsets.symmetric(horizontal: 10.w) : null,
       decoration: BoxDecoration(
         color:

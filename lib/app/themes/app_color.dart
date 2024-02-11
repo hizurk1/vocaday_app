@@ -25,6 +25,7 @@ class AppColor {
   final Color grey700 = const Color(0xFF595959);
   final Color grey800 = const Color(0xFF404040);
   final Color grey900 = const Color(0xFF262626);
+  final Color grey950 = const Color(0xFF1a1a1a);
   //* Blue
   final Color blue = const Color(0xFF3b47de); // 500
   final Color blue100 = const Color(0xFFe9ebfb);

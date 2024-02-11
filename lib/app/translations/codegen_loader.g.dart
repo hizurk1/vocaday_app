@@ -39,7 +39,8 @@ class CodegenLoader extends AssetLoader{
     "okay": "Okay",
     "close": "Close",
     "retry": "Retry",
-    "save": "Save"
+    "save": "Save",
+    "select": "Select"
   },
   "auth": {
     "already_have_an_account": "Already have an account?",
@@ -94,7 +95,10 @@ class CodegenLoader extends AssetLoader{
     "created_date": "Created date",
     "no_info": "No info",
     "edit_profile": "Edit profile",
-    "display_name": "Display name"
+    "display_name": "Display name",
+    "enter_display_name": "Enter your display name",
+    "enter_phone_number": "Enter your phone number",
+    "select": "Select"
   },
   "utils": {
     "no_internet_connection": "No internet connection",
@@ -127,7 +131,8 @@ static const Map<String,dynamic> vi_VN = {
     "okay": "Đồng ý",
     "close": "Đóng",
     "retry": "Thử lại",
-    "save": "Lưu"
+    "save": "Lưu",
+    "select": "Chọn"
   },
   "auth": {
     "already_have_an_account": "Bạn đã có tài khoản chưa?",
@@ -182,7 +187,10 @@ static const Map<String,dynamic> vi_VN = {
     "created_date": "Ngày tạo",
     "no_info": "Không có thông tin",
     "edit_profile": "Chỉnh sửa hồ sơ",
-    "display_name": "Tên hiển thị"
+    "display_name": "Tên hiển thị",
+    "enter_display_name": "Nhập tên hiển thị",
+    "enter_phone_number": "Nhập số điện thoại của bạn",
+    "select": "Chọn"
   },
   "utils": {
     "no_internet_connection": "Không có kết nối mạng",

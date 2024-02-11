@@ -36,7 +36,7 @@ class SliverTabView extends StatelessWidget {
           SliverAppBar(
             floating: true,
             pinned: isPinned,
-            toolbarHeight: AppElement.appBarSize + 20.h,
+            toolbarHeight: AppElement.appBarHeight + 20.h,
             backgroundColor: context.backgroundColor,
             surfaceTintColor: context.backgroundColor,
             flexibleSpace: Center(child: tabBar),
