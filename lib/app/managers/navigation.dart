@@ -230,16 +230,24 @@ class Navigators {
       barrierDismissible: false,
       builder: (context) {
         return Dialog(
+          backgroundColor: context.theme.cardColor,
+          surfaceTintColor: context.theme.canvasColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.r),
+          ),
           child: Container(
-            color: Colors.white,
             padding: const EdgeInsets.all(30),
-            child: const Row(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.r),
+              color: context.theme.cardColor,
+            ),
+            child: Row(
               children: [
                 CircularProgressIndicator(
-                  color: Colors.blue,
+                  color: context.colors.blue,
                 ),
-                Gap(width: 20),
-                TextCustom("Please wait..."),
+                const Gap(width: 30),
+                const TextCustom("Please wait..."),
               ],
             ),
           ),

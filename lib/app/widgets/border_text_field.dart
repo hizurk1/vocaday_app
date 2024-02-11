@@ -10,10 +10,10 @@ import '../themes/app_text_theme.dart';
 class BorderTextField extends StatelessWidget {
   BorderTextField({
     super.key,
-    required this.controller,
-    required this.hintText,
+    this.controller,
     this.icon,
     this.hintColor,
+    this.hintText = '',
     this.enable = true,
     this.borderColor,
     this.maxLength = 50,
@@ -24,7 +24,7 @@ class BorderTextField extends StatelessWidget {
     this.onTap,
   });
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final Color? borderColor;
   final String? icon;
   final String hintText;

@@ -122,5 +122,5 @@ Future<void> setUpServiceLocator() async {
     () => GetUserDataUsecase(repository: sl()),
   );
   // Bloc/Cubit
-  sl.registerFactory(() => UserDataCubit(sl()));
+  sl.registerFactory(() => UserDataCubit(sl(), sl()));
 }

@@ -1,3 +1,5 @@
+import '../../app/translations/translations.dart';
+
 extension StringNullExt on String? {
   bool get isNotNullOrEmpty {
     if (this != null && this!.isNotEmpty) return true;
@@ -12,6 +14,13 @@ extension StringNullExt on String? {
 }
 
 extension StringExtension on String {
+  /// Parse string to DateTime format with pattern `dd/MM/yyyy`.
+  ///
+  /// Example:
+  ///
+  /// '11/02/2024'.toDate; // Returns DateTime(2024, 02, 11)
+  DateTime get toDate => DateFormat("dd/MM/yyyy").parse(this);
+
   /// Returns a copy of this string with the first character converted to uppercase.
   ///
   /// If the string is empty, this method returns an empty string.

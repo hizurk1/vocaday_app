@@ -15,186 +15,186 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> en_US = {
-  "on_board": {
-    "select_language": "Select language",
-    "select_language_content": "Don't worry! You can change it later on Settings.",
-    "onboard_title": "Let's learn!",
-    "onboard_body": "We will help you learn English vocabulary everyday, effectively. Trust me, this is really fun!",
-    "get_started": "Get started"
-  },
   "app_language": {
     "english": "English",
     "vietnamese": "Vietnamese"
   },
-  "common": {
-    "next": "Next",
-    "accept": "Accept",
-    "cancel": "Cancel",
-    "skip": "Skip",
-    "done": "Done",
-    "browse": "Browse",
-    "other_k": "Other",
-    "is_copied_to_clipboard": "'{word}' is copied to clipboard.",
-    "error": "Error",
-    "okay": "Okay",
-    "close": "Close",
-    "retry": "Retry",
-    "save": "Save",
-    "select": "Select"
-  },
-  "auth": {
-    "already_have_an_account": "Already have an account?",
-    "sign_in": "Sign in",
-    "sign_up": "Sign up",
-    "welcome": "Welcome",
-    "enter_email": "Enter email",
-    "enter_password": "Enter password",
-    "forgot_password": "Forgot password?",
-    "or_sign_in_with": "Or sign in with:",
-    "create_an_account": "Create an account",
-    "confirm_password": "Confirm password",
-    "please_enter_and_password": "Please enter email and password!",
-    "password_does_not_match": "Password does not match",
-    "sign_in_as_email": "Sign in as {email}",
-    "invalid_email": "Email could only contains . - _ as the special characters",
-    "invalid_password": "Password must contains 8 characters and numbers.",
-    "sign_out": "Sign out",
-    "are_you_want_to_sign_out": "Are you sure you want to sign out?"
-  },
   "app_log": {
     "on_restart": "Welcome back!"
   },
-  "user_data": {
-    "point": {
-      "zero": "0 point",
-      "one": "1 point",
-      "many": "{} points",
-      "other": "{} points"
-    }
+  "auth": {
+    "already_have_an_account": "Already have an account?",
+    "are_you_want_to_sign_out": "Are you sure you want to sign out?",
+    "confirm_password": "Confirm password",
+    "create_an_account": "Create an account",
+    "enter_email": "Enter email",
+    "enter_password": "Enter password",
+    "forgot_password": "Forgot password?",
+    "invalid_email": "Email could only contains . - _ as the special characters",
+    "invalid_password": "Password must contains 8 characters and numbers.",
+    "or_sign_in_with": "Or sign in with:",
+    "password_does_not_match": "Password does not match",
+    "please_enter_and_password": "Please enter email and password!",
+    "sign_in": "Sign in",
+    "sign_in_as_email": "Sign in as {email}",
+    "sign_out": "Sign out",
+    "sign_up": "Sign up",
+    "welcome": "Welcome"
+  },
+  "common": {
+    "accept": "Accept",
+    "browse": "Browse",
+    "cancel": "Cancel",
+    "close": "Close",
+    "done": "Done",
+    "error": "Error",
+    "is_copied_to_clipboard": "'{word}' is copied to clipboard.",
+    "next": "Next",
+    "okay": "Okay",
+    "other_k": "Other",
+    "retry": "Retry",
+    "save": "Save",
+    "select": "Select",
+    "skip": "Skip"
+  },
+  "on_board": {
+    "get_started": "Get started",
+    "onboard_body": "We will help you learn English vocabulary everyday, effectively. Trust me, this is really fun!",
+    "onboard_title": "Let's learn!",
+    "select_language": "Select language",
+    "select_language_content": "Don't worry! You can change it later on Settings."
   },
   "page": {
-    "home": "Home",
-    "search": "Search",
     "activity": "Activity",
+    "home": "Home",
     "profile": "Profile",
+    "search": "Search",
     "setting": "Setting"
   },
-  "search": {
-    "search_for_words": "Search for words",
-    "type_something": "Type something",
-    "not_found": "Not found",
-    "are_you_looking_for": "Are you looking for?"
-  },
   "profile": {
-    "profile_title": "My profile",
-    "personal_info": "Personal info",
-    "completion_progress": "Completion progress",
-    "phone": "Phone",
     "birthday": "Birthday",
-    "gender": "Gender",
+    "completion_progress": "Completion progress",
     "created_date": "Created date",
-    "no_info": "No info",
-    "edit_profile": "Edit profile",
     "display_name": "Display name",
+    "edit_profile": "Edit profile",
     "enter_display_name": "Enter your display name",
     "enter_phone_number": "Enter your phone number",
-    "select": "Select"
+    "gender": "Gender",
+    "no_info": "No info",
+    "personal_info": "Personal info",
+    "phone": "Phone",
+    "profile_title": "My profile",
+    "update_success": "Update successful"
+  },
+  "search": {
+    "are_you_looking_for": "Are you looking for?",
+    "not_found": "Not found",
+    "search_for_words": "Search for words",
+    "type_something": "Type something"
+  },
+  "user_data": {
+    "point": {
+      "many": "{} points",
+      "one": "1 point",
+      "other": "{} points",
+      "zero": "0 point"
+    }
   },
   "utils": {
-    "no_internet_connection": "No internet connection",
     "check_your_internet_connection": "Check your internet connection",
+    "no_internet_connection": "No internet connection",
     "you_back_online": "Woohoo! You are back online."
   }
 };
 static const Map<String,dynamic> vi_VN = {
-  "on_board": {
-    "select_language": "Chọn ngôn ngữ",
-    "select_language_content": "Đừng lo! Bạn có thể thay đổi nó sau trong phần Cài đặt.",
-    "onboard_title": "Học nào!",
-    "onboard_body": "Chúng tôi sẽ giúp bạn học từ vựng tiếng Anh mỗi ngày. Tin tôi đi, nó sẽ rất vui đấy!",
-    "get_started": "Bắt đầu"
-  },
   "app_language": {
     "english": "Tiếng Anh",
     "vietnamese": "Tiếng Việt"
   },
-  "common": {
-    "next": "Tiếp tục",
-    "accept": "Đồng ý",
-    "cancel": "Huỷ",
-    "skip": "Huỷ",
-    "done": "Xong",
-    "browse": "Duyệt",
-    "other_k": "Khác",
-    "is_copied_to_clipboard": "'{word}' đã sao chép vào bộ nhớ tạm.",
-    "error": "Lỗi",
-    "okay": "Đồng ý",
-    "close": "Đóng",
-    "retry": "Thử lại",
-    "save": "Lưu",
-    "select": "Chọn"
-  },
-  "auth": {
-    "already_have_an_account": "Bạn đã có tài khoản chưa?",
-    "sign_in": "Đăng nhập",
-    "sign_up": "Đăng ký",
-    "welcome": "Chào mừng",
-    "enter_email": "Nhập email",
-    "enter_password": "Nhập mật khẩu",
-    "forgot_password": "Quên mật khẩu?",
-    "or_sign_in_with": "Hoặc đăng nhập với:",
-    "create_an_account": "Tạo một tài khoản",
-    "confirm_password": "Xác nhận mật khẩu",
-    "please_enter_and_password": "Hãy nhập email và mật khẩu!",
-    "password_does_not_match": "Mật khẩu không khớp",
-    "sign_in_as_email": "Đăng nhập với {email}",
-    "invalid_email": "Email chỉ có thể chứa . - _ là ký tự đặc biệt",
-    "invalid_password": "Mật khẩu phải bao gồm 8 ký tự và chữ số.",
-    "sign_out": "Đăng xuất",
-    "are_you_want_to_sign_out": "Bạn có chắc chắn muốn đăng xuất?"
-  },
   "app_log": {
     "on_restart": "Mừng bạn quay lại!"
   },
-  "user_data": {
-    "point": {
-      "zero": "0 điểm",
-      "one": "1 điểm",
-      "many": "{} điểm",
-      "other": "{} điểm"
-    }
+  "auth": {
+    "already_have_an_account": "Bạn đã có tài khoản chưa?",
+    "are_you_want_to_sign_out": "Bạn có chắc chắn muốn đăng xuất?",
+    "confirm_password": "Xác nhận mật khẩu",
+    "create_an_account": "Tạo một tài khoản",
+    "enter_email": "Nhập email",
+    "enter_password": "Nhập mật khẩu",
+    "forgot_password": "Quên mật khẩu?",
+    "invalid_email": "Email chỉ có thể chứa . - _ là ký tự đặc biệt",
+    "invalid_password": "Mật khẩu phải bao gồm 8 ký tự và chữ số.",
+    "or_sign_in_with": "Hoặc đăng nhập với:",
+    "password_does_not_match": "Mật khẩu không khớp",
+    "please_enter_and_password": "Hãy nhập email và mật khẩu!",
+    "sign_in": "Đăng nhập",
+    "sign_in_as_email": "Đăng nhập với {email}",
+    "sign_out": "Đăng xuất",
+    "sign_up": "Đăng ký",
+    "welcome": "Chào mừng"
+  },
+  "common": {
+    "accept": "Đồng ý",
+    "browse": "Duyệt",
+    "cancel": "Huỷ",
+    "close": "Đóng",
+    "done": "Xong",
+    "error": "Lỗi",
+    "is_copied_to_clipboard": "'{word}' đã sao chép vào bộ nhớ tạm.",
+    "next": "Tiếp tục",
+    "okay": "Đồng ý",
+    "other_k": "Khác",
+    "retry": "Thử lại",
+    "save": "Lưu",
+    "select": "Chọn",
+    "skip": "Huỷ"
+  },
+  "on_board": {
+    "get_started": "Bắt đầu",
+    "onboard_body": "Chúng tôi sẽ giúp bạn học từ vựng tiếng Anh mỗi ngày. Tin tôi đi, nó sẽ rất vui đấy!",
+    "onboard_title": "Học nào!",
+    "select_language": "Chọn ngôn ngữ",
+    "select_language_content": "Đừng lo! Bạn có thể thay đổi nó sau trong phần Cài đặt."
   },
   "page": {
-    "home": "Trang chủ",
-    "search": "Tìm kiếm",
     "activity": "Hoạt động",
+    "home": "Trang chủ",
     "profile": "Hồ sơ",
+    "search": "Tìm kiếm",
     "setting": "Cài đặt"
   },
-  "search": {
-    "search_for_words": "Tìm từ vựng",
-    "type_something": "Nhập gì đó",
-    "not_found": "Không tìm thấy",
-    "are_you_looking_for": "Có phải bạn đang tìm?"
-  },
   "profile": {
-    "profile_title": "Hồ sơ của tôi",
-    "personal_info": "Thông tin cá nhân",
-    "completion_progress": "Tiến độ hoàn thành",
-    "phone": "Số điện thoại",
     "birthday": "Sinh nhật",
-    "gender": "Giới tính",
+    "completion_progress": "Tiến độ hoàn thành",
     "created_date": "Ngày tạo",
-    "no_info": "Không có thông tin",
-    "edit_profile": "Chỉnh sửa hồ sơ",
     "display_name": "Tên hiển thị",
+    "edit_profile": "Chỉnh sửa hồ sơ",
     "enter_display_name": "Nhập tên hiển thị",
     "enter_phone_number": "Nhập số điện thoại của bạn",
-    "select": "Chọn"
+    "gender": "Giới tính",
+    "no_info": "Không có thông tin",
+    "personal_info": "Thông tin cá nhân",
+    "phone": "Số điện thoại",
+    "profile_title": "Hồ sơ của tôi",
+    "update_success": "Cập nhật thành công"
+  },
+  "search": {
+    "are_you_looking_for": "Có phải bạn đang tìm?",
+    "not_found": "Không tìm thấy",
+    "search_for_words": "Tìm từ vựng",
+    "type_something": "Nhập gì đó"
+  },
+  "user_data": {
+    "point": {
+      "many": "{} điểm",
+      "one": "1 điểm",
+      "other": "{} điểm",
+      "zero": "0 điểm"
+    }
   },
   "utils": {
-    "no_internet_connection": "Không có kết nối mạng",
     "check_your_internet_connection": "Kiểm tra kết nối mạng của bạn",
+    "no_internet_connection": "Không có kết nối mạng",
     "you_back_online": "Hú hú! Đã có kết nối mạng."
   }
 };

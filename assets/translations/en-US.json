@@ -67,7 +67,8 @@
     "no_info": "No info",
     "personal_info": "Personal info",
     "phone": "Phone",
-    "profile_title": "My profile"
+    "profile_title": "My profile",
+    "update_success": "Update successful"
   },
   "search": {
     "are_you_looking_for": "Are you looking for?",

@@ -26,7 +26,9 @@ class ProfilePage extends StatelessWidget {
     }
     if (state is UserDataLoadedState) {
       context.showBottomSheet(
-        child: const ProfileEditPersonalInfoPage(),
+        child: ProfileEditPersonalInfoPage(
+          userEntity: state.entity,
+        ),
         isFullScreen: false,
       );
     }

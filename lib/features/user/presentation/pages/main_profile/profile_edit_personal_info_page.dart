@@ -16,6 +16,8 @@ import '../../../../../app/widgets/gap.dart';
 import '../../../../../app/widgets/text.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../../core/extensions/date_time.dart';
+import '../../../../../core/extensions/string.dart';
+import '../../../domain/entities/user_entity.dart';
 import '../../cubits/user_data/user_data_cubit.dart';
 
 enum EGender { male, female, other }
@@ -29,7 +31,12 @@ extension EGenderExt on EGender {
 }
 
 class ProfileEditPersonalInfoPage extends StatefulWidget {
-  const ProfileEditPersonalInfoPage({super.key});
+  const ProfileEditPersonalInfoPage({
+    super.key,
+    required this.userEntity,
+  });
+
+  final UserEntity userEntity;
 
   @override
   State<ProfileEditPersonalInfoPage> createState() =>
@@ -38,25 +45,43 @@ class ProfileEditPersonalInfoPage extends StatefulWidget {
 
 class _ProfileEditPersonalInfoPageState
     extends State<ProfileEditPersonalInfoPage> {
-  final _nameController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _birthdayController = TextEditingController();
+  late TextEditingController _nameController;
+  late TextEditingController _phoneController;
+  late TextEditingController _birthdayController;
 
   String _selectedGender = EGender.values.first.value;
 
   @override
   void initState() {
     super.initState();
+    _nameController = TextEditingController(text: widget.userEntity.name);
+    _phoneController =
+        TextEditingController(text: widget.userEntity.phone ?? '');
+    _birthdayController = TextEditingController(
+      text: (widget.userEntity.birthday ?? DateTime.now()).ddMMyyyy,
+    );
+
+    _selectedGender = widget.userEntity.gender ?? EGender.values.first.value;
   }
 
   Future<void> _onSelectDatePicker() async {
-    final DateTime? result = await context.showDatePickerPopup();
+    final DateTime? result = await context.showDatePickerPopup(
+      initDate: _birthdayController.text.toDate,
+    );
     debugPrint('result: $result');
+    _birthdayController.text = result?.ddMMyyyy ?? '';
   }
 
-  void _onSavePressed() {
-    debugPrint('_onSavePressed: ${_nameController.text}');
-    context.pop();
+  Future _onSavePressed() async {
+    final updateEntity = widget.userEntity.copyWith(
+      name: _nameController.text.trim(),
+      phone: _phoneController.text.trim(),
+      birthday: _birthdayController.text.trim().toDate,
+      gender: _selectedGender,
+    );
+    if (updateEntity != widget.userEntity) {
+      await context.read<UserDataCubit>().updateUserProfile(updateEntity);
+    }
   }
 
   @override
@@ -72,38 +97,26 @@ class _ProfileEditPersonalInfoPageState
     return BottomSheetCustom(
       fullScreen: true, //! Change this if you want to fullscreen bottom sheet
       textTitle: LocaleKeys.profile_edit_profile.tr(),
-      onAction: _onSavePressed,
+      onAction: () {
+        _onSavePressed();
+        context.pop();
+      },
       body: SingleChildScrollView(
-        child: BlocBuilder<UserDataCubit, UserDataState>(
-          builder: (context, state) {
-            if (state is UserDataLoadedState) {
-              _nameController.text = state.entity.name;
-              _phoneController.text = state.entity.phone ?? '';
-              _birthdayController.text =
-                  (state.entity.birthday ?? DateTime.now()).ddMMyyyy;
-              _selectedGender =
-                  state.entity.gender ?? EGender.values.first.value;
-
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _buildAvatar(state.entity.avatar ?? '', context),
-                  _buildInputBody(context),
-                  const Gap(height: 10),
-                ],
-              );
-            }
-            return Container();
-          },
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _buildAvatar(widget.userEntity.avatar ?? ''),
+            _buildInputBody(),
+            const Gap(height: 10),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildInputBody(BuildContext context) {
+  Widget _buildInputBody() {
     return Container(
-      width: context.screenWidth,
       margin: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -206,7 +219,7 @@ class _ProfileEditPersonalInfoPageState
     );
   }
 
-  Widget _buildAvatar(String url, BuildContext context) {
+  Widget _buildAvatar(String url) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20.h),
       child: Align(

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
 class UserEntity extends Equatable {
@@ -28,6 +29,36 @@ class UserEntity extends Equatable {
     this.checkIn,
     this.createdDate,
   });
+
+  UserEntity copyWith({
+    String? uid,
+    String? name,
+    String? email,
+    String? method,
+    String? avatar,
+    String? phone,
+    DateTime? birthday,
+    String? gender,
+    int? point,
+    int? gold,
+    List<DateTime>? checkIn,
+    DateTime? createdDate,
+  }) {
+    return UserEntity(
+      uid: uid ?? this.uid,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      method: method ?? this.method,
+      avatar: avatar ?? this.avatar,
+      phone: phone ?? this.phone,
+      birthday: birthday ?? this.birthday,
+      gender: gender ?? this.gender,
+      point: point ?? this.point,
+      gold: gold ?? this.gold,
+      checkIn: checkIn ?? this.checkIn,
+      createdDate: createdDate ?? this.createdDate,
+    );
+  }
 
   @override
   List<Object?> get props => [
