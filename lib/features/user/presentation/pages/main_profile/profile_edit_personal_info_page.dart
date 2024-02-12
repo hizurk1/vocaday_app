@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/translations/translations.dart';
@@ -68,11 +69,12 @@ class _ProfileEditPersonalInfoPageState
     final DateTime? result = await context.showDatePickerPopup(
       initDate: _birthdayController.text.toDate,
     );
-    debugPrint('result: $result');
-    _birthdayController.text = result?.ddMMyyyy ?? '';
+    if (result != null) {
+      _birthdayController.text = result.ddMMyyyy;
+    }
   }
 
-  Future _onSavePressed() async {
+  Future<void> _onSavePressed() async {
     final updateEntity = widget.userEntity.copyWith(
       name: _nameController.text.trim(),
       phone: _phoneController.text.trim(),
@@ -80,7 +82,9 @@ class _ProfileEditPersonalInfoPageState
       gender: _selectedGender,
     );
     if (updateEntity != widget.userEntity) {
-      await context.read<UserDataCubit>().updateUserProfile(updateEntity);
+      await Navigators().showLoading(
+        task: context.read<UserDataCubit>().updateUserProfile(updateEntity),
+      );
     }
   }
 
@@ -98,8 +102,8 @@ class _ProfileEditPersonalInfoPageState
       fullScreen: true, //! Change this if you want to fullscreen bottom sheet
       textTitle: LocaleKeys.profile_edit_profile.tr(),
       onAction: () {
-        _onSavePressed();
         context.pop();
+        _onSavePressed();
       },
       body: SingleChildScrollView(
         child: Column(

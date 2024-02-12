@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/translations/translations.dart';
@@ -36,7 +35,6 @@ class UserDataCubit extends Cubit<UserDataState> {
   void cancelDataStream() => _streamSubscription?.cancel();
 
   Future<void> updateUserProfile(UserEntity entity) async {
-    Navigators().showDefaultLoader();
     emit(UserDataLoadingState());
 
     final result = await updateUserProfileUsecase(entity);
@@ -51,7 +49,6 @@ class UserDataCubit extends Cubit<UserDataState> {
         emit(UserDataLoadedState(entity));
       },
     );
-    Navigators().currentContext?.pop();
   }
 
   @override

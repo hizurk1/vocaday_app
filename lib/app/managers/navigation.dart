@@ -27,6 +27,11 @@ class Navigators {
 
   BuildContext? get currentContext => navigationKey.currentContext;
 
+  ///This statement uses the `currentContext` to access **the nearest**
+  ///Navigator widget and then calls the `pop()` method on that
+  ///navigator to close **the topmost route** (usually a dialog or a screen).
+  popDialog() => Navigator.of(currentContext!).pop();
+
   /// Shows a message to the user.
   ///
   /// * [text]: The message to show.
@@ -211,17 +216,26 @@ class Navigators {
     );
   }
 
-  showDefaultLoader() {
-    Future.delayed(
-      Duration.zero,
-      () => showDialog(
-        context: currentContext!,
-        barrierDismissible: false,
-        builder: (context) => const Center(
-          child: CircularProgressIndicator(color: Colors.white),
-        ),
+  /// Show loading dialog when [task] is executing.
+  /// After that, it will automatically close this dialog.
+  ///
+  /// Default duration delay is 250ms.
+  Future<void> showLoading({required Future task, Duration? duration}) async {
+    showDialog(
+      context: currentContext!,
+      barrierDismissible: false,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(color: Colors.white),
       ),
     );
+    try {
+      await Future.wait([
+        Future.delayed(duration ?? Durations.medium1),
+        task,
+      ]);
+    } finally {
+      popDialog();
+    }
   }
 
   showPleaseWaitDialog() {

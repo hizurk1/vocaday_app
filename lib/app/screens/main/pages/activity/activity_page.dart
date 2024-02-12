@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/extensions/build_context.dart';
+
 class ActivityPage extends StatelessWidget {
   const ActivityPage({super.key});
 
@@ -7,7 +9,7 @@ class ActivityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.green,
+        color: context.backgroundColor,
       ),
     );
   }
