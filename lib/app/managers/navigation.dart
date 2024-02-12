@@ -32,7 +32,7 @@ class Navigators {
   ///navigator to close **the topmost route** (usually a dialog or a screen).
   popDialog() => Navigator.of(currentContext!).pop();
 
-  /// Shows a message to the user.
+  /// Shows a snackbar message to the user.
   ///
   /// * [text]: The message to show.
   /// * [type]: The type of message to show.
@@ -222,8 +222,8 @@ class Navigators {
   /// Show loading dialog when [task] is executing.
   /// After that, it will automatically close this dialog.
   ///
-  /// Default duration delay is 500ms.
-  Future<void> showLoading({required Future task, Duration? duration}) async {
+  /// Default duration delay is 0ms.
+  Future<void> showLoading({required Future task, Duration? delay}) async {
     showDialog(
       context: currentContext!,
       barrierDismissible: false,
@@ -236,7 +236,7 @@ class Navigators {
     );
     try {
       await Future.wait([
-        Future.delayed(duration ?? Durations.long2),
+        Future.delayed(delay ?? Duration.zero),
         task,
       ]);
     } finally {

@@ -68,7 +68,9 @@
     "personal_info": "Thông tin cá nhân",
     "phone": "Số điện thoại",
     "profile_title": "Hồ sơ của tôi",
-    "update_success": "Cập nhật thành công"
+    "update_success": "Cập nhật thành công",
+    "invalid_phone_number": "Số điện thoại không hợp lệ.",
+    "no_empty_display_name": "Tên hiển thị không được để trống."
   },
   "search": {
     "are_you_looking_for": "Có phải bạn đang tìm?",

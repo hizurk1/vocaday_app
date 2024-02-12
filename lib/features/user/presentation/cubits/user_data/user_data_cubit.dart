@@ -36,11 +36,15 @@ class UserDataCubit extends Cubit<UserDataState> {
   void cancelDataStream() => _streamSubscription?.cancel();
 
   Future<void> updateUserProfile(UserEntity entity) async {
-    if (entity.name.isEmpty ||
-        (entity.phone.isNotNullOrEmpty &&
-            !Validator.validatePhoneNumber(entity.phone!))) {
+    if (entity.name.isEmpty) {
       Navigators().showMessage(
-        "Invalid input. Please check again!",
+        LocaleKeys.profile_no_empty_display_name.tr(),
+        type: MessageType.error,
+      );
+    } else if (entity.phone.isNotNullOrEmpty &&
+        !Validator.validatePhoneNumber(entity.phone!)) {
+      Navigators().showMessage(
+        LocaleKeys.profile_invalid_phone_number.tr(),
         type: MessageType.error,
       );
     } else {

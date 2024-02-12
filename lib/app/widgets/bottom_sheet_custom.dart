@@ -29,32 +29,38 @@ class BottomSheetCustom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Navigator.of(context).pop(),
-      behavior: HitTestBehavior.opaque,
-      child: DraggableScrollableSheet(
-        initialChildSize: initialChildSize,
-        minChildSize: minChildSize,
-        maxChildSize: maxChildSize,
-        builder: (_, controller) => Container(
-          decoration: BoxDecoration(
-            color: context.backgroundColor,
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(16.r),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildTitleBar(context),
-              Expanded(
-                child: ListView(
-                  controller: controller,
-                  children: children,
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: GestureDetector(
+        onTap: () => Navigator.of(context).pop(),
+        behavior: HitTestBehavior.opaque,
+        child: GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: DraggableScrollableSheet(
+            initialChildSize: initialChildSize,
+            minChildSize: minChildSize,
+            maxChildSize: maxChildSize,
+            builder: (_, controller) => Container(
+              decoration: BoxDecoration(
+                color: context.backgroundColor,
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(16.r),
                 ),
               ),
-            ],
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _buildTitleBar(context),
+                  Expanded(
+                    child: ListView(
+                      controller: controller,
+                      children: children,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),

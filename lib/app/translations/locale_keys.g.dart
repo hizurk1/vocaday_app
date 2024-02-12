@@ -58,6 +58,8 @@ abstract class  LocaleKeys {
   static const profile_phone = 'profile.phone';
   static const profile_profile_title = 'profile.profile_title';
   static const profile_update_success = 'profile.update_success';
+  static const profile_invalid_phone_number = 'profile.invalid_phone_number';
+  static const profile_no_empty_display_name = 'profile.no_empty_display_name';
   static const search_are_you_looking_for = 'search.are_you_looking_for';
   static const search_not_found = 'search.not_found';
   static const search_search_for_words = 'search.search_for_words';

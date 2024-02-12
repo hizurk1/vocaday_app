@@ -68,7 +68,9 @@
     "personal_info": "Personal info",
     "phone": "Phone",
     "profile_title": "My profile",
-    "update_success": "Update successful"
+    "update_success": "Update successful",
+    "invalid_phone_number": "Invalid phone number.",
+    "no_empty_display_name": "Display name can not be empty."
   },
   "search": {
     "are_you_looking_for": "Are you looking for?",

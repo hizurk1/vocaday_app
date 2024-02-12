@@ -84,7 +84,9 @@ class CodegenLoader extends AssetLoader{
     "personal_info": "Personal info",
     "phone": "Phone",
     "profile_title": "My profile",
-    "update_success": "Update successful"
+    "update_success": "Update successful",
+    "invalid_phone_number": "Invalid phone number.",
+    "no_empty_display_name": "Display name can not be empty."
   },
   "search": {
     "are_you_looking_for": "Are you looking for?",
@@ -176,7 +178,9 @@ static const Map<String,dynamic> vi_VN = {
     "personal_info": "Thông tin cá nhân",
     "phone": "Số điện thoại",
     "profile_title": "Hồ sơ của tôi",
-    "update_success": "Cập nhật thành công"
+    "update_success": "Cập nhật thành công",
+    "invalid_phone_number": "Số điện thoại không hợp lệ.",
+    "no_empty_display_name": "Tên hiển thị không được để trống."
   },
   "search": {
     "are_you_looking_for": "Có phải bạn đang tìm?",

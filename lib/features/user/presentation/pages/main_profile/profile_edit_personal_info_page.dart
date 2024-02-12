@@ -124,12 +124,14 @@ class _ProfileEditPersonalInfoPageState
             label: LocaleKeys.profile_display_name.tr(),
             hintText: LocaleKeys.profile_enter_display_name.tr(),
             icon: AppAssets.profileIconOutline,
+            inputType: TextInputType.name,
           ),
           _buildFieldItem(
             controller: _phoneController,
             label: LocaleKeys.profile_phone.tr(),
             hintText: LocaleKeys.profile_enter_phone_number.tr(),
             icon: AppAssets.phoneOutline,
+            inputType: TextInputType.phone,
           ),
           _buildFieldItem(
             controller: _birthdayController,
@@ -146,7 +148,6 @@ class _ProfileEditPersonalInfoPageState
             label: LocaleKeys.profile_gender.tr(),
             onChanged: (value) {
               _selectedGender = value ?? _selectedGender;
-              debugPrint('Dropdown: $_selectedGender');
             },
           ),
         ],
@@ -188,6 +189,7 @@ class _ProfileEditPersonalInfoPageState
     required String label,
     required String hintText,
     required String icon,
+    TextInputType inputType = TextInputType.text,
     bool enable = true,
     Color? hintColor,
     VoidCallback? onTap,
@@ -205,6 +207,7 @@ class _ProfileEditPersonalInfoPageState
         ),
         BorderTextField(
           controller: controller,
+          inputType: inputType,
           hintText: hintText,
           hintColor: hintColor,
           enable: enable,
