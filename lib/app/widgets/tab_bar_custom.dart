@@ -31,8 +31,8 @@ class TabBarCustom extends StatelessWidget {
         dividerHeight: 0,
         indicatorSize: TabBarIndicatorSize.tab,
         indicator: BoxDecoration(
+          color: context.theme.tabBarTheme.indicatorColor,
           borderRadius: BorderRadius.circular(7.r),
-          color: context.theme.cardColor,
           boxShadow: [
             BoxShadow(
               color: context.isDarkTheme

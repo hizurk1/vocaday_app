@@ -29,7 +29,6 @@ class ProfilePage extends StatelessWidget {
         child: ProfileEditPersonalInfoPage(
           userEntity: state.entity,
         ),
-        isFullScreen: false,
       );
     }
   }
@@ -47,6 +46,10 @@ class ProfilePage extends StatelessWidget {
             margin: EdgeInsets.only(right: 20.w),
             child: SvgPicture.asset(
               AppAssets.profilePencil,
+              colorFilter: ColorFilter.mode(
+                context.theme.primaryColor,
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ),

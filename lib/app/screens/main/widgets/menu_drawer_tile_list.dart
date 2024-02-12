@@ -32,7 +32,7 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
     });
   }
 
-  void _onSelectedTile(int index) {
+  void _onSelectedTile(int index) async {
     setState(() => selectedIndex = index);
     switch (index) {
       case 0:
@@ -44,15 +44,15 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
         break;
       case 2:
       case 3:
-        Navigators().showDialogWithButton(
+        final result = await Navigators().showDialogWithButton(
           title: LocaleKeys.auth_sign_out.tr(),
           subtitle: LocaleKeys.auth_are_you_want_to_sign_out.tr(),
           acceptText: LocaleKeys.auth_sign_out.tr(),
           onAccept: () {
             context.read<AuthBloc>().add(RequestSignOutEvent());
           },
-          onCancel: _resetIndex,
         );
+        if (result == null || !result) _resetIndex();
         break;
       default:
         break;

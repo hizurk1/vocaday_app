@@ -11,6 +11,9 @@ class AppTheme {
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
     dialogBackgroundColor: AppColor().white,
+    tabBarTheme: TabBarTheme(
+      indicatorColor: AppColor().white,
+    ),
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: AppColor().backgroundLight,
       surfaceTintColor: AppColor().backgroundLight,
@@ -35,6 +38,9 @@ class AppTheme {
     primaryColor: AppColor().blue,
     primaryColorDark: AppColor().blue700,
     dialogBackgroundColor: AppColor().black,
+    tabBarTheme: TabBarTheme(
+      indicatorColor: AppColor().grey700,
+    ),
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: AppColor().backgroundDark,
       surfaceTintColor: AppColor().backgroundDark,

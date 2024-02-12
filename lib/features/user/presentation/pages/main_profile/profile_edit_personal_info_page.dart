@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../app/constants/app_asset.dart';
 import '../../../../../app/managers/navigation.dart';
@@ -81,7 +80,9 @@ class _ProfileEditPersonalInfoPageState
       birthday: _birthdayController.text.trim().toDate,
       gender: _selectedGender,
     );
-    if (updateEntity != widget.userEntity) {
+    if (updateEntity == widget.userEntity) {
+      Navigators().popDialog();
+    } else {
       await Navigators().showLoading(
         task: context.read<UserDataCubit>().updateUserProfile(updateEntity),
       );
@@ -99,23 +100,15 @@ class _ProfileEditPersonalInfoPageState
   @override
   Widget build(BuildContext context) {
     return BottomSheetCustom(
-      fullScreen: true, //! Change this if you want to fullscreen bottom sheet
+      initialChildSize: 0.7,
+      minChildSize: 0.7,
       textTitle: LocaleKeys.profile_edit_profile.tr(),
-      onAction: () {
-        context.pop();
-        _onSavePressed();
-      },
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _buildAvatar(widget.userEntity.avatar ?? ''),
-            _buildInputBody(),
-            const Gap(height: 10),
-          ],
-        ),
-      ),
+      onAction: _onSavePressed,
+      children: [
+        _buildAvatar(widget.userEntity.avatar ?? ''),
+        _buildInputBody(),
+        const Gap(height: 10),
+      ],
     );
   }
 

@@ -105,6 +105,9 @@ class Navigators {
 
   /// Shows a dialog with buttons.
   ///
+  /// If [onAccept] is executed, returns `true`.
+  /// If [onCancel] is executed, returns `false`.
+  /// If the user tap outside or back, returns `null`.
   /// * [title]: The title of the dialog.
   /// * [subtitle]: The optional subtitle of the dialog.
   /// * [acceptText]: The optional text of the accept button.
@@ -117,7 +120,7 @@ class Navigators {
   /// * [iconData]: The icon data.
   /// * [onAccept]: The function to call when the accept button is pressed.
   /// * [onCancel]: The function to call when the cancel button is pressed.
-  showDialogWithButton({
+  Future<bool?> showDialogWithButton({
     required String title,
     String? subtitle,
     String? acceptText,
@@ -131,7 +134,7 @@ class Navigators {
     VoidCallback? onAccept,
     VoidCallback? onCancel,
   }) {
-    showGeneralDialog(
+    return showGeneralDialog(
       context: currentContext!,
       barrierDismissible: dissmisable,
       barrierLabel: '',
@@ -193,7 +196,7 @@ class Navigators {
                         PushableButton(
                           onPressed: () {
                             onAccept?.call();
-                            context.pop();
+                            context.pop(true);
                           },
                           text: acceptText ?? LocaleKeys.common_okay.tr(),
                           type: PushableButtonType.primary,
@@ -202,7 +205,7 @@ class Navigators {
                         PushableButton(
                           onPressed: () {
                             onCancel?.call();
-                            context.pop();
+                            context.pop(false);
                           },
                           text: cancelText ?? LocaleKeys.common_cancel.tr(),
                           type: PushableButtonType.grey,
@@ -219,18 +222,21 @@ class Navigators {
   /// Show loading dialog when [task] is executing.
   /// After that, it will automatically close this dialog.
   ///
-  /// Default duration delay is 250ms.
+  /// Default duration delay is 500ms.
   Future<void> showLoading({required Future task, Duration? duration}) async {
     showDialog(
       context: currentContext!,
       barrierDismissible: false,
+      barrierColor: currentContext!.isDarkTheme
+          ? AppColor().white.withOpacity(0.1)
+          : null,
       builder: (context) => const Center(
         child: CircularProgressIndicator(color: Colors.white),
       ),
     );
     try {
       await Future.wait([
-        Future.delayed(duration ?? Durations.medium1),
+        Future.delayed(duration ?? Durations.long2),
         task,
       ]);
     } finally {

@@ -75,32 +75,21 @@ extension BuildContextExtension on BuildContext {
 
   /// To show modal bottom sheet with template.
   ///
+  /// **Highly recommended** use with [BottomSheetCustom] as `child`.
   /// * `isDismissible`: the user is allowed to dismiss the bottom sheet or not.
   /// * `isScrollControlled`: the user is allowed to scroll or not.
   Future<T?> showBottomSheet<T>({
     required Widget child,
-    bool useSafeArea = true,
-    bool isDismissible = true,
     bool isScrollControlled = true,
-    bool isFullScreen = false,
+    bool useSafeArea = true,
   }) {
     return showModalBottomSheet<T?>(
       context: this,
-      useSafeArea: useSafeArea,
-      isDismissible: isDismissible,
+      elevation: 0,
       isScrollControlled: isScrollControlled,
-      clipBehavior: Clip.antiAlias,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
-        ),
-      ),
-      builder: (context) {
-        return isFullScreen && isScrollControlled
-            ? FractionallySizedBox(heightFactor: 1, child: child)
-            : child;
-      },
+      useSafeArea: useSafeArea,
+      backgroundColor: Colors.transparent,
+      builder: (context) => child,
     );
   }
 }

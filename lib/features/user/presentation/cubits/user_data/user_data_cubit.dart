@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/translations/translations.dart';
+import '../../../../../app/utils/validator.dart';
 import '../../../../../core/extensions/string.dart';
 import '../../../domain/entities/user_entity.dart';
 import '../../../domain/usecases/get_user_data.dart';
@@ -35,20 +36,31 @@ class UserDataCubit extends Cubit<UserDataState> {
   void cancelDataStream() => _streamSubscription?.cancel();
 
   Future<void> updateUserProfile(UserEntity entity) async {
-    emit(UserDataLoadingState());
+    if (entity.name.isEmpty ||
+        (entity.phone.isNotNullOrEmpty &&
+            !Validator.validatePhoneNumber(entity.phone!))) {
+      Navigators().showMessage(
+        "Invalid input. Please check again!",
+        type: MessageType.error,
+      );
+    } else {
+      emit(UserDataLoadingState());
 
-    final result = await updateUserProfileUsecase(entity);
+      final result = await updateUserProfileUsecase(entity);
 
-    result.fold(
-      (failure) => emit(UserDataErrorState(failure.message)),
-      (_) {
-        Navigators().showMessage(
-          LocaleKeys.profile_update_success.tr(),
-          type: MessageType.success,
-        );
-        emit(UserDataLoadedState(entity));
-      },
-    );
+      result.fold(
+        (failure) => emit(UserDataErrorState(failure.message)),
+        (_) {
+          Navigators().showMessage(
+            LocaleKeys.profile_update_success.tr(),
+            type: MessageType.success,
+          );
+          emit(UserDataLoadedState(entity));
+        },
+      );
+
+      Navigators().popDialog();
+    }
   }
 
   @override
