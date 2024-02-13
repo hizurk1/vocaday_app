@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/extensions/build_context.dart';
+import '../../core/extensions/string.dart';
 import '../themes/app_text_theme.dart';
 import '../translations/translations.dart';
 import 'gap.dart';
@@ -10,8 +11,8 @@ import 'text.dart';
 class BottomSheetCustom extends StatelessWidget {
   const BottomSheetCustom({
     super.key,
-    required this.textTitle,
     required this.children,
+    this.textTitle,
     this.textAction,
     this.onAction,
     this.initialChildSize = 0.6,
@@ -19,7 +20,7 @@ class BottomSheetCustom extends StatelessWidget {
     this.maxChildSize = 1,
   });
 
-  final String textTitle;
+  final String? textTitle;
   final List<Widget> children;
   final double initialChildSize;
   final double minChildSize;
@@ -51,7 +52,7 @@ class BottomSheetCustom extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _buildTitleBar(context),
+                  if (textTitle.isNotNullOrEmpty) _buildTitleBar(context),
                   Expanded(
                     child: ListView(
                       controller: controller,
@@ -105,7 +106,7 @@ class BottomSheetCustom extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: TextCustom(
-                      textTitle,
+                      textTitle ?? '',
                       textAlign: TextAlign.center,
                       style: context.textStyle.bodyL.bw,
                     ),
