@@ -34,6 +34,7 @@ class BottomSheetCustom extends StatefulWidget {
 
 class _BottomSheetCustomState extends State<BottomSheetCustom> {
   final _dragController = DraggableScrollableController();
+  final double _limitVelocity = 1000;
 
   @override
   void dispose() {
@@ -89,6 +90,12 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
                     GestureDetector(
                       onTap: _onTapTitle,
                       onVerticalDragUpdate: _onDragTitle,
+                      onVerticalDragEnd: (details) {
+                        if (details.primaryVelocity != null &&
+                            details.primaryVelocity!.abs() > _limitVelocity) {
+                          _onTapTitle();
+                        }
+                      },
                       child: _buildTitleBar(context),
                     ),
                   Expanded(
