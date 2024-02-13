@@ -105,7 +105,7 @@ class _ProfileEditPersonalInfoPageState
       textTitle: LocaleKeys.profile_edit_profile.tr(),
       onAction: _onSavePressed,
       children: [
-        _buildAvatar(widget.userEntity.avatar ?? ''),
+        _buildAvatar(widget.userEntity.avatar),
         _buildInputBody(),
         const Gap(height: 10),
       ],
@@ -219,7 +219,7 @@ class _ProfileEditPersonalInfoPageState
     );
   }
 
-  Widget _buildAvatar(String url) {
+  Widget _buildAvatar(String? url) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20.h),
       child: Align(
@@ -230,6 +230,8 @@ class _ProfileEditPersonalInfoPageState
             CachedNetworkImageCustom(
               url: url,
               size: 72,
+              color: Colors.green,
+              radius: 10,
             ),
             GestureDetector(
               onTap: () {},
