@@ -14,6 +14,12 @@ Download from `Google Play Store` 👉 [Vocaday: English vocabulary](https://pla
 
 Get started with Vocaday by following these simple steps:
 
+1. **Install FlutterFire CLI & Firebase:**
+
+   - Install [FlutterFire CLI](https://firebase.flutter.dev/docs/cli/)
+
+   - Add Firebase to your Flutter app via this [link](https://firebase.google.com/docs/flutter/setup)
+
 1. **Clean and Get Dependencies:**
     ```bash
     flutter clean
