@@ -70,7 +70,8 @@
     "profile_title": "My profile",
     "update_success": "Update successful",
     "invalid_phone_number": "Invalid phone number.",
-    "no_empty_display_name": "Display name can not be empty."
+    "no_empty_display_name": "Display name can not be empty.",
+    "everything_is_up_to_date": "Everything is up to date."
   },
   "search": {
     "are_you_looking_for": "Are you looking for?",

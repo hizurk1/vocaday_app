@@ -19,6 +19,17 @@ import 'profile_completion_progress_page.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
+  Future<void> _onRefresh() async {
+    Navigators().showLoading(
+      task: Future.delayed(Durations.extralong2, () {
+        Navigators().showMessage(
+          LocaleKeys.profile_everything_is_up_to_date.tr(),
+          type: MessageType.success,
+        );
+      }),
+    );
+  }
+
   void _onEditPressed(BuildContext context) {
     final state = context.read<UserDataCubit>().state;
     if (state is UserDataErrorState) {
@@ -57,9 +68,7 @@ class ProfilePage extends StatelessWidget {
       body: DefaultTabController(
         length: 2,
         child: SliverTabView(
-          onRefresh: () async {
-            await Future.delayed(Durations.extralong2);
-          },
+          onRefresh: _onRefresh,
           topChild: const ProfilePersonalInfoTile(),
           tabBar: TabBarCustom(
             tabs: [

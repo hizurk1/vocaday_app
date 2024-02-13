@@ -8,7 +8,7 @@ import '../translations/translations.dart';
 import 'gap.dart';
 import 'text.dart';
 
-class BottomSheetCustom extends StatelessWidget {
+class BottomSheetCustom extends StatefulWidget {
   const BottomSheetCustom({
     super.key,
     required this.children,
@@ -29,6 +29,30 @@ class BottomSheetCustom extends StatelessWidget {
   final VoidCallback? onAction;
 
   @override
+  State<BottomSheetCustom> createState() => _BottomSheetCustomState();
+}
+
+class _BottomSheetCustomState extends State<BottomSheetCustom> {
+  final _dragController = DraggableScrollableController();
+
+  @override
+  void dispose() {
+    _dragController.dispose();
+    super.dispose();
+  }
+
+  _onDragUpdate(DragUpdateDetails details) {
+    final ratio = details.delta.dy / context.screenHeight;
+    final newHeight = _dragController.size - ratio;
+
+    if (newHeight < widget.minChildSize) {
+      Navigator.of(context).pop();
+    } else if (newHeight <= widget.maxChildSize) {
+      _dragController.jumpTo(newHeight);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -38,9 +62,10 @@ class BottomSheetCustom extends StatelessWidget {
         child: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
           child: DraggableScrollableSheet(
-            initialChildSize: initialChildSize,
-            minChildSize: minChildSize,
-            maxChildSize: maxChildSize,
+            controller: _dragController,
+            initialChildSize: widget.initialChildSize,
+            minChildSize: widget.minChildSize,
+            maxChildSize: widget.maxChildSize,
             builder: (_, controller) => Container(
               decoration: BoxDecoration(
                 color: context.backgroundColor,
@@ -52,11 +77,15 @@ class BottomSheetCustom extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  if (textTitle.isNotNullOrEmpty) _buildTitleBar(context),
+                  if (widget.textTitle.isNotNullOrEmpty)
+                    GestureDetector(
+                      onVerticalDragUpdate: _onDragUpdate,
+                      child: _buildTitleBar(context),
+                    ),
                   Expanded(
                     child: ListView(
                       controller: controller,
-                      children: children,
+                      children: widget.children,
                     ),
                   ),
                 ],
@@ -106,16 +135,16 @@ class BottomSheetCustom extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: TextCustom(
-                      textTitle ?? '',
+                      widget.textTitle ?? '',
                       textAlign: TextAlign.center,
                       style: context.textStyle.bodyL.bw,
                     ),
                   ),
                 ),
                 TextButton(
-                  onPressed: onAction,
+                  onPressed: widget.onAction,
                   child: TextCustom(
-                    textAction ?? LocaleKeys.common_save.tr(),
+                    widget.textAction ?? LocaleKeys.common_save.tr(),
                     textAlign: TextAlign.center,
                     style: context.textStyle.bodyM.primary,
                   ),

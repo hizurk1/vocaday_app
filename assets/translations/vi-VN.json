@@ -70,7 +70,8 @@
     "profile_title": "Hồ sơ của tôi",
     "update_success": "Cập nhật thành công",
     "invalid_phone_number": "Số điện thoại không hợp lệ.",
-    "no_empty_display_name": "Tên hiển thị không được để trống."
+    "no_empty_display_name": "Tên hiển thị không được để trống.",
+    "everything_is_up_to_date": "Mọi thứ đều được cập nhật."
   },
   "search": {
     "are_you_looking_for": "Có phải bạn đang tìm?",

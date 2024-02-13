@@ -13,6 +13,12 @@ extension BuildContextExtension on BuildContext {
   /// Get screen height of current context
   double get screenHeight => MediaQuery.of(this).size.height;
 
+  /// Get padding top of current context
+  double get paddingTop => MediaQuery.of(this).padding.top;
+
+  /// Get padding bottom of current context
+  double get paddingBottom => MediaQuery.of(this).padding.bottom;
+
   /// Get screen ratio of current context, for different devices
   int get gridRatio => MediaQuery.of(this).size.width > 900
       ? 3

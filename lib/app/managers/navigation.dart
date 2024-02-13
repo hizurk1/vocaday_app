@@ -39,7 +39,7 @@ class Navigators {
   /// * [showAction]: Whether to show an action button.
   /// * [showClose]: Whether to show a close button.
   /// * [maxLines]: The maximum number of lines to show.
-  /// * [duration]: The duration of the message.
+  /// * [duration]: The duration of the message. Default is `3 seconds`.
   /// * [dismissDirection]: The direction to dismiss the message.
   /// * [actionText]: The text of the action button.
   /// * [onAction]: The action to take when the action button is pressed.
@@ -49,7 +49,7 @@ class Navigators {
     bool showAction = false,
     bool showClose = true,
     int maxLines = 5,
-    Duration duration = const Duration(seconds: 5),
+    Duration duration = const Duration(seconds: 3),
     DismissDirection dismissDirection = DismissDirection.down,
     String? actionText,
     VoidCallback? onAction,
