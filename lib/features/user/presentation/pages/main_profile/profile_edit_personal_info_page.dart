@@ -1,13 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/constants/app_const.dart';
 import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/translations/translations.dart';
+import '../../../../../app/utils/image_picker.dart';
 import '../../../../../app/widgets/border_dropdown_field.dart';
 import '../../../../../app/widgets/border_text_field.dart';
 import '../../../../../app/widgets/bottom_sheet_custom.dart';
@@ -49,6 +54,7 @@ class _ProfileEditPersonalInfoPageState
   late TextEditingController _phoneController;
   late TextEditingController _birthdayController;
 
+  ValueNotifier<XFile?> selectedImage = ValueNotifier(null);
   String _selectedGender = EGender.values.first.value;
 
   @override
@@ -62,6 +68,30 @@ class _ProfileEditPersonalInfoPageState
     );
 
     _selectedGender = widget.userEntity.gender ?? EGender.values.first.value;
+  }
+
+  Future<void> _onPickImage() async {
+    final image = await ImagePickerUtil().pickImage();
+    if (image == null) {
+      Navigators().showMessage(
+        LocaleKeys.profile_no_file_selected.tr(),
+        type: MessageType.error,
+      );
+    } else {
+      final imageLength = await image.length();
+      if (imageLength > AppValueConst.maxImgUploadSize) {
+        const maxSize = AppValueConst.maxImgUploadSize ~/ 1024 ~/ 1024;
+        Navigators().showMessage(
+          LocaleKeys.profile_file_size_less_than.tr(
+            args: [maxSize.toString()],
+          ),
+          type: MessageType.error,
+          duration: 5,
+        );
+      } else {
+        selectedImage.value = image;
+      }
+    }
   }
 
   Future<void> _onSelectDatePicker() async {
@@ -80,12 +110,15 @@ class _ProfileEditPersonalInfoPageState
       birthday: _birthdayController.text.trim().toDate,
       gender: _selectedGender,
     );
-    if (updateEntity == widget.userEntity) {
-      Navigators().popDialog();
-    } else {
+    if (updateEntity != widget.userEntity || selectedImage.value != null) {
       await Navigators().showLoading(
-        task: context.read<UserDataCubit>().updateUserProfile(updateEntity),
+        task: context.read<UserDataCubit>().updateUserProfile(
+              updateEntity,
+              selectedImage.value,
+            ),
       );
+    } else {
+      Navigators().popDialog();
     }
   }
 
@@ -132,6 +165,7 @@ class _ProfileEditPersonalInfoPageState
             hintText: LocaleKeys.profile_enter_phone_number.tr(),
             icon: AppAssets.phoneOutline,
             inputType: TextInputType.phone,
+            maxLength: 12,
           ),
           _buildFieldItem(
             controller: _birthdayController,
@@ -189,6 +223,7 @@ class _ProfileEditPersonalInfoPageState
     required String label,
     required String hintText,
     required String icon,
+    int? maxLength,
     TextInputType inputType = TextInputType.text,
     bool enable = true,
     Color? hintColor,
@@ -210,6 +245,7 @@ class _ProfileEditPersonalInfoPageState
           inputType: inputType,
           hintText: hintText,
           hintColor: hintColor,
+          maxLength: maxLength,
           enable: enable,
           icon: icon,
           onTap: onTap,
@@ -227,14 +263,28 @@ class _ProfileEditPersonalInfoPageState
         child: Stack(
           alignment: Alignment.bottomRight,
           children: [
-            CachedNetworkImageCustom(
-              url: url,
-              size: 72,
-              color: Colors.green,
-              radius: 10,
+            ValueListenableBuilder(
+              valueListenable: selectedImage,
+              builder: (context, XFile? img, _) {
+                if (img != null) {
+                  return ClipOval(
+                    child: Image.file(
+                      File(img.path),
+                      width: 72.w,
+                      height: 72.h,
+                      fit: BoxFit.cover,
+                    ),
+                  );
+                } else {
+                  return CachedNetworkImageCustom(
+                    url: url,
+                    size: 72,
+                  );
+                }
+              },
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: _onPickImage,
               child: Container(
                 padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(

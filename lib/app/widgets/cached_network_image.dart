@@ -28,9 +28,10 @@ class CachedNetworkImageCustom extends StatelessWidget {
         ? _defaultAvatar()
         : CachedNetworkImage(
             imageUrl: url!,
-            placeholder: (context, url) => Placeholder(
-              fallbackHeight: size.h,
-              fallbackWidth: size.w,
+            placeholder: (context, url) => Container(
+              height: size.h,
+              width: size.w,
+              color: context.backgroundColor,
             ),
             errorWidget: (context, url, error) => _defaultAvatar(),
             width: size.w,
@@ -40,11 +41,11 @@ class CachedNetworkImageCustom extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular((radius ?? 180).r),
+        borderRadius: BorderRadius.circular((radius ?? size / 2).r),
         border: Border.all(color: color ?? context.greyColor.withOpacity(.3)),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular((radius ?? 180).r),
+        borderRadius: BorderRadius.circular((radius ?? size / 2).r),
         child: child,
       ),
     );

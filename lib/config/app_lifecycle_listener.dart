@@ -1,9 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../app/managers/navigation.dart';
-import '../app/translations/translations.dart';
-
 class AppLifeCycleListenerWidget extends StatefulWidget {
   const AppLifeCycleListenerWidget({super.key, required this.child});
 
@@ -34,9 +31,7 @@ class _AppLifeCycleListenerWidgetState
     }
   }
 
-  _onRestart() {
-    Navigators().showMessage(LocaleKeys.app_log_on_restart.tr());
-  }
+  _onRestart() {}
 
   @override
   Widget build(BuildContext context) {

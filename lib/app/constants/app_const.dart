@@ -1,3 +1,12 @@
+class AppValueConst {
+  AppValueConst._();
+
+  /// In byte (~5MB).
+  ///
+  /// Convert to MB: maxImgUploadSize / 1024 / 1024
+  static const maxImgUploadSize = 5242880;
+}
+
 class AppStringConst {
   AppStringConst._();
   // Error message

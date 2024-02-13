@@ -16,7 +16,7 @@ class BorderTextField extends StatelessWidget {
     this.hintText = '',
     this.enable = true,
     this.borderColor,
-    this.maxLength = 50,
+    this.maxLength,
     this.maxLines = 1,
     this.inputType = TextInputType.text,
     this.isPasswordField = false,
@@ -32,7 +32,7 @@ class BorderTextField extends StatelessWidget {
   final TextInputType inputType;
   final bool isPasswordField;
   final TextCapitalization textCapitalization;
-  final int maxLength;
+  final int? maxLength;
   final int maxLines;
 
   /// If this value is set to `false`, the user can't type in this text field
@@ -61,7 +61,7 @@ class BorderTextField extends StatelessWidget {
       child: TextField(
         controller: controller,
         maxLines: maxLines,
-        maxLength: maxLength,
+        maxLength: maxLength ?? 50,
         enabled: enable,
         textCapitalization: textCapitalization,
         style: context.textStyle.bodyS.bw,

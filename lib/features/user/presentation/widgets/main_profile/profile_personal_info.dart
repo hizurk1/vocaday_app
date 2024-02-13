@@ -32,7 +32,7 @@ class ProfilePersonalInfoTile extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               CachedNetworkImageCustom(
-                url: userEntity?.avatar ?? '',
+                url: userEntity?.avatar,
                 size: 64,
               ),
               Gap(width: 20.w),

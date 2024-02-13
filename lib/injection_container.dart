@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:connectivity_plus/connectivity_plus.dart";
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import "package:get_it/get_it.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
+import 'app/managers/cloud_storage.dart';
 import 'app/managers/connection.dart';
 import 'app/managers/language.dart';
 import 'app/managers/shared_preferences.dart';
@@ -45,9 +47,11 @@ Future<void> setUpServiceLocator() async {
   sl.registerLazySingleton(() => Connectivity());
   sl.registerLazySingleton(() => FirebaseAuth.instance);
   sl.registerLazySingleton(() => FirebaseFirestore.instance);
+  sl.registerLazySingleton(() => FirebaseStorage.instance);
 
   //! App
   sl.registerLazySingleton(() => SharedPrefManager(sl()));
+  sl.registerLazySingleton(() => CloudStorageManager(sl()));
   sl.registerLazySingleton(() => AppRouter());
   sl.registerFactory(() => ThemeCubit(sl()));
   sl.registerFactory(() => LanguageBloc());

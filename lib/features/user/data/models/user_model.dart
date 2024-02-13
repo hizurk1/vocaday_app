@@ -119,7 +119,7 @@ class UserModel extends Equatable {
       email: map['email'] != null ? map['email'] as String : '',
       method: map['method'] as String,
       avatar: map['avatar'] != null ? map['avatar'] as String : null,
-      phone: map['phone'],
+      phone: map['phone'] != '' ? map['phone'] : null,
       birthday: map['birthday'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['birthday'] as int)
           : null,

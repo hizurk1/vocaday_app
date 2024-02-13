@@ -2,7 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vocaday_app/app/constants/app_string.dart';
+import 'package:vocaday_app/app/constants/app_const.dart';
 import 'package:vocaday_app/app/managers/shared_preferences.dart';
 import 'package:vocaday_app/app/managers/theme.dart';
 

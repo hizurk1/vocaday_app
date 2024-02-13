@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/translations/translations.dart';
@@ -35,7 +36,7 @@ class UserDataCubit extends Cubit<UserDataState> {
 
   void cancelDataStream() => _streamSubscription?.cancel();
 
-  Future<void> updateUserProfile(UserEntity entity) async {
+  Future<void> updateUserProfile(UserEntity entity, XFile? image) async {
     if (entity.name.isEmpty) {
       Navigators().showMessage(
         LocaleKeys.profile_no_empty_display_name.tr(),
@@ -48,22 +49,24 @@ class UserDataCubit extends Cubit<UserDataState> {
         type: MessageType.error,
       );
     } else {
-      emit(UserDataLoadingState());
-
-      final result = await updateUserProfileUsecase(entity);
+      final result = await updateUserProfileUsecase((entity, image));
 
       result.fold(
-        (failure) => emit(UserDataErrorState(failure.message)),
+        (failure) {
+          Navigators().showMessage(
+            failure.message,
+            type: MessageType.error,
+            duration: 5,
+          );
+        },
         (_) {
           Navigators().showMessage(
             LocaleKeys.profile_update_success.tr(),
             type: MessageType.success,
           );
-          emit(UserDataLoadedState(entity));
+          Navigators().popDialog();
         },
       );
-
-      Navigators().popDialog();
     }
   }
 

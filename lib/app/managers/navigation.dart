@@ -46,10 +46,9 @@ class Navigators {
   showMessage(
     String text, {
     MessageType type = MessageType.byDefault,
-    bool showAction = false,
     bool showClose = true,
     int maxLines = 5,
-    Duration duration = const Duration(seconds: 3),
+    int duration = 3,
     DismissDirection dismissDirection = DismissDirection.down,
     String? actionText,
     VoidCallback? onAction,
@@ -84,11 +83,11 @@ class Navigators {
             ),
           ),
         ),
-        showCloseIcon: showClose,
+        showCloseIcon: showClose && actionText.isNullOrEmpty,
         closeIconColor: textColor,
-        duration: duration,
+        duration: Duration(seconds: duration),
         dismissDirection: dismissDirection,
-        action: showAction
+        action: actionText.isNotNullOrEmpty
             ? SnackBarAction(
                 label: actionText ?? LocaleKeys.common_close.tr(),
                 textColor: textColor,

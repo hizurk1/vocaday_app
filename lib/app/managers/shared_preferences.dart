@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../constants/app_string.dart';
+import '../constants/app_const.dart';
 
 class SharedPrefManager {
   SharedPrefManager(this.prefs);

@@ -18,7 +18,6 @@ class MainApp extends StatelessWidget {
       Navigators().showMessage(
         LocaleKeys.utils_no_internet_connection.tr(),
         type: MessageType.error,
-        showAction: true,
         actionText: LocaleKeys.common_retry.tr(),
         onAction: () {
           final state = context.read<ConnectionBloc>().state;

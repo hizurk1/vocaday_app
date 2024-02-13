@@ -71,7 +71,9 @@
     "update_success": "Update successful",
     "invalid_phone_number": "Invalid phone number.",
     "no_empty_display_name": "Display name can not be empty.",
-    "everything_is_up_to_date": "Everything is up to date."
+    "everything_is_up_to_date": "Everything is up to date.",
+    "no_file_selected": "No file selected.",
+    "file_size_less_than": "File's size should be less than {}MB."
   },
   "search": {
     "are_you_looking_for": "Are you looking for?",
