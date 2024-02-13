@@ -41,15 +41,23 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
     super.dispose();
   }
 
-  _onDragUpdate(DragUpdateDetails details) {
+  _onDragTitle(DragUpdateDetails details) {
     final ratio = details.delta.dy / context.screenHeight;
-    final newHeight = _dragController.size - ratio;
+    final newChildSize = _dragController.size - ratio;
 
-    if (newHeight < widget.minChildSize) {
+    if (newChildSize < widget.minChildSize) {
       Navigator.of(context).pop();
-    } else if (newHeight <= widget.maxChildSize) {
-      _dragController.jumpTo(newHeight);
+    } else if (newChildSize <= widget.maxChildSize) {
+      _dragController.jumpTo(newChildSize);
     }
+  }
+
+  _onTapTitle() {
+    _dragController.animateTo(
+      widget.maxChildSize,
+      duration: Durations.medium2,
+      curve: Curves.easeOut,
+    );
   }
 
   @override
@@ -79,7 +87,8 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
                 children: [
                   if (widget.textTitle.isNotNullOrEmpty)
                     GestureDetector(
-                      onVerticalDragUpdate: _onDragUpdate,
+                      onTap: _onTapTitle,
+                      onVerticalDragUpdate: _onDragTitle,
                       child: _buildTitleBar(context),
                     ),
                   Expanded(
