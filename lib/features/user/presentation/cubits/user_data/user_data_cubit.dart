@@ -48,6 +48,13 @@ class UserDataCubit extends Cubit<UserDataState> {
         LocaleKeys.profile_invalid_phone_number.tr(),
         type: MessageType.error,
       );
+    } else if ((state as UserDataLoadedState).entity == entity &&
+        image == null) {
+      Navigators().popDialog();
+      Navigators().showMessage(
+        LocaleKeys.profile_everything_is_up_to_date.tr(),
+        type: MessageType.success,
+      );
     } else {
       final result = await updateUserProfileUsecase((entity, image));
 

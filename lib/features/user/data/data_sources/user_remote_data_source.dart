@@ -6,7 +6,10 @@ import '../models/user_model.dart';
 abstract interface class UserRemoteDataSource {
   Future<void> addUserProfile(UserModel userModel);
   Stream<UserModel?> getUserData(String uid);
-  Future<void> updateUserProfile(UserModel userModel);
+  Future<void> updateUserProfile({
+    required String uid,
+    required Map<String, dynamic> map,
+  });
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
@@ -39,11 +42,12 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<void> updateUserProfile(UserModel userModel) async {
+  Future<void> updateUserProfile({
+    required String uid,
+    required Map<String, dynamic> map,
+  }) async {
     try {
-      await firestore.collection(_users).doc(userModel.uid).update(
-            userModel.toMap(),
-          );
+      await firestore.collection(_users).doc(uid).update(map);
     } on FirebaseException {
       rethrow;
     } catch (e) {

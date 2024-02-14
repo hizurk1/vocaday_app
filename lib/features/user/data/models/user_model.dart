@@ -112,14 +112,24 @@ class UserModel extends Equatable {
     };
   }
 
+  Map<String, dynamic> toMapUpdate() {
+    return <String, dynamic>{
+      'name': name,
+      'avatar': avatar,
+      'phone': phone,
+      'birthday': birthday?.millisecondsSinceEpoch,
+      'gender': gender,
+    };
+  }
+
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
       uid: map['uid'] as String,
       name: map['name'] as String,
       email: map['email'] != null ? map['email'] as String : '',
       method: map['method'] as String,
-      avatar: map['avatar'] != null ? map['avatar'] as String : null,
-      phone: map['phone'] != '' ? map['phone'] : null,
+      avatar: map['avatar'],
+      phone: map['phone'],
       birthday: map['birthday'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['birthday'] as int)
           : null,

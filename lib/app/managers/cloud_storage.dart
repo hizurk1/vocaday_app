@@ -29,6 +29,7 @@ class CloudStorageManager {
     }
   }
 
+  /// Returns Failure | String url (avatar image url)
   FutureEither<String> uploadUserAvatarImage({
     required String uid,
     required String filePath,

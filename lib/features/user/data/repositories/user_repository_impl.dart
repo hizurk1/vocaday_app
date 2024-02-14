@@ -45,7 +45,10 @@ class UserRepositoryImpl implements UserRepository {
     try {
       final userModel = UserModel.fromEntity(userEntity);
       return Right(
-        await userRemoteDataSource.updateUserProfile(userModel),
+        await userRemoteDataSource.updateUserProfile(
+          uid: userModel.uid,
+          map: userModel.toMapUpdate(),
+        ),
       );
     } on FirebaseException catch (e) {
       return Left(

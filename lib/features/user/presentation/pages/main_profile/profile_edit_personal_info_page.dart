@@ -110,15 +110,14 @@ class _ProfileEditPersonalInfoPageState
       birthday: _birthdayController.text.trim().toDate,
       gender: _selectedGender,
     );
-    if (updateEntity != widget.userEntity || selectedImage.value != null) {
+    if (context.read<UserDataCubit>().state is UserDataLoadedState) {
       await Navigators().showLoading(
+        delay: Durations.medium1,
         task: context.read<UserDataCubit>().updateUserProfile(
               updateEntity,
               selectedImage.value,
             ),
       );
-    } else {
-      Navigators().popDialog();
     }
   }
 

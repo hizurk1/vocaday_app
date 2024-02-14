@@ -34,8 +34,8 @@ class UpdateUserProfileUsecase extends Usecases<void, (UserEntity, XFile?)> {
 
       return uploadRes.fold(
         (failure) => Left(failure),
-        (url) async {
-          final updateEntity = entity.copyWith(avatar: url);
+        (imgUrl) async {
+          final updateEntity = entity.copyWith(avatar: imgUrl);
           return await repository.updateUserProfile(updateEntity);
         },
       );
