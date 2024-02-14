@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: prefer_single_quotes
+// ignore_for_file: prefer_single_quotes, avoid_renaming_method_parameters
 
 import 'dart:ui';
 
@@ -89,7 +89,8 @@ class CodegenLoader extends AssetLoader{
     "no_empty_display_name": "Display name can not be empty.",
     "everything_is_up_to_date": "Everything is up to date.",
     "no_file_selected": "No file selected.",
-    "file_size_less_than": "File's size should be less than {}MB."
+    "file_size_less_than": "File's size should be less than {}MB.",
+    "attendance": "Attendance"
   },
   "search": {
     "are_you_looking_for": "Are you looking for?",
@@ -186,7 +187,8 @@ static const Map<String,dynamic> vi_VN = {
     "no_empty_display_name": "Tên hiển thị không được để trống.",
     "everything_is_up_to_date": "Mọi thứ đều được cập nhật.",
     "no_file_selected": "Không có tập tin nào được chọn.",
-    "file_size_less_than": "Kích thước tập tin không được vượt quá {}MB."
+    "file_size_less_than": "Kích thước tập tin không được vượt quá {}MB.",
+    "attendance": "Điểm danh"
   },
   "search": {
     "are_you_looking_for": "Có phải bạn đang tìm?",

@@ -73,7 +73,8 @@
     "no_empty_display_name": "Tên hiển thị không được để trống.",
     "everything_is_up_to_date": "Mọi thứ đều được cập nhật.",
     "no_file_selected": "Không có tập tin nào được chọn.",
-    "file_size_less_than": "Kích thước tập tin không được vượt quá {}MB."
+    "file_size_less_than": "Kích thước tập tin không được vượt quá {}MB.",
+    "attendance": "Điểm danh"
   },
   "search": {
     "are_you_looking_for": "Có phải bạn đang tìm?",

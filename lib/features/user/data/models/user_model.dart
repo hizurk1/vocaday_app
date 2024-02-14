@@ -13,7 +13,7 @@ class UserModel extends Equatable {
   final String? gender;
   final int point;
   final int gold;
-  final List<DateTime>? checkIn;
+  final List<DateTime>? attendance;
   final DateTime? createdDate;
 
   const UserModel({
@@ -27,7 +27,7 @@ class UserModel extends Equatable {
     this.gender,
     this.point = 0,
     this.gold = 0,
-    this.checkIn,
+    this.attendance,
     this.createdDate,
   });
 
@@ -42,7 +42,7 @@ class UserModel extends Equatable {
     String? gender,
     int point = 0,
     int gold = 0,
-    List<DateTime>? checkIn,
+    List<DateTime>? attendance,
     DateTime? createdDate,
   }) {
     return UserModel(
@@ -56,7 +56,7 @@ class UserModel extends Equatable {
       gender: gender ?? this.gender,
       point: point,
       gold: gold,
-      checkIn: checkIn ?? this.checkIn,
+      attendance: attendance ?? attendance,
       createdDate: createdDate ?? this.createdDate,
     );
   }
@@ -73,7 +73,7 @@ class UserModel extends Equatable {
       gender: gender,
       point: point,
       gold: gold,
-      checkIn: checkIn,
+      attendance: attendance,
       createdDate: createdDate,
     );
   }
@@ -90,7 +90,7 @@ class UserModel extends Equatable {
       gender: entity.gender,
       point: entity.point,
       gold: entity.gold,
-      checkIn: entity.checkIn,
+      attendance: entity.attendance,
       createdDate: entity.createdDate,
     );
   }
@@ -107,7 +107,7 @@ class UserModel extends Equatable {
       'gender': gender,
       'point': point,
       'gold': gold,
-      'checkIn': checkIn?.map((x) => x.millisecondsSinceEpoch).toList(),
+      'attendance': attendance?.map((x) => x.millisecondsSinceEpoch).toList(),
       'createdDate': createdDate?.millisecondsSinceEpoch,
     };
   }
@@ -136,8 +136,8 @@ class UserModel extends Equatable {
       gender: map['gender'],
       point: map['point'] as int,
       gold: map['gold'] as int,
-      checkIn: map['checkIn'] != null
-          ? (map['checkIn'] as List<dynamic>)
+      attendance: map['attendance'] != null
+          ? (map['attendance'] as List<dynamic>)
               .map<DateTime>(
                 (x) => DateTime.fromMillisecondsSinceEpoch(
                     int.parse(x.toString())),
@@ -162,7 +162,7 @@ class UserModel extends Equatable {
         gender,
         point,
         gold,
-        checkIn,
+        attendance,
         createdDate,
       ];
 }

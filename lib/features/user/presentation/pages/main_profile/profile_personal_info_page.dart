@@ -39,7 +39,7 @@ class ProfilePersonalInfoPage extends StatelessWidget {
                   content: state.entity.phone ?? '',
                 ),
                 ProfileInfoItemWidget(
-                  icon: AppAssets.calendarOutline,
+                  icon: AppAssets.birhtdayOutline,
                   title: LocaleKeys.profile_birthday.tr(),
                   content: state.entity.birthday?.ddMMyyyy ?? '',
                 ),
@@ -47,6 +47,11 @@ class ProfilePersonalInfoPage extends StatelessWidget {
                   icon: AppAssets.genderOutline,
                   title: LocaleKeys.profile_gender.tr(),
                   content: state.entity.gender ?? '',
+                ),
+                ProfileInfoItemWidget(
+                  icon: AppAssets.attendance,
+                  title: LocaleKeys.profile_attendance.tr(),
+                  content: state.entity.attendance?.length.toString() ?? '',
                 ),
                 ProfileInfoItemWidget(
                   icon: AppAssets.calendarOutline,

@@ -27,7 +27,9 @@ class AppAssets {
   static const copyIcon = '$_icon/copy.svg';
   static const phoneOutline = '$_icon/phone.svg';
   static const calendarOutline = '$_icon/calendar_outline.svg';
+  static const birhtdayOutline = '$_icon/birthday.svg';
   static const genderOutline = '$_icon/gender.svg';
+  static const attendance = '$_icon/check_in.svg';
   static const camera = '$_icon/camera.svg';
 
   // Bottom nav

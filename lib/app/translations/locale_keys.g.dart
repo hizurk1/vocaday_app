@@ -63,6 +63,7 @@ abstract class  LocaleKeys {
   static const profile_everything_is_up_to_date = 'profile.everything_is_up_to_date';
   static const profile_no_file_selected = 'profile.no_file_selected';
   static const profile_file_size_less_than = 'profile.file_size_less_than';
+  static const profile_attendance = 'profile.attendance';
   static const search_are_you_looking_for = 'search.are_you_looking_for';
   static const search_not_found = 'search.not_found';
   static const search_search_for_words = 'search.search_for_words';
