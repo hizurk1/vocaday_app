@@ -65,7 +65,7 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
         details.primaryVelocity!.abs() > _limitVelocity) {
       if (details.primaryVelocity! < 0) {
         _onTapTitle();
-      } else {
+      } else if (Navigator.of(context).canPop()) {
         Navigator.of(context).pop();
       }
     }
@@ -78,19 +78,19 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
       body: GestureDetector(
         onTap: () => Navigator.of(context).pop(),
         behavior: HitTestBehavior.opaque,
-        child: UnfocusArea(
-          child: DraggableScrollableSheet(
-            controller: _dragController,
-            initialChildSize: widget.initialChildSize,
-            minChildSize: widget.minChildSize,
-            maxChildSize: widget.maxChildSize,
-            builder: (_, controller) => Container(
-              decoration: BoxDecoration(
-                color: context.backgroundColor,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(16.r),
-                ),
+        child: DraggableScrollableSheet(
+          controller: _dragController,
+          initialChildSize: widget.initialChildSize,
+          minChildSize: widget.minChildSize,
+          maxChildSize: widget.maxChildSize,
+          builder: (_, controller) => Container(
+            decoration: BoxDecoration(
+              color: context.backgroundColor,
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(16.r),
               ),
+            ),
+            child: UnfocusArea(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
