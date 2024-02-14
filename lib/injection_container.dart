@@ -55,7 +55,7 @@ Future<void> setUpServiceLocator() async {
   sl.registerLazySingleton(() => AppRouter());
   sl.registerFactory(() => ThemeCubit(sl()));
   sl.registerFactory(() => LanguageBloc());
-  sl.registerFactory(() => ConnectionBloc(sl()));
+  sl.registerFactory(() => ConnectionCubit(sl()));
 
   //! Features - word
   // Data source

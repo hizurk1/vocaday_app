@@ -25,7 +25,7 @@ class BlocProviderScope extends StatelessWidget {
         //* Language controller
         BlocProvider(create: (_) => sl<LanguageBloc>()),
         //* Internet connection controller
-        BlocProvider(create: (_) => sl<ConnectionBloc>()),
+        BlocProvider(create: (_) => sl<ConnectionCubit>()..initialize()),
         //* Authentication Bloc
         BlocProvider(
           create: (_) => sl<AuthBloc>()..initAuthStream(),

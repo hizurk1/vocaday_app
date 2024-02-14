@@ -19,8 +19,9 @@ class MainApp extends StatelessWidget {
         LocaleKeys.utils_no_internet_connection.tr(),
         type: MessageType.error,
         actionText: LocaleKeys.common_retry.tr(),
+        duration: 5,
         onAction: () {
-          final state = context.read<ConnectionBloc>().state;
+          final state = context.read<ConnectionCubit>().state;
           if (state.status == ConnectionStatus.offline) {
             checkInternet(state, context);
           }
@@ -41,7 +42,7 @@ class MainApp extends StatelessWidget {
       designSize: const Size(393, 827),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, __) => BlocListener<ConnectionBloc, InternetState>(
+      builder: (context, __) => BlocListener<ConnectionCubit, InternetState>(
         listenWhen: (previous, current) => previous != current,
         listener: (context, internet) => checkInternet(internet, context),
         child: BlocBuilder<ThemeCubit, ThemeState>(

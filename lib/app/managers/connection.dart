@@ -6,32 +6,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum ConnectionStatus { online, offline }
 
-class ConnectionBloc extends Bloc<ConnectionEvent, InternetState> {
+class ConnectionCubit extends Cubit<InternetState> {
   final Connectivity connectivity;
   late StreamSubscription _streamSubscription;
 
-  ConnectionBloc(this.connectivity) : super(const InternetState.online()) {
-    _streamSubscription = connectivity.onConnectivityChanged.listen(
-      (result) {
-        if (result != ConnectivityResult.wifi &&
-            result != ConnectivityResult.mobile &&
-            result != ConnectivityResult.ethernet &&
-            result != ConnectivityResult.vpn) {
-          add(NotConnectedEvent());
-        } else {
-          add(ConnectedEvent());
-        }
-      },
-    );
+  ConnectionCubit(this.connectivity) : super(const InternetState.online());
 
-    on<ConnectionEvent>((event, emit) {
-      if (event is ConnectedEvent) {
-        emit(const InternetState.online());
-      }
-      if (event is NotConnectedEvent) {
-        emit(const InternetState.offline());
-      }
-    });
+  initialize() async {
+    final result = await Connectivity().checkConnectivity();
+    _checkConnection(result);
+    _streamSubscription =
+        connectivity.onConnectivityChanged.listen(_checkConnection);
+  }
+
+  _checkConnection(ConnectivityResult result) {
+    if (result != ConnectivityResult.wifi &&
+        result != ConnectivityResult.mobile &&
+        result != ConnectivityResult.ethernet &&
+        result != ConnectivityResult.vpn) {
+      emit(const InternetState.offline());
+    } else {
+      emit(const InternetState.online());
+    }
   }
 
   @override
@@ -53,15 +49,3 @@ class InternetState extends Equatable {
   @override
   List<Object?> get props => [status];
 }
-
-//* Event
-sealed class ConnectionEvent extends Equatable {
-  const ConnectionEvent();
-
-  @override
-  List<Object?> get props => [];
-}
-
-final class ConnectedEvent extends ConnectionEvent {}
-
-final class NotConnectedEvent extends ConnectionEvent {}
