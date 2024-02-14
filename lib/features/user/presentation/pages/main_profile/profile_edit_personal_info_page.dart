@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -265,21 +263,10 @@ class _ProfileEditPersonalInfoPageState
             ValueListenableBuilder(
               valueListenable: selectedImage,
               builder: (context, XFile? img, _) {
-                if (img != null) {
-                  return ClipOval(
-                    child: Image.file(
-                      File(img.path),
-                      width: 72.w,
-                      height: 72.h,
-                      fit: BoxFit.cover,
-                    ),
-                  );
-                } else {
-                  return CachedNetworkImageCustom(
-                    url: url,
-                    size: 72,
-                  );
-                }
+                return CachedNetworkImageCustom(
+                  url: img?.path ?? url,
+                  size: 72,
+                );
               },
             ),
             GestureDetector(

@@ -43,6 +43,7 @@ class AppRouter {
         builder: (context, state) => const SettingPage(),
         routes: const [],
       ),
+
       //? Route: '/main'
       GoRoute(
         path: AppRoutes.main,

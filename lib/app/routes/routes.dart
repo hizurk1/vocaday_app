@@ -5,6 +5,7 @@ class AppRoutes {
   static const init = '/'; // Entry page
   static const authentication = '/authentication';
   static const setting = '/setting';
+
   static const main = '/main';
   static const home = '$main/home';
   static const search = '$main/search';

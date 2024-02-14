@@ -32,6 +32,10 @@ class Navigators {
   ///navigator to close **the topmost route** (usually a dialog or a screen).
   popDialog() => Navigator.of(currentContext!).pop();
 
+  push(Widget page) => Navigator.of(currentContext!).push(
+        MaterialPageRoute(builder: (_) => page),
+      );
+
   /// Shows a snackbar message to the user.
   ///
   /// * [text]: The message to show.
