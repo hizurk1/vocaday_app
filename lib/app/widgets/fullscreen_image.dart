@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../core/extensions/build_context.dart';
 import 'cached_network_image.dart';
+import 'interactive_view_custom.dart';
 
 class FullScreenImagePage extends StatelessWidget {
   const FullScreenImagePage({super.key, required this.url});
@@ -15,14 +17,19 @@ class FullScreenImagePage extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () => Navigator.of(context).pop(),
-            child: Container(color: Colors.black),
+            child: Container(
+              color: Colors.black,
+              width: context.screenWidth,
+              height: context.screenHeight,
+            ),
           ),
           Center(
-            child: InteractiveViewer(
-              minScale: 1,
-              maxScale: 3,
-              clipBehavior: Clip.none,
-              child: CachedNetworkImageCustom(url: url, radius: 0),
+            child: InteractiveViewerCustom(
+              child: CachedNetworkImageCustom(
+                url: url,
+                radius: 0,
+                allowOpenFullscreenImage: false,
+              ),
             ),
           ),
         ],

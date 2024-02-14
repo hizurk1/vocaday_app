@@ -14,6 +14,7 @@ class CachedNetworkImageCustom extends StatelessWidget {
   const CachedNetworkImageCustom({
     super.key,
     required this.url,
+    this.allowOpenFullscreenImage = true,
     this.size,
     this.radius,
     this.padding,
@@ -25,6 +26,13 @@ class CachedNetworkImageCustom extends StatelessWidget {
   final double? radius;
   final double? padding;
   final Color? color;
+  final bool allowOpenFullscreenImage;
+
+  void _onTap() {
+    if (allowOpenFullscreenImage) {
+      Navigators().push(FullScreenImagePage(url: url));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +54,7 @@ class CachedNetworkImageCustom extends StatelessWidget {
           );
 
     return GestureDetector(
-      onTap: () => Navigators().push(FullScreenImagePage(url: url)),
+      onTap: _onTap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular((this.radius ?? radius).r),
