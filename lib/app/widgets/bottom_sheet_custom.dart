@@ -46,9 +46,7 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
     final ratio = details.delta.dy / context.screenHeight;
     final newChildSize = _dragController.size - ratio;
 
-    if (newChildSize < widget.minChildSize) {
-      Navigator.of(context).pop();
-    } else if (newChildSize <= widget.maxChildSize) {
+    if (newChildSize <= widget.maxChildSize) {
       _dragController.jumpTo(newChildSize);
     }
   }
@@ -59,6 +57,17 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
       duration: Durations.medium2,
       curve: Curves.easeOut,
     );
+  }
+
+  _onDragWithVelocity(DragEndDetails details) {
+    if (details.primaryVelocity != null &&
+        details.primaryVelocity!.abs() > _limitVelocity) {
+      if (details.primaryVelocity! < 0) {
+        _onTapTitle();
+      } else {
+        Navigator.of(context).pop();
+      }
+    }
   }
 
   @override
@@ -90,12 +99,7 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
                     GestureDetector(
                       onTap: _onTapTitle,
                       onVerticalDragUpdate: _onDragTitle,
-                      onVerticalDragEnd: (details) {
-                        if (details.primaryVelocity != null &&
-                            details.primaryVelocity!.abs() > _limitVelocity) {
-                          _onTapTitle();
-                        }
-                      },
+                      onVerticalDragEnd: _onDragWithVelocity,
                       child: _buildTitleBar(context),
                     ),
                   Expanded(
