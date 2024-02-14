@@ -7,6 +7,7 @@ import '../themes/app_text_theme.dart';
 import '../translations/translations.dart';
 import 'gap.dart';
 import 'text.dart';
+import 'unfocus.dart';
 
 class BottomSheetCustom extends StatefulWidget {
   const BottomSheetCustom({
@@ -77,8 +78,7 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
       body: GestureDetector(
         onTap: () => Navigator.of(context).pop(),
         behavior: HitTestBehavior.opaque,
-        child: GestureDetector(
-          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: UnfocusArea(
           child: DraggableScrollableSheet(
             controller: _dragController,
             initialChildSize: widget.initialChildSize,
