@@ -18,11 +18,19 @@ class SearchTopAppBar extends StatefulWidget {
 
 class _SearchTopAppBarState extends State<SearchTopAppBar> {
   late TextEditingController _textController;
+  ValueNotifier<bool> showClearIcon = ValueNotifier(false);
 
   @override
   void initState() {
     super.initState();
     _textController = TextEditingController();
+    _textController.addListener(() {
+      if (_textController.text.isNotEmpty && !showClearIcon.value) {
+        showClearIcon.value = true;
+      } else if (_textController.text.isEmpty && showClearIcon.value) {
+        showClearIcon.value = false;
+      }
+    });
   }
 
   @override
@@ -79,15 +87,24 @@ class _SearchTopAppBarState extends State<SearchTopAppBar> {
             ),
             counterText: '',
             contentPadding: EdgeInsets.zero,
-            suffixIcon: GestureDetector(
-              onTap: () {
-                _onSubmitEvent(keyword: '');
-                _textController.clear();
+            suffixIcon: ValueListenableBuilder<bool>(
+              valueListenable: showClearIcon,
+              builder: (context, isShow, _) {
+                return isShow
+                    ? GestureDetector(
+                        onTap: () {
+                          if (_textController.text.isNotEmpty) {
+                            _onSubmitEvent(keyword: '');
+                            _textController.clear();
+                          }
+                        },
+                        child: Icon(
+                          Icons.clear,
+                          color: context.colors.grey600,
+                        ),
+                      )
+                    : const SizedBox();
               },
-              child: Icon(
-                Icons.clear,
-                color: context.colors.grey600,
-              ),
             ),
           ),
           keyboardType: TextInputType.text,

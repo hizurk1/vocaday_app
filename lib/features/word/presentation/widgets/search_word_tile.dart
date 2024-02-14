@@ -31,11 +31,11 @@ class SearchWordTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      surfaceTintColor: context.backgroundColor,
       child: InkWell(
         onLongPress: _onCopyToClipboard,
         child: Container(
           decoration: BoxDecoration(
-            color: context.backgroundColor,
             border: Border(
               bottom: BorderSide(
                 color: context.theme.dividerColor.withOpacity(.2),
@@ -44,6 +44,7 @@ class SearchWordTileWidget extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(horizontal: 5.w),
           child: ListTile(
+            tileColor: context.backgroundColor,
             title: TextCustom(
               word.word.toLowerCase(),
               style: context.textStyle.bodyM.bw,

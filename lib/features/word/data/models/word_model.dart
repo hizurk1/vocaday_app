@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import '../../domain/entities/word_entity.dart';
 
 class WordModel {
@@ -12,6 +13,20 @@ class WordModel {
     required this.synonyms,
     required this.antonyms,
   });
+
+  WordModel copyWith({
+    String? word,
+    List<MeaningModel>? meanings,
+    List<String>? synonyms,
+    List<String>? antonyms,
+  }) {
+    return WordModel(
+      word: word ?? this.word,
+      meanings: meanings ?? this.meanings,
+      synonyms: synonyms ?? this.synonyms,
+      antonyms: antonyms ?? this.antonyms,
+    );
+  }
 
   factory WordModel.fromJson(Map<String, dynamic> json) {
     final word = json.keys.first;

@@ -18,7 +18,7 @@ class SearchWordsUsecase
     String params,
   ) async {
     final keyword = params.toUpperCase();
-    int maxAmount = 10;
+    int maxAmount = 20;
 
     final getAllWordsResult = await repository.getAllWords();
 
@@ -29,15 +29,16 @@ class SearchWordsUsecase
             .where(
               (object) => object.word.contains(keyword),
             )
-            .take(maxAmount)
             .toList();
 
         if (keyword.length < 3) {
-          return Right((searchResult, []));
+          return Right((searchResult.take(maxAmount).toList(), []));
         } else {
           return Right((
-            searchResult,
-            _findSimilarWords(keyword, wordList).take(maxAmount).toList()
+            searchResult.take(maxAmount).toList(),
+            _findSimilarWords(keyword, wordList, searchResult)
+                .take(maxAmount ~/ 2)
+                .toList()
           ));
         }
       },
@@ -47,11 +48,13 @@ class SearchWordsUsecase
   List<WordEntity> _findSimilarWords(
     String keyword,
     List<WordEntity> wordList,
+    List<WordEntity> searchResult,
   ) {
     Map<WordEntity, int> results = {};
 
     for (WordEntity entity in wordList) {
-      if (keyword.length <= entity.word.length &&
+      if (!searchResult.contains(entity) &&
+          keyword.length <= entity.word.length &&
           entity.word.length <= keyword.length * 2) {
         final int steps = SearchAlgorithm.calculateWagnerFischer(
           keyword,
