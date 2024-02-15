@@ -31,6 +31,8 @@ class AppAssets {
   static const genderOutline = '$_icon/gender.svg';
   static const attendance = '$_icon/check_in.svg';
   static const camera = '$_icon/camera.svg';
+  static const week = '$_icon/week.svg';
+  static const lightning = '$_icon/lightning.svg';
 
   // Bottom nav
   static const homeIconFill = '$_icon/home_fill.svg';

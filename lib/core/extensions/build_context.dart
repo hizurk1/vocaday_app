@@ -57,6 +57,11 @@ extension BuildContextExtension on BuildContext {
   Color get shadowColor =>
       isDarkTheme ? AppColor().grey950 : AppColor().grey300;
 
+  /// Get [Color] for any elements have color like `shadow` widget.
+  /// [grey700] for light theme and [grey950] for dark theme
+  Color get shadowColorDark =>
+      isDarkTheme ? AppColor().grey950 : AppColor().grey700;
+
   /// To show date picker.
   ///
   /// * initDate: When the date picker is first displayed, if [initialDate] is not null, it will show the month of [initialDate], with [initialDate] selected. Otherwise it will show the [currentDate]'s month.

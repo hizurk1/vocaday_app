@@ -110,6 +110,28 @@ class CodegenLoader extends AssetLoader{
     "check_your_internet_connection": "Check your internet connection",
     "no_internet_connection": "No internet connection",
     "you_back_online": "Woohoo! You are back online."
+  },
+  "home": {
+    "tab_points": "Points",
+    "tab_attendances": "Attendances",
+    "day": {
+      "many": "{} days",
+      "one": "1 day",
+      "other": "{} days",
+      "zero": "0 day"
+    },
+    "general": "General",
+    "every_day_new_word": "Every day a new word",
+    "leaderboard": "Leaderboard",
+    "check_in": "Check-in",
+    "this_week": "This week",
+    "this_month": "This month",
+    "time": {
+      "zero": "0 time",
+      "one": "1 time",
+      "other": "{} time",
+      "many": "{} times"
+    }
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -208,6 +230,28 @@ static const Map<String,dynamic> vi_VN = {
     "check_your_internet_connection": "Kiểm tra kết nối mạng của bạn",
     "no_internet_connection": "Không có kết nối mạng",
     "you_back_online": "Hú hú! Đã có kết nối mạng."
+  },
+  "home": {
+    "tab_points": "Điểm",
+    "tab_attendances": "Điểm danh",
+    "day": {
+      "many": "{} ngày",
+      "one": "1 ngày",
+      "other": "{} ngày",
+      "zero": "0 ngày"
+    },
+    "general": "Chung",
+    "every_day_new_word": "Mỗi ngày một từ mới",
+    "leaderboard": "Bảng xếp hạng",
+    "check_in": "Điểm danh",
+    "this_week": "Tuần này",
+    "this_month": "Tháng này",
+    "time": {
+      "zero": "0 lần",
+      "one": "1 lần",
+      "other": "{} lần",
+      "many": "{} lần"
+    }
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

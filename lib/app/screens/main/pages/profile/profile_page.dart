@@ -13,7 +13,6 @@ import '../../../../managers/navigation.dart';
 import '../../../../translations/translations.dart';
 import '../../../../widgets/app_bar.dart';
 import '../../../../widgets/sliver_tab_view.dart';
-import '../../../../widgets/tab_bar_custom.dart';
 import 'profile_completion_progress_page.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -65,24 +64,21 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
-      body: DefaultTabController(
-        length: 2,
-        child: SliverTabView(
-          onRefresh: _onRefresh,
-          topChild: const ProfilePersonalInfoTile(),
-          tabBar: TabBarCustom(
-            tabs: [
-              Tab(text: LocaleKeys.profile_personal_info.tr()),
-              Tab(text: LocaleKeys.profile_completion_progress.tr()),
-            ],
-          ),
-          tabBarView: const TabBarView(
-            physics: BouncingScrollPhysics(),
-            children: [
-              ProfilePersonalInfoPage(),
-              ProfileCompletionProgressPage(),
-            ],
-          ),
+      body: SliverTabView(
+        onRefresh: _onRefresh,
+        numberOfTabs: 2,
+        physics: const BouncingScrollPhysics(),
+        topChild: const ProfilePersonalInfoTile(),
+        tabs: [
+          Tab(text: LocaleKeys.profile_personal_info.tr()),
+          Tab(text: LocaleKeys.profile_completion_progress.tr()),
+        ],
+        tabBarView: const TabBarView(
+          physics: BouncingScrollPhysics(),
+          children: [
+            ProfilePersonalInfoPage(),
+            ProfileCompletionProgressPage(),
+          ],
         ),
       ),
     );

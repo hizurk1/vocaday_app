@@ -23,8 +23,8 @@ class ProfilePersonalInfoTile extends StatelessWidget {
         }
         return Container(
           padding: EdgeInsets.only(
-            right: 30.w,
-            left: 30.w,
+            right: 20.w,
+            left: 20.w,
             top: 30.h,
             bottom: 10.h,
           ),

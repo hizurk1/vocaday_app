@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../config/app_logger.dart';
 import '../../core/extensions/build_context.dart';
 import '../../core/extensions/string.dart';
 import '../constants/app_asset.dart';
@@ -47,7 +48,10 @@ class CachedNetworkImageCustom extends StatelessWidget {
               color: context.backgroundColor,
             ),
             errorWidget: (context, url, error) => _defaultAvatar(size),
-            errorListener: (value) => debugPrint('CachedNetworkImage: $value'),
+            errorListener: (error) => logger.e(
+              'CachedNetworkImageCustom',
+              error: error,
+            ),
             height: size?.h,
             width: size?.w,
             fit: BoxFit.cover,
@@ -70,7 +74,6 @@ class CachedNetworkImageCustom extends StatelessWidget {
 
   Widget _defaultAvatar(double? size) {
     final file = File(url ?? '');
-    debugPrint('file: $file');
     return file.path.isNotEmpty
         ? Image.file(
             file,

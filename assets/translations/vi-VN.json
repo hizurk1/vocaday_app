@@ -94,5 +94,27 @@
     "check_your_internet_connection": "Kiểm tra kết nối mạng của bạn",
     "no_internet_connection": "Không có kết nối mạng",
     "you_back_online": "Hú hú! Đã có kết nối mạng."
+  },
+  "home": {
+    "tab_points": "Điểm",
+    "tab_attendances": "Điểm danh",
+    "day": {
+      "many": "{} ngày",
+      "one": "1 ngày",
+      "other": "{} ngày",
+      "zero": "0 ngày"
+    },
+    "general": "Chung",
+    "every_day_new_word": "Mỗi ngày một từ mới",
+    "leaderboard": "Bảng xếp hạng",
+    "check_in": "Điểm danh",
+    "this_week": "Tuần này",
+    "this_month": "Tháng này",
+    "time": {
+      "zero": "0 lần",
+      "one": "1 lần",
+      "other": "{} lần",
+      "many": "{} lần"
+    }
   }
 }

@@ -7,7 +7,13 @@ import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 
 class TabBarCustom extends StatelessWidget {
-  const TabBarCustom({super.key, required this.tabs});
+  const TabBarCustom({
+    super.key,
+    required this.tabs,
+    this.horizontalMargin,
+  });
+
+  final double? horizontalMargin;
   final List<Tab> tabs;
 
   @override
@@ -16,7 +22,7 @@ class TabBarCustom extends StatelessWidget {
       height: AppElement.tabBarSize.h,
       width: context.screenWidth,
       padding: EdgeInsets.all(5.h),
-      margin: EdgeInsets.symmetric(horizontal: 20.w),
+      margin: EdgeInsets.symmetric(horizontal: (horizontalMargin ?? 20).w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
         color: context.isDarkTheme

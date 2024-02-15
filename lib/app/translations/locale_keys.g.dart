@@ -72,5 +72,15 @@ abstract class  LocaleKeys {
   static const utils_check_your_internet_connection = 'utils.check_your_internet_connection';
   static const utils_no_internet_connection = 'utils.no_internet_connection';
   static const utils_you_back_online = 'utils.you_back_online';
+  static const home_tab_points = 'home.tab_points';
+  static const home_tab_attendances = 'home.tab_attendances';
+  static const home_day = 'home.day';
+  static const home_general = 'home.general';
+  static const home_every_day_new_word = 'home.every_day_new_word';
+  static const home_leaderboard = 'home.leaderboard';
+  static const home_check_in = 'home.check_in';
+  static const home_this_week = 'home.this_week';
+  static const home_this_month = 'home.this_month';
+  static const home_time = 'home.time';
 
 }

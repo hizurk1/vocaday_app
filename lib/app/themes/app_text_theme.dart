@@ -107,9 +107,9 @@ class AppTextStyle {
     fontWeight: FontWeight.normal,
   );
   //! Caption
-  /// fontSize: 12 [w300]
+  /// fontSize: 13 [w300]
   final TextStyle caption = TextStyle(
-    fontSize: 12.sp,
-    fontWeight: FontWeight.w300,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.normal,
   );
 }

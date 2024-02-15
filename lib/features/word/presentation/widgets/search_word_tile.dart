@@ -51,7 +51,7 @@ class SearchWordTileWidget extends StatelessWidget {
             ),
             subtitle: TextCustom(
               word.meanings.first.type.toLowerCase(),
-              style: context.textStyle.caption.grey,
+              style: context.textStyle.labelL.grey,
             ),
             trailing: GestureDetector(
               onTap: _onCopyToClipboard,
