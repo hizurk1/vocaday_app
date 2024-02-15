@@ -26,7 +26,7 @@ class SearchPage extends StatelessWidget {
             ),
           ),
         ),
-        body: const SearchBodyWidget(),
+        body: SearchBodyWidget(),
       ),
     );
   }

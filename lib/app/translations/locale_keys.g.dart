@@ -68,6 +68,7 @@ abstract class  LocaleKeys {
   static const search_not_found = 'search.not_found';
   static const search_search_for_words = 'search.search_for_words';
   static const search_type_something = 'search.type_something';
+  static const search_show_more = 'search.show_more';
   static const user_data_point = 'user_data.point';
   static const utils_check_your_internet_connection = 'utils.check_your_internet_connection';
   static const utils_no_internet_connection = 'utils.no_internet_connection';

@@ -67,14 +67,14 @@ class ProfilePage extends StatelessWidget {
       body: SliverTabView(
         onRefresh: _onRefresh,
         numberOfTabs: 2,
-        physics: const BouncingScrollPhysics(),
+        // physics: const BouncingScrollPhysics(),
         topChild: const ProfilePersonalInfoTile(),
         tabs: [
           Tab(text: LocaleKeys.profile_personal_info.tr()),
           Tab(text: LocaleKeys.profile_completion_progress.tr()),
         ],
         tabBarView: const TabBarView(
-          physics: BouncingScrollPhysics(),
+          physics: ClampingScrollPhysics(),
           children: [
             ProfilePersonalInfoPage(),
             ProfileCompletionProgressPage(),

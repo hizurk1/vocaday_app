@@ -33,6 +33,7 @@ class AppAssets {
   static const camera = '$_icon/camera.svg';
   static const week = '$_icon/week.svg';
   static const lightning = '$_icon/lightning.svg';
+  static const arrowDown = '$_icon/arrow_down.svg';
 
   // Bottom nav
   static const homeIconFill = '$_icon/home_fill.svg';

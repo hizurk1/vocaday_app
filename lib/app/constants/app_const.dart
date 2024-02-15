@@ -5,6 +5,7 @@ class AppValueConst {
   ///
   /// Convert to MB: maxImgUploadSize / 1024 / 1024
   static const maxImgUploadSize = 5242880;
+  static const maxItemLoad = 50;
 }
 
 class AppStringConst {

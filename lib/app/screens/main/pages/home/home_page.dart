@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../../config/app_logger.dart';
 import '../../../../../core/extensions/build_context.dart';
-import '../../../../../core/extensions/color.dart';
 import '../../../../../features/user/presentation/widgets/main_home/home_top_app_bar.dart';
-import '../../../../constants/app_asset.dart';
 import '../../../../managers/navigation.dart';
-import '../../../../themes/app_color.dart';
 import '../../../../themes/app_text_theme.dart';
 import '../../../../translations/translations.dart';
 import '../../../../widgets/app_bar.dart';
-import '../../../../widgets/gap.dart';
 import '../../../../widgets/sliver_tab_view.dart';
 import '../../../../widgets/text.dart';
+import 'widgets/check_in_panel.dart';
 
-part 'widgets/check_in_panel.dart';
 part 'widgets/home_text_title.dart';
 
 class HomePage extends StatelessWidget {
@@ -48,13 +42,13 @@ class HomePage extends StatelessWidget {
         onRefresh: _onRefresh,
         numberOfTabs: 2,
         padding: 20,
-        physics: const BouncingScrollPhysics(),
+        // physics: const BouncingScrollPhysics(),
         topChild: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _HomeTextTitle(LocaleKeys.home_general.tr()),
-            _CheckInPanel(
+            CheckInPanel(
               onShowCalendar: _onOpenCalendar,
             ),
             // _HomeTextTitle(LocaleKeys.home_every_day_new_word.tr()),
@@ -66,6 +60,7 @@ class HomePage extends StatelessWidget {
           Tab(text: LocaleKeys.home_tab_attendances.tr()),
         ],
         tabBarView: TabBarView(
+          physics: const ClampingScrollPhysics(),
           children: [
             Container(),
             Container(),

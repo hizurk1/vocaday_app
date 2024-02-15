@@ -2,6 +2,7 @@ import 'package:fpdart/fpdart.dart';
 
 import '../../../../../core/typedef/typedefs.dart';
 import '../../../../../core/usecases/usecases.dart';
+import '../../../../app/constants/app_const.dart';
 import '../../../../app/utils/search_algorithm.dart';
 import '../entities/word_entity.dart';
 import '../repositories/word_repository.dart';
@@ -18,7 +19,7 @@ class SearchWordsUsecase
     String params,
   ) async {
     final keyword = params.toUpperCase();
-    int maxAmount = 20;
+    const maxSimilarItem = AppValueConst.maxItemLoad;
 
     final getAllWordsResult = await repository.getAllWords();
 
@@ -27,18 +28,19 @@ class SearchWordsUsecase
       (wordList) {
         final searchResult = wordList
             .where(
-              (object) => object.word.contains(keyword),
+              (entity) => entity.word.contains(keyword),
             )
-            .toList();
+            .toList()
+          ..sort((a, b) => a.word.length.compareTo(b.word.length));
 
         if (keyword.length < 3) {
-          return Right((searchResult.take(maxAmount).toList(), []));
+          return Right((searchResult, []));
         } else {
           return Right((
-            searchResult.take(maxAmount).toList(),
+            searchResult,
             _findSimilarWords(keyword, wordList, searchResult)
-                .take(maxAmount ~/ 2)
-                .toList()
+                .take(maxSimilarItem)
+                .toList(),
           ));
         }
       },
@@ -56,12 +58,12 @@ class SearchWordsUsecase
       if (!searchResult.contains(entity) &&
           keyword.length <= entity.word.length &&
           entity.word.length <= keyword.length * 2) {
-        final int steps = SearchAlgorithm.calculateWagnerFischer(
+        final int step = SearchAlgorithm.calculateWagnerFischer(
           keyword,
           entity.word,
         );
-        if (steps <= keyword.length ~/ 2) {
-          results[entity] = steps;
+        if (1 <= step && step <= 3) {
+          results[entity] = step;
         }
       }
     }

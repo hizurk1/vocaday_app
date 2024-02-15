@@ -1,7 +1,18 @@
-part of '../home_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
-class _CheckInPanel extends StatelessWidget {
-  const _CheckInPanel({required this.onShowCalendar});
+import '../../../../../../core/extensions/build_context.dart';
+import '../../../../../../core/extensions/color.dart';
+import '../../../../../constants/app_asset.dart';
+import '../../../../../themes/app_color.dart';
+import '../../../../../themes/app_text_theme.dart';
+import '../../../../../translations/translations.dart';
+import '../../../../../widgets/gap.dart';
+import '../../../../../widgets/text.dart';
+
+class CheckInPanel extends StatelessWidget {
+  const CheckInPanel({super.key, required this.onShowCalendar});
 
   final Function(bool showButton, bool showWeek) onShowCalendar;
 

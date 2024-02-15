@@ -96,7 +96,8 @@ class CodegenLoader extends AssetLoader{
     "are_you_looking_for": "Are you looking for?",
     "not_found": "Not found",
     "search_for_words": "Search for words",
-    "type_something": "Type something"
+    "type_something": "Type something",
+    "show_more": "Show more"
   },
   "user_data": {
     "point": {
@@ -216,7 +217,8 @@ static const Map<String,dynamic> vi_VN = {
     "are_you_looking_for": "Có phải bạn đang tìm?",
     "not_found": "Không tìm thấy",
     "search_for_words": "Tìm từ vựng",
-    "type_something": "Nhập gì đó"
+    "type_something": "Nhập gì đó",
+    "show_more": "Hiển thị thêm"
   },
   "user_data": {
     "point": {
