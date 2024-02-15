@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'app_logger.dart';
+
 class AppLifeCycleListenerWidget extends StatefulWidget {
   const AppLifeCycleListenerWidget({super.key, required this.child});
 
@@ -27,7 +29,7 @@ class _AppLifeCycleListenerWidgetState
 
   _onStateChange(AppLifecycleState state) {
     if (kDebugMode) {
-      print(state.toString());
+      logger.t(state.toString());
     }
   }
 

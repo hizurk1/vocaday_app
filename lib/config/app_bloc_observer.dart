@@ -1,12 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'app_logger.dart';
+
 class AppBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {
     super.onCreate(bloc);
     if (kDebugMode) {
-      print('${bloc.runtimeType} created');
+      logger.i('${bloc.runtimeType} created');
     }
   }
 
@@ -14,7 +16,7 @@ class AppBlocObserver extends BlocObserver {
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
     if (kDebugMode) {
-      print(
+      logger.i(
         '${bloc.runtimeType} changed from ${change.currentState} to ${change.nextState}',
       );
     }
@@ -24,7 +26,7 @@ class AppBlocObserver extends BlocObserver {
   void onEvent(Bloc bloc, Object? event) {
     super.onEvent(bloc, event);
     if (kDebugMode) {
-      print('$event is added to ${bloc.runtimeType}');
+      logger.i('$event is added to ${bloc.runtimeType}');
     }
   }
 
@@ -32,8 +34,10 @@ class AppBlocObserver extends BlocObserver {
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
     if (kDebugMode) {
-      print(
-        '${bloc.runtimeType} has [error] $error and [stackTrace] $stackTrace',
+      logger.e(
+        '${bloc.runtimeType} has errors.',
+        error: error,
+        stackTrace: stackTrace,
       );
     }
   }
@@ -42,7 +46,7 @@ class AppBlocObserver extends BlocObserver {
   void onClose(BlocBase bloc) {
     super.onClose(bloc);
     if (kDebugMode) {
-      print('${bloc.runtimeType} is closed!');
+      logger.i('${bloc.runtimeType} is closed');
     }
   }
 }
