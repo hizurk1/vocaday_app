@@ -21,6 +21,7 @@ class DailyWordCubit extends Cubit<DailyWordState> {
     emit(DailyWordLoadingState());
 
     final result = await sl<GetAllWordsUsecase>().call();
+    await Future.delayed(Durations.extralong4);
 
     result.fold(
       (failure) => emit(DailyWordErrorState(failure.message)),
@@ -28,7 +29,6 @@ class DailyWordCubit extends Cubit<DailyWordState> {
         WordEntity? random = list.getRandom;
         if (random != null) {
           await _setDailyWordLocal(random);
-          await Future.delayed(Durations.medium2);
           emit(DailyWordLoadedState(random));
         } else {
           emit(DailyWordErrorState(LocaleKeys.search_not_found.tr()));

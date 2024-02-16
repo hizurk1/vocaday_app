@@ -71,7 +71,6 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
                   child: Stack(
                     children: [
                       _buildBackgroundImage(constraints.maxHeight),
-                      _buildBlackBlur(constraints.maxHeight),
                       _buildContent(),
                       _buildLearnMoreButton(),
                       _buildReloadButton(state.wordList),
@@ -94,8 +93,12 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
           return Align(
             alignment: Alignment.topRight,
             child: Container(
-              padding: EdgeInsets.all(16.w),
-              child: const LoadingIndicatorWidget(),
+              padding: EdgeInsets.all(18.w),
+              child: LoadingIndicatorWidget(
+                size: Size(18.w, 18.h),
+                strokeWidth: 2,
+                color: AppColor().white.withOpacity(.5),
+              ),
             ),
           );
         }
@@ -179,26 +182,6 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
     );
   }
 
-  Widget _buildBlackBlur(double parentHeight) {
-    return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
-      child: Container(
-        width: context.screenWidth,
-        height: parentHeight,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              AppColor().black.withOpacity(0.7),
-              AppColor().black.withOpacity(0.9),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _buildBackgroundImage(double parentHeight) {
     return BlocBuilder<RandomImageCubit, RandomImageState>(
       builder: (context, state) {
@@ -206,11 +189,32 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
           return Container(color: Colors.black);
         }
         if (state is RandomImageLoadedState) {
-          return Image.memory(
-            state.imageBytes,
-            width: context.screenWidth,
-            height: parentHeight,
-            fit: BoxFit.cover,
+          return Stack(
+            children: [
+              Image.memory(
+                state.imageBytes,
+                width: context.screenWidth,
+                height: parentHeight,
+                fit: BoxFit.cover,
+              ),
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+                child: Container(
+                  width: context.screenWidth,
+                  height: parentHeight,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        AppColor().black.withOpacity(0.7),
+                        AppColor().black.withOpacity(0.9),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           );
         }
         return const SizedBox();
