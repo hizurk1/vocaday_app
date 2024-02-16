@@ -83,7 +83,7 @@ class SearchBodyWidget extends StatelessWidget {
                               count < state.similarWords.length)
                             _buildLoadMoreButton(
                               context: context,
-                              notifier: exactLength,
+                              notifier: similarLength,
                             ),
                         ],
                       );

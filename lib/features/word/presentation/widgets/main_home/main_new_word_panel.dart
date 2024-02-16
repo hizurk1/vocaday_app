@@ -54,7 +54,9 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
             return ErrorPage(text: state.message);
           }
           if (state is WordListLoadedState) {
-            context.read<DailyWordCubit>().getDailyWord(state.wordList);
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              context.read<DailyWordCubit>().getDailyWord(state.wordList);
+            });
 
             return Container(
               width: context.screenWidth,

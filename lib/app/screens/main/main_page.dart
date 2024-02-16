@@ -101,6 +101,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     }
     isMenuOpen.value = false;
     currentPage.value = 0;
+    _pageController.jumpToPage(0);
   }
 
   @override
