@@ -6,10 +6,10 @@ import 'package:fpdart/fpdart.dart';
 import '../../core/errors/failure.dart';
 import '../../core/typedef/typedefs.dart';
 
-class CloudStorageManager {
+class CloudStorageService {
   final FirebaseStorage _storage;
 
-  CloudStorageManager(this._storage);
+  CloudStorageService(this._storage);
 
   String _getFolderAvatar(String uid) => 'users/$uid/avatar';
 

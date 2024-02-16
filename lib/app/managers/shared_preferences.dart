@@ -25,4 +25,13 @@ class SharedPrefManager {
 
   bool get isCheckedInOnboard =>
       prefs.getBool(AppPrefsKey.onBoardState) ?? false;
+
+  //! Daily word [HomePage]
+  /// 'word+dd/MM/yyyy'
+  Future<void> saveDailyWord(String wordData) async {
+    await prefs.setString(AppPrefsKey.dailyWordString, wordData);
+  }
+
+  /// 'word+dd/MM/yyyy'
+  String? get getDailyWord => prefs.getString(AppPrefsKey.dailyWordString);
 }

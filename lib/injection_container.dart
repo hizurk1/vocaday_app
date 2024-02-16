@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:connectivity_plus/connectivity_plus.dart";
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import "package:get_it/get_it.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
+import 'app/managers/api.dart';
 import 'app/managers/cloud_storage.dart';
 import 'app/managers/connection.dart';
 import 'app/managers/language.dart';
@@ -34,7 +36,7 @@ import 'features/word/domain/repositories/word_repository.dart';
 import 'features/word/domain/usecases/get_all_words.dart';
 import 'features/word/domain/usecases/search_words.dart';
 import 'features/word/presentation/blocs/search_word/search_word_bloc.dart';
-import 'features/word/presentation/blocs/word_list/word_list_bloc.dart';
+import 'features/word/presentation/blocs/word_list/word_list_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -44,6 +46,7 @@ Future<void> setUpServiceLocator() async {
     () => SharedPreferences.getInstance(),
   );
   await sl.isReady<SharedPreferences>();
+  sl.registerLazySingleton(() => Dio());
   sl.registerLazySingleton(() => Connectivity());
   sl.registerLazySingleton(() => FirebaseAuth.instance);
   sl.registerLazySingleton(() => FirebaseFirestore.instance);
@@ -51,7 +54,8 @@ Future<void> setUpServiceLocator() async {
 
   //! App
   sl.registerLazySingleton(() => SharedPrefManager(sl()));
-  sl.registerLazySingleton(() => CloudStorageManager(sl()));
+  sl.registerLazySingleton(() => CloudStorageService(sl()));
+  sl.registerLazySingleton(() => CustomApiService(sl()));
   sl.registerLazySingleton(() => AppRouter());
   sl.registerFactory(() => ThemeCubit(sl()));
   sl.registerFactory(() => LanguageBloc());
@@ -70,7 +74,7 @@ Future<void> setUpServiceLocator() async {
   sl.registerLazySingleton(() => GetAllWordsUsecase(repository: sl()));
   sl.registerLazySingleton(() => SearchWordsUsecase(repository: sl()));
   // Bloc
-  sl.registerFactory(() => WordListBloc(sl()));
+  sl.registerFactory(() => WordListCubit(sl()));
   sl.registerFactory(() => SearchWordBloc(sl()));
 
   //! Features - authentication

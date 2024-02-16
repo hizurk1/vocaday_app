@@ -4,20 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/entities/word_entity.dart';
 import '../../../domain/usecases/get_all_words.dart';
 
-part 'word_list_event.dart';
 part 'word_list_state.dart';
 
-class WordListBloc extends Bloc<WordListEvent, WordListState> {
+class WordListCubit extends Cubit<WordListState> {
   final GetAllWordsUsecase getAllWordsUsecase;
 
-  WordListBloc(this.getAllWordsUsecase) : super(const WordListEmptyState()) {
-    on<GetAllWordsEvent>(_onGetAllWordsEvent);
-  }
+  WordListCubit(this.getAllWordsUsecase) : super(const WordListEmptyState());
 
-  Future<void> _onGetAllWordsEvent(
-    GetAllWordsEvent event,
-    Emitter<WordListState> emit,
-  ) async {
+  Future<void> getAllWords() async {
     emit(const WordListLoadingState());
 
     final result = await getAllWordsUsecase();

@@ -16,6 +16,7 @@ class CachedNetworkImageCustom extends StatelessWidget {
     super.key,
     required this.url,
     this.allowOpenFullscreenImage = true,
+    this.isAvatar = true,
     this.size,
     this.radius,
     this.padding,
@@ -28,6 +29,7 @@ class CachedNetworkImageCustom extends StatelessWidget {
   final double? padding;
   final Color? color;
   final bool allowOpenFullscreenImage;
+  final bool isAvatar;
 
   void _onTap() {
     if (allowOpenFullscreenImage) {
@@ -37,7 +39,42 @@ class CachedNetworkImageCustom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radius = this.radius ?? (size != null ? size! ~/ 2 : 1000);
+    final child = isAvatar ? _buildAvatarImage() : _buildNormalImage();
+
+    return GestureDetector(
+      onTap: _onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular((radius ?? 1000).r),
+          border: Border.all(color: color ?? context.greyColor.withOpacity(.3)),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular((radius ?? 1000).r),
+          child: child,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNormalImage() {
+    final child = url.isNullOrEmpty
+        ? Container()
+        : CachedNetworkImage(
+            imageUrl: url!,
+            placeholder: (context, url) => Container(
+              color: context.backgroundColor,
+            ),
+            errorWidget: (context, url, error) => Container(),
+            errorListener: (error) => logger.e(
+              'CachedNetworkImageCustom._buildNormalImage',
+              error: error,
+            ),
+            fit: BoxFit.cover,
+          );
+    return child;
+  }
+
+  Widget _buildAvatarImage() {
     final child = url.isNullOrEmpty
         ? _defaultAvatar(size)
         : CachedNetworkImage(
@@ -49,27 +86,14 @@ class CachedNetworkImageCustom extends StatelessWidget {
             ),
             errorWidget: (context, url, error) => _defaultAvatar(size),
             errorListener: (error) => logger.e(
-              'CachedNetworkImageCustom',
+              'CachedNetworkImageCustom._buildAvatarImage',
               error: error,
             ),
             height: size?.h,
             width: size?.w,
             fit: BoxFit.cover,
           );
-
-    return GestureDetector(
-      onTap: _onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular((this.radius ?? radius).r),
-          border: Border.all(color: color ?? context.greyColor.withOpacity(.3)),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular((this.radius ?? radius).r),
-          child: child,
-        ),
-      ),
-    );
+    return child;
   }
 
   Widget _defaultAvatar(double? size) {

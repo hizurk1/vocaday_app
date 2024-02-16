@@ -14,7 +14,7 @@ import '../../../../../widgets/text.dart';
 class CheckInPanel extends StatelessWidget {
   const CheckInPanel({super.key, required this.onShowCalendar});
 
-  final Function(bool showButton, bool showWeek) onShowCalendar;
+  final Function(bool showButton, bool isWeek) onShowCalendar;
 
   @override
   Widget build(BuildContext context) {
@@ -39,89 +39,7 @@ class CheckInPanel extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.r),
-              color: context.colors.blue.lighten(.05),
-              boxShadow: [
-                BoxShadow(
-                  color: context.colors.blue600.withOpacity(.5),
-                  spreadRadius: .1,
-                  blurRadius: 3,
-                  offset: const Offset(0.5, 0.5),
-                ),
-              ],
-            ),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: () => onShowCalendar.call(true, false),
-                borderRadius: BorderRadius.circular(10.r),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 8.w,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Gap(width: 5),
-                          SvgPicture.asset(
-                            AppAssets.attendance,
-                            height: 22.h,
-                            width: 22.w,
-                          ),
-                          const Gap(width: 10),
-                          TextCustom(
-                            LocaleKeys.home_check_in.tr(),
-                            style: context.textStyle.caption.white,
-                          ),
-                        ],
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 5.w,
-                          vertical: 5.h,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.r),
-                          color: context.colors.blue,
-                          border: Border(
-                            top: BorderSide(
-                              width: 1.2,
-                              color: context.colors.blue700.withOpacity(.35),
-                            ),
-                            left: BorderSide(
-                              width: 1.2,
-                              color: context.colors.blue700.withOpacity(.35),
-                            ),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              AppAssets.calendarOutline,
-                              height: 20.h,
-                              width: 20.w,
-                            ),
-                            const Gap(width: 10),
-                            TextCustom(
-                              "15/02/2024",
-                              style: context.textStyle.labelL.white,
-                            ),
-                            const Gap(width: 5),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+          _buildCheckIn(context),
           Padding(
             padding: EdgeInsets.only(top: 20.h),
             child: Row(
@@ -153,6 +71,92 @@ class CheckInPanel extends StatelessWidget {
     );
   }
 
+  Widget _buildCheckIn(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.r),
+        color: context.colors.blue.lighten(.05),
+        boxShadow: [
+          BoxShadow(
+            color: context.colors.blue600.withOpacity(.5),
+            spreadRadius: .1,
+            blurRadius: 3,
+            offset: const Offset(0.5, 0.5),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () => onShowCalendar.call(true, false),
+          borderRadius: BorderRadius.circular(10.r),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
+              vertical: 8.w,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Gap(width: 5),
+                    SvgPicture.asset(
+                      AppAssets.attendance,
+                      height: 22.h,
+                      width: 22.w,
+                    ),
+                    const Gap(width: 10),
+                    TextCustom(
+                      LocaleKeys.home_check_in.tr(),
+                      style: context.textStyle.caption.white,
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 5.w,
+                    vertical: 5.h,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.r),
+                    color: context.colors.blue,
+                    border: Border(
+                      top: BorderSide(
+                        width: 1.2,
+                        color: context.colors.blue700.withOpacity(.35),
+                      ),
+                      left: BorderSide(
+                        width: 1.2,
+                        color: context.colors.blue700.withOpacity(.35),
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.calendarOutline,
+                        height: 20.h,
+                        width: 20.w,
+                      ),
+                      const Gap(width: 10),
+                      TextCustom(
+                        "15/02/2024",
+                        style: context.textStyle.labelL.white,
+                      ),
+                      const Gap(width: 5),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildAttendanceTile({
     required String icon,
     required String title,
@@ -175,8 +179,15 @@ class CheckInPanel extends StatelessWidget {
               padding: EdgeInsets.all(9.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(45.r / 2),
-                color: context.theme.primaryColor.withOpacity(0.25),
-                backgroundBlendMode: BlendMode.screen,
+                color: context.colors.blue.lighten(.05),
+                boxShadow: [
+                  BoxShadow(
+                    color: context.colors.blue600.withOpacity(.5),
+                    spreadRadius: .1,
+                    blurRadius: 1.5,
+                    offset: const Offset(0.5, 0.5),
+                  ),
+                ],
               ),
               child: SvgPicture.asset(
                 icon,

@@ -25,6 +25,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   ValueNotifier<bool> isMenuOpen = ValueNotifier(false);
 
   late AnimationController _animationController;
+  late PageController _pageController;
   late Animation<double> movingAnimation;
   late Animation<double> scaleAnimation;
   late double menuSize;
@@ -43,11 +44,12 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       (AppAssets.profileIconFill, AppAssets.profileIconOutline),
     ];
 
+    _pageController = PageController();
     pages = [
-      const HomePage(),
-      const SearchPage(),
-      const ActivityPage(),
-      const ProfilePage(),
+      const HomePage(key: PageStorageKey("HomePage")),
+      const SearchPage(key: PageStorageKey("SearchPage")),
+      const ActivityPage(key: PageStorageKey("ActivityPage")),
+      const ProfilePage(key: PageStorageKey("ProfilePage")),
     ];
 
     _animationController = AnimationController(
@@ -73,6 +75,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   void dispose() {
     _animationController.dispose();
     super.dispose();
+  }
+
+  void _onTapNavigateToPage(int index) {
+    currentPage.value = index;
+    _pageController.jumpToPage(index);
   }
 
   void _onSwipeScreen(DragUpdateDetails details) {
@@ -103,7 +110,13 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
     return AnimatedBuilder(
       animation: _animationController,
-      builder: (_, child) {
+      child: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        onPageChanged: (i) => currentPage.value = i,
+        children: pages,
+      ),
+      builder: (_, animatedChild) {
         return PopScope(
           canPop: false,
           child: GestureDetector(
@@ -114,7 +127,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               ),
               body: ValueListenableBuilder<bool>(
                 valueListenable: isMenuOpen,
-                builder: (context, menuOpen, _) {
+                child: animatedChild,
+                builder: (context, menuOpen, child) {
                   return Stack(
                     children: [
                       AnimatedPositioned(
@@ -137,12 +151,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                               borderRadius: BorderRadius.circular(
                                 menuOpen ? 25.r : 0.0,
                               ),
-                              child: ValueListenableBuilder<int>(
-                                valueListenable: currentPage,
-                                builder: (context, index, _) {
-                                  return pages[index];
-                                },
-                              ),
+                              child: child,
                             ),
                           ),
                         ),
@@ -201,7 +210,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   (index, icons) => Material(
                     color: Colors.transparent,
                     child: InkWell(
-                      onTap: () => currentPage.value = index,
+                      onTap: () => _onTapNavigateToPage(index),
                       borderRadius: BorderRadius.circular(8.r),
                       child: Container(
                         height: 50.h,

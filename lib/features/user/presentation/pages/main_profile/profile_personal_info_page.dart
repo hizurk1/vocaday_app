@@ -18,7 +18,7 @@ class ProfilePersonalInfoPage extends StatelessWidget {
     return BlocBuilder<UserDataCubit, UserDataState>(
       builder: (context, state) {
         if (state is UserDataLoadingState) {
-          return const Center(child: LoadingIndicatorWidget());
+          return const LoadingIndicatorPage();
         }
         if (state is UserDataErrorState) {
           return ErrorPage(text: state.message);

@@ -17,7 +17,7 @@ class AppBlocObserver extends BlocObserver {
     super.onChange(bloc, change);
     if (kDebugMode) {
       logger.i(
-        '${bloc.runtimeType} changed from ${change.currentState} to ${change.nextState}',
+        '${bloc.runtimeType} changed from [${change.currentState.runtimeType}] to [${change.nextState.runtimeType}]',
       );
     }
   }

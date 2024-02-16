@@ -132,7 +132,8 @@ class CodegenLoader extends AssetLoader{
       "one": "1 time",
       "other": "{} time",
       "many": "{} times"
-    }
+    },
+    "learn_more": "Learn more"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -253,7 +254,8 @@ static const Map<String,dynamic> vi_VN = {
       "one": "1 lần",
       "other": "{} lần",
       "many": "{} lần"
-    }
+    },
+    "learn_more": "Học thêm"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

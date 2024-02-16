@@ -3,16 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../app/constants/app_asset.dart';
-import '../../../../app/constants/app_const.dart';
-import '../../../../app/themes/app_color.dart';
-import '../../../../app/themes/app_text_theme.dart';
-import '../../../../app/translations/translations.dart';
-import '../../../../app/widgets/error_page.dart';
-import '../../../../app/widgets/loading_indicator.dart';
-import '../../../../app/widgets/text.dart';
-import '../../../../core/extensions/build_context.dart';
-import '../blocs/search_word/search_word_bloc.dart';
+import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/constants/app_const.dart';
+import '../../../../../app/themes/app_color.dart';
+import '../../../../../app/themes/app_text_theme.dart';
+import '../../../../../app/translations/translations.dart';
+import '../../../../../app/widgets/error_page.dart';
+import '../../../../../app/widgets/loading_indicator.dart';
+import '../../../../../app/widgets/text.dart';
+import '../../../../../core/extensions/build_context.dart';
+import '../../blocs/search_word/search_word_bloc.dart';
 import 'search_word_tile.dart';
 
 class SearchBodyWidget extends StatelessWidget {
@@ -36,7 +36,7 @@ class SearchBodyWidget extends StatelessWidget {
           );
         }
         if (state is SearchWordLoadingState) {
-          return const Center(child: LoadingIndicatorWidget());
+          return const LoadingIndicatorPage();
         }
         if (state is SearchWordErrorState) {
           return ErrorPage(text: state.message);

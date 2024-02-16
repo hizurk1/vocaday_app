@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../core/extensions/build_context.dart';
-import '../../../../app/constants/app_asset.dart';
-import '../../../../app/themes/app_color.dart';
-import '../../../../app/translations/translations.dart';
-import '../blocs/search_word/search_word_bloc.dart';
+import '../../../../../../core/extensions/build_context.dart';
+import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/themes/app_color.dart';
+import '../../../../../app/translations/translations.dart';
+import '../../blocs/search_word/search_word_bloc.dart';
 
 class SearchTopAppBar extends StatefulWidget {
   const SearchTopAppBar({super.key});

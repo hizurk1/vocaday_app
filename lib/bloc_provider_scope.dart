@@ -6,7 +6,7 @@ import 'app/managers/language.dart';
 import 'app/managers/theme.dart';
 import 'features/authentication/presentation/blocs/auth/auth_bloc.dart';
 import 'features/user/presentation/cubits/user_data/user_data_cubit.dart';
-import 'features/word/presentation/blocs/word_list/word_list_bloc.dart';
+import 'features/word/presentation/blocs/word_list/word_list_cubit.dart';
 import 'injection_container.dart';
 
 class BlocProviderScope extends StatelessWidget {
@@ -31,7 +31,7 @@ class BlocProviderScope extends StatelessWidget {
           create: (_) => sl<AuthBloc>()..initAuthStream(),
         ),
         //* Word List Bloc
-        BlocProvider(create: (_) => sl<WordListBloc>()),
+        BlocProvider(create: (_) => sl<WordListCubit>()),
         //* User Cubit
         BlocProvider(create: (_) => sl<UserDataCubit>()),
       ],

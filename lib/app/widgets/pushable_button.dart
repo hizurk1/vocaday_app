@@ -23,6 +23,7 @@ class PushableButton extends StatefulWidget {
     this.borderColor,
     this.duration = 350,
     this.textColor,
+    this.textStyle,
   });
 
   final Widget? child;
@@ -34,6 +35,7 @@ class PushableButton extends StatefulWidget {
   final double border;
   final Color? borderColor;
   final int duration;
+  final TextStyle? textStyle;
   final PushableButtonType type;
   final VoidCallback onPressed;
 
@@ -100,13 +102,14 @@ class _PushableButtonState extends State<PushableButton> {
               child: widget.child ??
                   TextCustom(
                     widget.text,
-                    style: context.textStyle.bodyM.copyWith(
-                      color: widget.textColor ??
-                          (widget.type == PushableButtonType.grey
-                              ? context.colors.grey800
-                              : context.colors.white),
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: widget.textStyle ??
+                        context.textStyle.bodyM.copyWith(
+                          color: widget.textColor ??
+                              (widget.type == PushableButtonType.grey
+                                  ? context.colors.grey800
+                                  : context.colors.white),
+                          fontWeight: FontWeight.w500,
+                        ),
                   ),
             ),
           ),

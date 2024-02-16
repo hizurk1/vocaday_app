@@ -25,4 +25,5 @@ class AppPrefsKey {
   AppPrefsKey._();
   static const themeState = 'theme_state';
   static const onBoardState = 'onboard_state';
+  static const dailyWordString = 'daily_word_string';
 }

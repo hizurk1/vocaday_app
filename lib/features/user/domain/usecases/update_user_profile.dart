@@ -25,7 +25,7 @@ class UpdateUserProfileUsecase extends Usecases<void, (UserEntity, XFile?)> {
     } else {
       final fileName = entity.uid;
       final fileExt = path.extension(filePath!);
-      final uploadRes = await sl<CloudStorageManager>().uploadUserAvatarImage(
+      final uploadRes = await sl<CloudStorageService>().uploadUserAvatarImage(
         uid: entity.uid,
         filePath: filePath,
         fileName: "$fileName$fileExt",

@@ -34,6 +34,7 @@ class AppAssets {
   static const week = '$_icon/week.svg';
   static const lightning = '$_icon/lightning.svg';
   static const arrowDown = '$_icon/arrow_down.svg';
+  static const reload = '$_icon/reload.svg';
 
   // Bottom nav
   static const homeIconFill = '$_icon/home_fill.svg';

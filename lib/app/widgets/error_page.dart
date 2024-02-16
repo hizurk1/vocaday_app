@@ -18,22 +18,26 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return UnfocusArea(
       child: SafeArea(
+        bottom: false,
         child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Lottie.asset(
-                image ?? AppAssets.errorCat,
-                width: 180.w,
-                height: 180.h,
-              ),
-              Gap(height: 5.h),
-              TextCustom(
-                text,
-                style: context.textStyle.bodyS.grey,
-              ),
-            ],
+          child: Container(
+            padding: EdgeInsets.all(20.h).copyWith(top: 10.h),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Lottie.asset(
+                  image ?? AppAssets.errorCat,
+                  width: 180.w,
+                  height: 180.h,
+                ),
+                Gap(height: 5.h),
+                TextCustom(
+                  text,
+                  style: context.textStyle.bodyS.grey,
+                ),
+              ],
+            ),
           ),
         ),
       ),

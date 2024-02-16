@@ -1,4 +1,4 @@
-part of 'word_list_bloc.dart';
+part of 'word_list_cubit.dart';
 
 sealed class WordListState extends Equatable {
   const WordListState();
