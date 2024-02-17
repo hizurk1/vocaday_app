@@ -52,11 +52,36 @@ class AppTextStyle {
   static final AppTextStyle _instance = AppTextStyle._init();
   factory AppTextStyle() => _instance;
 
-  //! Title
-  /// fontSize: 20 [normal]
-  final TextStyle titleS = TextStyle(
-    fontSize: 20.sp,
+  //! Header
+  /// fontSize: 36 [bold]
+  final TextStyle headingXL = TextStyle(
+    fontSize: 36.sp,
+    fontWeight: FontWeight.bold,
+  );
+
+  /// fontSize: 34 [bold]
+  final TextStyle headingL = TextStyle(
+    fontSize: 34.sp,
+    fontWeight: FontWeight.bold,
+  );
+
+  /// fontSize: 32 [w500]
+  final TextStyle headingM = TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  /// fontSize: 30 [normal]
+  final TextStyle headingS = TextStyle(
+    fontSize: 30.sp,
     fontWeight: FontWeight.normal,
+  );
+
+  //! Title
+  /// fontSize: 28 [bold]
+  final TextStyle titleL = TextStyle(
+    fontSize: 28.sp,
+    fontWeight: FontWeight.bold,
   );
 
   /// fontSize: 24 [w500]
@@ -65,15 +90,16 @@ class AppTextStyle {
     fontWeight: FontWeight.w500,
   );
 
-  /// fontSize: 28 [bold]
-  final TextStyle titleL = TextStyle(
-    fontSize: 28.sp,
-    fontWeight: FontWeight.bold,
+  /// fontSize: 20 [normal]
+  final TextStyle titleS = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.normal,
   );
+
   //! Body
-  /// fontSize: 14 [normal]
-  final TextStyle bodyS = TextStyle(
-    fontSize: 14.sp,
+  /// fontSize: 18 [normal]
+  final TextStyle bodyL = TextStyle(
+    fontSize: 18.sp,
     fontWeight: FontWeight.normal,
   );
 
@@ -83,15 +109,23 @@ class AppTextStyle {
     fontWeight: FontWeight.normal,
   );
 
-  /// fontSize: 18 [normal]
-  final TextStyle bodyL = TextStyle(
-    fontSize: 18.sp,
+  /// fontSize: 14 [normal]
+  final TextStyle bodyS = TextStyle(
+    fontSize: 14.sp,
     fontWeight: FontWeight.normal,
   );
+
+  //! Caption
+  /// fontSize: 13 [w300]
+  final TextStyle caption = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.normal,
+  );
+
   //! Label
-  /// fontSize: 10 [normal]
-  final TextStyle labelS = TextStyle(
-    fontSize: 10.sp,
+  /// fontSize: 12 [bold]
+  final TextStyle labelL = TextStyle(
+    fontSize: 12.sp,
     fontWeight: FontWeight.normal,
   );
 
@@ -101,15 +135,9 @@ class AppTextStyle {
     fontWeight: FontWeight.w500,
   );
 
-  /// fontSize: 12 [bold]
-  final TextStyle labelL = TextStyle(
-    fontSize: 12.sp,
-    fontWeight: FontWeight.normal,
-  );
-  //! Caption
-  /// fontSize: 13 [w300]
-  final TextStyle caption = TextStyle(
-    fontSize: 13.sp,
+  /// fontSize: 10 [normal]
+  final TextStyle labelS = TextStyle(
+    fontSize: 10.sp,
     fontWeight: FontWeight.normal,
   );
 }

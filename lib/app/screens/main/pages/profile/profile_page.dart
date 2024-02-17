@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../../features/user/presentation/cubits/user_data/user_data_cubit.dart';
-import '../../../../../features/user/presentation/pages/main_profile/profile_edit_personal_info_page.dart';
-import '../../../../../features/user/presentation/pages/main_profile/profile_personal_info_page.dart';
+import '../../../../../features/user/presentation/pages/main_profile/profile_edit_user_info_bottom_sheet.dart';
+import '../../../../../features/user/presentation/pages/main_profile/profile_personal_info_page_view.dart';
 import '../../../../../features/user/presentation/widgets/main_profile/profile_personal_info.dart';
 import '../../../../constants/app_asset.dart';
 import '../../../../managers/navigation.dart';
@@ -36,8 +36,9 @@ class ProfilePage extends StatelessWidget {
     }
     if (state is UserDataLoadedState) {
       context.showBottomSheet(
-        child: ProfileEditPersonalInfoPage(
+        child: ProfileEditUserInfoBottomSheet(
           userEntity: state.entity,
+          initialHeight: 1,
         ),
       );
     }

@@ -21,7 +21,7 @@ class DailyWordCubit extends Cubit<DailyWordState> {
     emit(DailyWordLoadingState());
 
     final result = await sl<GetAllWordsUsecase>().call();
-    await Future.delayed(Durations.extralong4);
+    await Future.delayed(Durations.medium2);
 
     result.fold(
       (failure) => emit(DailyWordErrorState(failure.message)),

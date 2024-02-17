@@ -19,6 +19,7 @@ import '../../../../../app/widgets/text.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../domain/entities/word_entity.dart';
 import '../../blocs/word_list/word_list_cubit.dart';
+import '../../pages/word_detail_bottom_sheet.dart';
 import 'cubits/daily_word/daily_word_cubit.dart';
 import 'cubits/random_image/random_image_cubit.dart';
 
@@ -30,6 +31,15 @@ class MainNewWordPanelWidget extends StatefulWidget {
 }
 
 class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
+  void _onLearnMorePressed(BuildContext context) {
+    final state = context.read<DailyWordCubit>().state;
+    if (state is DailyWordLoadedState) {
+      context.showBottomSheet(
+        child: WordDetailBottomSheet(wordEntity: state.entity),
+      );
+    }
+  }
+
   Future<void> _onReload(BuildContext context) async {
     await context.read<DailyWordCubit>().reload();
   }
@@ -72,7 +82,7 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
                     children: [
                       _buildBackgroundImage(constraints.maxHeight),
                       _buildContent(),
-                      _buildLearnMoreButton(),
+                      _buildLearnMoreButton(context),
                       _buildReloadButton(state.wordList),
                     ],
                   ),
@@ -123,13 +133,13 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
     );
   }
 
-  Widget _buildLearnMoreButton() {
+  Widget _buildLearnMoreButton(BuildContext context) {
     return Align(
       alignment: Alignment.bottomRight,
       child: Container(
         margin: EdgeInsets.only(bottom: 20.h, right: 20.w),
         child: PushableButton(
-          onPressed: () {},
+          onPressed: () => _onLearnMorePressed(context),
           text: LocaleKeys.home_learn_more.tr(),
           width: max(100, context.screenWidth * 0.3),
           height: 46,

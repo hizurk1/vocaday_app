@@ -1,3 +1,8 @@
+import 'package:flutter/services.dart';
+
+import '../managers/navigation.dart';
+import '../translations/translations.dart';
+
 /// A utility class containing various utility functions.
 class UtilFunction {
   /// Constructs a new instance of [UtilFunction].
@@ -37,4 +42,13 @@ class UtilFunction {
   /// ```
   static String splitLast(String? text, String pattern) =>
       text?.split(pattern).last ?? '';
+
+  /// Copy `text` to clipboard.
+  static void copyToClipboard(String text) {
+    Clipboard.setData(ClipboardData(text: text)).then((_) {
+      Navigators().showMessage(LocaleKeys.common_is_copied_to_clipboard.tr(
+        namedArgs: {'word': text},
+      ));
+    });
+  }
 }

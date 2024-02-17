@@ -13,20 +13,42 @@ class BottomSheetCustom extends StatefulWidget {
   const BottomSheetCustom({
     super.key,
     required this.children,
+    this.padding,
     this.textTitle,
     this.textAction,
     this.onAction,
+    this.showDragHandleOnly = false,
     this.initialChildSize = 0.6,
     this.minChildSize = 0.6,
     this.maxChildSize = 1,
   });
 
+  /// Text in title of bottom sheet. If it sets to `null`, the bottom sheet
+  /// title will be hidden.
   final String? textTitle;
+
+  /// The body of bottom sheet. Excludes bottom sheet title.
   final List<Widget> children;
+
+  /// First loaded size of bottom sheet.
   final double initialChildSize;
+
+  /// Min size of bottom sheet before it will be closed.
   final double minChildSize;
+
+  /// Max size possible of bottom sheet.
   final double maxChildSize;
+
+  /// Show drag handle. Best practice is only show if [textTitle] is `null`.
+  final bool showDragHandleOnly;
+
+  /// Text for action button on the right.
   final String? textAction;
+
+  /// Apply padding for bottom sheet title.
+  final EdgeInsetsGeometry? padding;
+
+  /// Action button callback.
   final VoidCallback? onAction;
 
   @override
@@ -93,8 +115,19 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
             child: UnfocusArea(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  if (widget.showDragHandleOnly)
+                    GestureDetector(
+                      onTap: _onTapTitle,
+                      onVerticalDragUpdate: _onDragTitle,
+                      onVerticalDragEnd: _onDragWithVelocity,
+                      child: Container(
+                        color: Colors.transparent,
+                        padding:
+                            EdgeInsets.only(top: 5.h, right: 15.w, left: 15.w),
+                        child: _buildDragHandle(context),
+                      ),
+                    ),
                   if (widget.textTitle.isNotNullOrEmpty)
                     GestureDetector(
                       onTap: _onTapTitle,
@@ -105,6 +138,7 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
                   Expanded(
                     child: ListView(
                       controller: controller,
+                      padding: widget.padding ?? const EdgeInsets.all(0),
                       children: widget.children,
                     ),
                   ),
@@ -113,6 +147,18 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildDragHandle(BuildContext context) {
+    return Container(
+      height: 4.h,
+      width: 34.w,
+      margin: EdgeInsets.only(top: 10.h, bottom: 5.h),
+      decoration: BoxDecoration(
+        color: context.greyColor,
+        borderRadius: BorderRadius.circular(3),
       ),
     );
   }
@@ -137,17 +183,9 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            //? Handler
-            Container(
-              height: 4.h,
-              width: 34.w,
-              margin: EdgeInsets.only(top: 10.h, bottom: 5.h),
-              decoration: BoxDecoration(
-                color: context.greyColor,
-                borderRadius: BorderRadius.circular(3),
-              ),
-            ),
-            //? Title
+            //* Handler
+            _buildDragHandle(context),
+            //* Title
             Row(
               children: [
                 const CloseButton(),

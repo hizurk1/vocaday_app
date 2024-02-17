@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../core/extensions/build_context.dart';
 import '../../../../../app/constants/app_asset.dart';
-import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
-import '../../../../../app/translations/translations.dart';
+import '../../../../../app/utils/util_functions.dart';
 import '../../../../../app/widgets/text.dart';
 import '../../../domain/entities/word_entity.dart';
 
@@ -21,11 +19,7 @@ class SearchWordTileWidget extends StatelessWidget {
   final WordEntity word;
 
   void _onCopyToClipboard() {
-    Clipboard.setData(ClipboardData(text: word.word.toLowerCase())).then((_) {
-      Navigators().showMessage(LocaleKeys.common_is_copied_to_clipboard.tr(
-        namedArgs: {'word': word.word.toLowerCase()},
-      ));
-    });
+    UtilFunction.copyToClipboard(word.word.toLowerCase());
   }
 
   @override

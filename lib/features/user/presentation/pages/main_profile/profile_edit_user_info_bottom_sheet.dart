@@ -33,21 +33,23 @@ extension EGenderExt on EGender {
       };
 }
 
-class ProfileEditPersonalInfoPage extends StatefulWidget {
-  const ProfileEditPersonalInfoPage({
+class ProfileEditUserInfoBottomSheet extends StatefulWidget {
+  const ProfileEditUserInfoBottomSheet({
     super.key,
     required this.userEntity,
+    this.initialHeight = 0.7,
   });
 
   final UserEntity userEntity;
+  final double initialHeight;
 
   @override
-  State<ProfileEditPersonalInfoPage> createState() =>
-      _ProfileEditPersonalInfoPageState();
+  State<ProfileEditUserInfoBottomSheet> createState() =>
+      _ProfileEditUserInfoBottomSheetState();
 }
 
-class _ProfileEditPersonalInfoPageState
-    extends State<ProfileEditPersonalInfoPage> {
+class _ProfileEditUserInfoBottomSheetState
+    extends State<ProfileEditUserInfoBottomSheet> {
   late TextEditingController _nameController;
   late TextEditingController _phoneController;
   late TextEditingController _birthdayController;
@@ -130,7 +132,7 @@ class _ProfileEditPersonalInfoPageState
   @override
   Widget build(BuildContext context) {
     return BottomSheetCustom(
-      initialChildSize: 0.7,
+      initialChildSize: widget.initialHeight,
       minChildSize: 0.7,
       textTitle: LocaleKeys.profile_edit_profile.tr(),
       onAction: _onSavePressed,
