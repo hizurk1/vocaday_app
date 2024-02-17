@@ -12,13 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v2
+      - name: Setup Java
+        uses: actions/checkout@v3
+        uses: actions/setup-java@v2
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
 
-      - uses: subosito/flutter-action@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.16.9"
           channel: 'stable'
@@ -44,7 +46,7 @@ jobs:
         #   zip -r app.ipa Payload
 
       - name: Push to Releases
-      - uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/flutter-apk/*"
           tag: v0.0.1+${{ github.run_number }}
