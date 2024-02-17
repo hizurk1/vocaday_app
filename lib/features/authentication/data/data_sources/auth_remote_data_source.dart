@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../../core/errors/exception.dart';
+import '../../../../config/app_logger.dart';
 import '../models/auth_model.dart';
 
 abstract interface class AuthRemoteDataSource {
@@ -115,6 +116,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
         return authModel;
       } else {
+        logger.e("Cancel Google sign in form.");
         throw ServerException("GoogleSignInAccount not found.");
       }
     } on PlatformException catch (e) {

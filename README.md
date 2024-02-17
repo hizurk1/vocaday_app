@@ -6,7 +6,7 @@
 
 ## ⬇️ Download
 
-Download `apk` file for ``Android`` 👉 [vocaday_app.apk](https://github.com/helkaloic/vocaday_app)
+Download `apk` file for ``Android`` 👉 [vocaday_app.apk](https://github.com/helkaloic/vocaday_app/releases)
 
 Download from `Google Play Store` 👉 [Vocaday: English vocabulary](https://play.google.com/store/apps/details?id=com.vocaday.vocadayapp)
 
@@ -45,12 +45,20 @@ Generate `debug.keystore`:
 keytool -genkey -v -keystore "android\app\debug.keystore" -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -alias androiddebugkey -dname "CN=Android Debug,O=Android,C=US"
 ```
 
-Get `SHA-1` or `SHA256` fingerprint:
+Get `SHA-1` or `SHA-256` fingerprint:
 
 ```
 keytool -list -v -keystore "android\app\debug.keystore" -alias androiddebugkey -storepass android -keypass android
 ```
 
+If Google Sign In did not work, try to run these commands:
+
+```
+cd android
+./gradlew signingReport
+```
+
+Then use the `SHA-1/SHA-256` with tag **'Variant: debug'** to update fingerprints on your Firebase project.
 
 ## 💻 Code Generation
 

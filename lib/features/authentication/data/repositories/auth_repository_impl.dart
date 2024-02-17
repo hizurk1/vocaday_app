@@ -4,6 +4,7 @@ import 'package:fpdart/fpdart.dart';
 import '../../../../../core/errors/exception.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/typedef/typedefs.dart';
+import '../../../../config/app_logger.dart';
 import '../../domain/entities/auth_entity.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../data_sources/auth_remote_data_source.dart';
@@ -58,10 +59,13 @@ class AuthRepositoryImpl implements AuthRepository {
       final authModel = await remoteDataSource.signInWithGoogle();
       return Right(authModel.toEntity());
     } on FirebaseAuthException catch (e) {
+      logger.e(e.message, stackTrace: e.stackTrace);
       return Left(ServerFailure(e.message ?? e.code));
     } on ServerException catch (e) {
+      logger.e(e.message);
       return Left(ServerFailure(e.message));
     } catch (e) {
+      logger.e(e.toString());
       return Left(UnknownFailure(e.toString()));
     }
   }
