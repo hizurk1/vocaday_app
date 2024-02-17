@@ -14,25 +14,25 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v2
-          with:
-            distribution: 'zulu' # See 'Supported distributions' for available options
-            java-version: '17'
+        with:
+          distribution: 'zulu' # See 'Supported distributions' for available options
+          java-version: '17'
 
       - uses: subosito/flutter-action@v2
-          with:
-            # flutter-version: "3.16.9"
-            channel: 'stable'
-            architecture: x64
+        with:
+          flutter-version: "3.16.9"
+          channel: 'stable'
+          architecture: x64
       
       - name: Install dependencies
-      - run: flutter pub get
+        run: flutter pub get
 
       - name: Run tests
-      - run: flutter test
+        run: flutter test
 
       - name: Build debug apk
         # Build Android
-      - run: flutter build apk --debug --split-per-abi
+        run: flutter build apk --debug --split-per-abi
         # Build iOS
         # run: |
         #   flutter build ios --no-codesign
@@ -45,7 +45,7 @@ jobs:
 
       - name: Push to Releases
       - uses: ncipollo/release-action@v1
-          with:
-            artifacts: "build/app/outputs/flutter-apk/*"
-            tag: v0.0.1+${{ github.run_number }}
-            token: ${{ secrets.TOKEN }}
+        with:
+          artifacts: "build/app/outputs/flutter-apk/*"
+          tag: v0.0.1+${{ github.run_number }}
+          token: ${{ secrets.TOKEN }}
