@@ -16,7 +16,6 @@ import '../../../../app/widgets/gap.dart';
 import '../../../../app/widgets/highlight_text.dart';
 import '../../../../app/widgets/text.dart';
 import '../../../../core/extensions/build_context.dart';
-import '../../../../core/extensions/string.dart';
 import '../../domain/entities/word_entity.dart';
 
 class WordDetailBottomSheet extends StatelessWidget {
@@ -132,23 +131,27 @@ class WordDetailBottomSheet extends StatelessWidget {
                     ),
                   ),
                   Gap(height: 5.h),
-                  ExpansionTileCustom(
-                    count: meaning.examples.length,
-                    title: LocaleKeys.word_detail_examples
-                        .plural(meaning.examples.length),
-                    titleStyle: context.textStyle.bodyM.bold.primaryDark,
-                    isExpandFirst: index == 0,
-                    itemPadding: EdgeInsets.symmetric(vertical: 8.h),
-                    children: meaning.examples
-                        .mapIndexed(
-                          (i, e) => HighlightText(
-                            text: "${i + 1}. ${e.capitalizeFirstLetter}.",
-                            highlight: wordEntity.word.toLowerCase(),
-                            style: context.textStyle.bodyM.bw,
-                          ),
-                        )
-                        .toList(),
-                  ),
+                  if (meaning.examples.isNotEmpty)
+                    ExpansionTileCustom(
+                      count: meaning.examples.length,
+                      title: LocaleKeys.word_detail_examples
+                          .plural(meaning.examples.length),
+                      titleStyle: context.textStyle.bodyM.bold.primaryDark,
+                      isExpandFirst: index == 0,
+                      itemPadding: EdgeInsets.symmetric(vertical: 8.h),
+                      children: meaning.examples
+                          .mapIndexed(
+                            (i, e) => HighlightText(
+                              text: "${i + 1}. $e.",
+                              highlight: wordEntity.word.toLowerCase(),
+                              highlightStyle: context.textStyle.bodyM.copyWith(
+                                color: context.theme.colorScheme.error,
+                              ),
+                              style: context.textStyle.bodyM.bw,
+                            ),
+                          )
+                          .toList(),
+                    ),
                   if (meaning.synonyms.isNotEmpty)
                     ExpansionTileCustom(
                       count: meaning.synonyms.length,

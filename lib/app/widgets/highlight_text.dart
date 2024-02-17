@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/extensions/string.dart';
 import '../themes/app_text_theme.dart';
 
 class HighlightText extends StatelessWidget {
@@ -19,14 +20,26 @@ class HighlightText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<TextSpan> children = [];
-    List<String> parts = text.split(highlight);
+    String indexText = text.substring(0, 3);
+    children.add(TextSpan(text: indexText, style: style));
+
+    String highLightText = highlight;
+    String exIndexText = text.substring(3);
+
+    List<String> parts = exIndexText.split(highLightText);
+
+    if (parts[0] == '') {
+      highLightText = highLightText.capitalizeFirstLetter;
+    } else {
+      parts[0] = parts[0].capitalizeFirstLetter;
+    }
 
     for (int i = 0; i < parts.length; i++) {
       children.add(TextSpan(text: parts[i], style: style));
 
       if (i < parts.length - 1) {
         children.add(TextSpan(
-          text: highlight,
+          text: highLightText,
           style: highlightStyle ?? style.bold,
         ));
       }

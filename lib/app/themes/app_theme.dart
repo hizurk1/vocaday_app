@@ -49,7 +49,7 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColor().blue,
       brightness: Brightness.dark,
-      error: AppColor().red,
+      error: AppColor().red300,
       background: AppColor().black,
     ),
     textTheme: const TextTheme().apply(
