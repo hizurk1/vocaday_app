@@ -10,6 +10,9 @@ extension TextThemeExt on BuildContext {
 }
 
 extension TextStyleExt on TextStyle {
+  /// fontWeight: normal
+  TextStyle get normal => copyWith(fontWeight: FontWeight.normal);
+
   /// fontWeight: bold
   TextStyle get bold => copyWith(fontWeight: FontWeight.bold);
 
@@ -21,9 +24,12 @@ extension TextStyleExt on TextStyle {
 
   /// color: blue/primary
   TextStyle get primary => copyWith(
-        color: Navigators().currentContext!.isDarkTheme
-            ? AppColor().blue300
-            : AppColor().blue,
+        color: Navigators().currentContext!.theme.primaryColor,
+      );
+
+  /// color: theme.primaryColorDark
+  TextStyle get primaryDark => copyWith(
+        color: Navigators().currentContext!.theme.primaryColorDark,
       );
 
   /// color: black & white

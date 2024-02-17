@@ -84,5 +84,7 @@ abstract class  LocaleKeys {
   static const home_this_month = 'home.this_month';
   static const home_time = 'home.time';
   static const home_learn_more = 'home.learn_more';
+  static const word_detail_examples = 'word_detail.examples';
+  static const word_detail_synonyms = 'word_detail.synonyms';
 
 }

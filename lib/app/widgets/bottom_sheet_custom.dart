@@ -13,13 +13,14 @@ class BottomSheetCustom extends StatefulWidget {
   const BottomSheetCustom({
     super.key,
     required this.children,
+    this.backgroundColor,
     this.padding,
     this.textTitle,
     this.textAction,
     this.onAction,
     this.showDragHandleOnly = false,
     this.initialChildSize = 0.6,
-    this.minChildSize = 0.6,
+    this.minChildSize = 0.5,
     this.maxChildSize = 1,
   });
 
@@ -47,6 +48,9 @@ class BottomSheetCustom extends StatefulWidget {
 
   /// Apply padding for bottom sheet title.
   final EdgeInsetsGeometry? padding;
+
+  /// Color for background of bottom sheet, excludes title bar.
+  final Color? backgroundColor;
 
   /// Action button callback.
   final VoidCallback? onAction;
@@ -107,7 +111,7 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
           maxChildSize: widget.maxChildSize,
           builder: (_, controller) => Container(
             decoration: BoxDecoration(
-              color: context.backgroundColor,
+              color: widget.backgroundColor ?? context.bottomSheetBackground,
               borderRadius: BorderRadius.vertical(
                 top: Radius.circular(16.r),
               ),
@@ -138,7 +142,7 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
                   Expanded(
                     child: ListView(
                       controller: controller,
-                      padding: widget.padding ?? const EdgeInsets.all(0),
+                      padding: widget.padding,
                       children: widget.children,
                     ),
                   ),

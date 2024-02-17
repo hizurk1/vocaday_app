@@ -9,6 +9,7 @@ import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/utils/util_functions.dart';
 import '../../../../../app/widgets/text.dart';
 import '../../../domain/entities/word_entity.dart';
+import '../../pages/word_detail_bottom_sheet.dart';
 
 class SearchWordTileWidget extends StatelessWidget {
   const SearchWordTileWidget({
@@ -22,12 +23,19 @@ class SearchWordTileWidget extends StatelessWidget {
     UtilFunction.copyToClipboard(word.word.toLowerCase());
   }
 
+  void _onOpenWordDetail(BuildContext context) {
+    context.showBottomSheet(
+      child: WordDetailBottomSheet(wordEntity: word),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
       surfaceTintColor: context.backgroundColor,
       child: InkWell(
         onLongPress: _onCopyToClipboard,
+        onTap: () => _onOpenWordDetail(context),
         child: Container(
           decoration: BoxDecoration(
             border: Border(

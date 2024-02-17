@@ -44,6 +44,10 @@ extension BuildContextExtension on BuildContext {
   Color get backgroundColor =>
       isDarkTheme ? AppColor().backgroundDark : AppColor().backgroundLight;
 
+  /// [DarkBlack] for dark theme and [LightWhite] for light theme.
+  Color get bottomSheetBackground =>
+      isDarkTheme ? AppColor().grey950 : AppColor().white;
+
   /// Get [Color] for any elements have color like text widget.
   /// [Black] for light theme and [White] for dark theme
   Color get bwColor => isDarkTheme ? AppColor().white : AppColor().black;

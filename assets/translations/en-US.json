@@ -118,5 +118,19 @@
       "many": "{} times"
     },
     "learn_more": "Learn more"
+  },
+  "word_detail": {
+    "examples": {
+      "zero": "Examples",
+      "one": "Example",
+      "many": "Examples",
+      "other": "Examples"
+    },
+    "synonyms": {
+      "zero": "Synonyms",
+      "one": "Synonym",
+      "many": "Synonyms",
+      "other": "Synonyms"
+    }
   }
 }

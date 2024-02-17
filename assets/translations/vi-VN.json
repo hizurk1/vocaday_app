@@ -118,5 +118,19 @@
       "many": "{} lần"
     },
     "learn_more": "Học thêm"
+  },
+  "word_detail": {
+    "examples": {
+      "zero": "Ví dụ",
+      "one": "Ví dụ",
+      "many": "Ví dụ",
+      "other": "Ví dụ"
+    },
+    "synonyms": {
+      "zero": "Đồng nghĩa",
+      "one": "Đồng nghĩa",
+      "many": "Đồng nghĩa",
+      "other": "Đồng nghĩa"
+    }
   }
 }

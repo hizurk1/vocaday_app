@@ -34,6 +34,7 @@ dependencies:
   image_picker: ^1.0.4
   intl: ^0.18.1
   just_audio: ^0.9.36
+  like_button: ^2.0.5
   logger: ^2.0.2+1
   lottie: ^2.7.0
   path: ^1.8.3

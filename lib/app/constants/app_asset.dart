@@ -34,7 +34,11 @@ class AppAssets {
   static const week = '$_icon/week.svg';
   static const lightning = '$_icon/lightning.svg';
   static const arrowDown = '$_icon/arrow_down.svg';
+  static const arrowUp = '$_icon/arrow_up.svg';
+  static const arrowRight = '$_icon/arrow_right.svg';
   static const reload = '$_icon/reload.svg';
+  static const love = '$_icon/love.svg';
+  static const loved = '$_icon/loved.svg';
 
   // Bottom nav
   static const homeIconFill = '$_icon/home_fill.svg';

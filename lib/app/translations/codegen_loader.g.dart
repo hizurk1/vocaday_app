@@ -134,6 +134,20 @@ class CodegenLoader extends AssetLoader{
       "many": "{} times"
     },
     "learn_more": "Learn more"
+  },
+  "word_detail": {
+    "examples": {
+      "zero": "Examples",
+      "one": "Example",
+      "many": "Examples",
+      "other": "Examples"
+    },
+    "synonyms": {
+      "zero": "Synonyms",
+      "one": "Synonym",
+      "many": "Synonyms",
+      "other": "Synonyms"
+    }
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -256,6 +270,20 @@ static const Map<String,dynamic> vi_VN = {
       "many": "{} lần"
     },
     "learn_more": "Học thêm"
+  },
+  "word_detail": {
+    "examples": {
+      "zero": "Ví dụ",
+      "one": "Ví dụ",
+      "many": "Ví dụ",
+      "other": "Ví dụ"
+    },
+    "synonyms": {
+      "zero": "Đồng nghĩa",
+      "one": "Đồng nghĩa",
+      "many": "Đồng nghĩa",
+      "other": "Đồng nghĩa"
+    }
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

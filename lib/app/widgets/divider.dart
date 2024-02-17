@@ -8,6 +8,7 @@ class DividerCustom extends StatelessWidget {
     super.key,
     this.width,
     this.height,
+    this.margin,
     this.opacity,
     this.color,
   });
@@ -15,6 +16,7 @@ class DividerCustom extends StatelessWidget {
   final double? width;
   final double? height;
   final double? opacity;
+  final EdgeInsetsGeometry? margin;
   final Color? color;
 
   @override
@@ -22,6 +24,7 @@ class DividerCustom extends StatelessWidget {
     return Container(
       height: height?.h ?? 1.h,
       width: width?.w ?? context.screenWidth,
+      margin: margin,
       color: color ?? context.greyColor.withOpacity(opacity ?? 0.5),
     );
   }
