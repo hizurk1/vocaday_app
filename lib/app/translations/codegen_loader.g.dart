@@ -104,7 +104,7 @@ class CodegenLoader extends AssetLoader{
       "many": "{} points",
       "one": "1 point",
       "other": "{} points",
-      "zero": "0 point"
+      "zero": "No points"
     }
   },
   "utils": {
