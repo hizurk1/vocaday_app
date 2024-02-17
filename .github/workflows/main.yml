@@ -25,14 +25,14 @@ jobs:
           architecture: x64
       
       - name: Install dependencies
-        run: flutter pub get
+      - run: flutter pub get
 
       - name: Run tests
-        run: flutter test
+      - run: flutter test
 
       - name: Build debug apk
         # Build Android
-        run: flutter build apk --debug --split-per-abi
+      - run: flutter build apk --debug --split-per-abi
         # Build iOS
         # run: |
         #   flutter build ios --no-codesign
