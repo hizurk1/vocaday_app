@@ -41,11 +41,16 @@ class CheckInPanel extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _buildCheckIn(context),
-          BlocSelector<UserDataCubit, UserDataState, int>(
+          BlocSelector<UserDataCubit, UserDataState, List<DateTime>>(
             selector: (state) => state is UserDataLoadedState
-                ? state.entity.attendance?.length ?? 0
-                : 0,
-            builder: (context, int times) {
+                ? state.entity.attendance ?? []
+                : [],
+            builder: (context, List<DateTime> listAtt) {
+              final List<DateTime> inCurWeek =
+                  listAtt.where((date) => date.isInCurrentWeek).toList();
+              final List<DateTime> inCurMonth =
+                  listAtt.where((date) => date.isInCurrentMonth).toList();
+
               return Padding(
                 padding: EdgeInsets.only(top: 20.h),
                 child: Row(
@@ -55,7 +60,7 @@ class CheckInPanel extends StatelessWidget {
                       child: _buildAttendanceTile(
                         context: context,
                         icon: AppAssets.week,
-                        title: LocaleKeys.home_time.plural(times),
+                        title: LocaleKeys.home_time.plural(inCurWeek.length),
                         subTitle: LocaleKeys.home_this_week.tr(),
                       ),
                     ),
@@ -63,7 +68,7 @@ class CheckInPanel extends StatelessWidget {
                       child: _buildAttendanceTile(
                         context: context,
                         icon: AppAssets.lightning,
-                        title: LocaleKeys.home_time.plural(times),
+                        title: LocaleKeys.home_time.plural(inCurMonth.length),
                         subTitle: LocaleKeys.home_this_month.tr(),
                       ),
                     )

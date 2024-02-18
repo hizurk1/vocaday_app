@@ -41,7 +41,9 @@ class HomeCheckInBottomSheet extends StatelessWidget {
           if (state.entity.attendance.isNotNullOrEmpty) {
             state.entity.attendance?.toSet().forEach((date) {
               datasets[date.resetTime] = 1;
-              checkedIn = date.eqvYearMonthDay(DateTime.now());
+              if (!checkedIn) {
+                checkedIn = date.eqvYearMonthDay(DateTime.now());
+              }
             });
           }
           return DynamicBottomSheetCustom(

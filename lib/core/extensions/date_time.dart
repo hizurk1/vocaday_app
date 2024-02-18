@@ -22,4 +22,30 @@ extension DateTimeExt on DateTime {
     }
     return false;
   }
+
+  /// Check if a given date falls within the current week.
+  ///
+  /// The week is now adjusted to Sunday - Saturday, instead of Monday - Sunday as normal.
+  bool get isInCurrentWeek {
+    DateTime now = DateTime.now();
+
+    // Find the start of the current week (Sunday)
+    DateTime startOfWeek = now.subtract(Duration(days: now.weekday % 7));
+
+    // Use this if you want to start the week from Monday.
+    // DateTime startOfWeek = now.subtract(Duration(days: now.weekday));
+
+    // Find the end of the current week (Saturday)
+    DateTime endOfWeek = startOfWeek.add(const Duration(days: 6));
+
+    // Check if the given date falls between the start and end of the current week
+    return isAfter(startOfWeek.subtract(const Duration(days: 1))) &&
+        isBefore(endOfWeek.add(const Duration(days: 1)));
+  }
+
+  /// Check if a given date falls within the current month.
+  bool get isInCurrentMonth {
+    DateTime now = DateTime.now();
+    return month == now.month;
+  }
 }
