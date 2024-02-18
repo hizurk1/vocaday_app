@@ -132,6 +132,18 @@
       "one": "Đồng nghĩa",
       "many": "Đồng nghĩa",
       "other": "Đồng nghĩa"
+    },
+    "definitions": {
+      "zero": "Định nghĩa",
+      "many": "Định nghĩa",
+      "other": "Định nghĩa",
+      "one": "Định nghĩa"
+    },
+    "antonyms": {
+      "zero": "Trái nghĩa",
+      "many": "Trái nghĩa",
+      "other": "Trái nghĩa",
+      "one": "Trái nghĩa"
     }
   }
 }

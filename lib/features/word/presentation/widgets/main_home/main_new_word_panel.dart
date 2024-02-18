@@ -117,6 +117,7 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
           child: Align(
             alignment: Alignment.topRight,
             child: Container(
+              color: Colors.transparent,
               padding: EdgeInsets.all(16.w),
               child: SvgPicture.asset(
                 AppAssets.reload,

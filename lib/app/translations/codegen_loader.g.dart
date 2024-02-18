@@ -148,6 +148,18 @@ class CodegenLoader extends AssetLoader{
       "one": "Synonym",
       "many": "Synonyms",
       "other": "Synonyms"
+    },
+    "definitions": {
+      "zero": "Definitions",
+      "many": "Definitions",
+      "other": "Definitions",
+      "one": "Definition"
+    },
+    "antonyms": {
+      "zero": "Antonyms",
+      "many": "Antonyms",
+      "other": "Antonyms",
+      "one": "Antonym"
     }
   }
 };
@@ -285,6 +297,18 @@ static const Map<String,dynamic> vi_VN = {
       "one": "Đồng nghĩa",
       "many": "Đồng nghĩa",
       "other": "Đồng nghĩa"
+    },
+    "definitions": {
+      "zero": "Định nghĩa",
+      "many": "Định nghĩa",
+      "other": "Định nghĩa",
+      "one": "Định nghĩa"
+    },
+    "antonyms": {
+      "zero": "Trái nghĩa",
+      "many": "Trái nghĩa",
+      "other": "Trái nghĩa",
+      "one": "Trái nghĩa"
     }
   }
 };

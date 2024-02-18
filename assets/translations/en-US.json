@@ -132,6 +132,18 @@
       "one": "Synonym",
       "many": "Synonyms",
       "other": "Synonyms"
+    },
+    "definitions": {
+      "zero": "Definitions",
+      "many": "Definitions",
+      "other": "Definitions",
+      "one": "Definition"
+    },
+    "antonyms": {
+      "zero": "Antonyms",
+      "many": "Antonyms",
+      "other": "Antonyms",
+      "one": "Antonym"
     }
   }
 }

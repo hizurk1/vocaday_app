@@ -17,6 +17,7 @@ class ExpansionTileCustom extends StatelessWidget {
     this.children,
     this.titleStyle,
     this.isExpandFirst = false,
+    this.arrowFromStart = true,
     this.iconSize = 16,
     this.iconColor,
     this.titlePadding,
@@ -35,6 +36,7 @@ class ExpansionTileCustom extends StatelessWidget {
   final List<Widget>? children;
   final EdgeInsetsGeometry? itemPadding;
   final bool isExpandFirst;
+  final bool arrowFromStart;
 
   late ValueNotifier<bool> expandNotifier;
 
@@ -59,27 +61,47 @@ class ExpansionTileCustom extends StatelessWidget {
                   builder: (context, bool isExpand, _) {
                     return Row(
                       children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 8.w),
-                          child: AnimatedContainer(
-                            duration: Durations.medium1,
-                            curve: Curves.easeOut,
-                            transformAlignment: Alignment.center,
-                            transform: isExpand
-                                ? Matrix4.rotationZ(pi / 2)
-                                : Matrix4.identity(),
-                            child: Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              color: context.theme.primaryColorDark,
-                              size: iconSize,
+                        if (arrowFromStart)
+                          Container(
+                            margin: EdgeInsets.only(right: 8.w),
+                            child: AnimatedContainer(
+                              duration: Durations.medium1,
+                              curve: Curves.easeOut,
+                              transformAlignment: Alignment.center,
+                              transform: isExpand
+                                  ? Matrix4.rotationZ(pi / 2)
+                                  : Matrix4.identity(),
+                              child: Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                color: context.theme.primaryColorDark,
+                                size: iconSize,
+                              ),
                             ),
                           ),
-                        ),
                         TextCustom(
                           title +
                               (count != null && !isExpand ? " ($count)" : ''),
                           style: titleStyle,
                         ),
+                        if (!arrowFromStart) ...[
+                          const Spacer(),
+                          Container(
+                            margin: EdgeInsets.only(right: 8.w),
+                            child: AnimatedContainer(
+                              duration: Durations.medium1,
+                              curve: Curves.easeOut,
+                              transformAlignment: Alignment.center,
+                              transform: isExpand
+                                  ? Matrix4.rotationZ(pi / 2)
+                                  : Matrix4.rotationZ(-pi / 2),
+                              child: Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                color: context.theme.primaryColorDark,
+                                size: iconSize,
+                              ),
+                            ),
+                          ),
+                        ],
                       ],
                     );
                   }),

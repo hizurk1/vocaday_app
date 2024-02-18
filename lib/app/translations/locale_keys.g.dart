@@ -87,5 +87,7 @@ abstract class  LocaleKeys {
   static const home_check_in_success = 'home.check_in_success';
   static const word_detail_examples = 'word_detail.examples';
   static const word_detail_synonyms = 'word_detail.synonyms';
+  static const word_detail_definitions = 'word_detail.definitions';
+  static const word_detail_antonyms = 'word_detail.antonyms';
 
 }

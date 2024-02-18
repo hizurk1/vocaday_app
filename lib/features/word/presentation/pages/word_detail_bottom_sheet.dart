@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +12,7 @@ import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/utils/util_functions.dart';
 import '../../../../app/widgets/bottom_sheet/draggable_bottom_sheet.dart';
+import '../../../../app/widgets/dashed_line.dart';
 import '../../../../app/widgets/divider.dart';
 import '../../../../app/widgets/expansion_tile_custom.dart';
 import '../../../../app/widgets/gap.dart';
@@ -51,29 +54,101 @@ class WordDetailBottomSheet extends StatelessWidget {
               "($getTypes)",
               style: context.textStyle.bodyS.grey,
             ),
-            Container(
-              margin: EdgeInsets.only(right: 5.w),
-              child: LikeButton(
-                size: 28.h,
-                likeBuilder: (isLiked) {
-                  final color = isLiked ? AppColor().red : AppColor().grey400;
-                  return SvgPicture.asset(
-                    isLiked ? AppAssets.loved : AppAssets.love,
-                    colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-                  );
-                },
-              ),
+            LikeButton(
+              size: 28.h,
+              likeBuilder: (isLiked) {
+                final color = isLiked ? AppColor().red : AppColor().grey400;
+                return SvgPicture.asset(
+                  isLiked ? AppAssets.loved : AppAssets.love,
+                  colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+                );
+              },
             ),
           ],
         ),
-        ...wordEntity.meanings.mapIndexed(
-          (index, meaning) => _buildMeaningBlock(
-            index: index,
-            meaning: meaning,
-            context: context,
+        DashedLineCustom(
+          margin: EdgeInsets.only(
+            right: 5.w,
+            top: 15.h,
+            bottom: 8.h,
           ),
         ),
+        if (wordEntity.synonyms.isNotEmpty) ...[
+          ExpansionTileCustom(
+            count: wordEntity.synonyms.length,
+            title: LocaleKeys.word_detail_synonyms
+                .plural(wordEntity.synonyms.length),
+            titleStyle: context.textStyle.titleS.bold.primaryDark,
+            isExpandFirst: true,
+            arrowFromStart: false,
+            bodyPadding:
+                EdgeInsets.only(bottom: 10.h, right: 10.w, left: 0, top: 8.h),
+            child: _buildChips(wordEntity.synonyms, context),
+          ),
+        ],
+        if (wordEntity.antonyms.isNotEmpty) ...[
+          Gap(height: 5.h),
+          ExpansionTileCustom(
+            count: wordEntity.antonyms.length,
+            title: LocaleKeys.word_detail_antonyms
+                .plural(wordEntity.antonyms.length),
+            titleStyle: context.textStyle.titleS.bold.primaryDark,
+            isExpandFirst: true,
+            arrowFromStart: false,
+            bodyPadding:
+                EdgeInsets.only(bottom: 10.h, right: 10.w, left: 0, top: 8.h),
+            child: _buildChips(wordEntity.antonyms, context),
+          ),
+        ],
+        Gap(height: 5.h),
+        ExpansionTileCustom(
+          count: wordEntity.meanings.length,
+          title: LocaleKeys.word_detail_definitions
+              .plural(wordEntity.meanings.length),
+          titleStyle: context.textStyle.titleS.bold.primaryDark,
+          isExpandFirst: true,
+          arrowFromStart: false,
+          titlePadding: EdgeInsets.symmetric(vertical: 3.h),
+          bodyPadding: EdgeInsets.only(bottom: 5.h, right: 10.w),
+          children: wordEntity.meanings
+              .mapIndexed(
+                (index, meaning) => _buildMeaningBlock(
+                  index: index,
+                  meaning: meaning,
+                  context: context,
+                ),
+              )
+              .toList(),
+        ),
       ],
+    );
+  }
+
+  Widget _buildChips(List<String> items, BuildContext context) {
+    return Wrap(
+      spacing: 8.w,
+      runSpacing: 8.h,
+      children: items
+          .map(
+            (text) => Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 3.h,
+                horizontal: 8.w,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.r),
+                border: Border.all(
+                  color: context.theme.primaryColor,
+                  width: 1.5,
+                ),
+              ),
+              child: TextCustom(
+                text.toLowerCase(),
+                style: context.textStyle.bodyS.bold.primary,
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -86,7 +161,7 @@ class WordDetailBottomSheet extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         DividerCustom(
-          margin: EdgeInsets.only(top: 10.h, bottom: 12.h),
+          margin: EdgeInsets.only(top: 10.h, bottom: 16.h),
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,31 +236,7 @@ class WordDetailBottomSheet extends StatelessWidget {
                       isExpandFirst: index == 0,
                       bodyPadding: EdgeInsets.only(
                           bottom: 10.h, right: 10.w, left: 25.w, top: 8.h),
-                      child: Wrap(
-                        spacing: 8.w,
-                        runSpacing: 8.h,
-                        children: meaning.synonyms
-                            .map(
-                              (text) => Container(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 3.h,
-                                  horizontal: 8.w,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.r),
-                                  border: Border.all(
-                                    color: context.theme.primaryColor,
-                                    width: 1.5,
-                                  ),
-                                ),
-                                child: TextCustom(
-                                  text.toLowerCase(),
-                                  style: context.textStyle.bodyS.bold.primary,
-                                ),
-                              ),
-                            )
-                            .toList(),
-                      ),
+                      child: _buildChips(meaning.synonyms, context),
                     ),
                 ],
               ),
