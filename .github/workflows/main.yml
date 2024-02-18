@@ -33,9 +33,9 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      - name: Build debug apk
+      # - name: Build debug apk
         # Build Android
-        run: flutter build apk --debug --split-per-abi
+        # run: flutter build apk --debug --split-per-abi
         # Build iOS
         # run: |
         #   flutter build ios --no-codesign
@@ -46,9 +46,9 @@ jobs:
         #   cd ..
         #   zip -r app.ipa Payload
 
-      - name: Push to Releases
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "build/app/outputs/flutter-apk/*"
-          tag: v1.0.${{ github.run_number }}
-          token: ${{ secrets.TOKEN }}
+      # - name: Push to Releases
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "build/app/outputs/flutter-apk/*.apk"
+      #     tag: v1.0.${{ github.run_number }}
+      #     token: ${{ secrets.TOKEN }}
