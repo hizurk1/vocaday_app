@@ -24,7 +24,7 @@ class HighlightText extends StatelessWidget {
     children.add(TextSpan(text: indexText, style: style));
 
     String highLightText = highlight;
-    String exIndexText = text.substring(3);
+    String exIndexText = text.substring(3).uncapitalizeFirstLetter;
 
     List<String> parts = exIndexText.split(highLightText);
 

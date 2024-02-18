@@ -58,7 +58,7 @@ cd android
 ./gradlew signingReport
 ```
 
-Then use the `SHA-1/SHA-256` with tag **'Variant: debug'** to update fingerprints on your Firebase project.
+Then use the `SHA-1/SHA-256` with tag **'Config: debug'** to update fingerprints on your Firebase project.
 
 ## 💻 Code Generation
 

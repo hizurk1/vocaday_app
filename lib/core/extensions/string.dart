@@ -29,8 +29,22 @@ extension StringExtension on String {
   ///
   ///     'hello world'.capitalizeFirstLetter; // Returns 'Hello world'
   String get capitalizeFirstLetter {
-    if (length < 2) return this;
+    if (isEmpty) return this;
+    if (length < 2) return toUpperCase();
     return this[0].toUpperCase() + substring(1);
+  }
+
+  /// Returns a copy of this string with the first character converted to lowercase.
+  ///
+  /// If the string is empty, this method returns an empty string.
+  ///
+  /// Example:
+  ///
+  ///     'Hello World'.uncapitalizeFirstLetter; // Returns 'hello World'
+  String get uncapitalizeFirstLetter {
+    if (isEmpty) return this;
+    if (length < 2) return toLowerCase();
+    return this[0].toLowerCase() + substring(1);
   }
 
   /// Returns the path with the leading slash.
