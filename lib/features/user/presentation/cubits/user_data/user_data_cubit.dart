@@ -34,7 +34,11 @@ class UserDataCubit extends Cubit<UserDataState> {
     }
   }
 
-  void cancelDataStream() => _streamSubscription?.cancel();
+  void cancelDataStream() {
+    emit(UserDataEmptyState());
+    _streamSubscription?.cancel();
+    _streamSubscription = null;
+  }
 
   Future<void> updateUserProfile(UserEntity entity, XFile? image) async {
     if (entity.name.isEmpty) {

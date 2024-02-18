@@ -16,7 +16,7 @@ class EntryPage extends StatelessWidget {
     return StatusBar(
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (_, state) {},
-        builder: (_, state) {
+        builder: (context, state) {
           if (state is AuthenticatedState) {
             context.read<UserDataCubit>().initDataStream(state.user?.uid);
             context.read<WordListCubit>().getAllWords();
