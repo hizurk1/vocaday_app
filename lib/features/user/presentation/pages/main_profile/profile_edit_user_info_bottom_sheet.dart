@@ -13,7 +13,7 @@ import '../../../../../app/translations/translations.dart';
 import '../../../../../app/utils/image_picker.dart';
 import '../../../../../app/widgets/border_dropdown_field.dart';
 import '../../../../../app/widgets/border_text_field.dart';
-import '../../../../../app/widgets/bottom_sheet_custom.dart';
+import '../../../../../app/widgets/bottom_sheet/draggable_bottom_sheet.dart';
 import '../../../../../app/widgets/cached_network_image.dart';
 import '../../../../../app/widgets/gap.dart';
 import '../../../../../app/widgets/text.dart';
@@ -131,7 +131,7 @@ class _ProfileEditUserInfoBottomSheetState
 
   @override
   Widget build(BuildContext context) {
-    return BottomSheetCustom(
+    return DraggableBottomSheetCustom(
       initialChildSize: widget.initialHeight,
       minChildSize: 0.7,
       textTitle: LocaleKeys.profile_edit_profile.tr(),

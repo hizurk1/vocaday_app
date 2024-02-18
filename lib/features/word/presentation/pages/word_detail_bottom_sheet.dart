@@ -9,7 +9,7 @@ import '../../../../app/themes/app_color.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/utils/util_functions.dart';
-import '../../../../app/widgets/bottom_sheet_custom.dart';
+import '../../../../app/widgets/bottom_sheet/draggable_bottom_sheet.dart';
 import '../../../../app/widgets/divider.dart';
 import '../../../../app/widgets/expansion_tile_custom.dart';
 import '../../../../app/widgets/gap.dart';
@@ -36,8 +36,8 @@ class WordDetailBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomSheetCustom(
-      showDragHandleOnly: true,
+    return DraggableBottomSheetCustom(
+      showDragHandle: true,
       initialChildSize: 0.6,
       minChildSize: 0.15,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),

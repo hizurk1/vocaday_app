@@ -124,10 +124,11 @@ class Navigators {
   /// * [onAccept]: The function to call when the accept button is pressed.
   /// * [onCancel]: The function to call when the cancel button is pressed.
   Future<bool?> showDialogWithButton({
-    required String title,
+    String? title,
     String? subtitle,
     String? acceptText,
     String? cancelText,
+    Widget? body,
     bool showAccept = true,
     bool showCancel = true,
     bool showIcon = true,
@@ -177,20 +178,25 @@ class Navigators {
                             ),
                     )
                   : null,
-              title: Center(
-                child: TextCustom(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: navigationKey.currentContext?.textStyle.bodyL.bold.bw,
-                ),
-              ),
-              content: subtitle.isNotNullOrEmpty
-                  ? TextCustom(
-                      subtitle ?? '',
-                      textAlign: TextAlign.center,
-                      style: navigationKey.currentContext?.textStyle.bodyS.grey,
+              title: title != null
+                  ? Center(
+                      child: TextCustom(
+                        title,
+                        textAlign: TextAlign.center,
+                        style: navigationKey
+                            .currentContext?.textStyle.bodyL.bold.bw,
+                      ),
                     )
                   : null,
+              content: body ??
+                  (subtitle.isNotNullOrEmpty
+                      ? TextCustom(
+                          subtitle ?? '',
+                          textAlign: TextAlign.center,
+                          style: navigationKey
+                              .currentContext?.textStyle.bodyS.grey,
+                        )
+                      : null),
               actionsOverflowButtonSpacing: 15.h,
               actionsAlignment: MainAxisAlignment.spaceBetween,
               actions: showAccept || showCancel

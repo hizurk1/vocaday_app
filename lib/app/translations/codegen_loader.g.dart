@@ -128,12 +128,13 @@ class CodegenLoader extends AssetLoader{
     "this_week": "This week",
     "this_month": "This month",
     "time": {
-      "zero": "0 time",
+      "zero": "0 times",
       "one": "1 time",
-      "other": "{} time",
+      "other": "{} times",
       "many": "{} times"
     },
-    "learn_more": "Learn more"
+    "learn_more": "Learn more",
+    "check_in_success": "Yay! Check-in successful."
   },
   "word_detail": {
     "examples": {
@@ -269,7 +270,8 @@ static const Map<String,dynamic> vi_VN = {
       "other": "{} lần",
       "many": "{} lần"
     },
-    "learn_more": "Học thêm"
+    "learn_more": "Học thêm",
+    "check_in_success": "Ye! Điểm danh thành công."
   },
   "word_detail": {
     "examples": {

@@ -27,6 +27,7 @@ import 'features/authentication/presentation/blocs/sign_up/sign_up_bloc.dart';
 import 'features/user/data/data_sources/user_remote_data_source.dart';
 import 'features/user/data/repositories/user_repository_impl.dart';
 import 'features/user/domain/repositories/user_repository.dart';
+import 'features/user/domain/usecases/add_attendance_date.dart';
 import 'features/user/domain/usecases/get_user_data.dart';
 import 'features/user/domain/usecases/update_user_profile.dart';
 import 'features/user/presentation/cubits/user_data/user_data_cubit.dart';
@@ -129,6 +130,9 @@ Future<void> setUpServiceLocator() async {
   sl.registerLazySingleton(
     () => GetUserDataUsecase(repository: sl()),
   );
+  sl.registerLazySingleton(
+    () => AddAttendanceDateUsecase(repository: sl()),
+  );
   // Bloc/Cubit
-  sl.registerFactory(() => UserDataCubit(sl(), sl()));
+  sl.registerFactory(() => UserDataCubit(sl(), sl(), sl()));
 }

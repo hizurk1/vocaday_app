@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/extensions/build_context.dart';
-import '../../core/extensions/string.dart';
-import '../themes/app_text_theme.dart';
-import '../translations/translations.dart';
-import 'gap.dart';
-import 'text.dart';
-import 'unfocus.dart';
+import '../../../core/extensions/build_context.dart';
+import '../../../core/extensions/string.dart';
+import '../../themes/app_text_theme.dart';
+import '../../translations/translations.dart';
+import '../gap.dart';
+import '../text.dart';
+import '../unfocus.dart';
 
-class BottomSheetCustom extends StatefulWidget {
-  const BottomSheetCustom({
+class DraggableBottomSheetCustom extends StatefulWidget {
+  const DraggableBottomSheetCustom({
     super.key,
     required this.children,
     this.backgroundColor,
@@ -18,18 +18,11 @@ class BottomSheetCustom extends StatefulWidget {
     this.textTitle,
     this.textAction,
     this.onAction,
-    this.showDragHandleOnly = false,
+    this.showDragHandle = false,
     this.initialChildSize = 0.6,
     this.minChildSize = 0.5,
     this.maxChildSize = 1,
   });
-
-  /// Text in title of bottom sheet. If it sets to `null`, the bottom sheet
-  /// title will be hidden.
-  final String? textTitle;
-
-  /// The body of bottom sheet. Excludes bottom sheet title.
-  final List<Widget> children;
 
   /// First loaded size of bottom sheet.
   final double initialChildSize;
@@ -41,10 +34,20 @@ class BottomSheetCustom extends StatefulWidget {
   final double maxChildSize;
 
   /// Show drag handle. Best practice is only show if [textTitle] is `null`.
-  final bool showDragHandleOnly;
+  final bool showDragHandle;
+
+  /// Text in title of bottom sheet. If it sets to `null`, the bottom sheet
+  /// title will be hidden.
+  final String? textTitle;
+
+  /// The body of bottom sheet. Excludes bottom sheet title.
+  final List<Widget> children;
 
   /// Text for action button on the right.
   final String? textAction;
+
+  /// Action button callback.
+  final VoidCallback? onAction;
 
   /// Apply padding for bottom sheet title.
   final EdgeInsetsGeometry? padding;
@@ -52,14 +55,13 @@ class BottomSheetCustom extends StatefulWidget {
   /// Color for background of bottom sheet, excludes title bar.
   final Color? backgroundColor;
 
-  /// Action button callback.
-  final VoidCallback? onAction;
-
   @override
-  State<BottomSheetCustom> createState() => _BottomSheetCustomState();
+  State<DraggableBottomSheetCustom> createState() =>
+      _DraggableBottomSheetCustomState();
 }
 
-class _BottomSheetCustomState extends State<BottomSheetCustom> {
+class _DraggableBottomSheetCustomState
+    extends State<DraggableBottomSheetCustom> {
   final _dragController = DraggableScrollableController();
   final double _limitVelocity = 1000;
 
@@ -120,25 +122,7 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (widget.showDragHandleOnly)
-                    GestureDetector(
-                      onTap: _onTapTitle,
-                      onVerticalDragUpdate: _onDragTitle,
-                      onVerticalDragEnd: _onDragWithVelocity,
-                      child: Container(
-                        color: Colors.transparent,
-                        padding:
-                            EdgeInsets.only(top: 5.h, right: 15.w, left: 15.w),
-                        child: _buildDragHandle(context),
-                      ),
-                    ),
-                  if (widget.textTitle.isNotNullOrEmpty)
-                    GestureDetector(
-                      onTap: _onTapTitle,
-                      onVerticalDragUpdate: _onDragTitle,
-                      onVerticalDragEnd: _onDragWithVelocity,
-                      child: _buildTitleBar(context),
-                    ),
+                  _buildTitle(),
                   Expanded(
                     child: ListView(
                       controller: controller,
@@ -153,6 +137,28 @@ class _BottomSheetCustomState extends State<BottomSheetCustom> {
         ),
       ),
     );
+  }
+
+  Widget _buildTitle() {
+    return widget.textTitle.isNotNullOrEmpty
+        ? GestureDetector(
+            onTap: _onTapTitle,
+            onVerticalDragUpdate: _onDragTitle,
+            onVerticalDragEnd: _onDragWithVelocity,
+            child: _buildTitleBar(context),
+          )
+        : widget.showDragHandle
+            ? GestureDetector(
+                onTap: _onTapTitle,
+                onVerticalDragUpdate: _onDragTitle,
+                onVerticalDragEnd: _onDragWithVelocity,
+                child: Container(
+                  color: Colors.transparent,
+                  padding: EdgeInsets.only(top: 5.h, right: 15.w, left: 15.w),
+                  child: _buildDragHandle(context),
+                ),
+              )
+            : const SizedBox();
   }
 
   Widget _buildDragHandle(BuildContext context) {

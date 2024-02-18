@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../config/app_logger.dart';
 import '../../../../../core/extensions/build_context.dart';
+import '../../../../../features/user/presentation/pages/main_home/home_check_in_bottom_sheet.dart';
+import '../../../../../features/user/presentation/widgets/main_home/home_check_in_panel.dart';
 import '../../../../../features/user/presentation/widgets/main_home/home_top_app_bar.dart';
 import '../../../../../features/word/presentation/widgets/main_home/main_new_word_panel.dart';
 import '../../../../managers/navigation.dart';
@@ -10,7 +11,6 @@ import '../../../../translations/translations.dart';
 import '../../../../widgets/app_bar.dart';
 import '../../../../widgets/sliver_tab_view.dart';
 import '../../../../widgets/text.dart';
-import 'widgets/check_in_panel.dart';
 
 part 'widgets/home_text_title.dart';
 
@@ -26,8 +26,10 @@ class _HomePageState extends State<HomePage>
   @override
   bool get wantKeepAlive => true;
 
-  _onOpenCalendar(bool showButton, bool isWeek) {
-    logger.i("Open calendar! $showButton $isWeek");
+  _onOpenCalendar() {
+    context.showBottomSheet(
+      child: const HomeCheckInBottomSheet(),
+    );
   }
 
   Future<void> _onRefresh() async {
@@ -59,8 +61,9 @@ class _HomePageState extends State<HomePage>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _HomeTextTitle(LocaleKeys.home_general.tr()),
-            CheckInPanel(
-              onShowCalendar: _onOpenCalendar,
+            GestureDetector(
+              onTap: _onOpenCalendar,
+              child: const CheckInPanel(),
             ),
             _HomeTextTitle(LocaleKeys.home_every_day_new_word.tr()),
             const MainNewWordPanelWidget(),

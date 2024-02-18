@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../../core/extensions/build_context.dart';
-import '../../../../../../core/extensions/color.dart';
-import '../../../../../constants/app_asset.dart';
-import '../../../../../themes/app_color.dart';
-import '../../../../../themes/app_text_theme.dart';
-import '../../../../../translations/translations.dart';
-import '../../../../../widgets/gap.dart';
-import '../../../../../widgets/text.dart';
+import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/themes/app_color.dart';
+import '../../../../../app/themes/app_text_theme.dart';
+import '../../../../../app/translations/translations.dart';
+import '../../../../../app/widgets/gap.dart';
+import '../../../../../app/widgets/text.dart';
+import '../../../../../core/extensions/build_context.dart';
+import '../../../../../core/extensions/color.dart';
+import '../../../../../core/extensions/date_time.dart';
+import '../../cubits/user_data/user_data_cubit.dart';
 
 class CheckInPanel extends StatelessWidget {
-  const CheckInPanel({super.key, required this.onShowCalendar});
-
-  final Function(bool showButton, bool isWeek) onShowCalendar;
+  const CheckInPanel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,31 +41,36 @@ class CheckInPanel extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _buildCheckIn(context),
-          Padding(
-            padding: EdgeInsets.only(top: 20.h),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: _buildAttendanceTile(
-                    context: context,
-                    onShowCalendar: () => onShowCalendar.call(false, true),
-                    icon: AppAssets.week,
-                    title: LocaleKeys.home_time.plural(0),
-                    subTitle: LocaleKeys.home_this_week.tr(),
-                  ),
+          BlocSelector<UserDataCubit, UserDataState, int>(
+            selector: (state) => state is UserDataLoadedState
+                ? state.entity.attendance?.length ?? 0
+                : 0,
+            builder: (context, int times) {
+              return Padding(
+                padding: EdgeInsets.only(top: 20.h),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: _buildAttendanceTile(
+                        context: context,
+                        icon: AppAssets.week,
+                        title: LocaleKeys.home_time.plural(times),
+                        subTitle: LocaleKeys.home_this_week.tr(),
+                      ),
+                    ),
+                    Expanded(
+                      child: _buildAttendanceTile(
+                        context: context,
+                        icon: AppAssets.lightning,
+                        title: LocaleKeys.home_time.plural(times),
+                        subTitle: LocaleKeys.home_this_month.tr(),
+                      ),
+                    )
+                  ],
                 ),
-                Expanded(
-                  child: _buildAttendanceTile(
-                    context: context,
-                    onShowCalendar: () => onShowCalendar.call(false, false),
-                    icon: AppAssets.lightning,
-                    title: LocaleKeys.home_time.plural(0),
-                    subTitle: LocaleKeys.home_this_month.tr(),
-                  ),
-                )
-              ],
-            ),
+              );
+            },
           )
         ],
       ),
@@ -88,7 +94,6 @@ class CheckInPanel extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () => onShowCalendar.call(true, false),
           borderRadius: BorderRadius.circular(10.r),
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -142,7 +147,7 @@ class CheckInPanel extends StatelessWidget {
                       ),
                       const Gap(width: 10),
                       TextCustom(
-                        "15/02/2024",
+                        DateTime.now().ddMMyyyy,
                         style: context.textStyle.labelL.white,
                       ),
                       const Gap(width: 5),
@@ -162,7 +167,6 @@ class CheckInPanel extends StatelessWidget {
     required String title,
     required String subTitle,
     required BuildContext context,
-    required VoidCallback onShowCalendar,
   }) {
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -171,7 +175,6 @@ class CheckInPanel extends StatelessWidget {
         Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: onShowCalendar,
             borderRadius: BorderRadius.circular(45.r),
             child: Container(
               height: 45.h,

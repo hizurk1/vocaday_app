@@ -9,6 +9,7 @@ import '../../../../../app/translations/translations.dart';
 import '../../../../../app/utils/validator.dart';
 import '../../../../../core/extensions/string.dart';
 import '../../../domain/entities/user_entity.dart';
+import '../../../domain/usecases/add_attendance_date.dart';
 import '../../../domain/usecases/get_user_data.dart';
 import '../../../domain/usecases/update_user_profile.dart';
 
@@ -17,11 +18,13 @@ part 'user_data_state.dart';
 class UserDataCubit extends Cubit<UserDataState> {
   final GetUserDataUsecase getUserDataUsecase;
   final UpdateUserProfileUsecase updateUserProfileUsecase;
+  final AddAttendanceDateUsecase addAttendanceDateUsecase;
   StreamSubscription? _streamSubscription;
 
   UserDataCubit(
     this.getUserDataUsecase,
     this.updateUserProfileUsecase,
+    this.addAttendanceDateUsecase,
   ) : super(UserDataEmptyState());
 
   void initDataStream(String? uid) {
@@ -38,6 +41,24 @@ class UserDataCubit extends Cubit<UserDataState> {
     emit(UserDataEmptyState());
     _streamSubscription?.cancel();
     _streamSubscription = null;
+  }
+
+  Future<void> addAttendanceDate(String uid, List<DateTime> attendance) async {
+    if (attendance.isEmpty) return;
+
+    final result = await addAttendanceDateUsecase((uid, attendance));
+
+    result.fold(
+      (failure) {
+        Navigators().showMessage(failure.message, type: MessageType.error);
+      },
+      (res) {
+        Navigators().showMessage(
+          LocaleKeys.home_check_in_success.tr(),
+          type: MessageType.success,
+        );
+      },
+    );
   }
 
   Future<void> updateUserProfile(UserEntity entity, XFile? image) async {

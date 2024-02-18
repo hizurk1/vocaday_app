@@ -5,4 +5,8 @@ abstract interface class UserRepository {
   FutureEither<void> addUserProfile(UserEntity userEntity);
   Stream<UserEntity?> getUserData(String uid);
   FutureEither<void> updateUserProfile(UserEntity userEntity);
+  FutureEither<bool> addAttendanceDate({
+    required String uid,
+    required List<DateTime> attendance,
+  });
 }

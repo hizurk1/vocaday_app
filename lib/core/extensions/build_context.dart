@@ -56,6 +56,11 @@ extension BuildContextExtension on BuildContext {
   /// [grey300] for light theme and [grey700] for dark theme
   Color get greyColor => isDarkTheme ? AppColor().grey700 : AppColor().grey300;
 
+  /// Get [Color] for any elements have color like `block` widget.
+  /// [blue200] for light theme and [blue300] for dark theme
+  Color get primaryLight =>
+      isDarkTheme ? AppColor().blue400 : AppColor().blue200;
+
   /// Get [Color] for any elements have color like `shadow` widget.
   /// [grey300] for light theme and [grey950] for dark theme
   Color get shadowColor =>

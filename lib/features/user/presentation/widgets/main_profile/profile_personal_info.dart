@@ -15,12 +15,9 @@ class ProfilePersonalInfoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserDataCubit, UserDataState>(
-      builder: (context, state) {
-        UserEntity? userEntity;
-        if (state is UserDataLoadedState) {
-          userEntity = state.entity;
-        }
+    return BlocSelector<UserDataCubit, UserDataState, UserEntity?>(
+      selector: (state) => state is UserDataLoadedState ? state.entity : null,
+      builder: (context, UserEntity? userEntity) {
         return Container(
           padding: EdgeInsets.only(
             right: 20.w,

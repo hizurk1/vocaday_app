@@ -18,7 +18,10 @@ class UserRepositoryImpl implements UserRepository {
     try {
       final userModel = UserModel.fromEntity(userEntity);
       return Right(
-        await userRemoteDataSource.addUserProfile(userModel),
+        await userRemoteDataSource.addUserProfile(
+          uid: userModel.uid,
+          map: userModel.toMap(),
+        ),
       );
     } on FirebaseException catch (e) {
       return Left(
@@ -31,9 +34,9 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Stream<UserEntity?> getUserData(String uid) async* {
-    yield* userRemoteDataSource.getUserData(uid).map((model) {
-      if (model != null) {
-        return model.toEntity();
+    yield* userRemoteDataSource.getUserData(uid).map((data) {
+      if (data != null) {
+        return UserModel.fromMap(data).toEntity();
       } else {
         return null;
       }
@@ -53,6 +56,30 @@ class UserRepositoryImpl implements UserRepository {
     } on FirebaseException catch (e) {
       return Left(
         FirebaseFailure(e.message ?? 'FirebaseFailure: updateUserProfile'),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
+
+  @override
+  FutureEither<bool> addAttendanceDate({
+    required String uid,
+    required List<DateTime> attendance,
+  }) async {
+    try {
+      return Right(
+        await userRemoteDataSource.addAttendanceDate(
+          uid: uid,
+          map: {
+            'attendance':
+                attendance.map((x) => x.millisecondsSinceEpoch).toList(),
+          },
+        ),
+      );
+    } on FirebaseException catch (e) {
+      return Left(
+        FirebaseFailure(e.message ?? 'FirebaseFailure: addAttendanceDate'),
       );
     } catch (e) {
       return Left(DatabaseFailure(e.toString()));
