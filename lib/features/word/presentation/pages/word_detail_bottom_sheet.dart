@@ -73,7 +73,7 @@ class WordDetailBottomSheet extends StatelessWidget {
             bottom: 8.h,
           ),
         ),
-        if (wordEntity.synonyms.isNotEmpty) ...[
+        if (wordEntity.synonyms.isNotEmpty)
           ExpansionTileCustom(
             count: wordEntity.synonyms.length,
             title: LocaleKeys.word_detail_synonyms
@@ -85,9 +85,7 @@ class WordDetailBottomSheet extends StatelessWidget {
                 EdgeInsets.only(bottom: 10.h, right: 10.w, left: 0, top: 8.h),
             child: _buildChips(wordEntity.synonyms, context),
           ),
-        ],
-        if (wordEntity.antonyms.isNotEmpty) ...[
-          Gap(height: 5.h),
+        if (wordEntity.antonyms.isNotEmpty)
           ExpansionTileCustom(
             count: wordEntity.antonyms.length,
             title: LocaleKeys.word_detail_antonyms
@@ -99,8 +97,6 @@ class WordDetailBottomSheet extends StatelessWidget {
                 EdgeInsets.only(bottom: 10.h, right: 10.w, left: 0, top: 8.h),
             child: _buildChips(wordEntity.antonyms, context),
           ),
-        ],
-        Gap(height: 5.h),
         ExpansionTileCustom(
           count: wordEntity.meanings.length,
           title: LocaleKeys.word_detail_definitions
@@ -108,7 +104,7 @@ class WordDetailBottomSheet extends StatelessWidget {
           titleStyle: context.textStyle.titleS.bold.primaryDark,
           isExpandFirst: true,
           arrowFromStart: false,
-          titlePadding: EdgeInsets.symmetric(vertical: 3.h),
+          titlePadding: EdgeInsets.only(top: 8.h, bottom: 3.h),
           bodyPadding: EdgeInsets.only(bottom: 5.h, right: 10.w),
           children: wordEntity.meanings
               .mapIndexed(
