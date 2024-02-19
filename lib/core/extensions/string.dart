@@ -14,6 +14,22 @@ extension StringNullExt on String? {
 }
 
 extension StringExtension on String {
+  String get formatedThousand {
+    List<String> parts = split(' ');
+    int number = int.tryParse(parts.first) ?? 0;
+
+    if (number < 1000) return this;
+
+    // Format the number with commas
+    String formatted = number.toString().replaceAllMapped(
+          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+          (Match match) => '${match[1]},',
+        );
+
+    // Return the formatted string
+    return "$formatted ${parts.last}";
+  }
+
   /// Parse string to DateTime format with pattern `dd/MM/yyyy`.
   ///
   /// Example:

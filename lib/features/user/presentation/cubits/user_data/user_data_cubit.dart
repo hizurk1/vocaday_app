@@ -27,6 +27,12 @@ class UserDataCubit extends Cubit<UserDataState> {
     this.addAttendanceDateUsecase,
   ) : super(UserDataEmptyState());
 
+  @override
+  Future<void> close() {
+    _streamSubscription?.cancel();
+    return super.close();
+  }
+
   void initDataStream(String? uid) {
     if (uid.isNotNullOrEmpty) {
       _streamSubscription ??= getUserDataUsecase(uid!).listen((entity) {
@@ -41,24 +47,6 @@ class UserDataCubit extends Cubit<UserDataState> {
     emit(UserDataEmptyState());
     _streamSubscription?.cancel();
     _streamSubscription = null;
-  }
-
-  Future<void> addAttendanceDate(String uid, List<DateTime> attendance) async {
-    if (attendance.isEmpty) return;
-
-    final result = await addAttendanceDateUsecase((uid, attendance));
-
-    result.fold(
-      (failure) {
-        Navigators().showMessage(failure.message, type: MessageType.error);
-      },
-      (res) {
-        Navigators().showMessage(
-          LocaleKeys.home_check_in_success.tr(),
-          type: MessageType.success,
-        );
-      },
-    );
   }
 
   Future<void> updateUserProfile(UserEntity entity, XFile? image) async {
@@ -102,9 +90,21 @@ class UserDataCubit extends Cubit<UserDataState> {
     }
   }
 
-  @override
-  Future<void> close() {
-    _streamSubscription?.cancel();
-    return super.close();
+  Future<void> addAttendanceDate(String uid, List<DateTime> attendance) async {
+    if (attendance.isEmpty) return;
+
+    final result = await addAttendanceDateUsecase((uid, attendance));
+
+    result.fold(
+      (failure) {
+        Navigators().showMessage(failure.message, type: MessageType.error);
+      },
+      (res) {
+        Navigators().showMessage(
+          LocaleKeys.home_check_in_success.tr(),
+          type: MessageType.success,
+        );
+      },
+    );
   }
 }

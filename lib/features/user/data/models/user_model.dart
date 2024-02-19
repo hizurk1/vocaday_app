@@ -2,6 +2,8 @@ import 'package:equatable/equatable.dart';
 
 import '../../domain/entities/user_entity.dart';
 
+enum FilterUserType { name, point, attendance }
+
 class UserModel extends Equatable {
   final String uid;
   final String name;

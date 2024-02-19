@@ -20,12 +20,14 @@ class ProfilePage extends StatelessWidget {
 
   Future<void> _onRefresh() async {
     Navigators().showLoading(
-      task: Future.delayed(Durations.extralong2, () {
-        Navigators().showMessage(
-          LocaleKeys.profile_everything_is_up_to_date.tr(),
-          type: MessageType.success,
-        );
-      }),
+      tasks: [
+        Future.delayed(Durations.extralong2, () {
+          Navigators().showMessage(
+            LocaleKeys.profile_everything_is_up_to_date.tr(),
+            type: MessageType.success,
+          );
+        })
+      ],
     );
   }
 

@@ -113,10 +113,12 @@ class _ProfileEditUserInfoBottomSheetState
     if (context.read<UserDataCubit>().state is UserDataLoadedState) {
       await Navigators().showLoading(
         delay: Durations.medium1,
-        task: context.read<UserDataCubit>().updateUserProfile(
-              updateEntity,
-              selectedImage.value,
-            ),
+        tasks: [
+          context.read<UserDataCubit>().updateUserProfile(
+                updateEntity,
+                selectedImage.value,
+              )
+        ],
       );
     }
   }

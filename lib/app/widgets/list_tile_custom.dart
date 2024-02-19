@@ -9,12 +9,14 @@ class ListTileCustom extends StatelessWidget {
     this.padding,
     this.subTitlePadding = 2,
     this.subTitle,
+    this.trailing,
     this.titlePadding,
   });
 
   final Widget? leading;
   final Widget title;
   final Widget? subTitle;
+  final Widget? trailing;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? titlePadding;
   final double subTitlePadding;
@@ -24,21 +26,23 @@ class ListTileCustom extends StatelessWidget {
     return Container(
       padding: padding ?? const EdgeInsets.all(0),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
         children: [
-          Padding(
-            padding: titlePadding ?? EdgeInsets.only(right: 10.w),
-            child: leading ?? const SizedBox(),
+          leading ?? const SizedBox(),
+          Expanded(
+            child: Padding(
+              padding: titlePadding ?? EdgeInsets.symmetric(horizontal: 12.w),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  title,
+                  if (subTitle != null) SizedBox(height: subTitlePadding.h),
+                  subTitle ?? const SizedBox(),
+                ],
+              ),
+            ),
           ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              title,
-              if (subTitle != null) SizedBox(height: subTitlePadding.h),
-              subTitle ?? const SizedBox(),
-            ],
-          ),
+          trailing ?? const SizedBox(),
         ],
       ),
     );

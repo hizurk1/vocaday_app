@@ -58,51 +58,51 @@ class BorderTextField extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(10.r),
       ),
-      child: TextField(
-        controller: controller,
-        maxLines: maxLines,
-        maxLength: maxLength ?? 50,
-        enabled: enable,
-        textCapitalization: textCapitalization,
-        style: context.textStyle.bodyS.bw,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(bottom: 2.h),
-          icon: SvgPicture.asset(
-            icon ?? AppAssets.copyIcon,
-            height: 25.h,
-            width: 25.w,
-            colorFilter:
-                ColorFilter.mode(context.colors.grey400, BlendMode.srcIn),
-          ),
-          hintText: hintText,
-          hintStyle: context.textStyle.bodyS.grey80,
-          counterText: '',
-          suffixIcon: isPasswordField
-              ? GestureDetector(
-                  onTap: () => eyeState.value = !eyeState.value,
-                  child: Opacity(
-                    opacity: .5,
-                    child: ValueListenableBuilder(
-                      valueListenable: eyeState,
-                      builder: (context, value, _) {
-                        return SvgPicture.asset(
-                          'assets/icons/eye_${value ? 'open' : 'close'}.svg',
-                          fit: BoxFit.scaleDown,
-                        );
-                      },
-                    ),
-                  ),
-                )
-              : null,
-        ),
-        obscureText: isPasswordField ? !eyeState.value : false,
-        keyboardType: inputType,
-        cursorWidth: 2,
-        cursorColor: context.textTheme.bodyMedium?.color,
-        textAlignVertical:
-            isPasswordField ? TextAlignVertical.center : TextAlignVertical.top,
-      ),
+      child: ValueListenableBuilder(
+          valueListenable: eyeState,
+          builder: (context, value, _) {
+            return TextField(
+              controller: controller,
+              maxLines: maxLines,
+              maxLength: maxLength ?? 50,
+              enabled: enable,
+              textCapitalization: textCapitalization,
+              style: context.textStyle.bodyS.bw,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(bottom: 2.h),
+                icon: SvgPicture.asset(
+                  icon ?? AppAssets.copyIcon,
+                  height: 25.h,
+                  width: 25.w,
+                  colorFilter:
+                      ColorFilter.mode(context.colors.grey400, BlendMode.srcIn),
+                ),
+                hintText: hintText,
+                hintStyle: context.textStyle.bodyS.grey80,
+                counterText: '',
+                suffixIcon: isPasswordField
+                    ? GestureDetector(
+                        onTap: () => eyeState.value = !eyeState.value,
+                        child: Opacity(
+                          opacity: .5,
+                          child: SvgPicture.asset(
+                            'assets/icons/eye_${value ? 'open' : 'close'}.svg',
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                      )
+                    : null,
+              ),
+              obscureText: isPasswordField ? !value : false,
+              keyboardType: inputType,
+              cursorWidth: 2,
+              cursorColor: context.textTheme.bodyMedium?.color,
+              textAlignVertical: isPasswordField
+                  ? TextAlignVertical.center
+                  : TextAlignVertical.top,
+            );
+          }),
     );
     return enable
         ? child

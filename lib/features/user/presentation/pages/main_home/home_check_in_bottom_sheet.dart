@@ -27,7 +27,7 @@ class HomeCheckInBottomSheet extends StatelessWidget {
 
     Navigators().popDialog();
     await Navigators().showLoading(
-      task: context.read<UserDataCubit>().addAttendanceDate(uid, attendance),
+      tasks: [context.read<UserDataCubit>().addAttendanceDate(uid, attendance)],
     );
   }
 

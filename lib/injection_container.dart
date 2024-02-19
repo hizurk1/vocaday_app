@@ -28,8 +28,10 @@ import 'features/user/data/data_sources/user_remote_data_source.dart';
 import 'features/user/data/repositories/user_repository_impl.dart';
 import 'features/user/domain/repositories/user_repository.dart';
 import 'features/user/domain/usecases/add_attendance_date.dart';
+import 'features/user/domain/usecases/get_list_users.dart';
 import 'features/user/domain/usecases/get_user_data.dart';
 import 'features/user/domain/usecases/update_user_profile.dart';
+import 'features/user/presentation/cubits/leader_board/leader_board_cubit.dart';
 import 'features/user/presentation/cubits/user_data/user_data_cubit.dart';
 import 'features/word/data/data_sources/word_local_data_source.dart';
 import 'features/word/data/repositories/word_repository_impl.dart';
@@ -133,6 +135,10 @@ Future<void> setUpServiceLocator() async {
   sl.registerLazySingleton(
     () => AddAttendanceDateUsecase(repository: sl()),
   );
+  sl.registerLazySingleton(
+    () => GetListUsersUsecase(repository: sl()),
+  );
   // Bloc/Cubit
   sl.registerFactory(() => UserDataCubit(sl(), sl(), sl()));
+  sl.registerFactory(() => LeaderBoardCubit(sl()));
 }

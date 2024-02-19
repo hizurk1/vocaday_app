@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="480px" height="450px" viewBox="0 0 480 450" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient gradientUnits="objectBoundingBox" x1="0.22666667" y1="0" x2="0.76" y2="1" id="gradient_1">
+      <stop offset="2.5505123E-14%" stop-color="#498DE7" />
+      <stop offset="100%" stop-color="#196EE9" />
+    </linearGradient>
+    <linearGradient gradientUnits="objectBoundingBox" x1="0.5" y1="0" x2="0.5" y2="1" id="gradient_2">
+      <stop offset="0%" stop-color="#166CE8" />
+      <stop offset="100%" stop-color="#4F9AF5" />
+    </linearGradient>
+    <linearGradient gradientUnits="objectBoundingBox" x1="0.22666667" y1="0" x2="0.67333335" y2="1" id="gradient_3">
+      <stop offset="0%" stop-color="#1080E5" />
+      <stop offset="100%" stop-color="#4075F1" />
+    </linearGradient>
+    <path d="M480 0L480 0L480 450L0 450L0 0L480 0Z" id="path_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#path_1" clip-rule="evenodd" fill-rule="evenodd" />
+    </clipPath>
+  </defs>
+  <g id="Frame">
+    <path d="M480 0L480 0L480 450L0 450L0 0L480 0Z" id="Frame" fill="none" stroke="none" />
+    <g id="Group" transform="translate(15 115)" clip-path="url(#clip_1)">
+      <path d="M65 160C65 71.6344 136.634 0 225 0C313.366 0 385 71.6344 385 160C385 248.366 313.366 320 225 320C136.634 320 65 248.366 65 160Z" id="Oval" fill="#CBE6FF" fill-rule="evenodd" stroke="none" />
+      <g id="Group" transform="translate(0 95)">
+        <path d="M0 25L150 25L150 225L0 225L0 25Z" id="Rectangle" fill="url(#gradient_1)" fill-rule="evenodd" stroke="none" />
+        <path d="M26.2353 0L150 0L150 25L0 25L26.2353 0Z" id="Rectangle-3" fill="#67BAFD" fill-rule="evenodd" stroke="none" />
+        <g id="2" transform="translate(47 69)">
+          <g transform="translate(0, 23.4375)" id="2" fill="#FFFFFF" fill-opacity="0.8">
+            <path d="M51.4219 89.0625L4.64063 89.0625L4.64063 79.7813L26.7188 56.25Q31.2656 51.2813 33.4453 47.5781Q35.625 43.875 35.625 40.5469Q35.625 36 33.3281 33.3984Q31.0313 30.7969 26.7656 30.7969Q22.1719 30.7969 19.5234 33.9609Q16.875 37.125 16.875 42.2813L3.28125 42.2813Q3.28125 36.0469 6.25781 30.8906Q9.23438 25.7344 14.6719 22.8047Q20.1094 19.875 27 19.875Q37.5469 19.875 43.3828 24.9375Q49.2187 30 49.2188 39.2344Q49.2188 44.2969 46.5938 49.5469Q43.9687 54.7969 37.5938 61.7813L22.0781 78.1406L51.4219 78.1406L51.4219 89.0625Z" />
+          </g>
+        </g>
+      </g>
+      <g id="Group-2" transform="translate(150 45)">
+        <path d="M0 25L150 25L150 275L0 275L0 25Z" id="Rectangle-Copy-2" fill="url(#gradient_2)" fill-rule="evenodd" stroke="none" />
+        <path d="M21.1171 0L126.563 0L150 25L0 25L21.1171 0Z" id="Rectangle-4-Copy" fill="#79C5FC" fill-rule="evenodd" stroke="none" />
+        <g id="1" transform="translate(43 86)">
+          <g transform="translate(0, 26.855469)" id="1" fill="#FFFFFF" fill-opacity="0.8509804">
+            <path d="M43.0225 102.051L27.5 102.051L27.5 42.2168L8.96973 47.9639L8.96973 35.3418L41.3574 23.7402L43.0225 23.7402L43.0225 102.051Z" />
+          </g>
+        </g>
+      </g>
+      <g id="Group-3" transform="translate(300 145)">
+        <path d="M0 25L150 25L150 175L0 175L0 25Z" id="Rectangle-Copy" fill="url(#gradient_3)" fill-rule="evenodd" stroke="none" />
+        <path d="M0 0L126.563 0L150 25L0 25L0 0Z" id="Rectangle-4" fill="#4A9EEB" fill-rule="evenodd" stroke="none" />
+        <g id="3" transform="translate(50 49)">
+          <g transform="translate(0, 21.484375)" id="3" fill="#FFFFFF" fill-opacity="0.8">
+            <path d="M16.8867 44.8594L23.5039 44.8594Q28.2305 44.8594 30.5078 42.4961Q32.7852 40.1328 32.7852 36.2227Q32.7852 32.4414 30.5293 30.3359Q28.2734 28.2305 24.3203 28.2305Q20.7539 28.2305 18.3477 30.1855Q15.9414 32.1406 15.9414 35.2773L3.52344 35.2773Q3.52344 30.3789 6.16602 26.4902Q8.80859 22.6016 13.5566 20.4102Q18.3047 18.2188 24.0195 18.2188Q33.9453 18.2188 39.5742 22.9668Q45.2031 27.7148 45.2031 36.0508Q45.2031 40.3477 42.582 43.957Q39.9609 47.5664 35.707 49.5Q40.9922 51.3906 43.5918 55.1719Q46.1914 58.9531 46.1914 64.1094Q46.1914 72.4453 40.1113 77.4727Q34.0312 82.5 24.0195 82.5Q14.6523 82.5 8.70117 77.5586Q2.75 72.6172 2.75 64.4961L15.168 64.4961Q15.168 68.0195 17.8105 70.2539Q20.4531 72.4883 24.3203 72.4883Q28.7461 72.4883 31.2598 70.1465Q33.7734 67.8047 33.7734 63.9375Q33.7734 54.5703 23.4609 54.5703L16.8867 54.5703L16.8867 44.8594Z" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

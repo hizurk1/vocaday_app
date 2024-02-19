@@ -232,7 +232,11 @@ class Navigators {
   /// After that, it will automatically close this dialog.
   ///
   /// Default duration delay is 0ms.
-  Future<void> showLoading({required Future task, Duration? delay}) async {
+  Future<void> showLoading({
+    required List<Future> tasks,
+    Duration? delay,
+    Function()? onFinish,
+  }) async {
     showDialog(
       context: currentContext!,
       barrierDismissible: false,
@@ -246,9 +250,10 @@ class Navigators {
     try {
       await Future.wait([
         Future.delayed(delay ?? Duration.zero),
-        task,
+        ...tasks,
       ]);
     } finally {
+      onFinish?.call();
       popDialog();
     }
   }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../../../core/errors/exception.dart';
+import '../models/user_model.dart';
 
 abstract interface class UserRemoteDataSource {
   Future<void> addUserProfile({
@@ -18,6 +19,11 @@ abstract interface class UserRemoteDataSource {
   Future<bool> addAttendanceDate({
     required String uid,
     required Map<String, dynamic> map,
+  });
+
+  Future<List<Map<String, dynamic>>> getListUsers({
+    required FilterUserType type,
+    required int limit,
   });
 }
 
@@ -78,5 +84,34 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     } catch (e) {
       throw DatabaseException(e.toString());
     }
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> getListUsers({
+    required FilterUserType type,
+    required int limit,
+  }) async {
+    try {
+      final query = _queryListUsers(type).limit(limit);
+      final snapshots = await query.get();
+      return snapshots.docs.map((e) => e.data()).toList();
+    } on FirebaseException {
+      rethrow;
+    } catch (e) {
+      throw DatabaseException(e.toString());
+    }
+  }
+
+  Query<Map<String, dynamic>> _queryListUsers(FilterUserType type) {
+    final collection = firestore.collection(_users);
+    final field = type.name;
+    return switch (type) {
+      FilterUserType.name => collection.orderBy(field),
+      FilterUserType.point => collection
+          .where(field, isGreaterThan: 0)
+          .orderBy(field, descending: true),
+      FilterUserType.attendance =>
+        collection.where(field, isNull: false).orderBy(field),
+    };
   }
 }

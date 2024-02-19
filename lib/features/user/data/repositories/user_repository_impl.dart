@@ -85,4 +85,26 @@ class UserRepositoryImpl implements UserRepository {
       return Left(DatabaseFailure(e.toString()));
     }
   }
+
+  @override
+  FutureEither<List<UserEntity>> getListUsers({
+    required FilterUserType type,
+    required int limit,
+  }) async {
+    try {
+      final data = await userRemoteDataSource.getListUsers(
+        type: type,
+        limit: limit,
+      );
+      final entities = data.map((map) => UserModel.fromMap(map).toEntity());
+
+      return Right(entities.toList());
+    } on FirebaseException catch (e) {
+      return Left(
+        FirebaseFailure(e.message ?? 'FirebaseFailure: getListUsers'),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
 }

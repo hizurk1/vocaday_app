@@ -14,6 +14,7 @@ class AppAssets {
   static const defaultAvatar = '$_image/default_avatar.png';
   static const onBoardLanguage = '$_image/language_select.svg';
   static const loginBackground = '$_image/login_background.svg';
+  static const leaderboardBox = '$_image/leaderboard_box.svg';
 
   //! Icon
   static const englishFlagRound = '$_icon/english_round.svg';
@@ -39,6 +40,11 @@ class AppAssets {
   static const reload = '$_icon/reload.svg';
   static const love = '$_icon/love.svg';
   static const loved = '$_icon/loved.svg';
+  static const ranks = [
+    '$_icon/rank_1.svg',
+    '$_icon/rank_2.svg',
+    '$_icon/rank_3.svg'
+  ];
 
   // Bottom nav
   static const homeIconFill = '$_icon/home_fill.svg';
