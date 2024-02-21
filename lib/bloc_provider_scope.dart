@@ -23,7 +23,7 @@ class BlocProviderScope extends StatelessWidget {
           lazy: false,
         ),
         //* Language controller
-        BlocProvider(create: (_) => sl<LanguageBloc>()),
+        BlocProvider(create: (_) => sl<LanguageCubit>()),
         //* Internet connection controller
         BlocProvider(create: (_) => sl<ConnectionCubit>()..initialize()),
         //* Authentication Bloc

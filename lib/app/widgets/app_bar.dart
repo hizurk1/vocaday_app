@@ -90,30 +90,33 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       child: SafeArea(
-        child: child ??
-            Row(
-              children: [
-                leading ?? SizedBox(width: 50.w),
-                Expanded(
-                  child: centerTitle
-                      ? Center(
-                          child: title ??
-                              TextCustom(
-                                textTitle ?? '',
-                                textAlign: TextAlign.center,
-                                style: context.textStyle.bodyL.bw,
-                              ),
-                        )
-                      : title ??
-                          TextCustom(
-                            textTitle ?? '',
-                            textAlign: TextAlign.center,
-                            style: context.textStyle.titleM.bw,
-                          ),
-                ),
-                action ?? SizedBox(width: 50.w),
-              ],
-            ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5.w),
+          child: child ??
+              Row(
+                children: [
+                  leading ?? SizedBox(width: 50.w),
+                  Expanded(
+                    child: centerTitle
+                        ? Center(
+                            child: title ??
+                                TextCustom(
+                                  textTitle ?? '',
+                                  textAlign: TextAlign.center,
+                                  style: context.textStyle.bodyL.bw,
+                                ),
+                          )
+                        : title ??
+                            TextCustom(
+                              textTitle ?? '',
+                              textAlign: TextAlign.center,
+                              style: context.textStyle.titleM.bw,
+                            ),
+                  ),
+                  action ?? SizedBox(width: 50.w),
+                ],
+              ),
+        ),
       ),
     );
   }

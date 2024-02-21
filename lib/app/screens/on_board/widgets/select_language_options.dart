@@ -21,7 +21,7 @@ class _SelectLanguageOptionsWidgetState
   Future<void> setAppLanguage(AppLocale appLocale) async {
     await context.setLocale(appLocale.instance);
     if (mounted) {
-      context.read<LanguageBloc>().add(SetLanguageEvent());
+      context.read<LanguageCubit>().changeLanguage(appLocale.instance);
     }
   }
 

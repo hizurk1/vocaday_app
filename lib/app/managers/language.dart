@@ -1,23 +1,25 @@
+import 'dart:ui';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
-  LanguageBloc() : super(LanguageInitial()) {
-    on<SetLanguageEvent>((event, emit) {
-      emit(LanguageChanged());
-    });
+import '../translations/translations.dart';
+
+class LanguageCubit extends Cubit<LanguageState> {
+  LanguageCubit() : super(LanguageState.en());
+  void changeLanguage(Locale locale) {
+    emit(LanguageState(locale));
   }
 }
 
-sealed class LanguageState {}
+class LanguageState extends Equatable {
+  final Locale locale;
 
-final class LanguageInitial extends LanguageState {}
+  const LanguageState(this.locale);
 
-final class LanguageChanged extends LanguageState {}
+  LanguageState.en() : this(AppLocale.en.instance);
+  LanguageState.vi() : this(AppLocale.vi.instance);
 
-sealed class LanguageEvent extends Equatable {
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [locale];
 }
-
-final class SetLanguageEvent extends LanguageEvent {}

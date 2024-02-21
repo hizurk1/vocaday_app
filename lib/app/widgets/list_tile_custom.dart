@@ -11,6 +11,9 @@ class ListTileCustom extends StatelessWidget {
     this.subTitle,
     this.trailing,
     this.titlePadding,
+    this.decoration,
+    this.width,
+    this.height,
   });
 
   final Widget? leading;
@@ -20,11 +23,16 @@ class ListTileCustom extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? titlePadding;
   final double subTitlePadding;
+  final BoxDecoration? decoration;
+  final double? width, height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: padding ?? const EdgeInsets.all(0),
+      height: height,
+      width: width,
+      decoration: decoration,
       child: Row(
         children: [
           leading ?? const SizedBox(),

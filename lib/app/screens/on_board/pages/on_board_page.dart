@@ -40,8 +40,8 @@ class _OnBoardPageState extends State<OnBoardPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LanguageBloc, LanguageState>(
-      buildWhen: (previous, current) => current is LanguageChanged,
+    return BlocBuilder<LanguageCubit, LanguageState>(
+      buildWhen: (pre, cur) => pre.locale != cur.locale,
       builder: (context, state) {
         return PopScope(
           canPop: false,

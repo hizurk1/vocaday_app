@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../config/app_logger.dart';
 import '../../features/authentication/presentation/pages/authentication_page.dart';
 import '../../injection_container.dart';
 import '../managers/navigation.dart';
@@ -34,43 +35,64 @@ class AppRouter {
       //? Route: '/authentication'
       GoRoute(
         path: AppRoutes.authentication,
-        builder: (context, state) => const AuthenticationPage(),
+        builder: (context, state) {
+          logger.f(state.fullPath);
+          return const AuthenticationPage();
+        },
         routes: const [],
       ),
       //? Route: '/setting'
       GoRoute(
         path: AppRoutes.setting,
-        builder: (context, state) => const SettingPage(),
+        builder: (context, state) {
+          logger.f(state.fullPath);
+
+          return const SettingPage();
+        },
         routes: const [],
       ),
 
       //? Route: '/main'
       GoRoute(
         path: AppRoutes.main,
-        builder: (context, state) => const MainPage(),
+        builder: (context, state) {
+          return const MainPage();
+        },
         routes: [
           //? Route: '/main/home'
           GoRoute(
             path: "home",
-            builder: (context, state) => const HomePage(),
+            builder: (context, state) {
+              logger.f(state.fullPath);
+              return const HomePage();
+            },
             routes: const [],
           ),
           //? Route: '/main/search'
           GoRoute(
             path: "search",
-            builder: (context, state) => const SearchPage(),
+            builder: (context, state) {
+              logger.f(state.fullPath);
+              return const SearchPage();
+            },
             routes: const [],
           ),
           //? Route: '/main/activity'
           GoRoute(
             path: "activity",
-            builder: (context, state) => const ActivityPage(),
+            builder: (context, state) {
+              logger.f(state.fullPath);
+              return const ActivityPage();
+            },
             routes: const [],
           ),
           //? Route: '/main/profile'
           GoRoute(
             path: "profile",
-            builder: (context, state) => const ProfilePage(),
+            builder: (context, state) {
+              logger.f(state.fullPath);
+              return const ProfilePage();
+            },
             routes: const [],
           ),
         ],
