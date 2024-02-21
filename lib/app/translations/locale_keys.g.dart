@@ -89,5 +89,19 @@ abstract class  LocaleKeys {
   static const word_detail_synonyms = 'word_detail.synonyms';
   static const word_detail_definitions = 'word_detail.definitions';
   static const word_detail_antonyms = 'word_detail.antonyms';
+  static const setting_general = 'setting.general';
+  static const setting_others = 'setting.others';
+  static const setting_danger_zone = 'setting.danger_zone';
+  static const setting_language = 'setting.language';
+  static const setting_theme_mode = 'setting.theme_mode';
+  static const setting_turn_on_notification = 'setting.turn_on_notification';
+  static const setting_rate_app = 'setting.rate_app';
+  static const setting_check_for_update = 'setting.check_for_update';
+  static const setting_privacy_policy = 'setting.privacy_policy';
+  static const setting_about_us = 'setting.about_us';
+  static const setting_delete_acc = 'setting.delete_acc';
+  static const setting_theme_system = 'setting.theme_system';
+  static const setting_theme_light = 'setting.theme_light';
+  static const setting_theme_dark = 'setting.theme_dark';
 
 }

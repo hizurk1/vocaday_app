@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../core/extensions/string.dart';
 import '../constants/app_const.dart';
 
 class SharedPrefManager {
@@ -8,15 +10,19 @@ class SharedPrefManager {
   final SharedPreferences prefs;
 
   //! Theme
-  Future<void> saveTheme(int theme) async {
-    await prefs.setInt(
-      AppPrefsKey.themeState,
-      theme, //? 0: light - 1: dark - 2: system
-    );
+  Future<void> saveTheme(String mode) async {
+    await prefs.setString(AppPrefsKey.themeState, mode);
   }
 
   /// by default: system
-  int getTheme() => prefs.getInt(AppPrefsKey.themeState) ?? 2;
+  ThemeMode getTheme() {
+    final mode = prefs.getString(AppPrefsKey.themeState);
+    if (mode.isNotNullOrEmpty) {
+      if (mode == ThemeMode.light.name) return ThemeMode.light;
+      if (mode == ThemeMode.dark.name) return ThemeMode.dark;
+    }
+    return ThemeMode.system;
+  }
 
   //! First Choosen Language
   Future<void> saveOnboardCheckedIn() async {

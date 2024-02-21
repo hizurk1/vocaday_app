@@ -145,5 +145,21 @@
       "other": "Antonyms",
       "one": "Antonym"
     }
+  },
+  "setting": {
+    "general": "General",
+    "others": "Others",
+    "danger_zone": "Danger zone",
+    "language": "Language",
+    "theme_mode": "Theme mode",
+    "turn_on_notification": "Turn on notifications",
+    "rate_app": "Rate app",
+    "check_for_update": "Check for update",
+    "privacy_policy": "Privacy & policy",
+    "about_us": "About us",
+    "delete_acc": "Delete account",
+    "theme_system": "System",
+    "theme_light": "Light",
+    "theme_dark": "Dark"
   }
 }

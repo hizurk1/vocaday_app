@@ -161,6 +161,22 @@ class CodegenLoader extends AssetLoader{
       "other": "Antonyms",
       "one": "Antonym"
     }
+  },
+  "setting": {
+    "general": "General",
+    "others": "Others",
+    "danger_zone": "Danger zone",
+    "language": "Language",
+    "theme_mode": "Theme mode",
+    "turn_on_notification": "Turn on notifications",
+    "rate_app": "Rate app",
+    "check_for_update": "Check for update",
+    "privacy_policy": "Privacy & policy",
+    "about_us": "About us",
+    "delete_acc": "Delete account",
+    "theme_system": "System",
+    "theme_light": "Light",
+    "theme_dark": "Dark"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -310,6 +326,22 @@ static const Map<String,dynamic> vi_VN = {
       "other": "Trái nghĩa",
       "one": "Trái nghĩa"
     }
+  },
+  "setting": {
+    "general": "Chung",
+    "others": "Khác",
+    "danger_zone": "Vùng nguy hiểm",
+    "language": "Ngôn ngữ",
+    "theme_mode": "Chế độ chủ đề",
+    "turn_on_notification": "Bật thông báo",
+    "rate_app": "Đánh giá ứng dụng",
+    "check_for_update": "Kiểm tra cập nhật",
+    "privacy_policy": "Quyền riêng tư & chính sách",
+    "about_us": "Về chúng tôi",
+    "delete_acc": "Xoá tài khoản",
+    "theme_system": "Hệ thống",
+    "theme_light": "Sáng",
+    "theme_dark": "Tối"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

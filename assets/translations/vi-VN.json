@@ -145,5 +145,21 @@
       "other": "Trái nghĩa",
       "one": "Trái nghĩa"
     }
+  },
+  "setting": {
+    "general": "Chung",
+    "others": "Khác",
+    "danger_zone": "Vùng nguy hiểm",
+    "language": "Ngôn ngữ",
+    "theme_mode": "Chế độ chủ đề",
+    "turn_on_notification": "Bật thông báo",
+    "rate_app": "Đánh giá ứng dụng",
+    "check_for_update": "Kiểm tra cập nhật",
+    "privacy_policy": "Quyền riêng tư & chính sách",
+    "about_us": "Về chúng tôi",
+    "delete_acc": "Xoá tài khoản",
+    "theme_system": "Hệ thống",
+    "theme_light": "Sáng",
+    "theme_dark": "Tối"
   }
 }

@@ -12,21 +12,21 @@ class ThemeCubit extends Cubit<ThemeState> {
   void fetchTheme() {
     final theme = prefService.getTheme();
     emit(
-      theme == 0
+      theme == ThemeMode.light
           ? const ThemeState.light()
-          : theme == 1
+          : theme == ThemeMode.dark
               ? const ThemeState.dark()
               : const ThemeState.system(),
     );
   }
 
-  Future<void> toggleTheme(int theme) async {
-    final themeState = theme == 0
+  Future<void> toggleTheme(ThemeMode mode) async {
+    final themeState = mode == ThemeMode.light
         ? const ThemeState.light()
-        : theme == 1
+        : mode == ThemeMode.dark
             ? const ThemeState.dark()
             : const ThemeState.system();
-    await prefService.saveTheme(theme);
+    await prefService.saveTheme(mode.name);
     emit(themeState);
   }
 }

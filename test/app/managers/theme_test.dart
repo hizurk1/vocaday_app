@@ -23,7 +23,7 @@ void main() async {
     blocTest<ThemeCubit, ThemeState>(
       'emits [ThemeState] when toggleTheme is called.',
       build: () => ThemeCubit(prefs),
-      act: (bloc) async => await bloc.toggleTheme(2),
+      act: (bloc) async => await bloc.toggleTheme(ThemeMode.system),
       wait: const Duration(seconds: 2),
       expect: () => [
         const ThemeState(ThemeMode.system),
