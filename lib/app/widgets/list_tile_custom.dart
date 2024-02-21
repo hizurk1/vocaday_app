@@ -14,6 +14,7 @@ class ListTileCustom extends StatelessWidget {
     this.decoration,
     this.width,
     this.height,
+    this.minHeight,
   });
 
   final Widget? leading;
@@ -25,6 +26,7 @@ class ListTileCustom extends StatelessWidget {
   final double subTitlePadding;
   final BoxDecoration? decoration;
   final double? width, height;
+  final double? minHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,11 @@ class ListTileCustom extends StatelessWidget {
       height: height,
       width: width,
       decoration: decoration,
+      constraints: minHeight != null
+          ? BoxConstraints(
+              minHeight: minHeight!,
+            )
+          : null,
       child: Row(
         children: [
           leading ?? const SizedBox(),
