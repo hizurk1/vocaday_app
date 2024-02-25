@@ -44,10 +44,14 @@ class AppRouter {
       //? Route: '/setting'
       GoRoute(
         path: AppRoutes.setting,
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           logger.f(state.fullPath);
 
-          return const SettingPage();
+          return slideTransitionPage(
+            context: context,
+            state: state,
+            child: const SettingPage(),
+          );
         },
         routes: const [],
       ),

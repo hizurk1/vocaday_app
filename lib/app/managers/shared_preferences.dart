@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../core/extensions/date_time.dart';
 import '../../core/extensions/string.dart';
 import '../constants/app_const.dart';
 
@@ -40,4 +41,15 @@ class SharedPrefManager {
 
   /// 'word+dd/MM/yyyy'
   String? get getDailyWord => prefs.getString(AppPrefsKey.dailyWordString);
+
+  //! Notification [SettingPage]
+  Future<void> saveScheduleNotiTime(TimeOfDay time) async {
+    await prefs.setString(AppPrefsKey.scheduleNotiDateString, time.getHHmm);
+  }
+
+  TimeOfDay? get getScheduleNotiTime =>
+      prefs.getString(AppPrefsKey.scheduleNotiDateString)?.toTimeOfDay;
+
+  void removeScheduleNotiTime() =>
+      prefs.remove(AppPrefsKey.scheduleNotiDateString);
 }

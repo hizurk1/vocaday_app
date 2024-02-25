@@ -1,6 +1,21 @@
+import 'package:flutter/material.dart';
+
 import '../../app/translations/translations.dart';
 
 extension StringNullExt on String? {
+  TimeOfDay? get toTimeOfDay {
+    if (this == null) return null;
+    final values = this!.split(':');
+    final now = DateTime.now();
+    return TimeOfDay.fromDateTime(DateTime(
+      now.year,
+      now.month,
+      now.day,
+      int.parse(values.first),
+      int.parse(values.last),
+    ));
+  }
+
   bool get isNotNullOrEmpty {
     if (this != null && this!.isNotEmpty) return true;
     return false;

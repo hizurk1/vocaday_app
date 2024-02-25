@@ -35,6 +35,8 @@ class ErrorPage extends StatelessWidget {
                 TextCustom(
                   text,
                   style: context.textStyle.bodyS.grey,
+                  maxLines: 5,
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),

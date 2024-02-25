@@ -1,4 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+extension TimeOfDayExt on TimeOfDay {
+  String get getHHmm {
+    return '$hour:${minute < 10 ? '0$minute' : minute}';
+  }
+}
+
+extension DateTimeNExt on DateTime? {
+  /// Format Datetime to `dd/MM/yyyy` string
+  String? get ddMMyyyy {
+    if (this == null) return null;
+    return DateFormat('dd/MM/yyyy').format(this!);
+  }
+}
 
 extension DateTimeExt on DateTime {
   /// Reset given Datetime to Datetime with time set to `00:00:00`

@@ -247,15 +247,12 @@ class Navigators {
         child: CircularProgressIndicator(color: Colors.white),
       ),
     );
-    try {
-      await Future.wait([
-        Future.delayed(delay ?? Duration.zero),
-        ...tasks,
-      ]);
-    } finally {
-      onFinish?.call();
-      popDialog();
-    }
+    await Future.wait([
+      Future.delayed(delay ?? Duration.zero),
+      ...tasks,
+    ]);
+    popDialog();
+    onFinish?.call();
   }
 
   showPleaseWaitDialog() {

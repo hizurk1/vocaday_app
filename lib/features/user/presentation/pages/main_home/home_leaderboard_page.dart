@@ -43,10 +43,10 @@ class _HomeLeaderboardPageState extends State<HomeLeaderboardPage>
       child: BlocBuilder<LeaderBoardCubit, LeaderBoardState>(
         builder: (context, state) {
           if (state is LeaderBoardLoadingState) {
-            return const LoadingIndicatorPage();
+            return const Wrap(children: [LoadingIndicatorPage()]);
           }
           if (state is LeaderBoardErrorState) {
-            return ErrorPage(text: state.message);
+            return Wrap(children: [ErrorPage(text: state.message)]);
           }
           if (state is LeaderBoardLoadedState) {
             final listUser = widget.type == FilterUserType.point

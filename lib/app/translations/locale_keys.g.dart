@@ -103,5 +103,10 @@ abstract class  LocaleKeys {
   static const setting_theme_system = 'setting.theme_system';
   static const setting_theme_light = 'setting.theme_light';
   static const setting_theme_dark = 'setting.theme_dark';
+  static const setting_noti_permission_not_allow = 'setting.noti_permission_not_allow';
+  static const setting_time_to_learn_notification = 'setting.time_to_learn_notification';
+  static const setting_new_word_today = 'setting.new_word_today';
+  static const setting_remind_at = 'setting.remind_at';
+  static const setting_notification_set_to = 'setting.notification_set_to';
 
 }

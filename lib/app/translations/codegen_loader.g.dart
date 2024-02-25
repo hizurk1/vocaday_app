@@ -176,7 +176,12 @@ class CodegenLoader extends AssetLoader{
     "delete_acc": "Delete account",
     "theme_system": "System",
     "theme_light": "Light",
-    "theme_dark": "Dark"
+    "theme_dark": "Dark",
+    "noti_permission_not_allow": "Please allow notification permission to use this feature.",
+    "time_to_learn_notification": "Hey! It's time to learn something new.",
+    "new_word_today": "New word today: {}",
+    "remind_at": "Remind at: {}",
+    "notification_set_to": "Notification will show at {} every day."
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -341,7 +346,12 @@ static const Map<String,dynamic> vi_VN = {
     "delete_acc": "Xoá tài khoản",
     "theme_system": "Hệ thống",
     "theme_light": "Sáng",
-    "theme_dark": "Tối"
+    "theme_dark": "Tối",
+    "noti_permission_not_allow": "Hãy cho phép quyền gửi thông báo để sử dụng tính năng này.",
+    "time_to_learn_notification": "Này! Đến lúc học gì đó mới rồi.",
+    "new_word_today": "Từ mới hôm nay: {}",
+    "remind_at": "Nhắc nhở lúc: {}",
+    "notification_set_to": "Thông báo sẽ hiển thị lúc {} mỗi ngày."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};
