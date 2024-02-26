@@ -27,4 +27,5 @@ class AppPrefsKey {
   static const onBoardState = 'onboard_state';
   static const dailyWordString = 'daily_word_string';
   static const scheduleNotiDateString = 'schedule_noti_date_string';
+  static const favouriteWordStringL = 'favourite_word_string_l';
 }

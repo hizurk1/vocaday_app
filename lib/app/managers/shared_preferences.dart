@@ -52,4 +52,28 @@ class SharedPrefManager {
 
   void removeScheduleNotiTime() =>
       prefs.remove(AppPrefsKey.scheduleNotiDateString);
+
+  //! Favourite word
+  List<String> get getFavouriteWords =>
+      prefs.getStringList(AppPrefsKey.favouriteWordStringL) ?? [];
+
+  Future<void> addFavouriteWord(String word) async {
+    Set<String> list =
+        prefs.getStringList(AppPrefsKey.favouriteWordStringL)?.toSet() ?? {};
+    list.add(word);
+    await prefs.setStringList(AppPrefsKey.favouriteWordStringL, list.toList());
+  }
+
+  Future<void> removeFavouriteWord(String word) async {
+    Set<String> list =
+        prefs.getStringList(AppPrefsKey.favouriteWordStringL)?.toSet() ?? {};
+    if (list.isNotEmpty) {
+      list.removeWhere((element) => element == word);
+      await prefs.setStringList(
+          AppPrefsKey.favouriteWordStringL, list.toList());
+    }
+  }
+
+  void clearAllFavouriteWords() =>
+      prefs.remove(AppPrefsKey.favouriteWordStringL);
 }

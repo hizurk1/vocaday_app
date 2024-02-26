@@ -4,7 +4,6 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:like_button/like_button.dart';
 
 import '../../../../app/constants/app_asset.dart';
 import '../../../../app/themes/app_color.dart';
@@ -19,6 +18,7 @@ import '../../../../app/widgets/gap.dart';
 import '../../../../app/widgets/highlight_text.dart';
 import '../../../../app/widgets/text.dart';
 import '../../../../core/extensions/build_context.dart';
+import '../../../favourite/presentation/widgets/favourite_button_widget.dart';
 import '../../domain/entities/word_entity.dart';
 
 class WordDetailBottomSheet extends StatelessWidget {
@@ -54,16 +54,7 @@ class WordDetailBottomSheet extends StatelessWidget {
               "($getTypes)",
               style: context.textStyle.bodyS.grey,
             ),
-            LikeButton(
-              size: 28.h,
-              likeBuilder: (isLiked) {
-                final color = isLiked ? AppColor().red : AppColor().grey400;
-                return SvgPicture.asset(
-                  isLiked ? AppAssets.loved : AppAssets.love,
-                  colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-                );
-              },
-            ),
+            FavouriteButtonWidget(word: wordEntity.word),
           ],
         ),
         DashedLineCustom(
