@@ -53,7 +53,8 @@
     "home": "Trang chủ",
     "profile": "Hồ sơ",
     "search": "Tìm kiếm",
-    "setting": "Cài đặt"
+    "setting": "Cài đặt",
+    "favourite": "Yêu thích"
   },
   "profile": {
     "birthday": "Sinh nhật",
@@ -166,5 +167,13 @@
     "new_word_today": "Từ mới hôm nay: {}",
     "remind_at": "Nhắc nhở lúc: {}",
     "notification_set_to": "Thông báo sẽ hiển thị lúc {} mỗi ngày."
+  },
+  "favourite": {
+    "add_to_favourite": "Đã thêm \"{}\" vào danh sách yêu thích của bạn.",
+    "remove_from_favourite": "Đã xoá \"{}\" khỏi danh sách yêu thích của bạn.",
+    "favourites": "Yêu thích",
+    "clear_all_favourites": "Bạn có chắc muốn xoá tất cả từ vựng yêu thích.",
+    "clear": "a",
+    "clear_all_fav_title": "Xoá tất cả yêu thích"
   }
 }

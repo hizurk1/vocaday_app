@@ -45,6 +45,7 @@ abstract class  LocaleKeys {
   static const page_profile = 'page.profile';
   static const page_search = 'page.search';
   static const page_setting = 'page.setting';
+  static const page_favourite = 'page.favourite';
   static const profile_birthday = 'profile.birthday';
   static const profile_completion_progress = 'profile.completion_progress';
   static const profile_created_date = 'profile.created_date';
@@ -108,5 +109,11 @@ abstract class  LocaleKeys {
   static const setting_new_word_today = 'setting.new_word_today';
   static const setting_remind_at = 'setting.remind_at';
   static const setting_notification_set_to = 'setting.notification_set_to';
+  static const favourite_add_to_favourite = 'favourite.add_to_favourite';
+  static const favourite_remove_from_favourite = 'favourite.remove_from_favourite';
+  static const favourite_favourites = 'favourite.favourites';
+  static const favourite_clear_all_favourites = 'favourite.clear_all_favourites';
+  static const favourite_clear = 'favourite.clear';
+  static const favourite_clear_all_fav_title = 'favourite.clear_all_fav_title';
 
 }

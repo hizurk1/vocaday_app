@@ -7,6 +7,7 @@ import '../../../../app/constants/app_asset.dart';
 import '../../../../app/managers/navigation.dart';
 import '../../../../app/managers/shared_preferences.dart';
 import '../../../../app/themes/app_color.dart';
+import '../../../../app/translations/translations.dart';
 import '../../../../config/app_logger.dart';
 import '../../../../injection_container.dart';
 
@@ -35,15 +36,21 @@ class _FavouriteButtonWidgetState extends State<FavouriteButtonWidget> {
     if (!isLiked) {
       await sl<SharedPrefManager>().addFavouriteWord(widget.word);
       Navigators().showMessage(
-        "Added '${widget.word.toLowerCase()}' to favourite!",
-        type: MessageType.success,
+        LocaleKeys.favourite_add_to_favourite.tr(
+          args: [widget.word.toLowerCase()],
+        ),
+        type: MessageType.info,
+        opacity: 0.9,
         duration: 2,
       );
     } else {
       await sl<SharedPrefManager>().removeFavouriteWord(widget.word);
       Navigators().showMessage(
-        "Removed '${widget.word.toLowerCase()}' from favourite!",
-        type: MessageType.success,
+        LocaleKeys.favourite_remove_from_favourite.tr(
+          args: [widget.word.toLowerCase()],
+        ),
+        type: MessageType.info,
+        opacity: 0.9,
         duration: 2,
       );
     }

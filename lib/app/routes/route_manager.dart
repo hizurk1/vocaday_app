@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../config/app_logger.dart';
 import '../../features/authentication/presentation/pages/authentication_page.dart';
+import '../../features/favourite/presentation/pages/favourite_page.dart';
 import '../../injection_container.dart';
 import '../managers/navigation.dart';
 import '../managers/shared_preferences.dart';
@@ -51,6 +52,20 @@ class AppRouter {
             context: context,
             state: state,
             child: const SettingPage(),
+          );
+        },
+        routes: const [],
+      ),
+      //? Route: '/favourite'
+      GoRoute(
+        path: AppRoutes.favourite,
+        pageBuilder: (context, state) {
+          logger.f(state.fullPath);
+
+          return slideTransitionPage(
+            context: context,
+            state: state,
+            child: const FavouritePage(),
           );
         },
         routes: const [],

@@ -53,7 +53,8 @@
     "home": "Home",
     "profile": "Profile",
     "search": "Search",
-    "setting": "Setting"
+    "setting": "Setting",
+    "favourite": "Favourite"
   },
   "profile": {
     "birthday": "Birthday",
@@ -166,5 +167,13 @@
     "new_word_today": "New word today: {}",
     "remind_at": "Remind at: {}",
     "notification_set_to": "Notification will show at {} every day."
+  },
+  "favourite": {
+    "add_to_favourite": "Added \"{}\" into your favourite list.",
+    "remove_from_favourite": "Removed \"{}\" from your favourite list.",
+    "favourites": "Favourites",
+    "clear_all_favourites": "Are you sure you want to clear all your favourite word list.",
+    "clear": "Clear all",
+    "clear_all_fav_title": "Clear all favourite words"
   }
 }

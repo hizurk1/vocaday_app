@@ -25,6 +25,13 @@ class MenuDrawerTileList extends StatefulWidget {
 
 class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
   int selectedIndex = 0;
+  final List<(String icon, String title, String route)?> menuList = [
+    (AppAssets.homeIconOutline, LocaleKeys.page_home.tr(), AppRoutes.home),
+    (AppAssets.love, LocaleKeys.page_favourite.tr(), AppRoutes.favourite),
+    (AppAssets.setting, LocaleKeys.page_setting.tr(), AppRoutes.setting),
+    null,
+    (AppAssets.signOut, LocaleKeys.auth_sign_out.tr(), ''),
+  ];
 
   _resetIndex() {
     Future.delayed(Durations.medium2, () {
@@ -39,10 +46,10 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
         widget.onClosed();
         break;
       case 1:
-        _resetIndex();
-        context.push(AppRoutes.setting);
-        break;
       case 2:
+        _resetIndex();
+        context.push(menuList[index]!.$3);
+        break;
       case 3:
         final result = await Navigators().showDialogWithButton(
           title: LocaleKeys.auth_sign_out.tr(),
@@ -65,12 +72,7 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildTitleUpperCase(LocaleKeys.common_browse.tr()),
-        ...[
-          (AppAssets.homeIconOutline, LocaleKeys.page_home.tr()),
-          (AppAssets.setting, LocaleKeys.page_setting.tr()),
-          (null),
-          (AppAssets.signOut, LocaleKeys.auth_sign_out.tr()),
-        ].mapIndexed(
+        ...menuList.mapIndexed(
           (index, tile) {
             if (tile == null) {
               return _buildTitleUpperCase(LocaleKeys.common_other_k.tr());

@@ -45,6 +45,7 @@ class Navigators {
   /// * [maxLines]: The maximum number of lines to show.
   /// * [duration]: The duration of the message. Default is `3 seconds`.
   /// * [dismissDirection]: The direction to dismiss the message.
+  /// * [opacity]: The opacity for snackbar, default is `0.75`.
   /// * [actionText]: The text of the action button.
   /// * [onAction]: The action to take when the action button is pressed.
   showMessage(
@@ -54,6 +55,7 @@ class Navigators {
     int maxLines = 5,
     int duration = 3,
     DismissDirection dismissDirection = DismissDirection.down,
+    double opacity = 0.75,
     String? actionText,
     VoidCallback? onAction,
   }) {
@@ -71,7 +73,7 @@ class Navigators {
             : msgColor.darken(.35);
     ScaffoldMessenger.of(currentContext!).showSnackBar(
       SnackBar(
-        backgroundColor: msgColor.withOpacity(0.75),
+        backgroundColor: msgColor.withOpacity(opacity),
         elevation: 0,
         margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
         behavior: SnackBarBehavior.floating,
@@ -119,6 +121,8 @@ class Navigators {
   /// * [showCancel]: Whether to show the cancel button.
   /// * [showIcon]: Whether to show an icon.
   /// * [dissmisable]: Whether the dialog is dismissable.
+  /// * [maxLinesTitle]: Max lines for title before it turns to 3dots.
+  /// * [maxLinesSubTitle]: Max lines for sub title before it turns to 3dots.
   /// * [icon]: The icon asset path.
   /// * [iconData]: The icon data.
   /// * [onAccept]: The function to call when the accept button is pressed.
@@ -133,6 +137,8 @@ class Navigators {
     bool showCancel = true,
     bool showIcon = true,
     bool dissmisable = true,
+    int maxLinesTitle = 2,
+    int maxLinesSubTitle = 3,
     String? icon,
     IconData? iconData,
     VoidCallback? onAccept,
@@ -183,6 +189,7 @@ class Navigators {
                       child: TextCustom(
                         title,
                         textAlign: TextAlign.center,
+                        maxLines: maxLinesTitle,
                         style: navigationKey
                             .currentContext?.textStyle.bodyL.bold.bw,
                       ),
@@ -193,6 +200,7 @@ class Navigators {
                       ? TextCustom(
                           subtitle ?? '',
                           textAlign: TextAlign.center,
+                          maxLines: maxLinesSubTitle,
                           style: navigationKey
                               .currentContext?.textStyle.bodyS.grey,
                         )

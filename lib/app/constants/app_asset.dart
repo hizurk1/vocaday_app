@@ -45,6 +45,7 @@ class AppAssets {
     '$_icon/rank_2.svg',
     '$_icon/rank_3.svg'
   ];
+  static const closeCircle = '$_icon/close_circle.svg';
 
   // Bottom nav
   static const homeIconFill = '$_icon/home_fill.svg';

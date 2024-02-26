@@ -69,7 +69,8 @@ class CodegenLoader extends AssetLoader{
     "home": "Home",
     "profile": "Profile",
     "search": "Search",
-    "setting": "Setting"
+    "setting": "Setting",
+    "favourite": "Favourite"
   },
   "profile": {
     "birthday": "Birthday",
@@ -182,6 +183,14 @@ class CodegenLoader extends AssetLoader{
     "new_word_today": "New word today: {}",
     "remind_at": "Remind at: {}",
     "notification_set_to": "Notification will show at {} every day."
+  },
+  "favourite": {
+    "add_to_favourite": "Added \"{}\" into your favourite list.",
+    "remove_from_favourite": "Removed \"{}\" from your favourite list.",
+    "favourites": "Favourites",
+    "clear_all_favourites": "Are you sure you want to clear all your favourite word list.",
+    "clear": "Clear all",
+    "clear_all_fav_title": "Clear all favourite words"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -239,7 +248,8 @@ static const Map<String,dynamic> vi_VN = {
     "home": "Trang chủ",
     "profile": "Hồ sơ",
     "search": "Tìm kiếm",
-    "setting": "Cài đặt"
+    "setting": "Cài đặt",
+    "favourite": "Yêu thích"
   },
   "profile": {
     "birthday": "Sinh nhật",
@@ -352,6 +362,14 @@ static const Map<String,dynamic> vi_VN = {
     "new_word_today": "Từ mới hôm nay: {}",
     "remind_at": "Nhắc nhở lúc: {}",
     "notification_set_to": "Thông báo sẽ hiển thị lúc {} mỗi ngày."
+  },
+  "favourite": {
+    "add_to_favourite": "Đã thêm \"{}\" vào danh sách yêu thích của bạn.",
+    "remove_from_favourite": "Đã xoá \"{}\" khỏi danh sách yêu thích của bạn.",
+    "favourites": "Yêu thích",
+    "clear_all_favourites": "Bạn có chắc muốn xoá tất cả từ vựng yêu thích.",
+    "clear": "a",
+    "clear_all_fav_title": "Xoá tất cả yêu thích"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};
