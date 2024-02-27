@@ -89,6 +89,27 @@ Then use the `SHA-1/SHA-256` with tag **'Config: debug'** to update fingerprints
     | --format | -f | json | Support json or keys formats |
     | --[no-]skip-unnecessary-keys | -u  | false | Ignores keys defining nested object except for plural(), gender() keywords |
 
+- ### Flutter Gen:
+
+    If you add any files to `assets` folder, then you would need to add its path to generated class (to avoid hard-code), run those commands below in order:
+
+   Activate [flutter_gen](https://pub.dev/packages/flutter_gen) (only once):
+
+   ```bash
+   dart pub global activate flutter_gen
+    ```
+
+1. Run build_runner:
+
+    ```bash
+    dart run build_runner build --delete-conflicting-outputs
+    ```
+
+2. Generate Assets:
+    ```bash
+    flutter_gen -c pubspec.yaml
+    ```
+
 
 ## 🔗 Resource
 
