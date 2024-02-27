@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../features/authentication/presentation/blocs/auth/auth_bloc.dart';
-import '../../../constants/app_asset.dart';
+import '../../../constants/gen/assets.gen.dart';
 import '../../../managers/navigation.dart';
 import '../../../routes/route_manager.dart';
 import '../../../themes/app_color.dart';
@@ -26,11 +26,15 @@ class MenuDrawerTileList extends StatefulWidget {
 class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
   int selectedIndex = 0;
   final List<(String icon, String title, String route)?> menuList = [
-    (AppAssets.homeIconOutline, LocaleKeys.page_home.tr(), AppRoutes.home),
-    (AppAssets.love, LocaleKeys.page_favourite.tr(), AppRoutes.favourite),
-    (AppAssets.setting, LocaleKeys.page_setting.tr(), AppRoutes.setting),
+    (Assets.icons.homeOutline, LocaleKeys.page_home.tr(), AppRoutes.home),
+    (
+      Assets.icons.favorites,
+      LocaleKeys.page_favourite.tr(),
+      AppRoutes.favourite
+    ),
+    (Assets.icons.settings, LocaleKeys.page_setting.tr(), AppRoutes.setting),
     null,
-    (AppAssets.signOut, LocaleKeys.auth_sign_out.tr(), ''),
+    (Assets.icons.logout, LocaleKeys.auth_sign_out.tr(), ''),
   ];
 
   _resetIndex() {

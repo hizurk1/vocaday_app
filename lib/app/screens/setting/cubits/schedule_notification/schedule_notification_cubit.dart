@@ -14,7 +14,7 @@ part 'schedule_notification_state.dart';
 class ScheduleNotificationCubit extends Cubit<ScheduleNotificationState> {
   ScheduleNotificationCubit() : super(ScheduleNotificationInitial());
 
-  Future<void> setScheduleNotification(TimeOfDay time) async {
+  Future<bool> setScheduleNotification(TimeOfDay time) async {
     if (await PermissionManager.isGrantedNotification) {
       final now = DateTime.now();
       final scheduleDate =
@@ -29,6 +29,7 @@ class ScheduleNotificationCubit extends Cubit<ScheduleNotificationState> {
           payload: 'payload',
           scheduleDate: scheduleDate,
         );
+        return true;
       } catch (e) {
         Navigators().showMessage(e.toString(), type: MessageType.error);
       } finally {
@@ -42,6 +43,7 @@ class ScheduleNotificationCubit extends Cubit<ScheduleNotificationState> {
         type: MessageType.error,
       );
     }
+    return false;
   }
 
   Future<void> cancelScheduleNotification() async {

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/extensions/build_context.dart';
-import '../../../../app/constants/app_asset.dart';
+import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/managers/navigation.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
@@ -89,14 +89,14 @@ class _SignInPageState extends State<SignInPage>
                               const Gap(height: 30),
                               BorderTextField(
                                 controller: _emailController,
-                                icon: AppAssets.emailIcon,
+                                icon: Assets.icons.email,
                                 inputType: TextInputType.emailAddress,
                                 hintText: LocaleKeys.auth_enter_email.tr(),
                               ),
                               const Gap(height: 20),
                               BorderTextField(
                                 controller: _passwordController,
-                                icon: AppAssets.passwordIcon,
+                                icon: Assets.icons.lock,
                                 inputType: TextInputType.visiblePassword,
                                 isPasswordField: true,
                                 hintText: LocaleKeys.auth_enter_password.tr(),
@@ -145,7 +145,7 @@ class _SignInPageState extends State<SignInPage>
                                       child: Padding(
                                         padding: EdgeInsets.all(5.w),
                                         child: SvgPicture.asset(
-                                          AppAssets.googleIcon,
+                                          Assets.icons.google,
                                         ),
                                       ),
                                     ),

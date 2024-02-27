@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
@@ -120,7 +120,7 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
               color: Colors.transparent,
               padding: EdgeInsets.all(16.w),
               child: SvgPicture.asset(
-                AppAssets.reload,
+                Assets.icons.reload,
                 height: 24.h,
                 colorFilter: ColorFilter.mode(
                   AppColor().white.withOpacity(.5),

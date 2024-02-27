@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../app/constants/app_asset.dart';
+import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/managers/navigation.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
@@ -71,14 +71,14 @@ class _SignUpPageState extends State<SignUpPage>
                               const Gap(height: 30),
                               BorderTextField(
                                 controller: _emailController,
-                                icon: AppAssets.emailIcon,
+                                icon: Assets.icons.email,
                                 inputType: TextInputType.emailAddress,
                                 hintText: LocaleKeys.auth_enter_email.tr(),
                               ),
                               const Gap(height: 20),
                               BorderTextField(
                                 controller: _passwordController,
-                                icon: AppAssets.passwordIcon,
+                                icon: Assets.icons.lock,
                                 inputType: TextInputType.visiblePassword,
                                 isPasswordField: true,
                                 hintText: LocaleKeys.auth_enter_password.tr(),
@@ -86,7 +86,7 @@ class _SignUpPageState extends State<SignUpPage>
                               const Gap(height: 20),
                               BorderTextField(
                                 controller: _repasswordController,
-                                icon: AppAssets.passwordIcon,
+                                icon: Assets.icons.lock,
                                 inputType: TextInputType.visiblePassword,
                                 isPasswordField: true,
                                 hintText: LocaleKeys.auth_confirm_password.tr(),

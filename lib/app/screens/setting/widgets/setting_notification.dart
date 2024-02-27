@@ -24,24 +24,23 @@ class _SettingNotificationState extends State<_SettingNotification> {
     if (isTurnOn) {
       final pickedTime = await _onSelectScheduleTime();
       if (pickedTime != null && mounted) {
-        timeNoti.value = pickedTime;
-        showNofi.value = true;
-        Navigators().showLoading(
-          delay: Durations.long2,
-          tasks: [
-            context
-                .read<ScheduleNotificationCubit>()
-                .setScheduleNotification(pickedTime),
-          ],
-          onFinish: () {
-            Navigators().showMessage(
-              LocaleKeys.setting_notification_set_to.tr(
-                args: [pickedTime.getHHmm],
-              ),
-              type: MessageType.success,
-            );
-          },
-        );
+        final result = await context
+            .read<ScheduleNotificationCubit>()
+            .setScheduleNotification(pickedTime);
+
+        if (result) {
+          timeNoti.value = pickedTime;
+          showNofi.value = true;
+          Navigators().showMessage(
+            LocaleKeys.setting_notification_set_to.tr(
+              args: [pickedTime.getHHmm],
+            ),
+            type: MessageType.success,
+          );
+        } else {
+          timeNoti.value = null;
+          showNofi.value = false;
+        }
       }
     } else {
       timeNoti.value = null;

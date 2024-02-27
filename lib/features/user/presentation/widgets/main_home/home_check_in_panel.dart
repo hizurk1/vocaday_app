@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/translations/translations.dart';
@@ -59,7 +59,7 @@ class CheckInPanel extends StatelessWidget {
                     Expanded(
                       child: _buildAttendanceTile(
                         context: context,
-                        icon: AppAssets.week,
+                        icon: Assets.icons.week,
                         title: LocaleKeys.home_time.plural(inCurWeek.length),
                         subTitle: LocaleKeys.home_this_week.tr(),
                       ),
@@ -67,7 +67,7 @@ class CheckInPanel extends StatelessWidget {
                     Expanded(
                       child: _buildAttendanceTile(
                         context: context,
-                        icon: AppAssets.lightning,
+                        icon: Assets.icons.lightning,
                         title: LocaleKeys.home_time.plural(inCurMonth.length),
                         subTitle: LocaleKeys.home_this_month.tr(),
                       ),
@@ -113,7 +113,7 @@ class CheckInPanel extends StatelessWidget {
                   children: [
                     const Gap(width: 5),
                     SvgPicture.asset(
-                      AppAssets.attendance,
+                      Assets.icons.attendance,
                       height: 22.h,
                       width: 22.w,
                     ),
@@ -146,7 +146,7 @@ class CheckInPanel extends StatelessWidget {
                   child: Row(
                     children: [
                       SvgPicture.asset(
-                        AppAssets.calendarOutline,
+                        Assets.icons.calendarOutline,
                         height: 20.h,
                         width: 20.w,
                       ),

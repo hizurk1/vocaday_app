@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/extensions/build_context.dart';
-import '../constants/app_asset.dart';
+import '../constants/gen/assets.gen.dart';
 import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 
@@ -72,7 +72,7 @@ class BorderTextField extends StatelessWidget {
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(bottom: 2.h),
                 icon: SvgPicture.asset(
-                  icon ?? AppAssets.copyIcon,
+                  icon ?? Assets.icons.copy,
                   height: 25.h,
                   width: 25.w,
                   colorFilter:

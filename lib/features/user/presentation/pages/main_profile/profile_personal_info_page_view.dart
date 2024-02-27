@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/screens/main/pages/profile/widgets/profile_info_item.dart';
 import '../../../../../app/translations/translations.dart';
 import '../../../../../app/widgets/error_page.dart';
@@ -29,32 +29,32 @@ class ProfilePersonalInfoPage extends StatelessWidget {
             child: Wrap(
               children: [
                 ProfileInfoItemWidget(
-                  icon: AppAssets.emailIcon,
+                  icon: Assets.icons.email,
                   title: "Email",
                   content: state.entity.email,
                 ),
                 ProfileInfoItemWidget(
-                  icon: AppAssets.phoneOutline,
+                  icon: Assets.icons.phone,
                   title: LocaleKeys.profile_phone.tr(),
                   content: state.entity.phone ?? '',
                 ),
                 ProfileInfoItemWidget(
-                  icon: AppAssets.birhtdayOutline,
+                  icon: Assets.icons.birthday,
                   title: LocaleKeys.profile_birthday.tr(),
                   content: state.entity.birthday?.ddMMyyyy ?? '',
                 ),
                 ProfileInfoItemWidget(
-                  icon: AppAssets.genderOutline,
+                  icon: Assets.icons.gender,
                   title: LocaleKeys.profile_gender.tr(),
                   content: state.entity.gender ?? '',
                 ),
                 ProfileInfoItemWidget(
-                  icon: AppAssets.attendance,
+                  icon: Assets.icons.attendance,
                   title: LocaleKeys.profile_attendance.tr(),
                   content: state.entity.attendance?.length.toString() ?? '',
                 ),
                 ProfileInfoItemWidget(
-                  icon: AppAssets.calendarOutline,
+                  icon: Assets.icons.calendarOutline,
                   title: LocaleKeys.profile_created_date.tr(),
                   content: state.entity.createdDate?.ddMMyyyy ?? '',
                 ),

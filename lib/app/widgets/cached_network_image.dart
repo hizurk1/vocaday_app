@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../config/app_logger.dart';
 import '../../core/extensions/build_context.dart';
 import '../../core/extensions/string.dart';
-import '../constants/app_asset.dart';
+import '../constants/gen/assets.gen.dart';
 import '../managers/navigation.dart';
 import 'fullscreen_image.dart';
 
@@ -106,7 +106,7 @@ class CachedNetworkImageCustom extends StatelessWidget {
             fit: BoxFit.cover,
           )
         : Image.asset(
-            AppAssets.defaultAvatar,
+            Assets.images.defaultAvatar.path,
             height: size?.h,
             width: size?.w,
             fit: BoxFit.cover,

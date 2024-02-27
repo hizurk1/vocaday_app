@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../core/extensions/build_context.dart';
-import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/utils/util_functions.dart';
@@ -58,7 +58,7 @@ class SearchWordTileWidget extends StatelessWidget {
             trailing: GestureDetector(
               onTap: _onCopyToClipboard,
               child: SvgPicture.asset(
-                AppAssets.copyIcon,
+                Assets.icons.copy,
                 width: 25.w,
                 height: 25.h,
                 colorFilter: ColorFilter.mode(

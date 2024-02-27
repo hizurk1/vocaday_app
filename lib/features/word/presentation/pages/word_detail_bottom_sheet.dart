@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../app/constants/app_asset.dart';
+import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/themes/app_color.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
@@ -250,7 +250,7 @@ class WordDetailBottomSheet extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 8.w),
                 child: SvgPicture.asset(
-                  AppAssets.copyIcon,
+                  Assets.icons.copy,
                   width: 25.w,
                   height: 25.h,
                   colorFilter: ColorFilter.mode(

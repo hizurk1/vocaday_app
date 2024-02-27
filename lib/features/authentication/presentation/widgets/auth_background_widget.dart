@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/extensions/build_context.dart';
-import '../../../../app/constants/app_asset.dart';
+import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/themes/app_color.dart';
 
 class AuthBackgroundWidget extends StatelessWidget {
@@ -17,7 +17,7 @@ class AuthBackgroundWidget extends StatelessWidget {
       child: Stack(
         children: [
           SvgPicture.asset(
-            AppAssets.loginBackground,
+            Assets.images.loginBackground,
             fit: BoxFit.cover,
           ),
           BackdropFilter(

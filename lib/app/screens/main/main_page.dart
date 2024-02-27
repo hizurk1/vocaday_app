@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../core/extensions/build_context.dart';
 import '../../../core/extensions/color.dart';
-import '../../constants/app_asset.dart';
+import '../../constants/gen/assets.gen.dart';
 import '../../themes/app_color.dart';
 import 'pages/activity/activity_page.dart';
 import 'pages/home/home_page.dart';
@@ -38,10 +38,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     super.initState();
 
     navIcons = [
-      (AppAssets.homeIconFill, AppAssets.homeIconOutline),
-      (AppAssets.searchIconFill, AppAssets.searchIconOutline),
-      (AppAssets.bookIconFill, AppAssets.bookIconOutline),
-      (AppAssets.profileIconFill, AppAssets.profileIconOutline),
+      (Assets.icons.homeFill, Assets.icons.homeOutline),
+      (Assets.icons.searchFill, Assets.icons.searchOutline),
+      (Assets.icons.bookFill, Assets.icons.bookOutline),
+      (Assets.icons.profileFill, Assets.icons.profileOutline),
     ];
 
     _pageController = PageController();

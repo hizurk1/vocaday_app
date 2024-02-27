@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/extensions/build_context.dart';
-import '../../../constants/app_asset.dart';
+import '../../../constants/gen/assets.gen.dart';
 import '../../../managers/language.dart';
 import '../../../themes/app_text_theme.dart';
 import '../../../translations/translations.dart';
@@ -26,7 +26,7 @@ class SelectLanguagePage extends StatelessWidget {
             child: Column(
               children: [
                 SvgPicture.asset(
-                  AppAssets.onBoardLanguage,
+                  Assets.images.languageSelect,
                   height: context.screenHeight / 3,
                 ),
                 const Gap(height: 10),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../constants/app_asset.dart';
+import '../../../constants/gen/assets.gen.dart';
 import '../../../themes/app_text_theme.dart';
 import '../../../translations/translations.dart';
 import '../../../widgets/gap.dart';
@@ -22,7 +22,7 @@ class WelcomePage extends StatelessWidget {
           children: [
             Expanded(
               child: LottieBuilder.asset(
-                AppAssets.manPaperAirPlane,
+                Assets.jsons.manFlyingOnPaperAirplane,
               ),
             ),
             Expanded(

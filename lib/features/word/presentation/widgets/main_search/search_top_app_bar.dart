@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../core/extensions/build_context.dart';
-import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/translations/translations.dart';
 import '../../blocs/search_word/search_word_bloc.dart';
@@ -72,7 +72,7 @@ class _SearchTopAppBarState extends State<SearchTopAppBar> {
           decoration: InputDecoration(
             border: InputBorder.none,
             icon: SvgPicture.asset(
-              AppAssets.searchIcon,
+              Assets.icons.searchOutline,
               height: 25.h,
               width: 25.w,
               colorFilter: ColorFilter.mode(

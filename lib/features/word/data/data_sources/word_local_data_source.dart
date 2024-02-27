@@ -1,4 +1,4 @@
-import '../../../../app/constants/app_asset.dart';
+import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/utils/json_loader.dart';
 import '../models/word_model.dart';
 
@@ -10,7 +10,7 @@ class WordLocalDataSourceImpl implements WordLocalDataSource {
   @override
   Future<List<WordModel>> getAllWords() async {
     try {
-      final result = await JsonLoader.load(AppAssets.wordData);
+      final result = await JsonLoader.load(Assets.data.selected);
       return WordModel.fromRawJsonToListModel(result);
     } on UnimplementedError {
       rethrow;

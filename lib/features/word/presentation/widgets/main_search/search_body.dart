@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../app/constants/app_asset.dart';
 import '../../../../../app/constants/app_const.dart';
+import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/translations/translations.dart';
@@ -32,7 +32,7 @@ class SearchBodyWidget extends StatelessWidget {
         if (state is SearchWordEmptyState) {
           return ErrorPage(
             text: LocaleKeys.search_type_something.tr(),
-            image: AppAssets.notFound,
+            image: Assets.jsons.notFound,
           );
         }
         if (state is SearchWordLoadingState) {
@@ -94,7 +94,7 @@ class SearchBodyWidget extends StatelessWidget {
           } else {
             return ErrorPage(
               text: LocaleKeys.search_not_found.tr(),
-              image: AppAssets.notFoundDog,
+              image: Assets.jsons.notFoundDog,
             );
           }
         }
@@ -124,7 +124,7 @@ class SearchBodyWidget extends StatelessWidget {
                 ),
                 const SizedBox(width: 5),
                 SvgPicture.asset(
-                  AppAssets.arrowDown,
+                  Assets.icons.arrowDown,
                   height: 12.h,
                   colorFilter: ColorFilter.mode(
                     context.colors.grey,

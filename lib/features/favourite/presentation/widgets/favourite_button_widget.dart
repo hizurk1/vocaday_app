@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:like_button/like_button.dart';
 
-import '../../../../app/constants/app_asset.dart';
+import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/managers/navigation.dart';
 import '../../../../app/managers/shared_preferences.dart';
 import '../../../../app/themes/app_color.dart';
@@ -78,7 +78,7 @@ class _FavouriteButtonWidgetState extends State<FavouriteButtonWidget> {
           likeBuilder: (_) {
             final color = isLiked ? AppColor().red : AppColor().grey400;
             return SvgPicture.asset(
-              isLiked ? AppAssets.loved : AppAssets.love,
+              isLiked ? Assets.icons.loved : Assets.icons.love,
               colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
             );
           },

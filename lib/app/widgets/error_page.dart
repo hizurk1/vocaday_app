@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
-import '../constants/app_asset.dart';
+import '../constants/gen/assets.gen.dart';
 import '../themes/app_text_theme.dart';
 import 'gap.dart';
 import 'text.dart';
@@ -27,7 +27,7 @@ class ErrorPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Lottie.asset(
-                  image ?? AppAssets.errorCat,
+                  image ?? Assets.jsons.error,
                   width: 180.w,
                   height: 180.h,
                 ),

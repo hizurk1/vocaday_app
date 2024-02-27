@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../app/constants/app_asset.dart';
+import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/translations/translations.dart';
 import '../../../../../app/widgets/cached_network_image.dart';
@@ -94,7 +94,7 @@ class _TopRankingBlock extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: SvgPicture.asset(
-                AppAssets.leaderboardBox,
+                Assets.images.leaderboardBox,
                 width: context.screenWidth,
                 fit: BoxFit.fitWidth,
               ),

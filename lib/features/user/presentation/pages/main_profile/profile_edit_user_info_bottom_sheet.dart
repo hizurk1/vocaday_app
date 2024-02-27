@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../../../app/constants/app_asset.dart';
 import '../../../../../app/constants/app_const.dart';
+import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
@@ -157,14 +157,14 @@ class _ProfileEditUserInfoBottomSheetState
             controller: _nameController,
             label: LocaleKeys.profile_display_name.tr(),
             hintText: LocaleKeys.profile_enter_display_name.tr(),
-            icon: AppAssets.profileIconOutline,
+            icon: Assets.icons.profileOutline,
             inputType: TextInputType.name,
           ),
           _buildFieldItem(
             controller: _phoneController,
             label: LocaleKeys.profile_phone.tr(),
             hintText: LocaleKeys.profile_enter_phone_number.tr(),
-            icon: AppAssets.phoneOutline,
+            icon: Assets.icons.phone,
             inputType: TextInputType.phone,
             maxLength: 12,
           ),
@@ -174,12 +174,12 @@ class _ProfileEditUserInfoBottomSheetState
             label: LocaleKeys.profile_birthday.tr(),
             hintText: '',
             enable: false,
-            icon: AppAssets.calendarOutline,
+            icon: Assets.icons.calendarOutline,
           ),
           _buildDropdownItem(
             initialValue: _selectedGender,
             values: EGender.values.map((e) => e.value).toList(),
-            icon: AppAssets.genderOutline,
+            icon: Assets.icons.gender,
             label: LocaleKeys.profile_gender.tr(),
             onChanged: (value) {
               _selectedGender = value ?? _selectedGender;
@@ -282,7 +282,7 @@ class _ProfileEditUserInfoBottomSheetState
                   color: context.colors.grey200,
                 ),
                 child: SvgPicture.asset(
-                  AppAssets.camera,
+                  Assets.icons.pencil,
                   colorFilter: ColorFilter.mode(
                     context.colors.grey600,
                     BlendMode.srcIn,

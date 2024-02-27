@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../constants/app_asset.dart';
+import '../../../constants/gen/assets.gen.dart';
 import '../../../managers/language.dart';
 import '../../../translations/translations.dart';
 import '../../../widgets/gap.dart';
@@ -34,7 +34,7 @@ class _SelectLanguageOptionsWidgetState
           LanguageOptionWidget(
             onTap: () async => await setAppLanguage(AppLocale.en),
             text: LocaleKeys.app_language_english.tr(),
-            icon: AppAssets.englishFlagRound,
+            icon: Assets.icons.englishRound,
             isSelected:
                 context.locale.languageCode == AppLocale.en.languageCode,
           ),
@@ -42,7 +42,7 @@ class _SelectLanguageOptionsWidgetState
           LanguageOptionWidget(
             onTap: () async => await setAppLanguage(AppLocale.vi),
             text: LocaleKeys.app_language_vietnamese.tr(),
-            icon: AppAssets.vietNamFlagRound,
+            icon: Assets.icons.vietnamRound,
             isSelected:
                 context.locale.languageCode == AppLocale.vi.languageCode,
           ),

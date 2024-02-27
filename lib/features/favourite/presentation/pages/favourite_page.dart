@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../app/constants/app_asset.dart';
+import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/managers/navigation.dart';
 import '../../../../app/managers/shared_preferences.dart';
 import '../../../../app/translations/translations.dart';
@@ -149,6 +149,12 @@ class _FavouritePageState extends State<FavouritePage> {
     return ValueListenableBuilder(
       valueListenable: favourteNotifer,
       builder: (context, favourites, _) {
+        if (favourites.isEmpty) {
+          return ErrorPage(
+            text: LocaleKeys.search_not_found.tr(),
+            image: Assets.jsons.notFoundDog,
+          );
+        }
         return ListView.builder(
           itemCount: favourites.length,
           // physics: const BouncingScrollPhysics(),
@@ -177,7 +183,7 @@ class _FavouritePageState extends State<FavouritePage> {
                       trailing: GestureDetector(
                         onTap: () => _onRemoveItem(favourites[index].word),
                         child: SvgPicture.asset(
-                          AppAssets.closeCircle,
+                          Assets.icons.closeCircle,
                           colorFilter: ColorFilter.mode(
                             context.greyColor,
                             BlendMode.srcIn,

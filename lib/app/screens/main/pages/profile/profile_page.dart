@@ -8,7 +8,7 @@ import '../../../../../features/user/presentation/cubits/user_data/user_data_cub
 import '../../../../../features/user/presentation/pages/main_profile/profile_edit_user_info_bottom_sheet.dart';
 import '../../../../../features/user/presentation/pages/main_profile/profile_personal_info_page_view.dart';
 import '../../../../../features/user/presentation/widgets/main_profile/profile_personal_info.dart';
-import '../../../../constants/app_asset.dart';
+import '../../../../constants/gen/assets.gen.dart';
 import '../../../../managers/navigation.dart';
 import '../../../../translations/translations.dart';
 import '../../../../widgets/app_bar.dart';
@@ -58,7 +58,7 @@ class ProfilePage extends StatelessWidget {
             padding: EdgeInsets.all(5.w),
             margin: EdgeInsets.only(right: 20.w),
             child: SvgPicture.asset(
-              AppAssets.profilePencil,
+              Assets.icons.pencil,
               colorFilter: ColorFilter.mode(
                 context.theme.primaryColor,
                 BlendMode.srcIn,
