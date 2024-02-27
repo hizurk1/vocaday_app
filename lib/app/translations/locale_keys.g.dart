@@ -113,7 +113,9 @@ abstract class  LocaleKeys {
   static const favourite_remove_from_favourite = 'favourite.remove_from_favourite';
   static const favourite_favourites = 'favourite.favourites';
   static const favourite_clear_all_favourites = 'favourite.clear_all_favourites';
-  static const favourite_clear = 'favourite.clear';
   static const favourite_clear_all_fav_title = 'favourite.clear_all_fav_title';
+  static const favourite_clear_all = 'favourite.clear_all';
+  static const favourite_sync_data = 'favourite.sync_data';
+  static const favourite_sync_data_success = 'favourite.sync_data_success';
 
 }

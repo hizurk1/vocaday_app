@@ -107,4 +107,24 @@ class UserRepositoryImpl implements UserRepository {
       return Left(DatabaseFailure(e.toString()));
     }
   }
+
+  @override
+  FutureEither<List<String>> updateFavourites({
+    required String uid,
+    required List<String> favourites,
+  }) async {
+    try {
+      final res = await userRemoteDataSource.updateFavourites(
+        uid: uid,
+        map: {'favourites': favourites},
+      );
+      return Right(res);
+    } on FirebaseException catch (e) {
+      return Left(
+        FirebaseFailure(e.message ?? 'FirebaseFailure: updateFavourites'),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
 }

@@ -189,8 +189,10 @@ class CodegenLoader extends AssetLoader{
     "remove_from_favourite": "Removed \"{}\" from your favourite list.",
     "favourites": "Favourites",
     "clear_all_favourites": "Are you sure you want to clear all your favourite word list.",
-    "clear": "Clear all",
-    "clear_all_fav_title": "Clear all favourite words"
+    "clear_all_fav_title": "Clear all favourite words",
+    "clear_all": "Clear all favourites",
+    "sync_data": "Sync data",
+    "sync_data_success": "Data sync successfully"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -368,8 +370,10 @@ static const Map<String,dynamic> vi_VN = {
     "remove_from_favourite": "Đã xoá \"{}\" khỏi danh sách yêu thích của bạn.",
     "favourites": "Yêu thích",
     "clear_all_favourites": "Bạn có chắc muốn xoá tất cả từ vựng yêu thích.",
-    "clear": "a",
-    "clear_all_fav_title": "Xoá tất cả yêu thích"
+    "clear_all_fav_title": "Xoá tất cả yêu thích",
+    "clear_all": "Xoá tất cả yêu thích",
+    "sync_data": "Đồng bộ dữ liệu",
+    "sync_data_success": "Dữ liệu đồng bộ thành công"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

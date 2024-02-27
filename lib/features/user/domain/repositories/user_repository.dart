@@ -18,4 +18,9 @@ abstract interface class UserRepository {
     required FilterUserType type,
     required int limit,
   });
+
+  FutureEither<List<String>> updateFavourites({
+    required String uid,
+    required List<String> favourites,
+  });
 }

@@ -281,6 +281,8 @@ class _ProfileEditUserInfoBottomSheetState
                   borderRadius: BorderRadius.circular(360),
                   color: context.colors.grey200,
                 ),
+                height: 25.h,
+                width: 25.w,
                 child: SvgPicture.asset(
                   Assets.icons.pencil,
                   colorFilter: ColorFilter.mode(

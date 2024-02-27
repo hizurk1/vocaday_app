@@ -64,6 +64,10 @@ class SharedPrefManager {
     await prefs.setStringList(AppPrefsKey.favouriteWordStringL, list.toList());
   }
 
+  Future<void> saveFavouriteWord(List<String> words) async {
+    await prefs.setStringList(AppPrefsKey.favouriteWordStringL, words);
+  }
+
   Future<void> removeFavouriteWord(String word) async {
     Set<String> list =
         prefs.getStringList(AppPrefsKey.favouriteWordStringL)?.toSet() ?? {};

@@ -24,6 +24,7 @@ import 'features/authentication/domain/usecases/sign_up_with_email_password.dart
 import 'features/authentication/presentation/blocs/auth/auth_bloc.dart';
 import 'features/authentication/presentation/blocs/sign_in/sign_in_bloc.dart';
 import 'features/authentication/presentation/blocs/sign_up/sign_up_bloc.dart';
+import 'features/favourite/domain/usecases/update_favourite_word_usecase.dart';
 import 'features/user/data/data_sources/user_remote_data_source.dart';
 import 'features/user/data/repositories/user_repository_impl.dart';
 import 'features/user/domain/repositories/user_repository.dart';
@@ -63,6 +64,10 @@ Future<void> setUpServiceLocator() async {
   sl.registerFactory(() => ThemeCubit(sl()));
   sl.registerFactory(() => LanguageCubit());
   sl.registerFactory(() => ConnectionCubit(sl()));
+
+  //! Features - favourite
+  // Usecase
+  sl.registerLazySingleton(() => UpdateFavouriteWordUsecase(repository: sl()));
 
   //! Features - word
   // Data source

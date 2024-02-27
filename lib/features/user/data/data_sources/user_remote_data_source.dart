@@ -25,6 +25,11 @@ abstract interface class UserRemoteDataSource {
     required FilterUserType type,
     required int limit,
   });
+
+  Future<List<String>> updateFavourites({
+    required String uid,
+    required Map<String, dynamic> map,
+  });
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
@@ -45,8 +50,8 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
           );
     } on FirebaseException {
       rethrow;
-    } catch (e) {
-      throw DatabaseException(e.toString());
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
     }
   }
 
@@ -66,8 +71,8 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       await firestore.collection(_users).doc(uid).update(map);
     } on FirebaseException {
       rethrow;
-    } catch (e) {
-      throw DatabaseException(e.toString());
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
     }
   }
 
@@ -81,8 +86,8 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       return true;
     } on FirebaseException {
       rethrow;
-    } catch (e) {
-      throw DatabaseException(e.toString());
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
     }
   }
 
@@ -113,5 +118,26 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       FilterUserType.attendance =>
         collection.where(field, isNull: false).orderBy(field),
     };
+  }
+
+  @override
+  Future<List<String>> updateFavourites({
+    required String uid,
+    required Map<String, dynamic> map,
+  }) async {
+    try {
+      final res = await firestore.collection(_users).doc(uid).get();
+      final dbList = UserModel.fromMap(res.data()!).favourites ?? [];
+      final localList = map['favourites'] as List<String>;
+      final merged = (dbList + localList).toSet().toList();
+
+      Map<String, dynamic> updateMap = {'favourites': merged};
+      await firestore.collection(_users).doc(uid).update(updateMap);
+      return merged;
+    } on FirebaseException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
+    }
   }
 }

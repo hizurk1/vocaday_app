@@ -173,7 +173,9 @@
     "remove_from_favourite": "Removed \"{}\" from your favourite list.",
     "favourites": "Favourites",
     "clear_all_favourites": "Are you sure you want to clear all your favourite word list.",
-    "clear": "Clear all",
-    "clear_all_fav_title": "Clear all favourite words"
+    "clear_all_fav_title": "Clear all favourite words",
+    "clear_all": "Clear all favourites",
+    "sync_data": "Sync data",
+    "sync_data_success": "Data sync successfully"
   }
 }

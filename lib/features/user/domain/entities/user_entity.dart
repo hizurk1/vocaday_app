@@ -14,6 +14,7 @@ class UserEntity extends Equatable {
   final int gold;
   final List<DateTime>? attendance;
   final DateTime? createdDate;
+  final List<String>? favourites;
 
   const UserEntity({
     required this.uid,
@@ -28,6 +29,7 @@ class UserEntity extends Equatable {
     this.gold = 0,
     this.attendance,
     this.createdDate,
+    this.favourites,
   });
 
   UserEntity copyWith({
@@ -43,6 +45,7 @@ class UserEntity extends Equatable {
     int? gold,
     List<DateTime>? attendance,
     DateTime? createdDate,
+    List<String>? favourites,
   }) {
     return UserEntity(
       uid: uid ?? this.uid,
@@ -57,6 +60,7 @@ class UserEntity extends Equatable {
       gold: gold ?? this.gold,
       attendance: attendance ?? attendance,
       createdDate: createdDate ?? this.createdDate,
+      favourites: favourites ?? this.favourites,
     );
   }
 
@@ -74,5 +78,6 @@ class UserEntity extends Equatable {
         gold,
         attendance,
         createdDate,
+        favourites,
       ];
 }

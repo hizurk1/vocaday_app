@@ -14,6 +14,11 @@ import '../../../translations/translations.dart';
 import '../../../widgets/text.dart';
 import 'menu_drawer_tile.dart';
 
+class MenuTile {
+  final String icon, title, route;
+  MenuTile(this.icon, this.title, this.route);
+}
+
 class MenuDrawerTileList extends StatefulWidget {
   const MenuDrawerTileList({super.key, required this.onClosed});
 
@@ -25,16 +30,15 @@ class MenuDrawerTileList extends StatefulWidget {
 
 class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
   int selectedIndex = 0;
-  final List<(String icon, String title, String route)?> menuList = [
-    (Assets.icons.homeOutline, LocaleKeys.page_home.tr(), AppRoutes.home),
-    (
-      Assets.icons.favorites,
-      LocaleKeys.page_favourite.tr(),
-      AppRoutes.favourite
-    ),
-    (Assets.icons.settings, LocaleKeys.page_setting.tr(), AppRoutes.setting),
+  final List<MenuTile?> menuList = [
+    MenuTile(
+        Assets.icons.homeOutline, LocaleKeys.page_home.tr(), AppRoutes.home),
+    MenuTile(Assets.icons.favorites, LocaleKeys.page_favourite.tr(),
+        AppRoutes.favourite),
     null,
-    (Assets.icons.logout, LocaleKeys.auth_sign_out.tr(), ''),
+    MenuTile(
+        Assets.icons.settings, LocaleKeys.page_setting.tr(), AppRoutes.setting),
+    MenuTile(Assets.icons.logout, LocaleKeys.auth_sign_out.tr(), ''),
   ];
 
   _resetIndex() {
@@ -52,7 +56,7 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
       case 1:
       case 2:
         _resetIndex();
-        context.push(menuList[index]!.$3);
+        context.push(menuList[index]!.route);
         break;
       case 3:
         final result = await Navigators().showDialogWithButton(
@@ -85,8 +89,8 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
               onTap: () => _onSelectedTile(index),
               index: index,
               selectedIndex: selectedIndex,
-              icon: tile.$1,
-              title: tile.$2,
+              icon: tile.icon,
+              title: tile.title,
             );
           },
         ),
