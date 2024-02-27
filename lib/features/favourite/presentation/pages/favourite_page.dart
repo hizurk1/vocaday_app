@@ -42,11 +42,10 @@ class _FavouritePageState extends State<FavouritePage> {
     );
   }
 
-  void _onOpenWordDetail(BuildContext context, WordEntity entity) async {
-    await context.showBottomSheet(
+  void _onOpenWordDetail(BuildContext context, WordEntity entity) {
+    context.showBottomSheet(
       child: WordDetailBottomSheet(wordEntity: entity),
     );
-    if (mounted) await _onRefresh(context, delay: Duration.zero);
   }
 
   Future<void> _onSearch(BuildContext context, String input) async {
@@ -88,13 +87,20 @@ class _FavouritePageState extends State<FavouritePage> {
       lazy: false,
       child: Builder(builder: (context) {
         return Scaffold(
+          backgroundColor: context.backgroundColor,
           appBar: AppBarCustom(
-            leading: const Icon(Icons.cloud_sync_sharp),
+            leading: Icon(
+              Icons.cloud_sync_sharp,
+              color: context.theme.primaryColor,
+            ),
             textTitle: LocaleKeys.favourite_favourites.tr(),
             enablePadding: true,
             action: GestureDetector(
               onTap: () => _onClearAll(context),
-              child: const Icon(Icons.remove_done_outlined),
+              child: Icon(
+                Icons.remove_done_outlined,
+                color: context.theme.primaryColor,
+              ),
             ),
           ),
           body: BlocBuilder<WordFavouriteCubit, WordFavouriteState>(
@@ -152,6 +158,8 @@ class _FavouritePageState extends State<FavouritePage> {
               child: Material(
                 color: context.theme.cardColor,
                 borderRadius: BorderRadius.circular(8.r),
+                shadowColor: context.shadowColor.withOpacity(.5),
+                elevation: 1.5,
                 child: InkWell(
                   onTap: () => _onOpenWordDetail(context, favourites[index]),
                   borderRadius: BorderRadius.circular(8.r),
