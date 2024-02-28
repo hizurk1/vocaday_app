@@ -190,8 +190,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                context.theme.scaffoldBackgroundColor,
-                context.theme.scaffoldBackgroundColor.darken(.025),
+                context.theme.cardColor,
+                context.theme.cardColor.darken(.025),
               ],
             ),
             boxShadow: [
@@ -200,7 +200,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               )
             ],
             border: Border.all(
-              color: context.colors.grey400.withOpacity(0.3),
+              color: context.colors.grey400
+                  .withOpacity(context.isDarkTheme ? 0.1 : 0.3),
             ),
           ),
           child: Row(

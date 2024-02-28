@@ -225,7 +225,7 @@ class Navigators {
                             context.pop(false);
                           },
                           text: cancelText ?? LocaleKeys.common_cancel.tr(),
-                          type: PushableButtonType.grey,
+                          type: PushableButtonType.white,
                         ),
                     ]
                   : null,
@@ -249,10 +249,17 @@ class Navigators {
       context: currentContext!,
       barrierDismissible: false,
       barrierColor: currentContext!.isDarkTheme
-          ? AppColor().white.withOpacity(0.1)
-          : null,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(color: Colors.white),
+          ? AppColor().white.withOpacity(0.2)
+          : AppColor().black.withOpacity(0.6),
+      builder: (context) => Center(
+        child: SizedBox(
+          height: 25.h,
+          width: 25.w,
+          child: CircularProgressIndicator(
+            strokeWidth: 2.5,
+            color: context.colors.white,
+          ),
+        ),
       ),
     );
     await Future.wait([

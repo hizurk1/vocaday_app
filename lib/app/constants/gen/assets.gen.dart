@@ -556,6 +556,15 @@ class $AssetsJsonsGen {
   /// File path: assets/jsons/loading-19.json
   String get loading19 => 'assets/jsons/loading-19.json';
 
+  /// File path: assets/jsons/loading-blue-dots.json
+  String get loadingBlueDots => 'assets/jsons/loading-blue-dots.json';
+
+  /// File path: assets/jsons/loading-sand-clock.json
+  String get loadingSandClock => 'assets/jsons/loading-sand-clock.json';
+
+  /// File path: assets/jsons/loading-text.json
+  String get loadingText => 'assets/jsons/loading-text.json';
+
   /// File path: assets/jsons/man-flying-on-paper-airplane.json
   String get manFlyingOnPaperAirplane =>
       'assets/jsons/man-flying-on-paper-airplane.json';
@@ -599,6 +608,9 @@ class $AssetsJsonsGen {
         flyingRocket,
         jumpingDots,
         loading19,
+        loadingBlueDots,
+        loadingSandClock,
+        loadingText,
         manFlyingOnPaperAirplane,
         networkError,
         notFound,

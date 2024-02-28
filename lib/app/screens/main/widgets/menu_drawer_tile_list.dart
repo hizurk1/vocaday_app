@@ -55,10 +55,11 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
         break;
       case 1:
       case 2:
+      case 3:
         _resetIndex();
         context.push(menuList[index]!.route);
         break;
-      case 3:
+      case 4:
         final result = await Navigators().showDialogWithButton(
           title: LocaleKeys.auth_sign_out.tr(),
           subtitle: LocaleKeys.auth_are_you_want_to_sign_out.tr(),

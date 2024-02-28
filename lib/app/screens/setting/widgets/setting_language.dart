@@ -14,7 +14,12 @@ class _SettingLanguage extends StatelessWidget {
       minHeight: 60.h,
       width: context.screenWidth,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
-      leading: const Icon(Icons.language),
+      leading: SvgPicture.asset(
+        Assets.icons.language,
+        height: 25.h,
+        width: 25.w,
+        colorFilter: ColorFilter.mode(context.bwColor, BlendMode.srcIn),
+      ),
       titlePadding: EdgeInsets.symmetric(horizontal: 20.w),
       title: TextCustom(
         LocaleKeys.setting_language.tr(),

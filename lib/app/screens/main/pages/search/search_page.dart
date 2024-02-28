@@ -29,9 +29,10 @@ class _SearchPageState extends State<SearchPage>
       child: Scaffold(
         backgroundColor: context.backgroundColor,
         appBar: AppBarCustom(
+          enableShadow: false,
           child: Center(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: const SearchTopAppBar(),
             ),
           ),

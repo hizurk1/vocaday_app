@@ -30,6 +30,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
     this.appBarHeight,
     this.enablePadding = false,
     this.centerTitle = true,
+    this.enableShadow = true,
   });
 
   /// If this widget is null. By default, the app bar uses the [Row] widget
@@ -68,6 +69,11 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   /// The default value is [AppElement.appBarHeight]
   final double? appBarHeight;
 
+  /// The shadow below the app bar.
+  ///
+  /// The default value is `true`.
+  final bool enableShadow;
+
   @override
   Size get preferredSize => Size.fromHeight(
         appBarHeight ?? AppElement.appBarHeight.h,
@@ -82,12 +88,14 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
       decoration: BoxDecoration(
         color:
             context.isDarkTheme ? AppColor().backgroundDark : AppColor().white,
-        boxShadow: [
-          BoxShadow(
-            color: context.colors.grey400.withOpacity(.5),
-            blurRadius: 1,
-          ),
-        ],
+        boxShadow: enableShadow
+            ? [
+                BoxShadow(
+                  color: context.colors.grey400.withOpacity(.5),
+                  blurRadius: 1,
+                ),
+              ]
+            : null,
       ),
       child: SafeArea(
         child: Padding(

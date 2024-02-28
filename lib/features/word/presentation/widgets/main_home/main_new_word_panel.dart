@@ -106,7 +106,6 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
               padding: EdgeInsets.all(18.w),
               child: LoadingIndicatorWidget(
                 size: Size(18.w, 18.h),
-                strokeWidth: 2,
                 color: AppColor().white.withOpacity(.5),
               ),
             ),

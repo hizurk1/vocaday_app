@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/extensions/build_context.dart';
+import '../themes/app_color.dart';
 
 class LoadingIndicatorPage extends StatelessWidget {
   const LoadingIndicatorPage({super.key, this.padding});
@@ -24,21 +24,19 @@ class LoadingIndicatorWidget extends StatelessWidget {
     super.key,
     this.color,
     this.size,
-    this.strokeWidth,
   });
 
   final Color? color;
   final Size? size;
-  final double? strokeWidth;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: size?.width.w ?? 20.w,
-      height: size?.height.h ?? 20.h,
+      height: size?.height ?? 25.h,
+      width: size?.width ?? 25.w,
       child: CircularProgressIndicator(
-        color: color ?? context.bwColor,
-        strokeWidth: strokeWidth ?? 2.5,
+        strokeWidth: 2.5,
+        color: context.colors.white,
       ),
     );
   }

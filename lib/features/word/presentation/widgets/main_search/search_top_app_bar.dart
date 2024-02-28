@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../../core/extensions/build_context.dart';
 import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/themes/app_color.dart';
+import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/translations/translations.dart';
 import '../../blocs/search_word/search_word_bloc.dart';
 
@@ -49,13 +50,14 @@ class _SearchTopAppBarState extends State<SearchTopAppBar> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: 20.w,
-        ),
+        padding: EdgeInsets.only(left: 20.w, right: 10.w),
         decoration: BoxDecoration(
-          border: Border.all(
-            color: context.theme.dividerColor.withOpacity(.45),
-          ),
+          border: context.isDarkTheme
+              ? null
+              : Border.all(
+                  color: context.theme.dividerColor.withOpacity(.45),
+                ),
+          color: context.isDarkTheme ? context.colors.grey900 : null,
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: TextField(
@@ -66,9 +68,7 @@ class _SearchTopAppBarState extends State<SearchTopAppBar> {
           maxLength: 20,
           autofocus: true,
           textInputAction: TextInputAction.search,
-          style: context.textTheme.bodyMedium?.copyWith(
-            fontSize: 16.sp,
-          ),
+          style: context.textStyle.bodyM.bw,
           decoration: InputDecoration(
             border: InputBorder.none,
             icon: SvgPicture.asset(
@@ -81,10 +81,7 @@ class _SearchTopAppBarState extends State<SearchTopAppBar> {
               ),
             ),
             hintText: LocaleKeys.search_search_for_words.tr(),
-            hintStyle: context.textTheme.bodyMedium?.copyWith(
-              fontSize: 16.sp,
-              color: context.colors.grey,
-            ),
+            hintStyle: context.textStyle.bodyM.grey,
             counterText: '',
             contentPadding: EdgeInsets.zero,
             suffixIcon: ValueListenableBuilder<bool>(

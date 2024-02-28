@@ -86,11 +86,12 @@ class SliverTabView extends StatelessWidget {
             ),
             //? Content view
             SliverFillRemaining(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  bottom: AppElement.navBarSafeSize,
-                ),
-                child: tabBarView,
+              child: tabBarView,
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                width: context.screenWidth,
+                height: AppElement.navBarSafeSize,
               ),
             ),
           ],

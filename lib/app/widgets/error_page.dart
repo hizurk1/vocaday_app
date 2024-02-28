@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../core/extensions/build_context.dart';
 import '../constants/gen/assets.gen.dart';
 import '../themes/app_text_theme.dart';
 import 'gap.dart';
@@ -26,10 +27,13 @@ class ErrorPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Lottie.asset(
-                  image ?? Assets.jsons.error,
-                  width: 180.w,
-                  height: 180.h,
+                Opacity(
+                  opacity: context.isDarkTheme ? 0.85 : 1,
+                  child: Lottie.asset(
+                    image ?? Assets.jsons.error,
+                    width: 180.w,
+                    height: 180.h,
+                  ),
                 ),
                 Gap(height: 5.h),
                 TextCustom(

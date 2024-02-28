@@ -12,6 +12,7 @@ import '../../../../app/widgets/app_bar.dart';
 import '../../../../app/widgets/error_page.dart';
 import '../../../../app/widgets/list_tile_custom.dart';
 import '../../../../app/widgets/loading_indicator.dart';
+import '../../../../app/widgets/status_bar.dart';
 import '../../../../app/widgets/text.dart';
 import '../../../../core/extensions/build_context.dart';
 import '../../../../injection_container.dart';
@@ -37,7 +38,7 @@ class _FavouritePageState extends State<FavouritePage> {
 
   Future<void> _onRefresh(
     BuildContext context, {
-    Duration delay = Durations.long2,
+    Duration delay = Durations.long4,
   }) async {
     Navigators().showLoading(
       tasks: [
@@ -105,59 +106,61 @@ class _FavouritePageState extends State<FavouritePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => WordFavouriteCubit(
-        sl<GetAllWordsUsecase>(),
-        sl<UpdateFavouriteWordUsecase>(),
-      )..getAllFavouriteWords(),
-      lazy: false,
-      child: Builder(builder: (context) {
-        return Scaffold(
-          backgroundColor: context.backgroundColor,
-          appBar: AppBarCustom(
-            leading: const BackButton(),
-            textTitle: LocaleKeys.favourite_favourites.tr(),
-            action: _buildPopupMenu(context),
-          ),
-          body: BlocBuilder<WordFavouriteCubit, WordFavouriteState>(
-            builder: (context, state) {
-              if (state is WordFavouriteLoadingState) {
-                return const LoadingIndicatorPage();
-              }
-              if (state is WordFavouriteErrorState) {
-                return ErrorPage(text: state.message);
-              }
-              if (state is WordFavouriteLoadedState) {
-                favourteNotifer.value = state.words;
-                return RefreshIndicator(
-                  onRefresh: () async => _onRefresh(context),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        height: 50.h,
-                        width: context.screenWidth,
-                        margin: EdgeInsets.symmetric(
-                          vertical: 5.h,
-                          horizontal: 15.w,
-                        ).copyWith(top: 15.h),
-                        child: SearchFavouriteWordWidget(
-                          onSearch: (value) => _onSearch(context, value),
+    return StatusBar(
+      child: BlocProvider(
+        create: (_) => WordFavouriteCubit(
+          sl<GetAllWordsUsecase>(),
+          sl<UpdateFavouriteWordUsecase>(),
+        )..getAllFavouriteWords(),
+        lazy: false,
+        child: Builder(builder: (context) {
+          return Scaffold(
+            backgroundColor: context.backgroundColor,
+            appBar: AppBarCustom(
+              leading: const BackButton(),
+              textTitle: LocaleKeys.favourite_favourites.tr(),
+              action: _buildPopupMenu(context),
+            ),
+            body: BlocBuilder<WordFavouriteCubit, WordFavouriteState>(
+              builder: (context, state) {
+                if (state is WordFavouriteLoadingState) {
+                  return const LoadingIndicatorPage();
+                }
+                if (state is WordFavouriteErrorState) {
+                  return ErrorPage(text: state.message);
+                }
+                if (state is WordFavouriteLoadedState) {
+                  favourteNotifer.value = state.words;
+                  return RefreshIndicator(
+                    onRefresh: () async => _onRefresh(context),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          height: 50.h,
+                          width: context.screenWidth,
+                          margin: EdgeInsets.symmetric(
+                            vertical: 5.h,
+                            horizontal: 15.w,
+                          ).copyWith(top: 15.h),
+                          child: SearchFavouriteWordWidget(
+                            onSearch: (value) => _onSearch(context, value),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: _buildFavourites(),
-                      ),
-                    ],
-                  ),
-                );
-              }
-              return Container();
-            },
-          ),
-        );
-      }),
+                        Expanded(
+                          child: _buildFavourites(),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+                return Container();
+              },
+            ),
+          );
+        }),
+      ),
     );
   }
 

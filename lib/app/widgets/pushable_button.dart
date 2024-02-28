@@ -7,7 +7,7 @@ import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 import 'text.dart';
 
-enum PushableButtonType { primary, accent, grey, disable }
+enum PushableButtonType { primary, accent, grey, white, disable }
 
 class PushableButton extends StatefulWidget {
   const PushableButton({
@@ -59,6 +59,8 @@ class _PushableButtonState extends State<PushableButton> {
       PushableButtonType.accent => context.colors.red400,
       PushableButtonType.grey =>
         context.isDarkTheme ? context.colors.grey300 : context.colors.grey200,
+      PushableButtonType.white =>
+        context.isDarkTheme ? context.colors.grey700 : context.colors.grey100,
       PushableButtonType.disable => context.colors.grey,
     };
     return BoxDecoration(
@@ -105,8 +107,9 @@ class _PushableButtonState extends State<PushableButton> {
                     style: widget.textStyle ??
                         context.textStyle.bodyM.copyWith(
                           color: widget.textColor ??
-                              (widget.type == PushableButtonType.grey
-                                  ? context.colors.grey800
+                              (widget.type == PushableButtonType.grey ||
+                                      widget.type == PushableButtonType.white
+                                  ? context.bwColor
                                   : context.colors.white),
                           fontWeight: FontWeight.w500,
                         ),

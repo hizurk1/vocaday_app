@@ -7,8 +7,11 @@ class _SettingDeleteAcc extends StatelessWidget {
       minHeight: 60.h,
       width: context.screenWidth,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-      leading: const Icon(
-        Icons.group_remove_outlined,
+      leading: SvgPicture.asset(
+        Assets.icons.deleteAcc,
+        height: 25.h,
+        width: 25.w,
+        colorFilter: ColorFilter.mode(context.bwColor, BlendMode.srcIn),
       ),
       titlePadding: EdgeInsets.symmetric(horizontal: 20.w),
       title: TextCustom(

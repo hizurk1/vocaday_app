@@ -43,13 +43,23 @@ class _SearchFavouriteWordWidgetState extends State<SearchFavouriteWordWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 20.w,
-      ),
+      padding: EdgeInsets.only(left: 20.w, right: 10.w),
       decoration: BoxDecoration(
-        border: Border.all(
-          color: context.theme.dividerColor.withOpacity(.45),
-        ),
+        // border: context.isDarkTheme
+        //     ? null
+        //     : Border.all(
+        //         color: context.theme.dividerColor.withOpacity(.45),
+        //       ),
+        boxShadow: [
+          BoxShadow(
+            color: context.shadowColor.withOpacity(.5),
+            offset: const Offset(0, 1),
+            blurRadius: 0,
+            spreadRadius: 1,
+          ),
+        ],
+        color:
+            context.isDarkTheme ? context.colors.grey900 : context.colors.white,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: TextField(

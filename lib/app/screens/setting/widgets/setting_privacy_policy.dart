@@ -7,8 +7,11 @@ class _SettingPrivacyPolicy extends StatelessWidget {
       minHeight: 60.h,
       width: context.screenWidth,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-      leading: const Icon(
-        Icons.privacy_tip_outlined,
+      leading: SvgPicture.asset(
+        Assets.icons.privacy,
+        height: 25.h,
+        width: 25.w,
+        colorFilter: ColorFilter.mode(context.bwColor, BlendMode.srcIn),
       ),
       titlePadding: EdgeInsets.symmetric(horizontal: 20.w),
       title: TextCustom(
