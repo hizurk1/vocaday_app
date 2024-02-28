@@ -107,7 +107,7 @@ Then use the `SHA-1/SHA-256` with tag **'Config: debug'** to update fingerprints
 
 2. Generate Assets:
     ```bash
-    flutter_gen -c pubspec.yaml
+    fluttergen -c pubspec.yaml
     ```
 
 
