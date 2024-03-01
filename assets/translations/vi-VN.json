@@ -23,7 +23,13 @@
     "sign_in_as_email": "Đăng nhập với {email}",
     "sign_out": "Đăng xuất",
     "sign_up": "Đăng ký",
-    "welcome": "Chào mừng"
+    "welcome": "Chào mừng",
+    "change_password": "Đổi mật khẩu",
+    "enter_current_password": "Nhập mật khẩu hiện tại",
+    "enter_new_password": "Nhập mật khẩu mới",
+    "change_password_sub_title": "Hãy nhập thông tin mật khẩu của bạn bên dưới.",
+    "change_password_success": "Đổi mật khẩu thành công",
+    "please_re_login": "Hãy đăng nhập lại để cập nhật những thay đổi."
   },
   "common": {
     "accept": "Đồng ý",

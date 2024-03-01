@@ -16,4 +16,15 @@ final class AuthStateChangedEvent extends AuthEvent {
   List<Object?> get props => [user];
 }
 
+final class RequestChangePasswordEvent extends AuthEvent {
+  final String email, currPassword, newPassword, confirmPassword;
+
+  const RequestChangePasswordEvent(
+    this.email,
+    this.currPassword,
+    this.newPassword,
+    this.confirmPassword,
+  );
+}
+
 final class RequestSignOutEvent extends AuthEvent {}

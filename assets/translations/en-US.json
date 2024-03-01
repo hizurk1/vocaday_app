@@ -23,7 +23,13 @@
     "sign_in_as_email": "Sign in as {email}",
     "sign_out": "Sign out",
     "sign_up": "Sign up",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "change_password": "Change password",
+    "enter_current_password": "Enter the current password",
+    "enter_new_password": "Enter the new password",
+    "change_password_sub_title": "Please enter your password information below.",
+    "change_password_success": "Changed password successfully",
+    "please_re_login": "Please re-login to update the new changes."
   },
   "common": {
     "accept": "Accept",

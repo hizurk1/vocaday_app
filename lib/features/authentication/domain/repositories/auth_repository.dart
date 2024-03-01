@@ -10,4 +10,7 @@ abstract interface class AuthRepository {
   FutureEither<void> signInWithEmailAndPassword(String email, String password);
   FutureEither<AuthEntity> signInWithGoogle();
   FutureEither<void> signOut();
+  FutureEither<void> updatePassword(String password);
+  FutureEither<void> reauthenticateWithCredential(
+      String email, String password);
 }

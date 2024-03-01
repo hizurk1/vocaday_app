@@ -159,6 +159,7 @@ class _ProfileEditUserInfoBottomSheetState
             hintText: LocaleKeys.profile_enter_display_name.tr(),
             icon: Assets.icons.profileOutline,
             inputType: TextInputType.name,
+            textCapitalization: TextCapitalization.words,
           ),
           _buildFieldItem(
             controller: _phoneController,
@@ -225,6 +226,7 @@ class _ProfileEditUserInfoBottomSheetState
     required String hintText,
     required String icon,
     int? maxLength,
+    TextCapitalization textCapitalization = TextCapitalization.none,
     TextInputType inputType = TextInputType.text,
     bool enable = true,
     Color? hintColor,
@@ -247,6 +249,7 @@ class _ProfileEditUserInfoBottomSheetState
           hintText: hintText,
           hintColor: hintColor,
           maxLength: maxLength,
+          textCapitalization: textCapitalization,
           enable: enable,
           icon: icon,
           onTap: onTap,

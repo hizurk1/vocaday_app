@@ -16,6 +16,8 @@ abstract interface class AuthRemoteDataSource {
   Future<void> signInWithEmailAndPassword(String email, String password);
   Future<AuthModel> signInWithGoogle();
   Future<void> signOut();
+  Future<void> updatePassword(String password);
+  Future<void> reauthenticateWithCredential(String email, String password);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -136,6 +138,34 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       rethrow;
     } catch (e) {
       throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<void> reauthenticateWithCredential(
+      String email, String password) async {
+    try {
+      await _auth.currentUser?.reauthenticateWithCredential(
+        EmailAuthProvider.credential(
+          email: email,
+          password: password,
+        ),
+      );
+    } on FirebaseAuthException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw ServerException(e.message ?? 'reauthenticateWithCredential');
+    }
+  }
+
+  @override
+  Future<void> updatePassword(String password) async {
+    try {
+      await _auth.currentUser?.updatePassword(password);
+    } on FirebaseAuthException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw ServerException(e.message ?? 'reauthenticateWithCredential');
     }
   }
 }

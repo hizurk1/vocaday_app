@@ -5,6 +5,7 @@ import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/managers/navigation.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
+import '../../../../app/utils/util_functions.dart';
 import '../../../../app/widgets/border_text_field.dart';
 import '../../../../app/widgets/gap.dart';
 import '../../../../app/widgets/loading_indicator.dart';
@@ -95,6 +96,7 @@ class _SignUpPageState extends State<SignUpPage>
                               PushableButton(
                                 onPressed: () {
                                   if (state is! SignUpLoadingState) {
+                                    UtilFunction.unFocusTextField();
                                     context
                                         .read<SignUpBloc>()
                                         .add(RequestSignUpEvent(

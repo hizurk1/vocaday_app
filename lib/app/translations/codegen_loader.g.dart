@@ -39,7 +39,13 @@ class CodegenLoader extends AssetLoader{
     "sign_in_as_email": "Sign in as {email}",
     "sign_out": "Sign out",
     "sign_up": "Sign up",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "change_password": "Change password",
+    "enter_current_password": "Enter the current password",
+    "enter_new_password": "Enter the new password",
+    "change_password_sub_title": "Please enter your password information below.",
+    "change_password_success": "Changed password successfully",
+    "please_re_login": "Please re-login to update the new changes."
   },
   "common": {
     "accept": "Accept",
@@ -220,7 +226,13 @@ static const Map<String,dynamic> vi_VN = {
     "sign_in_as_email": "Đăng nhập với {email}",
     "sign_out": "Đăng xuất",
     "sign_up": "Đăng ký",
-    "welcome": "Chào mừng"
+    "welcome": "Chào mừng",
+    "change_password": "Đổi mật khẩu",
+    "enter_current_password": "Nhập mật khẩu hiện tại",
+    "enter_new_password": "Nhập mật khẩu mới",
+    "change_password_sub_title": "Hãy nhập thông tin mật khẩu của bạn bên dưới.",
+    "change_password_success": "Đổi mật khẩu thành công",
+    "please_re_login": "Hãy đăng nhập lại để cập nhật những thay đổi."
   },
   "common": {
     "accept": "Đồng ý",

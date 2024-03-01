@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 import '../managers/navigation.dart';
 import '../translations/translations.dart';
@@ -51,4 +52,8 @@ class UtilFunction {
       ));
     });
   }
+
+  /// Unfocus text field on the screen.
+  static void unFocusTextField() =>
+      FocusManager.instance.primaryFocus?.unfocus();
 }

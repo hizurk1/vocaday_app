@@ -36,6 +36,8 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
     MenuTile(Assets.icons.favorites, LocaleKeys.page_favourite.tr(),
         AppRoutes.favourite),
     null,
+    MenuTile(Assets.icons.changePassword, LocaleKeys.auth_change_password.tr(),
+        AppRoutes.changePassword),
     MenuTile(
         Assets.icons.settings, LocaleKeys.page_setting.tr(), AppRoutes.setting),
     MenuTile(Assets.icons.logout, LocaleKeys.auth_sign_out.tr(), ''),
@@ -49,29 +51,31 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
 
   void _onSelectedTile(int index) async {
     setState(() => selectedIndex = index);
-    switch (index) {
-      case 0:
-        widget.onClosed();
-        break;
-      case 1:
-      case 2:
-      case 3:
-        _resetIndex();
-        context.push(menuList[index]!.route);
-        break;
-      case 4:
-        final result = await Navigators().showDialogWithButton(
-          title: LocaleKeys.auth_sign_out.tr(),
-          subtitle: LocaleKeys.auth_are_you_want_to_sign_out.tr(),
-          acceptText: LocaleKeys.auth_sign_out.tr(),
-          onAccept: () {
-            context.read<AuthBloc>().add(RequestSignOutEvent());
-          },
-        );
-        if (result == null || !result) _resetIndex();
-        break;
-      default:
-        break;
+    if (index < menuList.length - 1) {
+      switch (index) {
+        case 0:
+          widget.onClosed();
+          break;
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+          _resetIndex();
+          context.push(menuList[index]!.route);
+          break;
+        default:
+          break;
+      }
+    } else {
+      final result = await Navigators().showDialogWithButton(
+        title: LocaleKeys.auth_sign_out.tr(),
+        subtitle: LocaleKeys.auth_are_you_want_to_sign_out.tr(),
+        acceptText: LocaleKeys.auth_sign_out.tr(),
+        onAccept: () {
+          context.read<AuthBloc>().add(RequestSignOutEvent());
+        },
+      );
+      if (result == null || !result) _resetIndex();
     }
   }
 

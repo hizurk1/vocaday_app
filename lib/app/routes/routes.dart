@@ -6,6 +6,7 @@ class AppRoutes {
   static const authentication = '/authentication';
   static const setting = '/setting';
   static const favourite = '/favourite';
+  static const changePassword = '/changePassword';
 
   static const main = '/main';
   static const home = '$main/home';

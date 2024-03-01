@@ -82,4 +82,32 @@ class AuthRepositoryImpl implements AuthRepository {
       return Left(UnknownFailure(e.toString()));
     }
   }
+
+  @override
+  FutureEither<void> reauthenticateWithCredential(
+      String email, String password) async {
+    try {
+      return Right(
+          await remoteDataSource.reauthenticateWithCredential(email, password));
+    } on FirebaseAuthException catch (e) {
+      return Left(ServerFailure(e.message ?? e.code));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
+  }
+
+  @override
+  FutureEither<void> updatePassword(String password) async {
+    try {
+      return Right(await remoteDataSource.updatePassword(password));
+    } on FirebaseAuthException catch (e) {
+      return Left(ServerFailure(e.message ?? e.code));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
+  }
 }
