@@ -29,7 +29,11 @@
     "enter_new_password": "Nhập mật khẩu mới",
     "change_password_sub_title": "Hãy nhập thông tin mật khẩu của bạn bên dưới.",
     "change_password_success": "Đổi mật khẩu thành công",
-    "please_re_login": "Hãy đăng nhập lại để cập nhật những thay đổi."
+    "please_re_login": "Hãy đăng nhập lại để cập nhật những thay đổi.",
+    "enter_new_pass_below": "Nhập mật khẩu mới của bạn bên dưới.",
+    "we_sent_verfication_code_to_email": "Chúng tôi vừa gửi bạn một mã xác nhận vào email của bạn: {}",
+    "enter_verification_code": "Nhập mã xác nhận",
+    "enter_email_to_reset_password": "Nhập địa chỉ email của bạn bên dưới, chúng tôi sẽ gửi bạn một mã xác minh để đặt lại mật khẩu."
   },
   "common": {
     "accept": "Đồng ý",

@@ -20,7 +20,15 @@ class DynamicBottomSheetCustom extends StatelessWidget {
     this.textTitle,
     this.textAction,
     this.onAction,
+    this.showAction = true,
+    this.dismissable = true,
   });
+
+  /// Allow the user to dismiss the bottom sheet.
+  final bool dismissable;
+
+  /// Show action button.
+  final bool showAction;
 
   /// Show drag handle. Best practice is only show if [textTitle] is `null`.
   final bool showDragHandle;
@@ -46,37 +54,50 @@ class DynamicBottomSheetCustom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: context.screenWidth,
-      decoration: BoxDecoration(
-        color: backgroundColor ?? context.bottomSheetBackground,
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(16.r),
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: GestureDetector(
+        onTap: () {
+          if (dismissable) {
+            Navigator.of(context).maybePop();
+          }
+        },
+        child: Container(
+          color: Colors.transparent,
         ),
       ),
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Container(
-            margin: EdgeInsets.only(
-                top: textTitle.isNotNullOrEmpty
-                    ? AppElement.appBarHeight.h + 20.h
-                    : 30.h),
-            padding: padding,
-            child: SingleChildScrollView(
-              child: UnfocusArea(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: children,
+      bottomSheet: Container(
+        width: context.screenWidth,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? context.bottomSheetBackground,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(16.r),
+          ),
+        ),
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            Container(
+              margin: EdgeInsets.only(
+                  top: textTitle.isNotNullOrEmpty
+                      ? AppElement.appBarHeight.h + 20.h
+                      : 30.h),
+              padding: padding,
+              child: SingleChildScrollView(
+                child: UnfocusArea(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: children,
+                  ),
                 ),
               ),
             ),
-          ),
-          Container(
-            color: Colors.transparent,
-            child: _buildTitle(context),
-          )
-        ],
+            Container(
+              color: Colors.transparent,
+              child: _buildTitle(context),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -140,14 +161,16 @@ class DynamicBottomSheetCustom extends StatelessWidget {
                     ),
                   ),
                 ),
-                TextButton(
-                  onPressed: onAction,
-                  child: TextCustom(
-                    textAction ?? LocaleKeys.common_save.tr(),
-                    textAlign: TextAlign.center,
-                    style: context.textStyle.bodyM.primary,
-                  ),
-                ),
+                showAction
+                    ? TextButton(
+                        onPressed: onAction,
+                        child: TextCustom(
+                          textAction ?? LocaleKeys.common_save.tr(),
+                          textAlign: TextAlign.center,
+                          style: context.textStyle.bodyM.primary,
+                        ),
+                      )
+                    : SizedBox(width: 50.w),
               ],
             ),
           ],

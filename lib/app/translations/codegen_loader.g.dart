@@ -45,7 +45,11 @@ class CodegenLoader extends AssetLoader{
     "enter_new_password": "Enter the new password",
     "change_password_sub_title": "Please enter your password information below.",
     "change_password_success": "Changed password successfully",
-    "please_re_login": "Please re-login to update the new changes."
+    "please_re_login": "Please re-login to update the new changes.",
+    "enter_new_pass_below": "Enter your new password below.",
+    "we_sent_verfication_code_to_email": "We have just sent you a verification code into your email: {}",
+    "enter_verification_code": "Enter verification code",
+    "enter_email_to_reset_password": "Enter your email address below, we will send you a verification code to reset your password."
   },
   "common": {
     "accept": "Accept",
@@ -232,7 +236,11 @@ static const Map<String,dynamic> vi_VN = {
     "enter_new_password": "Nhập mật khẩu mới",
     "change_password_sub_title": "Hãy nhập thông tin mật khẩu của bạn bên dưới.",
     "change_password_success": "Đổi mật khẩu thành công",
-    "please_re_login": "Hãy đăng nhập lại để cập nhật những thay đổi."
+    "please_re_login": "Hãy đăng nhập lại để cập nhật những thay đổi.",
+    "enter_new_pass_below": "Nhập mật khẩu mới của bạn bên dưới.",
+    "we_sent_verfication_code_to_email": "Chúng tôi vừa gửi bạn một mã xác nhận vào email của bạn: {}",
+    "enter_verification_code": "Nhập mã xác nhận",
+    "enter_email_to_reset_password": "Nhập địa chỉ email của bạn bên dưới, chúng tôi sẽ gửi bạn một mã xác minh để đặt lại mật khẩu."
   },
   "common": {
     "accept": "Đồng ý",

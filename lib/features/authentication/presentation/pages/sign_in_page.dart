@@ -16,6 +16,7 @@ import '../../../../app/widgets/pushable_button.dart';
 import '../../../../app/widgets/text.dart';
 import '../blocs/sign_in/sign_in_bloc.dart';
 import '../widgets/auth_card_container.dart';
+import 'reset_password_bottom_sheet.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -55,6 +56,12 @@ class _SignInPageState extends State<SignInPage>
     if (state is! SignInLoadingState) {
       context.read<SignInBloc>().add(RequestSignInGoogleEvent());
     }
+  }
+
+  _forgotPasswordBottomSheet() {
+    context.showBottomSheet(
+      child: const ResetPasswordBottomSheet(),
+    );
   }
 
   @override
@@ -108,7 +115,7 @@ class _SignInPageState extends State<SignInPage>
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: GestureDetector(
-                                    onTap: () {},
+                                    onTap: _forgotPasswordBottomSheet,
                                     child: TextCustom(
                                       LocaleKeys.auth_forgot_password.tr(),
                                       style: context.textStyle.bodyS.grey,

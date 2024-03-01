@@ -19,6 +19,7 @@ import 'features/authentication/domain/repositories/auth_repository.dart';
 import 'features/authentication/domain/usecases/auth_state_changed.dart';
 import 'features/authentication/domain/usecases/change_password.dart';
 import 'features/authentication/domain/usecases/re_authentication.dart';
+import 'features/authentication/domain/usecases/send_code_to_email.dart';
 import 'features/authentication/domain/usecases/sign_in_with_email_password.dart';
 import 'features/authentication/domain/usecases/sign_in_with_google.dart';
 import 'features/authentication/domain/usecases/sign_out.dart';
@@ -123,6 +124,9 @@ Future<void> setUpServiceLocator() async {
   );
   sl.registerLazySingleton(
     () => ChangePasswordUsecase(sl()),
+  );
+  sl.registerLazySingleton(
+    () => SendCodeToEmailUsecase(sl()),
   );
   // Bloc
   sl.registerFactory(() => AuthBloc(sl(), sl(), sl(), sl()));
