@@ -11,6 +11,7 @@ import '../../../../app/widgets/border_text_field.dart';
 import '../../../../app/widgets/gap.dart';
 import '../../../../app/widgets/loading_indicator.dart';
 import '../../../../app/widgets/pushable_button.dart';
+import '../../../../app/widgets/status_bar.dart';
 import '../../../../app/widgets/text.dart';
 import '../../../../core/extensions/build_context.dart';
 import '../blocs/auth/auth_bloc.dart';
@@ -49,17 +50,19 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         if (state.user != null) {
-          return Scaffold(
-            backgroundColor: context.backgroundColor,
-            appBar: AppBar(
-              leading: _buildBackButton(),
-              backgroundColor: Colors.transparent,
-              surfaceTintColor: Colors.transparent,
-            ),
-            extendBodyBehindAppBar: true,
-            body: _buildBody(
-              state.user?.email ?? '',
-              state.isAuthenticating ?? false,
+          return StatusBar(
+            child: Scaffold(
+              backgroundColor: context.backgroundColor,
+              appBar: AppBar(
+                leading: _buildBackButton(),
+                backgroundColor: Colors.transparent,
+                surfaceTintColor: Colors.transparent,
+              ),
+              extendBodyBehindAppBar: true,
+              body: _buildBody(
+                state.user?.email ?? '',
+                state.isAuthenticating ?? false,
+              ),
             ),
           );
         }

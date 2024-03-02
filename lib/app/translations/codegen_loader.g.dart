@@ -192,7 +192,8 @@ class CodegenLoader extends AssetLoader{
     "time_to_learn_notification": "Hey! It's time to learn something new.",
     "new_word_today": "New word today: {}",
     "remind_at": "Remind at: {}",
-    "notification_set_to": "Notification will show at {} every day."
+    "notification_set_to": "Notification will show at {} every day.",
+    "cancel_all_noti": "Canceled all notifications."
   },
   "favourite": {
     "add_to_favourite": "Added \"{}\" into your favourite list.",
@@ -383,7 +384,8 @@ static const Map<String,dynamic> vi_VN = {
     "time_to_learn_notification": "Này! Đến lúc học gì đó mới rồi.",
     "new_word_today": "Từ mới hôm nay: {}",
     "remind_at": "Nhắc nhở lúc: {}",
-    "notification_set_to": "Thông báo sẽ hiển thị lúc {} mỗi ngày."
+    "notification_set_to": "Thông báo sẽ hiển thị lúc {} mỗi ngày.",
+    "cancel_all_noti": "Huỷ tất cả thông báo."
   },
   "favourite": {
     "add_to_favourite": "Đã thêm \"{}\" vào danh sách yêu thích của bạn.",

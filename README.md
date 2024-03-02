@@ -158,6 +158,25 @@ vocaday_app/
 |-- pubspec.yaml
 ```
 
+## ⛄️ FAQs
+
+1. **Q: How to fix "Gradle sync failed: Could not create task..." error when opening project with Android Studio?**
+
+    **A:** Delete **.gradle** & **.build** folders inside **android** folder, then run those command below in order:
+
+    ``` bash
+    flutter clean
+    flutter pub get
+    ```
+
+    Then open **Android Studio**: android -> Open in Android Studio:
+
+    ``` bash
+    flutter clean
+    flutter pub cache repair
+    ```
+
+    After that, open File -> Invalidate Caches... -> Tick all -> **Invalidate and Restart**.
 
 ## 👀 User Interface
 

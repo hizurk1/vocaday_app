@@ -25,12 +25,10 @@ class ResetPasswordBottomSheet extends StatefulWidget {
 }
 
 class _ResetPasswordBottomSheetState extends State<ResetPasswordBottomSheet> {
-  final _scrollController = ScrollController();
   final _emailController = TextEditingController();
 
   @override
   void dispose() {
-    _scrollController.dispose();
     _emailController.dispose();
     super.dispose();
   }

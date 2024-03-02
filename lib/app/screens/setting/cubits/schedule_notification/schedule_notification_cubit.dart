@@ -21,10 +21,11 @@ class ScheduleNotificationCubit extends Cubit<ScheduleNotificationState> {
           DateTime(now.year, now.month, now.day, time.hour, time.minute);
       // logger.w(scheduleDate);
       try {
+        final word = sl<SharedPrefManager>().getDailyWord?.toLowerCase() ?? '';
         await NotificationService.showScheduleNotification(
           title: LocaleKeys.setting_time_to_learn_notification.tr(),
           body: LocaleKeys.setting_new_word_today.tr(
-            args: [sl<SharedPrefManager>().getDailyWord?.toLowerCase() ?? ''],
+            args: [word.split('+').first],
           ),
           payload: 'payload',
           scheduleDate: scheduleDate,

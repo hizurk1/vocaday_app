@@ -1,23 +1,21 @@
 import 'dart:async';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
-import 'package:timezone/timezone.dart';
 
 import '../../config/app_logger.dart';
+import '../constants/app_const.dart';
+import '../translations/translations.dart';
 import 'navigation.dart';
 
 class NotificationService {
   static final _notificationsPlugin = FlutterLocalNotificationsPlugin();
-  // final StreamController<ReceivedNotification>
-  //     didReceiveLocalNotificationStream =
-  //     StreamController<ReceivedNotification>.broadcast();
+  static const MethodChannel _methodChannel =
+      MethodChannel(AppStringConst.notificationMethodChannel);
 
-  final StreamController<String?> selectNotificationStream =
-      StreamController<String?>.broadcast();
-
-  static Future initialize({bool initSchedule = false}) async {
+  static Future<void> initialize({bool initSchedule = false}) async {
     const androidSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
     const iosSettings = DarwinInitializationSettings(
@@ -30,11 +28,26 @@ class NotificationService {
       iOS: iosSettings,
     );
 
+    await _configureLocalTimeZone();
     await _notificationsPlugin.initialize(
       settings,
       // onDidReceiveBackgroundNotificationResponse: (response) {},
       // onDidReceiveNotificationResponse: (response) {},
     );
+  }
+
+  static Future<void> _configureLocalTimeZone() async {
+    tz.initializeTimeZones();
+    try {
+      final timeZoneName =
+          await _methodChannel.invokeMethod<String>('getLocalTimeZone');
+      if (timeZoneName != null) {
+        tz.setLocalLocation(tz.getLocation(timeZoneName));
+      }
+      logger.i("Local timezone: ${tz.local}");
+    } on PlatformException catch (e) {
+      logger.e(e.message, error: e.details);
+    }
   }
 
   static get _notificationDetails => const NotificationDetails(
@@ -73,30 +86,30 @@ class NotificationService {
     required dynamic payload,
     required DateTime scheduleDate,
   }) async {
-    tz.initializeTimeZones();
-    final location = tz.getLocation('Asia/Ho_Chi_Minh');
-    tz.setLocalLocation(location);
-    final scheduleDaily = _scheduleDaily(scheduleDate, location);
-    logger.w(scheduleDaily);
-
-    await _notificationsPlugin.zonedSchedule(
-      id,
-      title,
-      body,
-      scheduleDaily,
-      _notificationDetails,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      matchDateTimeComponents: DateTimeComponents.time,
-      payload: payload,
-    );
+    try {
+      final scheduleDaily = _scheduleDaily(scheduleDate);
+      await _notificationsPlugin.zonedSchedule(
+        id,
+        title,
+        body,
+        scheduleDaily,
+        _notificationDetails,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        matchDateTimeComponents: DateTimeComponents.time,
+        payload: payload,
+      );
+      logger.d("Schedule: $scheduleDaily");
+    } on UnimplementedError catch (e) {
+      logger.e(e.message, stackTrace: e.stackTrace);
+    }
   }
 
-  static tz.TZDateTime _scheduleDaily(DateTime date, Location location) {
+  static tz.TZDateTime _scheduleDaily(DateTime date) {
     final now = tz.TZDateTime.now(tz.local);
-    final scheduleDate = tz.TZDateTime(tz.local, now.year, now.month, now.day,
-        date.hour, date.minute, date.second);
+    final scheduleDate = tz.TZDateTime(tz.local, date.year, date.month,
+        date.day, date.hour, date.minute, date.second);
 
     return scheduleDate.isBefore(now)
         ? scheduleDate.add(const Duration(days: 1))
@@ -105,7 +118,7 @@ class NotificationService {
 
   static Future<void> cancelNotification({int id = 0}) async {
     Navigators().showMessage(
-      "Canceled all notitifications.",
+      LocaleKeys.setting_cancel_all_noti.tr(),
       type: MessageType.success,
     );
     await _notificationsPlugin.cancel(id);

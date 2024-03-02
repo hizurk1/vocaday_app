@@ -10,6 +10,11 @@ class AppValueConst {
 
 class AppStringConst {
   AppStringConst._();
+  // String
+  static const packageName = "com.vocaday.vocaday_app";
+  static const notificationMethodChannel =
+      "com.vocaday.vocaday_app/notification_service";
+
   // Error message
   static const unexpectedErrorMessage = 'Unexpected Error';
   static const serverFailureMessage = 'Server failure';
