@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../../core/typedef/typedefs.dart';
@@ -62,7 +64,7 @@ class SearchWordsUsecase
           keyword,
           entity.word,
         );
-        if (1 <= step && step <= 3) {
+        if (1 <= step && step <= min(3, keyword.length - 1)) {
           results[entity] = step;
         }
       }
