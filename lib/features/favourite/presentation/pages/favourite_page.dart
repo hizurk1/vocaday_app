@@ -18,9 +18,7 @@ import '../../../../core/extensions/build_context.dart';
 import '../../../../injection_container.dart';
 import '../../../authentication/presentation/blocs/auth/auth_bloc.dart';
 import '../../../word/domain/entities/word_entity.dart';
-import '../../../word/domain/usecases/get_all_words.dart';
 import '../../../word/presentation/pages/word_detail_bottom_sheet.dart';
-import '../../domain/usecases/update_favourite_word_usecase.dart';
 import '../cubit/word_favourite_cubit.dart';
 import '../widgets/search_favourite_word_widget.dart';
 
@@ -78,9 +76,11 @@ class _FavouritePageState extends State<FavouritePage> {
       subtitle: LocaleKeys.favourite_clear_all_favourites.tr(),
       acceptText: LocaleKeys.common_accept.tr(),
       onAccept: () async {
-        sl<SharedPrefManager>().clearAllFavouriteWords();
-        await context.read<WordFavouriteCubit>().getAllFavouriteWords();
-        favourteNotifer.value = [];
+        final uid = context.read<AuthBloc>().state.user?.uid;
+        if (uid != null) {
+          await context.read<WordFavouriteCubit>().removeAllFavourites(uid);
+          favourteNotifer.value = [];
+        }
       },
     );
   }
@@ -88,7 +88,7 @@ class _FavouritePageState extends State<FavouritePage> {
   Future<void> _onSyncData(BuildContext context) async {
     final uid = context.read<AuthBloc>().state.user?.uid;
     if (uid != null) {
-      await context.read<WordFavouriteCubit>().updateFavourites(uid);
+      await context.read<WordFavouriteCubit>().syncFavourites(uid);
     }
   }
 
@@ -108,11 +108,7 @@ class _FavouritePageState extends State<FavouritePage> {
   Widget build(BuildContext context) {
     return StatusBar(
       child: BlocProvider(
-        create: (_) => WordFavouriteCubit(
-          sl<GetAllWordsUsecase>(),
-          sl<UpdateFavouriteWordUsecase>(),
-        )..getAllFavouriteWords(),
-        lazy: false,
+        create: (_) => sl<WordFavouriteCubit>()..getAllFavouriteWords(),
         child: Builder(builder: (context) {
           return Scaffold(
             backgroundColor: context.backgroundColor,

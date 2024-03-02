@@ -7,18 +7,34 @@ import '../../../../app/translations/translations.dart';
 import '../../../../injection_container.dart';
 import '../../../word/domain/entities/word_entity.dart';
 import '../../../word/domain/usecases/get_all_words.dart';
-import '../../domain/usecases/update_favourite_word_usecase.dart';
+import '../../domain/usecases/remove_all_favourite_word_usecase.dart';
+import '../../domain/usecases/sync_favourite_word_usecase.dart';
 
 part 'word_favourite_state.dart';
 
 class WordFavouriteCubit extends Cubit<WordFavouriteState> {
   final GetAllWordsUsecase getAllWordsUsecase;
-  final UpdateFavouriteWordUsecase updateFavouriteWordUsecase;
+  final SyncFavouriteWordUsecase syncFavouriteWordUsecase;
+  final RemoveAllFavouriteWordUsecase removeAllFavouriteWordUsecase;
 
-  WordFavouriteCubit(this.getAllWordsUsecase, this.updateFavouriteWordUsecase)
-      : super(WordFavouriteEmptyState());
+  WordFavouriteCubit(
+    this.getAllWordsUsecase,
+    this.syncFavouriteWordUsecase,
+    this.removeAllFavouriteWordUsecase,
+  ) : super(WordFavouriteEmptyState());
 
-  Future<void> updateFavourites(String uid) async {
+  Future<void> removeAllFavourites(String uid) async {
+    emit(WordFavouriteLoadingState());
+    sl<SharedPrefManager>().clearAllFavouriteWords();
+
+    final result = await removeAllFavouriteWordUsecase(uid);
+    result.fold(
+      (failure) => emit(WordFavouriteErrorState(failure.message)),
+      (_) => emit(const WordFavouriteLoadedState([])),
+    );
+  }
+
+  Future<void> syncFavourites(String uid) async {
     emit(WordFavouriteLoadingState());
 
     final wordEither = await getAllWordsUsecase();
@@ -27,7 +43,7 @@ class WordFavouriteCubit extends Cubit<WordFavouriteState> {
       (failure) => emit(WordFavouriteErrorState(failure.message)),
       (wordList) async {
         final favList = sl<SharedPrefManager>().getFavouriteWords;
-        final result = await updateFavouriteWordUsecase((uid, favList));
+        final result = await syncFavouriteWordUsecase((uid, favList));
 
         result.fold(
           (failure) => emit(WordFavouriteErrorState(failure.message)),

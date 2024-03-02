@@ -109,19 +109,34 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  FutureEither<List<String>> updateFavourites({
+  FutureEither<List<String>> syncFavourites({
     required String uid,
     required List<String> favourites,
   }) async {
     try {
-      final res = await userRemoteDataSource.updateFavourites(
+      final res = await userRemoteDataSource.syncFavourites(
         uid: uid,
         map: {'favourites': favourites},
       );
       return Right(res);
     } on FirebaseException catch (e) {
       return Left(
-        FirebaseFailure(e.message ?? 'FirebaseFailure: updateFavourites'),
+        FirebaseFailure(e.message ?? 'FirebaseFailure: syncFavourites'),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
+
+  @override
+  FutureEither<void> removeAllFavourites({required String uid}) async {
+    try {
+      return Right(
+        await userRemoteDataSource.removeAllFavourites(uid: uid),
+      );
+    } on FirebaseException catch (e) {
+      return Left(
+        FirebaseFailure(e.message ?? 'FirebaseFailure: removeAllFavourites'),
       );
     } catch (e) {
       return Left(DatabaseFailure(e.toString()));

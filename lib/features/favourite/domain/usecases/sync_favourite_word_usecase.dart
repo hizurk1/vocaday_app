@@ -2,15 +2,15 @@ import '../../../../core/typedef/typedefs.dart';
 import '../../../../core/usecases/usecases.dart';
 import '../../../user/domain/repositories/user_repository.dart';
 
-class UpdateFavouriteWordUsecase
+class SyncFavouriteWordUsecase
     extends Usecases<List<String>, (String, List<String>)> {
   final UserRepository repository;
 
-  UpdateFavouriteWordUsecase({required this.repository});
+  SyncFavouriteWordUsecase({required this.repository});
 
   @override
   FutureEither<List<String>> call((String, List<String>) params) async {
-    return await repository.updateFavourites(
+    return await repository.syncFavourites(
       uid: params.$1,
       favourites: params.$2,
     );

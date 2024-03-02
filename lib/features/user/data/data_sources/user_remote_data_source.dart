@@ -26,10 +26,12 @@ abstract interface class UserRemoteDataSource {
     required int limit,
   });
 
-  Future<List<String>> updateFavourites({
+  Future<List<String>> syncFavourites({
     required String uid,
     required Map<String, dynamic> map,
   });
+
+  Future<void> removeAllFavourites({required String uid});
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
@@ -121,7 +123,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<List<String>> updateFavourites({
+  Future<List<String>> syncFavourites({
     required String uid,
     required Map<String, dynamic> map,
   }) async {
@@ -134,6 +136,17 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       Map<String, dynamic> updateMap = {'favourites': merged};
       await firestore.collection(_users).doc(uid).update(updateMap);
       return merged;
+    } on FirebaseException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
+    }
+  }
+
+  @override
+  Future<void> removeAllFavourites({required String uid}) async {
+    try {
+      await firestore.collection(_users).doc(uid).update({'favourites': null});
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {

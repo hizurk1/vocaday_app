@@ -19,8 +19,10 @@ abstract interface class UserRepository {
     required int limit,
   });
 
-  FutureEither<List<String>> updateFavourites({
+  FutureEither<List<String>> syncFavourites({
     required String uid,
     required List<String> favourites,
   });
+
+  FutureEither<void> removeAllFavourites({required String uid});
 }
