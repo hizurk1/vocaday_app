@@ -190,7 +190,7 @@ class CodegenLoader extends AssetLoader{
     "theme_dark": "Dark",
     "noti_permission_not_allow": "Please allow notification permission to use this feature.",
     "time_to_learn_notification": "Hey! It's time to learn something new.",
-    "new_word_today": "New word today: {}",
+    "new_word_today": "New word today: {}.\\nDefinition: {}",
     "remind_at": "Remind at: {}",
     "notification_set_to": "Notification will show at {} every day.",
     "cancel_all_noti": "Canceled all notifications."
@@ -382,7 +382,7 @@ static const Map<String,dynamic> vi_VN = {
     "theme_dark": "Tối",
     "noti_permission_not_allow": "Hãy cho phép quyền gửi thông báo để sử dụng tính năng này.",
     "time_to_learn_notification": "Này! Đến lúc học gì đó mới rồi.",
-    "new_word_today": "Từ mới hôm nay: {}",
+    "new_word_today": "Từ mới hôm nay: {}.\\nĐịnh nghĩa: {}",
     "remind_at": "Nhắc nhở lúc: {}",
     "notification_set_to": "Thông báo sẽ hiển thị lúc {} mỗi ngày.",
     "cancel_all_noti": "Huỷ tất cả thông báo."

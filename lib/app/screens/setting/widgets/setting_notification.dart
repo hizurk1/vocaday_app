@@ -37,6 +37,7 @@ class _SettingNotificationState extends State<_SettingNotification> {
             ),
             type: MessageType.success,
           );
+          await sl<SharedPrefManager>().saveScheduleNotiTime(pickedTime);
         } else {
           timeNoti.value = null;
           showNofi.value = false;

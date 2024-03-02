@@ -63,18 +63,22 @@ class DailyWordCubit extends Cubit<DailyWordState> {
   }
 
   Future<void> _setDailyWordLocal(WordEntity entity) async {
-    final data = "${entity.word}+${DateTime.now().ddMMyyyy}";
-    await sl<SharedPrefManager>().saveDailyWord(data);
+    await sl<SharedPrefManager>().saveDailyWord([
+      entity.word,
+      entity.meanings.first.meaning,
+      DateTime.now().ddMMyyyy,
+    ]);
   }
 
   Future<WordEntity?> _getDailyWordLocal(List<WordEntity> list) async {
     final localData = sl<SharedPrefManager>().getDailyWord;
 
     if (localData.isNotNullOrEmpty) {
-      final [word, date] = localData!.split('+');
+      final String word = localData!.first;
+      final DateTime date = localData.last.toDate;
       //! If current date == saved date. Returns current saved word.
       //! Otherwise, return null a.k.a generate a new random.
-      if (DateTime.now().eqvYearMonthDay(date.toDate)) {
+      if (DateTime.now().eqvYearMonthDay(date)) {
         return list.firstWhere((e) => e.word == word);
       }
     }

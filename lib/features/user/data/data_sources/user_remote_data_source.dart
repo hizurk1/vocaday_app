@@ -128,14 +128,15 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     required Map<String, dynamic> map,
   }) async {
     try {
-      final res = await firestore.collection(_users).doc(uid).get();
-      final dbList = UserModel.fromMap(res.data()!).favourites ?? [];
-      final localList = map['favourites'] as List<String>;
-      final merged = (dbList + localList).toSet().toList();
+      List<String> localList = map['favourites'] as List<String>;
+      if (localList.isEmpty) {
+        final res = await firestore.collection(_users).doc(uid).get();
+        localList = UserModel.fromMap(res.data()!).favourites ?? [];
+      } else {
+        await firestore.collection(_users).doc(uid).update(map);
+      }
 
-      Map<String, dynamic> updateMap = {'favourites': merged};
-      await firestore.collection(_users).doc(uid).update(updateMap);
-      return merged;
+      return localList;
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {

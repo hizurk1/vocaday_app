@@ -174,7 +174,7 @@
     "theme_dark": "Tối",
     "noti_permission_not_allow": "Hãy cho phép quyền gửi thông báo để sử dụng tính năng này.",
     "time_to_learn_notification": "Này! Đến lúc học gì đó mới rồi.",
-    "new_word_today": "Từ mới hôm nay: {}",
+    "new_word_today": "Từ mới hôm nay: {}.\\nĐịnh nghĩa: {}",
     "remind_at": "Nhắc nhở lúc: {}",
     "notification_set_to": "Thông báo sẽ hiển thị lúc {} mỗi ngày.",
     "cancel_all_noti": "Huỷ tất cả thông báo."

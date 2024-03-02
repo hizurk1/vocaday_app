@@ -34,13 +34,14 @@ class SharedPrefManager {
       prefs.getBool(AppPrefsKey.onBoardState) ?? false;
 
   //! Daily word [HomePage]
-  /// 'word+dd/MM/yyyy'
-  Future<void> saveDailyWord(String wordData) async {
-    await prefs.setString(AppPrefsKey.dailyWordString, wordData);
+  /// '[word, definition, dd/MM/yyyy]'
+  Future<void> saveDailyWord(List<String> wordData) async {
+    await prefs.setStringList(AppPrefsKey.dailyWordString, wordData);
   }
 
-  /// 'word+dd/MM/yyyy'
-  String? get getDailyWord => prefs.getString(AppPrefsKey.dailyWordString);
+  /// '[word, definition, dd/MM/yyyy]'
+  List<String>? get getDailyWord =>
+      prefs.getStringList(AppPrefsKey.dailyWordString);
 
   //! Notification [SettingPage]
   Future<void> saveScheduleNotiTime(TimeOfDay time) async {

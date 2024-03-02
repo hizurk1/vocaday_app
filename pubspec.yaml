@@ -45,7 +45,6 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   table_calendar: ^3.0.9
   timezone: ^0.9.2
-  url_launcher: ^6.2.1
 
 dev_dependencies:
   bloc_test: ^9.1.5
