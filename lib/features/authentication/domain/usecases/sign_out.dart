@@ -1,17 +1,17 @@
 import '../../../../../core/typedef/typedefs.dart';
 import '../../../../../core/usecases/usecases.dart';
 import '../../../../app/managers/shared_preferences.dart';
-import '../../../../injection_container.dart';
 import '../repositories/auth_repository.dart';
 
 class SignOutUsecase extends UsecasesNoParam<void> {
   final AuthRepository repository;
+  final SharedPrefManager sharedPrefManager;
 
-  SignOutUsecase({required this.repository});
+  SignOutUsecase(this.repository, this.sharedPrefManager);
 
   @override
   FutureEither<void> call() async {
-    sl<SharedPrefManager>().clearAllFavouriteWords();
+    sharedPrefManager.clearAllFavouriteWords();
     return await repository.signOut();
   }
 }

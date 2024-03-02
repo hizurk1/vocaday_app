@@ -1,20 +1,23 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:vocaday_app/app/managers/shared_preferences.dart';
 import 'package:vocaday_app/core/errors/failure.dart';
 import 'package:vocaday_app/features/authentication/domain/repositories/auth_repository.dart';
 import 'package:vocaday_app/features/authentication/domain/usecases/sign_out.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 
+class MockSharePrefManager extends Mock implements SharedPrefManager {}
+
 void main() {
   late SignOutUsecase signOutUsecase;
   late MockAuthRepository mockAuthRepository;
+  late MockSharePrefManager mockSharePrefManager;
   setUp(() {
     mockAuthRepository = MockAuthRepository();
-    signOutUsecase = SignOutUsecase(
-      repository: mockAuthRepository,
-    );
+    mockSharePrefManager = MockSharePrefManager();
+    signOutUsecase = SignOutUsecase(mockAuthRepository, mockSharePrefManager);
   });
 
   final voidVal = Future<void>.value();

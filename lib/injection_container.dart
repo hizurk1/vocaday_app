@@ -107,7 +107,7 @@ Future<void> setUpServiceLocator() async {
     () => AuthStateChangedUsecase(repository: sl()),
   );
   sl.registerLazySingleton(
-    () => SignOutUsecase(repository: sl()),
+    () => SignOutUsecase(sl(), sl()),
   );
   sl.registerLazySingleton(
     () => SignUpWithEmailPasswordUsecase(
