@@ -19,8 +19,7 @@ class PushableButton extends StatefulWidget {
     this.height = 52,
     this.width,
     this.elevation = 5.0,
-    this.border = 10,
-    this.borderColor,
+    this.borderRadius = 10,
     this.duration = 350,
     this.textColor,
     this.textStyle,
@@ -32,8 +31,7 @@ class PushableButton extends StatefulWidget {
   final double? width;
   final double elevation;
   final Color? textColor;
-  final double border;
-  final Color? borderColor;
+  final double borderRadius;
   final int duration;
   final TextStyle? textStyle;
   final PushableButtonType type;
@@ -50,7 +48,8 @@ class _PushableButtonState extends State<PushableButton> {
   void initState() {
     super.initState();
     _elevation = widget.elevation.h;
-    _borderRadiusFixed = widget.border.r + (widget.border.r / 2 - 1.r);
+    _borderRadiusFixed =
+        widget.borderRadius.r + (widget.borderRadius.r / 2 - 1.r);
   }
 
   Decoration? get _boxDecoration {
@@ -86,8 +85,8 @@ class _PushableButtonState extends State<PushableButton> {
       onTapUp: (_) => setState(() => _elevation = widget.elevation.h),
       child: ClipRRect(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(widget.border.r),
-          topRight: Radius.circular(widget.border.r),
+          topLeft: Radius.circular(widget.borderRadius.r),
+          topRight: Radius.circular(widget.borderRadius.r),
           bottomLeft: Radius.circular(_borderRadiusFixed),
           bottomRight: Radius.circular(_borderRadiusFixed),
         ),

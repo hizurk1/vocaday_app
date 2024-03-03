@@ -188,5 +188,18 @@
     "clear_all": "Clear all favourites",
     "sync_data": "Sync data",
     "sync_data_success": "Data sync successfully"
+  },
+  "activity": {
+    "you_got_points": "You got",
+    "word": {
+      "zero": "No words",
+      "one": "1 word",
+      "many": "{} words",
+      "other": "{} words"
+    },
+    "learn_new_word": "Learn new word",
+    "learn_new_word_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
+    "activity": "Activities",
+    "play": "Play"
   }
 }

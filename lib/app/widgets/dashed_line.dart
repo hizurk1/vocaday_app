@@ -22,6 +22,7 @@ class DashedLineCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: context.screenWidth,
       padding: padding,
       margin: margin,
       child: CustomPaint(

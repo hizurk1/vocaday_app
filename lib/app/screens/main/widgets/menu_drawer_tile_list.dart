@@ -30,18 +30,7 @@ class MenuDrawerTileList extends StatefulWidget {
 
 class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
   int selectedIndex = 0;
-  final List<MenuTile?> menuList = [
-    MenuTile(
-        Assets.icons.homeOutline, LocaleKeys.page_home.tr(), AppRoutes.home),
-    MenuTile(Assets.icons.favorites, LocaleKeys.page_favourite.tr(),
-        AppRoutes.favourite),
-    null,
-    MenuTile(Assets.icons.changePassword, LocaleKeys.auth_change_password.tr(),
-        AppRoutes.changePassword),
-    MenuTile(
-        Assets.icons.settings, LocaleKeys.page_setting.tr(), AppRoutes.setting),
-    MenuTile(Assets.icons.logout, LocaleKeys.auth_sign_out.tr(), ''),
-  ];
+  late List<MenuTile?> menuList;
 
   _resetIndex() {
     Future.delayed(Durations.medium2, () {
@@ -81,6 +70,19 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
 
   @override
   Widget build(BuildContext context) {
+    menuList = [
+      MenuTile(
+          Assets.icons.homeOutline, LocaleKeys.page_home.tr(), AppRoutes.home),
+      MenuTile(Assets.icons.favorites, LocaleKeys.page_favourite.tr(),
+          AppRoutes.favourite),
+      null,
+      MenuTile(Assets.icons.changePassword,
+          LocaleKeys.auth_change_password.tr(), AppRoutes.changePassword),
+      MenuTile(Assets.icons.settings, LocaleKeys.page_setting.tr(),
+          AppRoutes.setting),
+      MenuTile(Assets.icons.logout, LocaleKeys.auth_sign_out.tr(), ''),
+    ];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

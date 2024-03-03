@@ -204,6 +204,19 @@ class CodegenLoader extends AssetLoader{
     "clear_all": "Clear all favourites",
     "sync_data": "Sync data",
     "sync_data_success": "Data sync successfully"
+  },
+  "activity": {
+    "you_got_points": "You got",
+    "word": {
+      "zero": "No words",
+      "one": "1 word",
+      "many": "{} words",
+      "other": "{} words"
+    },
+    "learn_new_word": "Learn new word",
+    "learn_new_word_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
+    "activity": "Activities",
+    "play": "Play"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -396,6 +409,19 @@ static const Map<String,dynamic> vi_VN = {
     "clear_all": "Xoá tất cả yêu thích",
     "sync_data": "Đồng bộ dữ liệu",
     "sync_data_success": "Dữ liệu đồng bộ thành công"
+  },
+  "activity": {
+    "you_got_points": "Bạn được",
+    "word": {
+      "zero": "Không có từ",
+      "one": "1 từ",
+      "many": "{} từ",
+      "other": "{} từ"
+    },
+    "learn_new_word": "Học từ vựng mới",
+    "learn_new_word_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
+    "activity": "Các hoạt động",
+    "play": "Chơi"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

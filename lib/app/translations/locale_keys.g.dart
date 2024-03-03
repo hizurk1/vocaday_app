@@ -128,5 +128,11 @@ abstract class  LocaleKeys {
   static const favourite_clear_all = 'favourite.clear_all';
   static const favourite_sync_data = 'favourite.sync_data';
   static const favourite_sync_data_success = 'favourite.sync_data_success';
+  static const activity_you_got_points = 'activity.you_got_points';
+  static const activity_word = 'activity.word';
+  static const activity_learn_new_word = 'activity.learn_new_word';
+  static const activity_learn_new_word_content = 'activity.learn_new_word_content';
+  static const activity_activity = 'activity.activity';
+  static const activity_play = 'activity.play';
 
 }
