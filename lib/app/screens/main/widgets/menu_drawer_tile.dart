@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/extensions/build_context.dart';
 import '../../../themes/app_color.dart';
 import '../../../themes/app_text_theme.dart';
 import '../../../widgets/text.dart';
@@ -36,7 +37,7 @@ class MenuDrawerTile extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.r),
                 color: selectedIndex == index
-                    ? context.colors.blue
+                    ? context.theme.primaryColor
                     : Colors.transparent,
               ),
             ),

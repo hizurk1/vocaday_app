@@ -23,7 +23,7 @@ class _ActivityTileCardWidget extends StatelessWidget {
       margin: EdgeInsets.only(top: 10.h),
       decoration: BoxDecoration(
         color: context.isDarkTheme
-            ? context.colors.grey800
+            ? context.colors.grey900
             : context.colors.grey100,
         borderRadius: BorderRadius.circular(8.r),
         boxShadow: [

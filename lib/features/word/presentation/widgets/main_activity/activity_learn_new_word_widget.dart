@@ -22,7 +22,7 @@ class ActivityLearnNewWordWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Material(
         borderRadius: BorderRadius.circular(16.r),
-        color: context.theme.cardColor,
+        color: context.bottomSheetBackground,
         child: InkWell(
           onTap: () {},
           borderRadius: BorderRadius.circular(16.r),

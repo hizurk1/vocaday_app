@@ -59,7 +59,7 @@ class _ActivityPageState extends State<ActivityPage> {
       padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 20.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
-        color: context.theme.cardColor,
+        color: context.bottomSheetBackground,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

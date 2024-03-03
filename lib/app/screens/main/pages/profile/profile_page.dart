@@ -60,7 +60,7 @@ class ProfilePage extends StatelessWidget {
             child: SvgPicture.asset(
               Assets.icons.pencil,
               colorFilter: ColorFilter.mode(
-                context.theme.primaryColor,
+                context.theme.primaryColorDark,
                 BlendMode.srcIn,
               ),
             ),

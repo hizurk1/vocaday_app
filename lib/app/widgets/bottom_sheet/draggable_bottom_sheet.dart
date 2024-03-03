@@ -214,7 +214,7 @@ class _DraggableBottomSheetCustomState
                   child: TextCustom(
                     widget.textAction ?? LocaleKeys.common_save.tr(),
                     textAlign: TextAlign.center,
-                    style: context.textStyle.bodyM.primary,
+                    style: context.textStyle.bodyM.primaryDark,
                   ),
                 ),
               ],

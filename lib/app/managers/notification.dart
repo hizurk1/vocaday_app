@@ -100,7 +100,7 @@ class NotificationService {
         matchDateTimeComponents: DateTimeComponents.time,
         payload: payload,
       );
-      logger.d("Schedule: $scheduleDaily");
+      logger.d("Schedule notification: $scheduleDaily");
     } on UnimplementedError catch (e) {
       logger.e(e.message, stackTrace: e.stackTrace);
     }

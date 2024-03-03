@@ -20,7 +20,6 @@ class ScheduleNotificationCubit extends Cubit<ScheduleNotificationState> {
       final now = DateTime.now();
       final scheduleDate =
           DateTime(now.year, now.month, now.day, time.hour, time.minute);
-      // logger.w(scheduleDate);
       try {
         final localWord = sl<SharedPrefManager>().getDailyWord;
         if (localWord.isNullOrEmpty) return false;

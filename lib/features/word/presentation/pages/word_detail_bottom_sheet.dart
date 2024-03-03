@@ -125,13 +125,19 @@ class WordDetailBottomSheet extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
                 border: Border.all(
-                  color: context.theme.primaryColor,
+                  color: context.isDarkTheme
+                      ? context.colors.blue400
+                      : context.colors.blue,
                   width: 1.5,
                 ),
               ),
               child: TextCustom(
                 text.toLowerCase(),
-                style: context.textStyle.bodyS.bold.primary,
+                style: context.textStyle.bodyS.bold.copyWith(
+                  color: context.isDarkTheme
+                      ? context.colors.blue400
+                      : context.colors.blue,
+                ),
               ),
             ),
           )

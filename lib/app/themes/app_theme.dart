@@ -35,7 +35,7 @@ class AppTheme {
     fontFamily: 'Roboto',
     scaffoldBackgroundColor: AppColor().black,
     cardColor: AppColor().grey900,
-    primaryColor: AppColor().blue300,
+    primaryColor: AppColor().blue600,
     primaryColorDark: AppColor().blue400,
     dialogBackgroundColor: AppColor().black,
     tabBarTheme: TabBarTheme(

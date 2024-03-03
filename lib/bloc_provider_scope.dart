@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'app/managers/connection.dart';
 import 'app/managers/language.dart';
 import 'app/managers/theme.dart';
+import 'app/screens/setting/cubits/schedule_notification/schedule_notification_cubit.dart';
 import 'features/authentication/presentation/blocs/auth/auth_bloc.dart';
 import 'features/user/presentation/cubits/user_data/user_data_cubit.dart';
 import 'features/word/presentation/blocs/word_list/word_list_cubit.dart';
@@ -31,9 +32,14 @@ class BlocProviderScope extends StatelessWidget {
           create: (_) => sl<AuthBloc>()..initAuthStream(),
         ),
         //* Word List Bloc
-        BlocProvider(create: (_) => sl<WordListCubit>()),
+        BlocProvider(
+          create: (_) => sl<WordListCubit>()..getAllWords(),
+          lazy: false,
+        ),
         //* User Cubit
         BlocProvider(create: (_) => sl<UserDataCubit>()),
+        //* Schedule notification Cubit
+        BlocProvider(create: (_) => ScheduleNotificationCubit()),
       ],
       child: child,
     );

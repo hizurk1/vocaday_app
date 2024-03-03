@@ -27,7 +27,7 @@ class CheckInPanel extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
-        color: context.colors.blue,
+        color: context.theme.primaryColor,
         boxShadow: [
           BoxShadow(
             color: context.shadowColor,
@@ -86,7 +86,8 @@ class CheckInPanel extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        color: context.colors.blue.lighten(.05),
+        color: context.theme.primaryColor
+            .lighten(context.isDarkTheme ? 0.08 : 0.05),
         boxShadow: [
           BoxShadow(
             color: context.colors.blue600.withOpacity(.5),
@@ -187,7 +188,8 @@ class CheckInPanel extends StatelessWidget {
               padding: EdgeInsets.all(9.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(45.r / 2),
-                color: context.colors.blue.lighten(.05),
+                color: context.theme.primaryColor
+                    .lighten(context.isDarkTheme ? 0.08 : 0.05),
                 boxShadow: [
                   BoxShadow(
                     color: context.colors.blue600.withOpacity(.5),

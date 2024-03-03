@@ -54,8 +54,9 @@ class _PushableButtonState extends State<PushableButton> {
 
   Decoration? get _boxDecoration {
     final backgroundColor = switch (widget.type) {
-      PushableButtonType.primary => context.colors.blue,
-      PushableButtonType.accent => context.colors.red400,
+      PushableButtonType.primary => context.theme.primaryColor,
+      PushableButtonType.accent =>
+        context.isDarkTheme ? context.colors.red600 : context.colors.red,
       PushableButtonType.grey =>
         context.isDarkTheme ? context.colors.grey300 : context.colors.grey200,
       PushableButtonType.white =>
