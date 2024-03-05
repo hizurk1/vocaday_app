@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/extensions/build_context.dart';
-import '../../../../../features/user/data/models/user_model.dart';
-import '../../../../../features/user/presentation/cubits/leader_board/leader_board_cubit.dart';
-import '../../../../../features/user/presentation/pages/main_home/home_check_in_bottom_sheet.dart';
-import '../../../../../features/user/presentation/pages/main_home/home_leaderboard_page.dart';
-import '../../../../../features/user/presentation/widgets/main_home/home_check_in_panel.dart';
-import '../../../../../features/user/presentation/widgets/main_home/home_top_app_bar.dart';
+import '../../../../../features/user/user_profile/data/models/user_model.dart';
+import '../../../../../features/user/user_profile/presentation/cubits/leader_board/leader_board_cubit.dart';
+import '../../../../../features/user/user_profile/presentation/pages/main_home/home_check_in_bottom_sheet.dart';
+import '../../../../../features/user/user_profile/presentation/pages/main_home/home_leaderboard_page.dart';
+import '../../../../../features/user/user_profile/presentation/widgets/main_home/home_check_in_panel.dart';
+import '../../../../../features/user/user_profile/presentation/widgets/main_home/home_top_app_bar.dart';
 import '../../../../../features/word/presentation/widgets/main_home/main_new_word_panel.dart';
 import '../../../../../injection_container.dart';
 import '../../../../managers/navigation.dart';
 import '../../../../themes/app_text_theme.dart';
 import '../../../../translations/translations.dart';
-import '../../../../widgets/app_bar.dart';
-import '../../../../widgets/sliver_tab_view.dart';
-import '../../../../widgets/text.dart';
+import '../../../../widgets/widgets.dart';
 
 part 'widgets/home_text_title.dart';
 

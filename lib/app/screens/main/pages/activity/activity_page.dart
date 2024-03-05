@@ -4,16 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/extensions/build_context.dart';
-import '../../../../../features/user/presentation/widgets/main_activity/activity_point_gold_widget.dart';
+import '../../../../../features/user/user_profile/presentation/widgets/main_activity/activity_point_gold_widget.dart';
 import '../../../../../features/word/presentation/widgets/main_activity/activity_learn_new_word_widget.dart';
 import '../../../../constants/gen/assets.gen.dart';
 import '../../../../themes/app_color.dart';
 import '../../../../themes/app_text_theme.dart';
 import '../../../../translations/translations.dart';
-import '../../../../widgets/gap.dart';
-import '../../../../widgets/list_tile_custom.dart';
-import '../../../../widgets/pushable_button.dart';
-import '../../../../widgets/text.dart';
+import '../../../../widgets/widgets.dart';
 
 part "widgets/activity_tile_card_widget.dart";
 

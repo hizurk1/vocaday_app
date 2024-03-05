@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/extensions/build_context.dart';
-import '../../../../../features/user/presentation/cubits/user_data/user_data_cubit.dart';
-import '../../../../../features/user/presentation/pages/main_profile/profile_edit_user_info_bottom_sheet.dart';
-import '../../../../../features/user/presentation/pages/main_profile/profile_personal_info_page_view.dart';
-import '../../../../../features/user/presentation/widgets/main_profile/profile_personal_info.dart';
+import '../../../../../features/user/user_profile/presentation/cubits/user_data/user_data_cubit.dart';
+import '../../../../../features/user/user_profile/presentation/pages/main_profile/profile_edit_user_info_bottom_sheet.dart';
+import '../../../../../features/user/user_profile/presentation/pages/main_profile/profile_personal_info_page_view.dart';
+import '../../../../../features/user/user_profile/presentation/widgets/main_profile/profile_personal_info.dart';
 import '../../../../constants/gen/assets.gen.dart';
 import '../../../../managers/navigation.dart';
 import '../../../../translations/translations.dart';

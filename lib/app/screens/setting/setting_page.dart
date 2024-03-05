@@ -14,10 +14,7 @@ import '../../managers/shared_preferences.dart';
 import '../../managers/theme.dart';
 import '../../themes/app_text_theme.dart';
 import '../../translations/translations.dart';
-import '../../widgets/app_bar.dart';
-import '../../widgets/list_tile_custom.dart';
-import '../../widgets/status_bar.dart';
-import '../../widgets/text.dart';
+import '../../widgets/widgets.dart';
 import 'cubits/schedule_notification/schedule_notification_cubit.dart';
 
 part 'widgets/setting_about_us.dart';

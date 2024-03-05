@@ -5,18 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/app_logger.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../../core/extensions/color.dart';
-import '../../../../../features/cart/presentation/widgets/cart_icon_widget.dart';
+import '../../../../../features/user/user_cart/presentation/widgets/cart_icon_widget.dart';
 import '../../../../../features/word/domain/entities/word_entity.dart';
 import '../../../../../features/word/presentation/pages/word_detail_bottom_sheet.dart';
 import '../../../../constants/gen/assets.gen.dart';
 import '../../../../themes/app_text_theme.dart';
 import '../../../../translations/translations.dart';
-import '../../../../widgets/app_bar.dart';
-import '../../../../widgets/error_page.dart';
-import '../../../../widgets/gap.dart';
-import '../../../../widgets/pushable_button.dart';
-import '../../../../widgets/status_bar.dart';
-import '../../../../widgets/text.dart';
+import '../../../../widgets/widgets.dart';
 import 'widgets/activity_word_card_widget.dart';
 
 class FlashCardPage extends StatefulWidget {

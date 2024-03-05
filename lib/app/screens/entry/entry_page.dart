@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../features/authentication/presentation/blocs/auth/auth_bloc.dart';
 import '../../../../features/authentication/presentation/pages/authentication_page.dart';
-import '../../../features/user/presentation/cubits/user_data/user_data_cubit.dart';
+import '../../../features/user/user_profile/presentation/cubits/user_data/user_data_cubit.dart';
 import '../../../injection_container.dart';
 import '../../managers/shared_preferences.dart';
 import '../../widgets/status_bar.dart';

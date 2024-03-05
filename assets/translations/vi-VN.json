@@ -206,6 +206,7 @@
     "i_knew": "Tôi đã biết",
     "no_more_words_left": "Không còn từ nào cả",
     "hold_for_detail": "Giữ để xem chi tiết",
-    "category": "Danh mục: {}"
+    "category": "Danh mục: {}",
+    "vocab_store": "Cửa hàng từ vựng"
   }
 }

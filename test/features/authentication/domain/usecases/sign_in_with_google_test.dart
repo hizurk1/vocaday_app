@@ -7,7 +7,7 @@ import 'package:vocaday_app/features/authentication/data/models/auth_model.dart'
 import 'package:vocaday_app/features/authentication/domain/entities/auth_entity.dart';
 import 'package:vocaday_app/features/authentication/domain/repositories/auth_repository.dart';
 import 'package:vocaday_app/features/authentication/domain/usecases/sign_in_with_google.dart';
-import 'package:vocaday_app/features/user/domain/repositories/user_repository.dart';
+import 'package:vocaday_app/features/user/user_profile/domain/repositories/user_repository.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 

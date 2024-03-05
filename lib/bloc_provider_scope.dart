@@ -6,7 +6,7 @@ import 'app/managers/language.dart';
 import 'app/managers/theme.dart';
 import 'app/screens/setting/cubits/schedule_notification/schedule_notification_cubit.dart';
 import 'features/authentication/presentation/blocs/auth/auth_bloc.dart';
-import 'features/user/presentation/cubits/user_data/user_data_cubit.dart';
+import 'features/user/user_profile/presentation/cubits/user_data/user_data_cubit.dart';
 import 'features/word/presentation/blocs/word_list/word_list_cubit.dart';
 import 'injection_container.dart';
 

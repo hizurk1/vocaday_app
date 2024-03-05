@@ -5,8 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../themes/app_color.dart';
 import '../../../../../themes/app_text_theme.dart';
 import '../../../../../translations/translations.dart';
-import '../../../../../widgets/gap.dart';
-import '../../../../../widgets/text.dart';
+import '../../../../../widgets/widgets.dart';
 
 class ProfileInfoItemWidget extends StatelessWidget {
   const ProfileInfoItemWidget({

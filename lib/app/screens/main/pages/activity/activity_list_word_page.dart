@@ -6,20 +6,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/build_context.dart';
-import '../../../../../features/cart/presentation/widgets/cart_icon_widget.dart';
-import '../../../../../features/user/domain/entities/user_entity.dart';
-import '../../../../../features/user/presentation/cubits/user_data/user_data_cubit.dart';
+import '../../../../../features/user/user_cart/presentation/widgets/cart_icon_widget.dart';
+import '../../../../../features/user/user_profile/domain/entities/user_entity.dart';
+import '../../../../../features/user/user_profile/presentation/cubits/user_data/user_data_cubit.dart';
 import '../../../../../features/word/domain/entities/word_entity.dart';
 import '../../../../../features/word/presentation/blocs/word_list/word_list_cubit.dart';
 import '../../../../constants/app_const.dart';
 import '../../../../routes/route_manager.dart';
 import '../../../../themes/app_color.dart';
 import '../../../../themes/app_text_theme.dart';
-import '../../../../widgets/app_bar.dart';
-import '../../../../widgets/gap.dart';
-import '../../../../widgets/loading_indicator.dart';
-import '../../../../widgets/status_bar.dart';
-import '../../../../widgets/text.dart';
+import '../../../../translations/translations.dart';
+import '../../../../widgets/widgets.dart';
 
 class ActivityListWordPage extends StatelessWidget {
   const ActivityListWordPage({super.key});
@@ -29,10 +26,10 @@ class ActivityListWordPage extends StatelessWidget {
     return StatusBar(
       child: Scaffold(
         backgroundColor: context.backgroundColor,
-        appBar: const AppBarCustom(
-          leading: BackButton(),
-          textTitle: "Word store",
-          action: CartIconWidget(marginRight: 15),
+        appBar: AppBarCustom(
+          leading: const BackButton(),
+          textTitle: LocaleKeys.activity_vocab_store.tr(),
+          action: const CartIconWidget(marginRight: 15),
         ),
         body: BlocSelector<UserDataCubit, UserDataState, UserEntity?>(
           selector: (state) {

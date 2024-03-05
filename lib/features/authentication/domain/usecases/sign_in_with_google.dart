@@ -2,8 +2,8 @@ import 'package:fpdart/fpdart.dart';
 
 import '../../../../../core/typedef/typedefs.dart';
 import '../../../../../core/usecases/usecases.dart';
-import '../../../user/domain/entities/user_entity.dart';
-import '../../../user/domain/repositories/user_repository.dart';
+import '../../../user/user_profile/domain/entities/user_entity.dart';
+import '../../../user/user_profile/domain/repositories/user_repository.dart';
 import '../entities/auth_entity.dart';
 import '../repositories/auth_repository.dart';
 

@@ -140,5 +140,6 @@ abstract class  LocaleKeys {
   static const activity_no_more_words_left = 'activity.no_more_words_left';
   static const activity_hold_for_detail = 'activity.hold_for_detail';
   static const activity_category = 'activity.category';
+  static const activity_vocab_store = 'activity.vocab_store';
 
 }

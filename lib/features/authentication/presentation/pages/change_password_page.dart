@@ -7,12 +7,7 @@ import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/utils/util_functions.dart';
-import '../../../../app/widgets/border_text_field.dart';
-import '../../../../app/widgets/gap.dart';
-import '../../../../app/widgets/loading_indicator.dart';
-import '../../../../app/widgets/pushable_button.dart';
-import '../../../../app/widgets/status_bar.dart';
-import '../../../../app/widgets/text.dart';
+import '../../../../app/widgets/widgets.dart';
 import '../../../../core/extensions/build_context.dart';
 import '../blocs/auth/auth_bloc.dart';
 

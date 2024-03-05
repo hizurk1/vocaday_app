@@ -6,11 +6,7 @@ import '../../../../app/managers/navigation.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/utils/util_functions.dart';
-import '../../../../app/widgets/border_text_field.dart';
-import '../../../../app/widgets/gap.dart';
-import '../../../../app/widgets/loading_indicator.dart';
-import '../../../../app/widgets/pushable_button.dart';
-import '../../../../app/widgets/text.dart';
+import '../../../../app/widgets/widgets.dart';
 import '../blocs/sign_up/sign_up_bloc.dart';
 import '../widgets/auth_card_container.dart';
 

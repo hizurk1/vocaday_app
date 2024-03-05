@@ -9,9 +9,7 @@ import '../../core/extensions/string.dart';
 import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 import '../translations/translations.dart';
-import '../widgets/gap.dart';
-import '../widgets/pushable_button.dart';
-import '../widgets/text.dart';
+import '../widgets/widgets.dart';
 
 enum MessageType { byDefault, info, success, error }
 

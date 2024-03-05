@@ -206,6 +206,7 @@
     "i_knew": "I knew",
     "no_more_words_left": "No more words left",
     "hold_for_detail": "Hold to see details",
-    "category": "Category: {}"
+    "category": "Category: {}",
+    "vocab_store": "Vocabulary Store"
   }
 }

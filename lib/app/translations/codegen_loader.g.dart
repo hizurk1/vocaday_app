@@ -222,7 +222,8 @@ class CodegenLoader extends AssetLoader{
     "i_knew": "I knew",
     "no_more_words_left": "No more words left",
     "hold_for_detail": "Hold to see details",
-    "category": "Category: {}"
+    "category": "Category: {}",
+    "vocab_store": "Vocabulary Store"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -433,7 +434,8 @@ static const Map<String,dynamic> vi_VN = {
     "i_knew": "Tôi đã biết",
     "no_more_words_left": "Không còn từ nào cả",
     "hold_for_detail": "Giữ để xem chi tiết",
-    "category": "Danh mục: {}"
+    "category": "Danh mục: {}",
+    "vocab_store": "Cửa hàng từ vựng"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

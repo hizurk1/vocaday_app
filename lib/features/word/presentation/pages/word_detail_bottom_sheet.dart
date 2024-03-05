@@ -10,15 +10,9 @@ import '../../../../app/themes/app_color.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/utils/util_functions.dart';
-import '../../../../app/widgets/bottom_sheet/draggable_bottom_sheet.dart';
-import '../../../../app/widgets/dashed_line.dart';
-import '../../../../app/widgets/divider.dart';
-import '../../../../app/widgets/expansion_tile_custom.dart';
-import '../../../../app/widgets/gap.dart';
-import '../../../../app/widgets/highlight_text.dart';
-import '../../../../app/widgets/text.dart';
+import '../../../../app/widgets/widgets.dart';
 import '../../../../core/extensions/build_context.dart';
-import '../../../favourite/presentation/widgets/favourite_button_widget.dart';
+import '../../../user/user_favourite/presentation/widgets/favourite_button_widget.dart';
 import '../../domain/entities/word_entity.dart';
 
 class WordDetailBottomSheet extends StatelessWidget {

@@ -6,14 +6,13 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../core/extensions/build_context.dart';
 import '../../../../../../core/extensions/string.dart';
-import '../../../../../../features/favourite/presentation/widgets/favourite_button_widget.dart';
+import '../../../../../../features/user/user_favourite/presentation/widgets/favourite_button_widget.dart';
 import '../../../../../../features/word/domain/entities/word_entity.dart';
 import '../../../../../constants/gen/assets.gen.dart';
 import '../../../../../themes/app_color.dart';
 import '../../../../../themes/app_text_theme.dart';
 import '../../../../../translations/translations.dart';
-import '../../../../../widgets/gap.dart';
-import '../../../../../widgets/text.dart';
+import '../../../../../widgets/widgets.dart';
 
 class FlipCardController {
   _WordCardWidgetState? _state;
@@ -226,10 +225,11 @@ class _CardContent extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              Opacity(
-                opacity: 0.5,
-                child: FavouriteButtonWidget(word: entity.word),
-              ),
+              if (!isFront)
+                Opacity(
+                  opacity: 0.8,
+                  child: FavouriteButtonWidget(word: entity.word),
+                ),
             ],
           ),
         ],

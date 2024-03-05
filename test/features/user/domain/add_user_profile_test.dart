@@ -2,9 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:vocaday_app/core/errors/failure.dart';
-import 'package:vocaday_app/features/user/domain/entities/user_entity.dart';
-import 'package:vocaday_app/features/user/domain/repositories/user_repository.dart';
-import 'package:vocaday_app/features/user/domain/usecases/add_user_profile.dart';
+import 'package:vocaday_app/features/user/user_profile/domain/entities/user_entity.dart';
+import 'package:vocaday_app/features/user/user_profile/domain/repositories/user_repository.dart';
+import 'package:vocaday_app/features/user/user_profile/domain/usecases/add_user_profile.dart';
 
 class MockUserRepository extends Mock implements UserRepository {}
 
