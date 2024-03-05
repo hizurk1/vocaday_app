@@ -208,5 +208,8 @@
     "hold_for_detail": "Hold to see details",
     "category": "Category: {}",
     "vocab_store": "Vocabulary Store"
+  },
+  "cart": {
+    "user_cart": "{}'s cart"
   }
 }

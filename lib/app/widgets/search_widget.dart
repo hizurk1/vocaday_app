@@ -2,22 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../app/constants/gen/assets.gen.dart';
-import '../../../../../app/themes/app_color.dart';
-import '../../../../../app/translations/translations.dart';
-import '../../../../../core/extensions/build_context.dart';
+import '../../core/extensions/build_context.dart';
+import '../constants/gen/assets.gen.dart';
+import '../themes/app_color.dart';
 
-class SearchFavouriteWordWidget extends StatefulWidget {
-  const SearchFavouriteWordWidget({super.key, required this.onSearch});
+class SearchWidget extends StatefulWidget {
+  const SearchWidget({
+    super.key,
+    required this.hintText,
+    required this.onSearch,
+  });
 
+  final String hintText;
   final Function(String input) onSearch;
 
   @override
-  State<SearchFavouriteWordWidget> createState() =>
-      _SearchFavouriteWordWidgetState();
+  State<SearchWidget> createState() => _SearchWidgetState();
 }
 
-class _SearchFavouriteWordWidgetState extends State<SearchFavouriteWordWidget> {
+class _SearchWidgetState extends State<SearchWidget> {
   late TextEditingController _textController;
   ValueNotifier<bool> showClearIcon = ValueNotifier(false);
 
@@ -53,9 +56,9 @@ class _SearchFavouriteWordWidgetState extends State<SearchFavouriteWordWidget> {
         boxShadow: [
           BoxShadow(
             color: context.shadowColor.withOpacity(.5),
-            offset: const Offset(0, 1),
+            offset: const Offset(0, .5),
             blurRadius: 0,
-            spreadRadius: 1,
+            spreadRadius: 1.2,
           ),
         ],
         color:
@@ -84,7 +87,7 @@ class _SearchFavouriteWordWidgetState extends State<SearchFavouriteWordWidget> {
               BlendMode.srcIn,
             ),
           ),
-          hintText: LocaleKeys.search_search_for_words.tr(),
+          hintText: widget.hintText,
           hintStyle: context.textTheme.bodyMedium?.copyWith(
             fontSize: 16.sp,
             color: context.colors.grey,

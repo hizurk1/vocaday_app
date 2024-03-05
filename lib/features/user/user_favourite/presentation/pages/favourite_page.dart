@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/managers/navigation.dart';
@@ -15,7 +14,6 @@ import '../../../../authentication/presentation/blocs/auth/auth_bloc.dart';
 import '../../../../word/domain/entities/word_entity.dart';
 import '../../../../word/presentation/pages/word_detail_bottom_sheet.dart';
 import '../cubit/word_favourite_cubit.dart';
-import '../widgets/search_favourite_word_widget.dart';
 
 enum FavouriteMenu { sync, clearAll }
 
@@ -135,7 +133,8 @@ class _FavouritePageState extends State<FavouritePage> {
                             vertical: 5.h,
                             horizontal: 15.w,
                           ).copyWith(top: 15.h),
-                          child: SearchFavouriteWordWidget(
+                          child: SearchWidget(
+                            hintText: LocaleKeys.search_search_for_words.tr(),
                             onSearch: (value) => _onSearch(context, value),
                           ),
                         ),
@@ -218,38 +217,10 @@ class _FavouritePageState extends State<FavouritePage> {
           itemBuilder: (context, index) {
             return Container(
               margin: EdgeInsets.only(top: 10.w, left: 15.w, right: 15.w),
-              child: Material(
-                color: context.theme.cardColor,
-                borderRadius: BorderRadius.circular(8.r),
-                shadowColor: context.shadowColor.withOpacity(.5),
-                elevation: 1.5,
-                child: InkWell(
-                  onTap: () => _onOpenWordDetail(context, favourites[index]),
-                  borderRadius: BorderRadius.circular(8.r),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 14.h,
-                      horizontal: 15.w,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(8.r),
-                    ),
-                    child: ListTileCustom(
-                      title: TextCustom(favourites[index].word.toLowerCase()),
-                      trailing: GestureDetector(
-                        onTap: () => _onRemoveItem(favourites[index].word),
-                        child: SvgPicture.asset(
-                          Assets.icons.closeCircle,
-                          colorFilter: ColorFilter.mode(
-                            context.greyColor,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+              child: WordSmallCardWidget(
+                text: favourites[index].word.toLowerCase(),
+                onTap: () => _onOpenWordDetail(context, favourites[index]),
+                onRemove: () => _onRemoveItem(favourites[index].word),
               ),
             );
           },

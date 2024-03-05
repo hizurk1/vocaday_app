@@ -141,5 +141,6 @@ abstract class  LocaleKeys {
   static const activity_hold_for_detail = 'activity.hold_for_detail';
   static const activity_category = 'activity.category';
   static const activity_vocab_store = 'activity.vocab_store';
+  static const cart_user_cart = 'cart.user_cart';
 
 }

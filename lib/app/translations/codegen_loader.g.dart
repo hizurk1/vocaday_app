@@ -224,6 +224,9 @@ class CodegenLoader extends AssetLoader{
     "hold_for_detail": "Hold to see details",
     "category": "Category: {}",
     "vocab_store": "Vocabulary Store"
+  },
+  "cart": {
+    "user_cart": "{}'s cart"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -436,6 +439,9 @@ static const Map<String,dynamic> vi_VN = {
     "hold_for_detail": "Giữ để xem chi tiết",
     "category": "Danh mục: {}",
     "vocab_store": "Cửa hàng từ vựng"
+  },
+  "cart": {
+    "user_cart": "Giỏ hàng của {}"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

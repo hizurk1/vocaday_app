@@ -208,5 +208,8 @@
     "hold_for_detail": "Giữ để xem chi tiết",
     "category": "Danh mục: {}",
     "vocab_store": "Cửa hàng từ vựng"
+  },
+  "cart": {
+    "user_cart": "Giỏ hàng của {}"
   }
 }
