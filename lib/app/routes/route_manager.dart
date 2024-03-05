@@ -10,6 +10,8 @@ import '../managers/navigation.dart';
 import '../managers/shared_preferences.dart';
 import '../screens/entry/entry_page.dart';
 import '../screens/main/main_page.dart';
+import '../screens/main/pages/activity/activity_flash_card_page.dart';
+import '../screens/main/pages/activity/activity_list_word_page.dart';
 import '../screens/main/pages/activity/activity_page.dart';
 import '../screens/main/pages/home/home_page.dart';
 import '../screens/main/pages/profile/profile_page.dart';
@@ -81,6 +83,38 @@ class AppRouter {
             context: context,
             state: state,
             child: const ChangePasswordPage(),
+          );
+        },
+        routes: const [],
+      ),
+      //? Route: '/listWord'
+      GoRoute(
+        path: AppRoutes.listWord,
+        pageBuilder: (context, state) {
+          logger.f(state.fullPath);
+
+          return slideTransitionPage(
+            context: context,
+            state: state,
+            child: const ActivityListWordPage(),
+          );
+        },
+        routes: const [],
+      ),
+      //? Route: '/flashCard'
+      GoRoute(
+        path: AppRoutes.flashCard,
+        pageBuilder: (context, state) {
+          final args = state.extra as Map<String, dynamic>?;
+          logger.f("${state.fullPath}");
+
+          return slideTransitionPage(
+            context: context,
+            state: state,
+            child: FlashCardPage(
+              title: args?['title'] ?? '',
+              words: args?['words'] ?? [],
+            ),
           );
         },
         routes: const [],

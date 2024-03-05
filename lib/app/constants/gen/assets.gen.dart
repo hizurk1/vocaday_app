@@ -43,6 +43,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/arrow_down.svg
   String get arrowDown => 'assets/icons/arrow_down.svg';
 
+  /// File path: assets/icons/arrow_horizontal.svg
+  String get arrowHorizontal => 'assets/icons/arrow_horizontal.svg';
+
   /// File path: assets/icons/arrow_right.svg
   String get arrowRight => 'assets/icons/arrow_right.svg';
 
@@ -178,6 +181,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/hand.svg
   String get hand => 'assets/icons/hand.svg';
 
+  /// File path: assets/icons/hand_point.svg
+  String get handPoint => 'assets/icons/hand_point.svg';
+
   /// File path: assets/icons/handbook.svg
   String get handbook => 'assets/icons/handbook.svg';
 
@@ -301,6 +307,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/settings.svg
   String get settings => 'assets/icons/settings.svg';
 
+  /// File path: assets/icons/shared_up.svg
+  String get sharedUp => 'assets/icons/shared_up.svg';
+
   /// File path: assets/icons/three_dots.svg
   String get threeDots => 'assets/icons/three_dots.svg';
 
@@ -328,6 +337,7 @@ class $AssetsIconsGen {
         addSend,
         arrangerIcon,
         arrowDown,
+        arrowHorizontal,
         arrowRight,
         arrowUp,
         attendance,
@@ -373,6 +383,7 @@ class $AssetsIconsGen {
         gold,
         google,
         hand,
+        handPoint,
         handbook,
         handbook2,
         help,
@@ -414,6 +425,7 @@ class $AssetsIconsGen {
         searchOutline,
         sendIcon,
         settings,
+        sharedUp,
         threeDots,
         translation,
         user,

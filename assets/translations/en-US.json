@@ -200,6 +200,12 @@
     "learn_new_word": "Learn new word",
     "learn_new_word_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
     "activity": "Activities",
-    "play": "Play"
+    "play": "Play",
+    "add_to_cart": "Add to cart",
+    "tap_to_rotate": "Tap to rotate",
+    "i_knew": "I knew",
+    "no_more_words_left": "No more words left",
+    "hold_for_detail": "Hold to see details",
+    "category": "Category: {}"
   }
 }

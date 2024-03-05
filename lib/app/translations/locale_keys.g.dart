@@ -134,5 +134,11 @@ abstract class  LocaleKeys {
   static const activity_learn_new_word_content = 'activity.learn_new_word_content';
   static const activity_activity = 'activity.activity';
   static const activity_play = 'activity.play';
+  static const activity_add_to_cart = 'activity.add_to_cart';
+  static const activity_tap_to_rotate = 'activity.tap_to_rotate';
+  static const activity_i_knew = 'activity.i_knew';
+  static const activity_no_more_words_left = 'activity.no_more_words_left';
+  static const activity_hold_for_detail = 'activity.hold_for_detail';
+  static const activity_category = 'activity.category';
 
 }

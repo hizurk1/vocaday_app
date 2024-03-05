@@ -7,6 +7,8 @@ class AppRoutes {
   static const setting = '/setting';
   static const favourite = '/favourite';
   static const changePassword = '/changePassword';
+  static const listWord = '/listWord';
+  static const flashCard = '/flashCard';
 
   static const main = '/main';
   static const home = '$main/home';

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../app/constants/gen/assets.gen.dart';
+import '../../../../../app/routes/route_manager.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/translations/translations.dart';
@@ -24,7 +26,7 @@ class ActivityLearnNewWordWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.r),
         color: context.bottomSheetBackground,
         child: InkWell(
-          onTap: () {},
+          onTap: () => context.push(AppRoutes.listWord),
           borderRadius: BorderRadius.circular(16.r),
           child: Container(
             color: Colors.transparent,
@@ -76,7 +78,7 @@ class ActivityLearnNewWordWidget extends StatelessWidget {
                     ),
                     Icon(
                       Icons.arrow_forward_rounded,
-                      color: context.theme.primaryColor,
+                      color: context.theme.primaryColorDark,
                     )
                   ],
                 ),

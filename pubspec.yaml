@@ -34,7 +34,6 @@ dependencies:
   google_sign_in: ^6.2.1
   image_picker: ^1.0.4
   intl: ^0.18.1
-  just_audio: ^0.9.36
   like_button: ^2.0.5
   logger: ^2.0.2+1
   lottie: ^3.1.0
@@ -42,8 +41,6 @@ dependencies:
   permission_handler: ^11.3.0
   rxdart: ^0.27.7
   shared_preferences: ^2.2.2
-  smooth_page_indicator: ^1.1.0
-  table_calendar: ^3.0.9
   timezone: ^0.9.2
 
 dev_dependencies:

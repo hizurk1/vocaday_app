@@ -49,7 +49,7 @@
     "retry": "Thử lại",
     "save": "Lưu",
     "select": "Chọn",
-    "skip": "Huỷ"
+    "skip": "Bỏ qua"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -200,6 +200,12 @@
     "learn_new_word": "Học từ vựng mới",
     "learn_new_word_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
     "activity": "Các hoạt động",
-    "play": "Chơi"
+    "play": "Chơi",
+    "add_to_cart": "Thêm vào giỏ",
+    "tap_to_rotate": "Nhấn để xoay",
+    "i_knew": "Tôi đã biết",
+    "no_more_words_left": "Không còn từ nào cả",
+    "hold_for_detail": "Giữ để xem chi tiết",
+    "category": "Danh mục: {}"
   }
 }

@@ -14,6 +14,7 @@ import '../../../../injection_container.dart';
 class FavouriteButtonWidget extends StatefulWidget {
   const FavouriteButtonWidget({super.key, required this.word});
 
+  /// Original word with UPPERCASE
   final String word;
 
   @override

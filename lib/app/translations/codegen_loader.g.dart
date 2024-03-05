@@ -216,7 +216,13 @@ class CodegenLoader extends AssetLoader{
     "learn_new_word": "Learn new word",
     "learn_new_word_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
     "activity": "Activities",
-    "play": "Play"
+    "play": "Play",
+    "add_to_cart": "Add to cart",
+    "tap_to_rotate": "Tap to rotate",
+    "i_knew": "I knew",
+    "no_more_words_left": "No more words left",
+    "hold_for_detail": "Hold to see details",
+    "category": "Category: {}"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -270,7 +276,7 @@ static const Map<String,dynamic> vi_VN = {
     "retry": "Thử lại",
     "save": "Lưu",
     "select": "Chọn",
-    "skip": "Huỷ"
+    "skip": "Bỏ qua"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -421,7 +427,13 @@ static const Map<String,dynamic> vi_VN = {
     "learn_new_word": "Học từ vựng mới",
     "learn_new_word_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
     "activity": "Các hoạt động",
-    "play": "Chơi"
+    "play": "Chơi",
+    "add_to_cart": "Thêm vào giỏ",
+    "tap_to_rotate": "Nhấn để xoay",
+    "i_knew": "Tôi đã biết",
+    "no_more_words_left": "Không còn từ nào cả",
+    "hold_for_detail": "Giữ để xem chi tiết",
+    "category": "Danh mục: {}"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

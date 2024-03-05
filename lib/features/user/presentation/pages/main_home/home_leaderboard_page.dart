@@ -93,10 +93,13 @@ class _TopRankingBlock extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.bottomCenter,
-              child: SvgPicture.asset(
-                Assets.images.leaderboardBox,
-                width: context.screenWidth,
-                fit: BoxFit.fitWidth,
+              child: Opacity(
+                opacity: context.isDarkTheme ? .8 : 1,
+                child: SvgPicture.asset(
+                  Assets.images.leaderboardBox,
+                  width: context.screenWidth,
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
             Positioned(

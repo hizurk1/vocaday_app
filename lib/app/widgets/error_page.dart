@@ -12,7 +12,10 @@ import 'unfocus.dart';
 class ErrorPage extends StatelessWidget {
   const ErrorPage({super.key, required this.text, this.image});
 
+  /// Error message.
   final String text;
+
+  /// Must be using `Assets.json` for Lottie package.
   final String? image;
 
   @override

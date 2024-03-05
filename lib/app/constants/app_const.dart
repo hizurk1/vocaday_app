@@ -14,6 +14,7 @@ class AppStringConst {
   static const packageName = "com.vocaday.vocaday_app";
   static const notificationMethodChannel =
       "com.vocaday.vocaday_app/notification_service";
+  static const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   // Error message
   static const unexpectedErrorMessage = 'Unexpected Error';

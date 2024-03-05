@@ -47,7 +47,7 @@ class _ActivityTileCardWidget extends StatelessWidget {
         titlePadding: EdgeInsets.symmetric(horizontal: 15.w),
         title: TextCustom(
           title,
-          style: context.textStyle.bodyM.bold.primary,
+          style: context.textStyle.bodyM.bold.primaryDark,
         ),
         trailing: PushableButton(
           onPressed: onPlayTap,
