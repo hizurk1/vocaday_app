@@ -45,6 +45,7 @@ abstract class  LocaleKeys {
   static const common_save = 'common.save';
   static const common_select = 'common.select';
   static const common_skip = 'common.skip';
+  static const common_view = 'common.view';
   static const on_board_get_started = 'on_board.get_started';
   static const on_board_onboard_body = 'on_board.onboard_body';
   static const on_board_onboard_title = 'on_board.onboard_title';
@@ -142,5 +143,6 @@ abstract class  LocaleKeys {
   static const activity_category = 'activity.category';
   static const activity_vocab_store = 'activity.vocab_store';
   static const cart_user_cart = 'cart.user_cart';
+  static const cart_packed_your_cart_bag = 'cart.packed_your_cart_bag';
 
 }

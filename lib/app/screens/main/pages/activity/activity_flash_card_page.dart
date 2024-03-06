@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../config/app_logger.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../../core/extensions/color.dart';
+import '../../../../../features/user/user_cart/presentation/cubits/cart_bag/cart_bag_cubit.dart';
 import '../../../../../features/user/user_cart/presentation/widgets/cart_icon_widget.dart';
 import '../../../../../features/word/domain/entities/word_entity.dart';
 import '../../../../../features/word/presentation/pages/word_detail_bottom_sheet.dart';
@@ -68,7 +69,9 @@ class _FlashCardPageState extends State<FlashCardPage> {
       if (direction == CardSwiperDirection.top) {
         //! To avoid out of range
         final fixedIndex = previousIndex % wordCardsNotifier.value.length;
-        logger.i(wordCardsNotifier.value[fixedIndex].entity.word);
+        // logger.i(wordCardsNotifier.value[fixedIndex].entity.word);
+        await _addToCartBag(wordCardsNotifier.value[fixedIndex].entity.word);
+
         wordCardsNotifier.value.removeAt(fixedIndex);
         wordCardsNotifier.value = List.from(wordCardsNotifier.value);
         return false;
@@ -81,10 +84,14 @@ class _FlashCardPageState extends State<FlashCardPage> {
     return false;
   }
 
+  Future<void> _addToCartBag(String word) async {
+    await context.read<CartBagCubit>().addCartBag(word);
+  }
+
   Future<void> _onKnewPressed() async {
     _swipeController.swipe(CardSwiperDirection.bottom);
     final fixedIndex = countIndex.value % wordCardsNotifier.value.length;
-    logger.i(wordCardsNotifier.value[fixedIndex].entity.word);
+    // logger.i(wordCardsNotifier.value[fixedIndex].entity.word);
     wordCardsNotifier.value.removeAt(fixedIndex);
     wordCardsNotifier.value = List.from(wordCardsNotifier.value);
   }

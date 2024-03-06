@@ -49,7 +49,8 @@
     "retry": "Retry",
     "save": "Save",
     "select": "Select",
-    "skip": "Skip"
+    "skip": "Skip",
+    "view": "View"
   },
   "on_board": {
     "get_started": "Get started",
@@ -210,6 +211,7 @@
     "vocab_store": "Vocabulary Store"
   },
   "cart": {
-    "user_cart": "{}'s cart"
+    "user_cart": "{}'s cart",
+    "packed_your_cart_bag": "Packed your cart bag"
   }
 }

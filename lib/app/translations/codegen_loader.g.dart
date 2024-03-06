@@ -65,7 +65,8 @@ class CodegenLoader extends AssetLoader{
     "retry": "Retry",
     "save": "Save",
     "select": "Select",
-    "skip": "Skip"
+    "skip": "Skip",
+    "view": "View"
   },
   "on_board": {
     "get_started": "Get started",
@@ -226,7 +227,8 @@ class CodegenLoader extends AssetLoader{
     "vocab_store": "Vocabulary Store"
   },
   "cart": {
-    "user_cart": "{}'s cart"
+    "user_cart": "{}'s cart",
+    "packed_your_cart_bag": "Packed your cart bag"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -280,7 +282,8 @@ static const Map<String,dynamic> vi_VN = {
     "retry": "Thử lại",
     "save": "Lưu",
     "select": "Chọn",
-    "skip": "Bỏ qua"
+    "skip": "Bỏ qua",
+    "view": "Xem"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -441,7 +444,8 @@ static const Map<String,dynamic> vi_VN = {
     "vocab_store": "Cửa hàng từ vựng"
   },
   "cart": {
-    "user_cart": "Giỏ hàng của {}"
+    "user_cart": "Giỏ hàng của {}",
+    "packed_your_cart_bag": "Đã đóng gói giỏ hàng của bạn"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

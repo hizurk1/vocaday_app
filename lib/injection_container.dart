@@ -27,6 +27,14 @@ import 'features/authentication/domain/usecases/sign_up_with_email_password.dart
 import 'features/authentication/presentation/blocs/auth/auth_bloc.dart';
 import 'features/authentication/presentation/blocs/sign_in/sign_in_bloc.dart';
 import 'features/authentication/presentation/blocs/sign_up/sign_up_bloc.dart';
+import 'features/user/user_cart/data/data_sources/cart_remote_data_source.dart';
+import 'features/user/user_cart/data/repositories/cart_repository_impl.dart';
+import 'features/user/user_cart/domain/repositories/cart_repository.dart';
+import 'features/user/user_cart/domain/usecases/add_cart_bag.dart';
+import 'features/user/user_cart/domain/usecases/create_cart.dart';
+import 'features/user/user_cart/domain/usecases/get_cart.dart';
+import 'features/user/user_cart/presentation/cubits/cart/cart_cubit.dart';
+import 'features/user/user_cart/presentation/cubits/cart_bag/cart_bag_cubit.dart';
 import 'features/user/user_favourite/domain/usecases/remove_all_favourite_word_usecase.dart';
 import 'features/user/user_favourite/domain/usecases/sync_favourite_word_usecase.dart';
 import 'features/user/user_favourite/presentation/cubit/word_favourite_cubit.dart';
@@ -113,6 +121,7 @@ Future<void> setUpServiceLocator() async {
     () => SignUpWithEmailPasswordUsecase(
       authRepository: sl(),
       userRepository: sl(),
+      cartRepository: sl(),
     ),
   );
   sl.registerLazySingleton(
@@ -122,6 +131,7 @@ Future<void> setUpServiceLocator() async {
     () => SignInWithGoogleUsecase(
       authRepository: sl(),
       userRepository: sl(),
+      cartRepository: sl(),
     ),
   );
   sl.registerLazySingleton(
@@ -163,4 +173,21 @@ Future<void> setUpServiceLocator() async {
   // Bloc/Cubit
   sl.registerFactory(() => UserDataCubit(sl(), sl(), sl()));
   sl.registerFactory(() => LeaderBoardCubit(sl()));
+
+  //! Feature: Cart
+  // Data source
+  sl.registerLazySingleton<CartRemoteDataSource>(
+    () => CartRemoteDataSourceImpl(sl()),
+  );
+  // Repository
+  sl.registerLazySingleton<CartRepository>(
+    () => CartRepositoryImpl(sl()),
+  );
+  // Usecase
+  sl.registerLazySingleton(() => AddCartUsecase(sl()));
+  sl.registerLazySingleton(() => AddCartBagUsecase(sl()));
+  sl.registerLazySingleton(() => GetCartUsecase(sl()));
+  // Bloc/Cubit
+  sl.registerFactory(() => CartBagCubit(sl()));
+  sl.registerFactory(() => CartCubit(sl(), sl()));
 }

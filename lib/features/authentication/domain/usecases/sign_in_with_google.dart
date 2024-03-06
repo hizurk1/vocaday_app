@@ -2,6 +2,8 @@ import 'package:fpdart/fpdart.dart';
 
 import '../../../../../core/typedef/typedefs.dart';
 import '../../../../../core/usecases/usecases.dart';
+import '../../../user/user_cart/domain/entities/cart_entity.dart';
+import '../../../user/user_cart/domain/repositories/cart_repository.dart';
 import '../../../user/user_profile/domain/entities/user_entity.dart';
 import '../../../user/user_profile/domain/repositories/user_repository.dart';
 import '../entities/auth_entity.dart';
@@ -10,10 +12,12 @@ import '../repositories/auth_repository.dart';
 class SignInWithGoogleUsecase extends UsecasesNoParam<AuthEntity> {
   final AuthRepository authRepository;
   final UserRepository userRepository;
+  final CartRepository cartRepository;
 
   SignInWithGoogleUsecase({
     required this.authRepository,
     required this.userRepository,
+    required this.cartRepository,
   });
 
   @override
@@ -44,7 +48,17 @@ class SignInWithGoogleUsecase extends UsecasesNoParam<AuthEntity> {
 
         return addUserResult.fold(
           (fail) => Left(fail),
-          (_) => Right(authEntity.copyWith(isNewUser: false)),
+          (_) async {
+            final addCartRes = await cartRepository.createCart(
+              authEntity.uid,
+              CartEntity.empty.copyWith(uid: authEntity.uid),
+            );
+
+            return addCartRes.fold(
+              (fail) => Left(fail),
+              (_) => Right(authEntity.copyWith(isNewUser: false)),
+            );
+          },
         );
       },
     );

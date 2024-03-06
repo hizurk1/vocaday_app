@@ -60,9 +60,12 @@ class Navigators {
     final msgColor = switch (type) {
       MessageType.byDefault =>
         currentContext!.isDarkTheme ? AppColor().grey400 : AppColor().grey900,
-      MessageType.info => AppColor().blue400,
-      MessageType.success => AppColor().green400,
-      MessageType.error => AppColor().red400,
+      MessageType.info =>
+        currentContext!.isDarkTheme ? AppColor().blue : AppColor().blue400,
+      MessageType.success =>
+        currentContext!.isDarkTheme ? AppColor().green : AppColor().green400,
+      MessageType.error =>
+        currentContext!.isDarkTheme ? AppColor().red : AppColor().red400,
     };
     final textColor = type == MessageType.byDefault
         ? AppColor().white

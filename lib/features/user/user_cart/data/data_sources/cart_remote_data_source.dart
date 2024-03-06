@@ -1,27 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../../../../app/constants/app_const.dart';
 import '../../../../../core/errors/exception.dart';
 
 abstract class CartRemoteDataSource {
-  Future<void> setCartBag(String uid, Map<String, dynamic> map);
-  Future<List<Map<String, dynamic>>> getCart(String uid);
-  Future<void> updateCartBag(String uid, String id, Map<String, dynamic> map);
-  Future<Map<String, dynamic>?> getCartBag(String uid, String id);
+  Future<void> createCart(String uid, Map<String, dynamic> map);
+  Future<Map<String, dynamic>> getCart(String uid);
+  Future<void> clearCart(String uid);
+  Future<void> updateCart(String uid, Map<String, dynamic> map);
 }
 
 class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   final FirebaseFirestore firestore;
+  final String _carts = "carts";
 
   CartRemoteDataSourceImpl(this.firestore);
 
   @override
-  Future<void> setCartBag(
-    String uid,
-    Map<String, dynamic> map,
-  ) async {
+  Future<void> createCart(String uid, Map<String, dynamic> map) async {
     try {
-      final bagId = firestore.collection("users/$uid/cart").id;
-      await firestore.collection("users/$uid/cart").doc(bagId).set(map);
+      await firestore.collection(_carts).doc(uid).set(
+            map,
+            SetOptions(merge: true),
+          );
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {
@@ -30,10 +31,14 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   }
 
   @override
-  Future<List<Map<String, dynamic>>> getCart(String uid) async {
+  Future<Map<String, dynamic>> getCart(String uid) async {
     try {
-      final snapshots = await firestore.collection("users/$uid/cart").get();
-      return snapshots.docs.map((doc) => doc.data()).toList();
+      final result = await firestore.collection(_carts).doc(uid).get();
+      if (result.exists) {
+        return result.data()!;
+      } else {
+        throw DatabaseException(AppStringConst.objectNotFoundMessage);
+      }
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {
@@ -42,13 +47,9 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   }
 
   @override
-  Future<void> updateCartBag(
-    String uid,
-    String id,
-    Map<String, dynamic> map,
-  ) async {
+  Future<void> clearCart(String uid) async {
     try {
-      await firestore.collection("users/$uid/cart").doc(id).update(map);
+      await firestore.collection(_carts).doc(uid).update({'bags': []});
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {
@@ -57,11 +58,9 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   }
 
   @override
-  Future<Map<String, dynamic>?> getCartBag(String uid, String id) async {
+  Future<void> updateCart(String uid, Map<String, dynamic> map) async {
     try {
-      final snapshot =
-          await firestore.collection("users/$uid/cart").doc(id).get();
-      return snapshot.data();
+      await firestore.collection(_carts).doc(uid).update(map);
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {

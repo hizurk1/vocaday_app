@@ -81,4 +81,14 @@ class SharedPrefManager {
 
   void clearAllFavouriteWords() =>
       prefs.remove(AppPrefsKey.favouriteWordStringL);
+
+  //! Cart
+  Future<void> setCartBags(List<String> list) async {
+    await prefs.setStringList(AppPrefsKey.cartBagWordStringL, list);
+  }
+
+  List<String> get getCartBags =>
+      prefs.getStringList(AppPrefsKey.cartBagWordStringL) ?? [];
+
+  void removeLocalCartBags() => prefs.remove(AppPrefsKey.cartBagWordStringL);
 }

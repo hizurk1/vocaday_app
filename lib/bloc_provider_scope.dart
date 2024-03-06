@@ -6,6 +6,8 @@ import 'app/managers/language.dart';
 import 'app/managers/theme.dart';
 import 'app/screens/setting/cubits/schedule_notification/schedule_notification_cubit.dart';
 import 'features/authentication/presentation/blocs/auth/auth_bloc.dart';
+import 'features/user/user_cart/presentation/cubits/cart/cart_cubit.dart';
+import 'features/user/user_cart/presentation/cubits/cart_bag/cart_bag_cubit.dart';
 import 'features/user/user_profile/presentation/cubits/user_data/user_data_cubit.dart';
 import 'features/word/presentation/blocs/word_list/word_list_cubit.dart';
 import 'injection_container.dart';
@@ -40,6 +42,10 @@ class BlocProviderScope extends StatelessWidget {
         BlocProvider(create: (_) => sl<UserDataCubit>()),
         //* Schedule notification Cubit
         BlocProvider(create: (_) => ScheduleNotificationCubit()),
+        //* Cart Cubit
+        BlocProvider(create: (_) => sl<CartCubit>()),
+        //* Cart Bag Cubit
+        BlocProvider(create: (_) => sl<CartBagCubit>()),
       ],
       child: child,
     );

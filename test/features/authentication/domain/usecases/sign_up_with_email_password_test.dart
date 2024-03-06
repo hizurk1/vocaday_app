@@ -7,11 +7,14 @@ import 'package:vocaday_app/features/authentication/data/models/auth_model.dart'
 import 'package:vocaday_app/features/authentication/domain/entities/auth_entity.dart';
 import 'package:vocaday_app/features/authentication/domain/repositories/auth_repository.dart';
 import 'package:vocaday_app/features/authentication/domain/usecases/sign_up_with_email_password.dart';
+import 'package:vocaday_app/features/user/user_cart/domain/repositories/cart_repository.dart';
 import 'package:vocaday_app/features/user/user_profile/domain/repositories/user_repository.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 
 class MockUserRepository extends Mock implements UserRepository {}
+
+class MockCartRepository extends Mock implements CartRepository {}
 
 class MockUser extends Mock implements User {}
 
@@ -20,12 +23,16 @@ void main() {
   late SignUpWithEmailPasswordUsecase signUpWithEmailPasswordUsecase;
   late MockAuthRepository mockAuthRepository;
   late MockUserRepository mockUserRepository;
+  late MockCartRepository mockCartRepository;
+
   setUp(() {
     mockAuthRepository = MockAuthRepository();
     mockUserRepository = MockUserRepository();
+    mockCartRepository = MockCartRepository();
     signUpWithEmailPasswordUsecase = SignUpWithEmailPasswordUsecase(
       authRepository: mockAuthRepository,
       userRepository: mockUserRepository,
+      cartRepository: mockCartRepository,
     );
   });
 

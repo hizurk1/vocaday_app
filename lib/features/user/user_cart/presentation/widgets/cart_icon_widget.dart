@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/widgets/text.dart';
 import '../../../../../core/extensions/build_context.dart';
+import '../cubits/cart_bag/cart_bag_cubit.dart';
 import '../pages/cart_bottom_sheet_page.dart';
 
 class CartIconWidget extends StatelessWidget {
@@ -33,22 +35,33 @@ class CartIconWidget extends StatelessWidget {
               Icons.shopping_bag_outlined,
               color: context.theme.primaryColorDark,
             ),
-            Positioned(
-              top: 3.h,
-              right: 3.w,
-              child: ClipOval(
-                child: Container(
-                  height: 16.h,
-                  width: 16.w,
-                  color: context.theme.colorScheme.error,
-                  child: Center(
-                    child: TextCustom(
-                      "0",
-                      style: context.textStyle.labelS.bold.white,
+            BlocSelector<CartBagCubit, CartBagState, int>(
+              selector: (state) => state.status == CartBagStatus.loaded
+                  ? (state.entity?.words.length ?? 0)
+                  : 0,
+              builder: (context, int count) {
+                return Positioned(
+                  top: 3.h,
+                  right: 3.w,
+                  child: AnimatedOpacity(
+                    duration: Durations.short4,
+                    opacity: count > 0 ? 1 : 0,
+                    child: ClipOval(
+                      child: Container(
+                        height: 16.h,
+                        width: 16.w,
+                        color: context.theme.colorScheme.error,
+                        child: Center(
+                          child: TextCustom(
+                            "$count",
+                            style: context.textStyle.labelS.bold.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
+                );
+              },
             )
           ],
         ),

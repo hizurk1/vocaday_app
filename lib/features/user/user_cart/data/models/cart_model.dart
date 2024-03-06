@@ -4,30 +4,36 @@ import 'package:equatable/equatable.dart';
 import '../../domain/entities/cart_entity.dart';
 
 class CartModel extends Equatable {
+  final String uid;
   final List<CartBagModel> bags;
   const CartModel({
+    required this.uid,
     required this.bags,
   });
 
   @override
-  List<Object> get props => [bags];
+  List<Object> get props => [uid, bags];
 
   CartModel copyWith({
+    String? uid,
     List<CartBagModel>? bags,
   }) {
     return CartModel(
+      uid: uid ?? this.uid,
       bags: bags ?? this.bags,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'uid': uid,
       'bags': bags.map((x) => x.toMap()).toList(),
     };
   }
 
   factory CartModel.fromMap(Map<String, dynamic> map) {
     return CartModel(
+      uid: map['uid'] as String,
       bags: List<CartBagModel>.from(
         (map['bags'] as List).map<CartBagModel>(
           (x) => CartBagModel.fromMap(x as Map<String, dynamic>),
@@ -38,37 +44,35 @@ class CartModel extends Equatable {
 
   CartEntity toEntity() {
     return CartEntity(
+      uid: uid,
       bags: bags.map((e) => e.toEntity()).toList(),
     );
   }
 
   factory CartModel.fromEntity(CartEntity entity) {
     return CartModel(
+      uid: entity.uid,
       bags: entity.bags.map((e) => CartBagModel.fromEntity(e)).toList(),
     );
   }
 }
 
 class CartBagModel extends Equatable {
-  final String uid;
   final List<String> words;
   final DateTime dateTime;
   const CartBagModel({
-    required this.uid,
     required this.words,
     required this.dateTime,
   });
 
   @override
-  List<Object> get props => [uid, words, dateTime];
+  List<Object> get props => [words, dateTime];
 
   CartBagModel copyWith({
-    String? uid,
     List<String>? words,
     DateTime? dateTime,
   }) {
     return CartBagModel(
-      uid: uid ?? this.uid,
       words: words ?? this.words,
       dateTime: dateTime ?? this.dateTime,
     );
@@ -76,7 +80,6 @@ class CartBagModel extends Equatable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'uid': uid,
       'words': words,
       'dateTime': dateTime.millisecondsSinceEpoch,
     };
@@ -84,19 +87,17 @@ class CartBagModel extends Equatable {
 
   factory CartBagModel.fromMap(Map<String, dynamic> map) {
     return CartBagModel(
-      uid: map['uid'] as String,
       words: (map['words'] as List).map((e) => e.toString()).toList(),
-      dateTime: DateTime.fromMillisecondsSinceEpoch(int.parse(map['dateTime'])),
+      dateTime: DateTime.fromMillisecondsSinceEpoch(map['dateTime'] as int),
     );
   }
 
   CartBagEntity toEntity() {
-    return CartBagEntity(uid: uid, words: words, dateTime: dateTime);
+    return CartBagEntity(words: words, dateTime: dateTime);
   }
 
   factory CartBagModel.fromEntity(CartBagEntity entity) {
     return CartBagModel(
-      uid: entity.uid,
       words: entity.words,
       dateTime: entity.dateTime,
     );
