@@ -4,36 +4,36 @@ import 'package:equatable/equatable.dart';
 import '../../domain/entities/cart_entity.dart';
 
 class CartModel extends Equatable {
-  final String uid;
+  final String id;
   final List<CartBagModel> bags;
   const CartModel({
-    required this.uid,
+    required this.id,
     required this.bags,
   });
 
   @override
-  List<Object> get props => [uid, bags];
+  List<Object> get props => [id, bags];
 
   CartModel copyWith({
-    String? uid,
+    String? id,
     List<CartBagModel>? bags,
   }) {
     return CartModel(
-      uid: uid ?? this.uid,
+      id: id ?? this.id,
       bags: bags ?? this.bags,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'uid': uid,
+      'id': id,
       'bags': bags.map((x) => x.toMap()).toList(),
     };
   }
 
   factory CartModel.fromMap(Map<String, dynamic> map) {
     return CartModel(
-      uid: map['uid'] as String,
+      id: map['id'] as String,
       bags: List<CartBagModel>.from(
         (map['bags'] as List).map<CartBagModel>(
           (x) => CartBagModel.fromMap(x as Map<String, dynamic>),
@@ -44,14 +44,14 @@ class CartModel extends Equatable {
 
   CartEntity toEntity() {
     return CartEntity(
-      uid: uid,
+      id: id,
       bags: bags.map((e) => e.toEntity()).toList(),
     );
   }
 
   factory CartModel.fromEntity(CartEntity entity) {
     return CartModel(
-      uid: entity.uid,
+      id: entity.id,
       bags: entity.bags.map((e) => CartBagModel.fromEntity(e)).toList(),
     );
   }

@@ -228,7 +228,8 @@ class CodegenLoader extends AssetLoader{
   },
   "cart": {
     "user_cart": "{}'s cart",
-    "packed_your_cart_bag": "Packed your cart bag"
+    "packed_your_cart_bag": "Packed your cart bag",
+    "cart": "Cart"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -445,7 +446,8 @@ static const Map<String,dynamic> vi_VN = {
   },
   "cart": {
     "user_cart": "Giỏ hàng của {}",
-    "packed_your_cart_bag": "Đã đóng gói giỏ hàng của bạn"
+    "packed_your_cart_bag": "Đã đóng gói giỏ hàng của bạn",
+    "cart": "Giỏ hàng"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

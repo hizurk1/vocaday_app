@@ -2,27 +2,27 @@
 import 'package:equatable/equatable.dart';
 
 class CartEntity extends Equatable {
-  final String uid;
+  final String id;
   final List<CartBagEntity> bags;
   const CartEntity({
-    required this.uid,
+    required this.id,
     required this.bags,
   });
 
   static CartEntity get empty => const CartEntity(
-        uid: '',
+        id: '',
         bags: [],
       );
 
   @override
-  List<Object> get props => [uid, bags];
+  List<Object> get props => [id, bags];
 
   CartEntity copyWith({
-    String? uid,
+    String? id,
     List<CartBagEntity>? bags,
   }) {
     return CartEntity(
-      uid: uid ?? this.uid,
+      id: id ?? this.id,
       bags: bags ?? this.bags,
     );
   }

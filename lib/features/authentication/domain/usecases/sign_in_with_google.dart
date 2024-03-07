@@ -51,7 +51,7 @@ class SignInWithGoogleUsecase extends UsecasesNoParam<AuthEntity> {
           (_) async {
             final addCartRes = await cartRepository.createCart(
               authEntity.uid,
-              CartEntity.empty.copyWith(uid: authEntity.uid),
+              CartEntity.empty.copyWith(id: authEntity.uid),
             );
 
             return addCartRes.fold(

@@ -212,6 +212,7 @@
   },
   "cart": {
     "user_cart": "Giỏ hàng của {}",
-    "packed_your_cart_bag": "Đã đóng gói giỏ hàng của bạn"
+    "packed_your_cart_bag": "Đã đóng gói giỏ hàng của bạn",
+    "cart": "Giỏ hàng"
   }
 }

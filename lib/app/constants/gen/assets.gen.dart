@@ -310,11 +310,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/shared_up.svg
   String get sharedUp => 'assets/icons/shared_up.svg';
 
+  /// File path: assets/icons/shopping_cart.svg
+  String get shoppingCart => 'assets/icons/shopping_cart.svg';
+
   /// File path: assets/icons/three_dots.svg
   String get threeDots => 'assets/icons/three_dots.svg';
 
   /// File path: assets/icons/translation.svg
   String get translation => 'assets/icons/translation.svg';
+
+  /// File path: assets/icons/trash.svg
+  String get trash => 'assets/icons/trash.svg';
 
   /// File path: assets/icons/user.svg
   String get user => 'assets/icons/user.svg';
@@ -426,8 +432,10 @@ class $AssetsIconsGen {
         sendIcon,
         settings,
         sharedUp,
+        shoppingCart,
         threeDots,
         translation,
+        trash,
         user,
         vietnamRound,
         week,

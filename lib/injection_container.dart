@@ -189,5 +189,5 @@ Future<void> setUpServiceLocator() async {
   sl.registerLazySingleton(() => GetCartUsecase(sl()));
   // Bloc/Cubit
   sl.registerFactory(() => CartBagCubit(sl()));
-  sl.registerFactory(() => CartCubit(sl(), sl()));
+  sl.registerFactory(() => CartCubit(sl(), sl(), sl()));
 }

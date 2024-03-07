@@ -9,6 +9,7 @@ class AppRoutes {
   static const changePassword = '/changePassword';
   static const listWord = '/listWord';
   static const flashCard = '/flashCard';
+  static const cart = '/cart';
 
   static const main = '/main';
   static const home = '$main/home';

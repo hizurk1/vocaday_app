@@ -8,6 +8,7 @@ import '../../features/user/user_favourite/presentation/pages/favourite_page.dar
 import '../../injection_container.dart';
 import '../managers/navigation.dart';
 import '../managers/shared_preferences.dart';
+import '../screens/cart/cart_page.dart';
 import '../screens/entry/entry_page.dart';
 import '../screens/main/main_page.dart';
 import '../screens/main/pages/activity/activity_flash_card_page.dart';
@@ -115,6 +116,20 @@ class AppRouter {
               title: args?['title'] ?? '',
               words: args?['words'] ?? [],
             ),
+          );
+        },
+        routes: const [],
+      ),
+      //? Route: '/cart'
+      GoRoute(
+        path: AppRoutes.cart,
+        pageBuilder: (context, state) {
+          logger.f("${state.fullPath}");
+
+          return slideTransitionPage(
+            context: context,
+            state: state,
+            child: const CartPage(),
           );
         },
         routes: const [],

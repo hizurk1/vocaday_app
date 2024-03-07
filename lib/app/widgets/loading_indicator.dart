@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../themes/app_color.dart';
+import '../../core/extensions/build_context.dart';
 
 class LoadingIndicatorPage extends StatelessWidget {
   const LoadingIndicatorPage({super.key, this.padding});
@@ -36,7 +36,7 @@ class LoadingIndicatorWidget extends StatelessWidget {
       width: size?.width ?? 25.w,
       child: CircularProgressIndicator(
         strokeWidth: 2.5,
-        color: context.colors.white,
+        color: context.theme.primaryColor,
       ),
     );
   }

@@ -49,6 +49,7 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
         case 2:
         case 3:
         case 4:
+        case 5:
           _resetIndex();
           context.push(menuList[index]!.route);
           break;
@@ -75,6 +76,8 @@ class _MenuDrawerTileListState extends State<MenuDrawerTileList> {
           Assets.icons.homeOutline, LocaleKeys.page_home.tr(), AppRoutes.home),
       MenuTile(Assets.icons.favorites, LocaleKeys.page_favourite.tr(),
           AppRoutes.favourite),
+      MenuTile(
+          Assets.icons.shoppingCart, LocaleKeys.cart_cart.tr(), AppRoutes.cart),
       null,
       MenuTile(Assets.icons.changePassword,
           LocaleKeys.auth_change_password.tr(), AppRoutes.changePassword),

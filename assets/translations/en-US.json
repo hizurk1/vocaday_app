@@ -212,6 +212,7 @@
   },
   "cart": {
     "user_cart": "{}'s cart",
-    "packed_your_cart_bag": "Packed your cart bag"
+    "packed_your_cart_bag": "Packed your cart bag",
+    "cart": "Cart"
   }
 }
