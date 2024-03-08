@@ -313,6 +313,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/shopping_cart.svg
   String get shoppingCart => 'assets/icons/shopping_cart.svg';
 
+  /// File path: assets/icons/store.svg
+  String get store => 'assets/icons/store.svg';
+
   /// File path: assets/icons/three_dots.svg
   String get threeDots => 'assets/icons/three_dots.svg';
 
@@ -433,6 +436,7 @@ class $AssetsIconsGen {
         settings,
         sharedUp,
         shoppingCart,
+        store,
         threeDots,
         translation,
         trash,

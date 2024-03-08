@@ -16,6 +16,9 @@ import '../../../../word/presentation/blocs/word_list/word_list_cubit.dart';
 import '../../../../word/presentation/pages/word_detail_bottom_sheet.dart';
 import '../../domain/entities/cart_entity.dart';
 import '../cubits/cart/cart_cubit.dart';
+import '../cubits/cart_bag/cart_bag_cubit.dart';
+
+enum CartBagMenu { expand, remove }
 
 class CartPageBody extends StatefulWidget {
   const CartPageBody({
@@ -106,6 +109,18 @@ class _CartBagWidget extends StatelessWidget {
     );
   }
 
+  void _onSelectMenu(CartBagMenu item, BuildContext context) {
+    switch (item) {
+      case CartBagMenu.expand:
+        _onExpandCartBag(context);
+        break;
+      case CartBagMenu.remove:
+        _onRemoveCartBag(context);
+        break;
+      default:
+    }
+  }
+
   Future<void> _onRemoveCartBag(BuildContext context) async {
     Navigators().showDialogWithButton(
       title: LocaleKeys.cart_remove_cart_bag.tr(),
@@ -140,12 +155,33 @@ class _CartBagWidget extends StatelessWidget {
     );
   }
 
+  Future<void> _onExpandCartBag(BuildContext context) async {
+    Navigators().showDialogWithButton(
+      title: LocaleKeys.cart_expand_this_bag.tr(),
+      subtitle: LocaleKeys.cart_expand_this_bag_content.tr(),
+      onAccept: () async {
+        final uid = context.read<AuthBloc>().state.user?.uid;
+        if (uid != null) {
+          Navigators().showLoading(
+            tasks: [
+              context
+                  .read<CartCubit>()
+                  .expandCartBag(uid, cartEntity, cartEntity.bags[index])
+            ],
+            onFinish: () =>
+                Navigators().currentContext!.read<CartBagCubit>().getCartBag(),
+          );
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 20.w)
           .copyWith(top: index == 0 ? 20.h : null),
-      padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+      padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
         color: context.theme.primaryColor,
@@ -162,7 +198,6 @@ class _CartBagWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Gap(height: 5),
           Row(
             children: [
               SvgPicture.asset(
@@ -174,33 +209,25 @@ class _CartBagWidget extends StatelessWidget {
                 ),
               ),
               Gap(width: 10.w),
-              TextCustom(
-                cartEntity.bags[index].dateTime.ddMMyyyyHHmmaa,
-                style: context.textStyle.bodyS.bold.white,
-              ),
-              const Spacer(),
-              GestureDetector(
-                onTap: () => _onRemoveCartBag(context),
-                child: SvgPicture.asset(
-                  Assets.icons.closeCircle,
-                  height: 20.h,
-                  colorFilter: const ColorFilter.mode(
-                    Colors.white,
-                    BlendMode.srcIn,
-                  ),
+              Expanded(
+                child: TextCustom(
+                  cartEntity.bags[index].dateTime.ddMMyyyyHHmmaa,
+                  style: context.textStyle.bodyS.bold.white,
                 ),
               ),
+              const Gap(width: 12),
+              _buildPopupMenu(context),
             ],
           ),
           DashedLineCustom(
-            margin: EdgeInsets.symmetric(vertical: 15.h).copyWith(top: 20.h),
+            margin: EdgeInsets.symmetric(vertical: 20.h),
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: wordItems
                 .map(
-                  (e) => Padding(
+                  (e) => Container(
                     padding: EdgeInsets.symmetric(vertical: 5.h),
                     child: WordSmallCardWidget(
                       onTap: () => _onTapWordCartItem(context, e),
@@ -211,6 +238,55 @@ class _CartBagWidget extends StatelessWidget {
                   ),
                 )
                 .toList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPopupMenu(BuildContext context) {
+    return PopupMenuButton(
+      padding: const EdgeInsets.all(0),
+      surfaceTintColor: context.theme.cardColor,
+      onSelected: (val) => _onSelectMenu(val, context),
+      itemBuilder: (context) => [
+        _buildMenuItem(
+          context: context,
+          icon: Icons.playlist_add_rounded,
+          text: LocaleKeys.cart_expand_menu.tr(),
+          value: CartBagMenu.expand,
+        ),
+        _buildMenuItem(
+          context: context,
+          icon: Icons.playlist_remove_rounded,
+          text: LocaleKeys.cart_remove_menu.tr(),
+          value: CartBagMenu.remove,
+        ),
+      ],
+      child: const Icon(Icons.more_vert_rounded, color: Colors.white),
+    );
+  }
+
+  PopupMenuItem<CartBagMenu> _buildMenuItem({
+    required BuildContext context,
+    required IconData icon,
+    required String text,
+    required CartBagMenu value,
+  }) {
+    return PopupMenuItem(
+      value: value,
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(right: 15.w),
+            child: Icon(
+              icon,
+              color: context.theme.primaryColor,
+            ),
+          ),
+          TextCustom(
+            text,
+            style: context.textStyle.bodyS.bw,
           ),
         ],
       ),

@@ -84,12 +84,12 @@ class ActivityLearnNewWordWidget extends StatelessWidget {
                 ),
                 const Gap(height: 10),
                 TextCustom(
-                  LocaleKeys.activity_learn_new_word.tr(),
+                  LocaleKeys.activity_word_store_title.tr(),
                   style: context.textStyle.bodyL.bw.bold,
                 ),
                 const Gap(height: 5),
                 TextCustom(
-                  LocaleKeys.activity_learn_new_word_content.tr(),
+                  LocaleKeys.activity_word_store_content.tr(),
                   style: context.textStyle.caption.grey80,
                   maxLines: 5,
                   textAlign: TextAlign.justify,

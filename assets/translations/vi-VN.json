@@ -51,7 +51,8 @@
     "select": "Chọn",
     "skip": "Bỏ qua",
     "view": "Xem",
-    "yes_ofc": "Đúng vậy"
+    "yes_ofc": "Đúng vậy",
+    "go": "Đi"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -199,17 +200,17 @@
       "many": "{} từ",
       "other": "{} từ"
     },
-    "learn_new_word": "Học từ vựng mới",
-    "learn_new_word_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
     "activity": "Các hoạt động",
     "play": "Chơi",
-    "add_to_cart": "Thêm vào giỏ",
+    "add_to_cart": "Thêm vào túi",
     "tap_to_rotate": "Nhấn để xoay",
     "i_knew": "Tôi đã biết",
     "no_more_words_left": "Không còn từ nào cả",
     "hold_for_detail": "Giữ để xem chi tiết",
     "category": "Danh mục: {}",
-    "vocab_store": "Cửa hàng từ vựng"
+    "vocab_store": "Cửa hàng từ vựng",
+    "word_store_title": "Cửa hàng từ vựng",
+    "word_store_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu."
   },
   "cart": {
     "packed_your_cart_bag": "Đã đóng gói túi từ vựng của bạn",
@@ -220,6 +221,11 @@
     "user_bag": "Túi của {}",
     "remove_word_title": "Xoá từ khỏi túi từ vựng",
     "remove_word_content": "Bạn có chắc muốn xoá \"{}\" khỏi túi từ vựng?",
-    "word_bag_update_success": "Túi từ vựng của bạn đã được cập nhật."
+    "word_bag_update_success": "Túi từ vựng của bạn đã được cập nhật.",
+    "expand_bag_message": "Đã thêm {} vào túi từ vựng hiện tại của bạn.\\nĐến Cửa hàng từ vựng để thêm một vài từ mới.",
+    "expand_this_bag": "Mở rộng túi này",
+    "expand_this_bag_content": "Tất cả từ trong túi này sẽ được mở gói và thêm vào túi từ vựng hiện tại của bạn.",
+    "expand_menu": "Mở rộng túi",
+    "remove_menu": "Xoá túi này"
   }
 }

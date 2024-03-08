@@ -35,9 +35,14 @@ class CartRepositoryImpl implements CartRepository {
   FutureEither<CartEntity> getCart(String uid) async {
     try {
       final data = await remoteDataSource.getCart(uid);
-      return Right(
-        CartModel.fromMap(data).toEntity(),
-      );
+      final cartEntity = CartModel.fromMap(data).toEntity();
+
+      //? Sort datetime desc (newest)
+      final bags = cartEntity.bags
+        ..sort((e1, e2) => e2.dateTime.millisecondsSinceEpoch
+            .compareTo(e1.dateTime.millisecondsSinceEpoch));
+
+      return Right(cartEntity.copyWith(bags: bags));
     } on FirebaseException catch (e) {
       return Left(
         FirebaseFailure(e.message ?? 'FirebaseFailure: getCart'),

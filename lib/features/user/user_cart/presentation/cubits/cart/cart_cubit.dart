@@ -10,6 +10,7 @@ import '../../../../../word/domain/entities/word_entity.dart';
 import '../../../domain/entities/cart_entity.dart';
 import '../../../domain/usecases/add_cart_bag.dart';
 import '../../../domain/usecases/delete_cart_bag.dart';
+import '../../../domain/usecases/expand_cart_bag.dart';
 import '../../../domain/usecases/get_cart.dart';
 import '../../../domain/usecases/update_cart_bag.dart';
 import '../cart_bag/cart_bag_cubit.dart';
@@ -21,14 +22,42 @@ class CartCubit extends Cubit<CartState> {
   final GetCartUsecase getCartUsecase;
   final DeleteCartBagUsecase deleteCartBagUsecase;
   final UpdateCartBagUsecase updateCartBagUsecase;
+  final ExpandCartBagUsecase expandCartBagUsecase;
   final SharedPrefManager sharedPrefManager;
   CartCubit(
     this.addCartBagUsecase,
     this.getCartUsecase,
     this.deleteCartBagUsecase,
     this.updateCartBagUsecase,
+    this.expandCartBagUsecase,
     this.sharedPrefManager,
   ) : super(const CartEmptyState());
+
+  Future<void> expandCartBag(
+    String uid,
+    CartEntity cartEntity,
+    CartBagEntity cartBagEntity,
+  ) async {
+    emit(const CartLoadingState());
+
+    final result = await expandCartBagUsecase((uid, cartEntity, cartBagEntity));
+    result.fold(
+      (failure) => emit(CartErrorState(failure.message)),
+      (cart) {
+        Navigators().showMessage(
+          LocaleKeys.cart_expand_bag_message.tr(
+            args: [LocaleKeys.activity_word.plural(cartBagEntity.words.length)],
+          ).replaceAll(r'\n', '\n'),
+          duration: 8,
+          type: MessageType.success,
+          actionText: LocaleKeys.common_go.tr(),
+          onAction: () =>
+              Navigators().currentContext!.pushReplacement(AppRoutes.listWord),
+        );
+        emit(CartLoadedState(cart));
+      },
+    );
+  }
 
   Future<void> deleteWordItem(
     String uid,
@@ -105,7 +134,8 @@ class CartCubit extends Cubit<CartState> {
           opacity: 1,
           actionText: LocaleKeys.common_view.tr(),
           duration: 5,
-          onAction: () => Navigators().currentContext!.push(AppRoutes.cart),
+          onAction: () =>
+              Navigators().currentContext!.pushReplacement(AppRoutes.cart),
         );
         emit(CartLoadedState(cart));
       },

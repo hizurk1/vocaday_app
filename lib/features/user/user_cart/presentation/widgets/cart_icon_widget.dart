@@ -33,6 +33,7 @@ class CartIconWidget extends StatelessWidget {
           children: [
             Icon(
               Icons.shopping_bag_outlined,
+              size: 25.h,
               color: context.theme.primaryColorDark,
             ),
             BlocSelector<CartBagCubit, CartBagState, int>(

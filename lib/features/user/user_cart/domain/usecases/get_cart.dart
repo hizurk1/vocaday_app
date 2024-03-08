@@ -1,5 +1,3 @@
-import 'package:fpdart/fpdart.dart';
-
 import '../../../../../core/typedef/typedefs.dart';
 import '../../../../../core/usecases/usecases.dart';
 import '../entities/cart_entity.dart';
@@ -12,13 +10,6 @@ class GetCartUsecase extends Usecases<CartEntity, String> {
 
   @override
   FutureEither<CartEntity> call(String params) async {
-    final result = await repository.getCart(params);
-    return result.fold(
-      (fail) => Left(fail),
-      (cart) => Right(CartEntity(
-        id: cart.id,
-        bags: cart.bags.reversed.toList(),
-      )),
-    );
+    return await repository.getCart(params);
   }
 }

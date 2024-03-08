@@ -213,8 +213,8 @@ class Navigators {
                       if (showAccept)
                         PushableButton(
                           onPressed: () {
-                            onAccept?.call();
                             context.pop(true);
+                            onAccept?.call();
                           },
                           text: acceptText ?? LocaleKeys.common_okay.tr(),
                           type: PushableButtonType.primary,
@@ -222,8 +222,8 @@ class Navigators {
                       if (showCancel)
                         PushableButton(
                           onPressed: () {
-                            onCancel?.call();
                             context.pop(false);
+                            onCancel?.call();
                           },
                           text: cancelText ?? LocaleKeys.common_cancel.tr(),
                           type: PushableButtonType.white,

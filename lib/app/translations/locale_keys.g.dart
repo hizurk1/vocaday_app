@@ -47,6 +47,7 @@ abstract class  LocaleKeys {
   static const common_skip = 'common.skip';
   static const common_view = 'common.view';
   static const common_yes_ofc = 'common.yes_ofc';
+  static const common_go = 'common.go';
   static const on_board_get_started = 'on_board.get_started';
   static const on_board_onboard_body = 'on_board.onboard_body';
   static const on_board_onboard_title = 'on_board.onboard_title';
@@ -132,8 +133,6 @@ abstract class  LocaleKeys {
   static const favourite_sync_data_success = 'favourite.sync_data_success';
   static const activity_you_got_points = 'activity.you_got_points';
   static const activity_word = 'activity.word';
-  static const activity_learn_new_word = 'activity.learn_new_word';
-  static const activity_learn_new_word_content = 'activity.learn_new_word_content';
   static const activity_activity = 'activity.activity';
   static const activity_play = 'activity.play';
   static const activity_add_to_cart = 'activity.add_to_cart';
@@ -143,6 +142,8 @@ abstract class  LocaleKeys {
   static const activity_hold_for_detail = 'activity.hold_for_detail';
   static const activity_category = 'activity.category';
   static const activity_vocab_store = 'activity.vocab_store';
+  static const activity_word_store_title = 'activity.word_store_title';
+  static const activity_word_store_content = 'activity.word_store_content';
   static const cart_packed_your_cart_bag = 'cart.packed_your_cart_bag';
   static const cart_cart = 'cart.cart';
   static const cart_remove_cart_bag = 'cart.remove_cart_bag';
@@ -152,5 +153,10 @@ abstract class  LocaleKeys {
   static const cart_remove_word_title = 'cart.remove_word_title';
   static const cart_remove_word_content = 'cart.remove_word_content';
   static const cart_word_bag_update_success = 'cart.word_bag_update_success';
+  static const cart_expand_bag_message = 'cart.expand_bag_message';
+  static const cart_expand_this_bag = 'cart.expand_this_bag';
+  static const cart_expand_this_bag_content = 'cart.expand_this_bag_content';
+  static const cart_expand_menu = 'cart.expand_menu';
+  static const cart_remove_menu = 'cart.remove_menu';
 
 }

@@ -51,7 +51,8 @@
     "select": "Select",
     "skip": "Skip",
     "view": "View",
-    "yes_ofc": "Yes of course"
+    "yes_ofc": "Yes of course",
+    "go": "Go"
   },
   "on_board": {
     "get_started": "Get started",
@@ -199,17 +200,17 @@
       "many": "{} words",
       "other": "{} words"
     },
-    "learn_new_word": "Learn new word",
-    "learn_new_word_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
     "activity": "Activities",
     "play": "Play",
-    "add_to_cart": "Add to cart",
+    "add_to_cart": "Add to bag",
     "tap_to_rotate": "Tap to rotate",
     "i_knew": "I knew",
     "no_more_words_left": "No more words left",
     "hold_for_detail": "Hold to see details",
     "category": "Category: {}",
-    "vocab_store": "Vocabulary Store"
+    "vocab_store": "Vocabulary Store",
+    "word_store_title": "Word store",
+    "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence."
   },
   "cart": {
     "packed_your_cart_bag": "Packed your word bag",
@@ -220,6 +221,11 @@
     "user_bag": "{}'s bag",
     "remove_word_title": "Remove word from word bag",
     "remove_word_content": "Are you sure you want to remove \"{}\" from word bag?",
-    "word_bag_update_success": "Your word bag has been updated."
+    "word_bag_update_success": "Your word bag has been updated.",
+    "expand_bag_message": "Added {} to your current word bag.\\nGo to Word Store to add some new words.",
+    "expand_this_bag": "Expand this bag",
+    "expand_this_bag_content": "All of words in this bag will be unpacked and added to your current word bag.",
+    "expand_menu": "Expand this bag",
+    "remove_menu": "Remove this bag"
   }
 }

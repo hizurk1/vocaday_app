@@ -67,7 +67,8 @@ class CodegenLoader extends AssetLoader{
     "select": "Select",
     "skip": "Skip",
     "view": "View",
-    "yes_ofc": "Yes of course"
+    "yes_ofc": "Yes of course",
+    "go": "Go"
   },
   "on_board": {
     "get_started": "Get started",
@@ -215,17 +216,17 @@ class CodegenLoader extends AssetLoader{
       "many": "{} words",
       "other": "{} words"
     },
-    "learn_new_word": "Learn new word",
-    "learn_new_word_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
     "activity": "Activities",
     "play": "Play",
-    "add_to_cart": "Add to cart",
+    "add_to_cart": "Add to bag",
     "tap_to_rotate": "Tap to rotate",
     "i_knew": "I knew",
     "no_more_words_left": "No more words left",
     "hold_for_detail": "Hold to see details",
     "category": "Category: {}",
-    "vocab_store": "Vocabulary Store"
+    "vocab_store": "Vocabulary Store",
+    "word_store_title": "Word store",
+    "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence."
   },
   "cart": {
     "packed_your_cart_bag": "Packed your word bag",
@@ -236,7 +237,12 @@ class CodegenLoader extends AssetLoader{
     "user_bag": "{}'s bag",
     "remove_word_title": "Remove word from word bag",
     "remove_word_content": "Are you sure you want to remove \"{}\" from word bag?",
-    "word_bag_update_success": "Your word bag has been updated."
+    "word_bag_update_success": "Your word bag has been updated.",
+    "expand_bag_message": "Added {} to your current word bag.\\nGo to Word Store to add some new words.",
+    "expand_this_bag": "Expand this bag",
+    "expand_this_bag_content": "All of words in this bag will be unpacked and added to your current word bag.",
+    "expand_menu": "Expand this bag",
+    "remove_menu": "Remove this bag"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -292,7 +298,8 @@ static const Map<String,dynamic> vi_VN = {
     "select": "Chọn",
     "skip": "Bỏ qua",
     "view": "Xem",
-    "yes_ofc": "Đúng vậy"
+    "yes_ofc": "Đúng vậy",
+    "go": "Đi"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -440,17 +447,17 @@ static const Map<String,dynamic> vi_VN = {
       "many": "{} từ",
       "other": "{} từ"
     },
-    "learn_new_word": "Học từ vựng mới",
-    "learn_new_word_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
     "activity": "Các hoạt động",
     "play": "Chơi",
-    "add_to_cart": "Thêm vào giỏ",
+    "add_to_cart": "Thêm vào túi",
     "tap_to_rotate": "Nhấn để xoay",
     "i_knew": "Tôi đã biết",
     "no_more_words_left": "Không còn từ nào cả",
     "hold_for_detail": "Giữ để xem chi tiết",
     "category": "Danh mục: {}",
-    "vocab_store": "Cửa hàng từ vựng"
+    "vocab_store": "Cửa hàng từ vựng",
+    "word_store_title": "Cửa hàng từ vựng",
+    "word_store_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu."
   },
   "cart": {
     "packed_your_cart_bag": "Đã đóng gói túi từ vựng của bạn",
@@ -461,7 +468,12 @@ static const Map<String,dynamic> vi_VN = {
     "user_bag": "Túi của {}",
     "remove_word_title": "Xoá từ khỏi túi từ vựng",
     "remove_word_content": "Bạn có chắc muốn xoá \"{}\" khỏi túi từ vựng?",
-    "word_bag_update_success": "Túi từ vựng của bạn đã được cập nhật."
+    "word_bag_update_success": "Túi từ vựng của bạn đã được cập nhật.",
+    "expand_bag_message": "Đã thêm {} vào túi từ vựng hiện tại của bạn.\\nĐến Cửa hàng từ vựng để thêm một vài từ mới.",
+    "expand_this_bag": "Mở rộng túi này",
+    "expand_this_bag_content": "Tất cả từ trong túi này sẽ được mở gói và thêm vào túi từ vựng hiện tại của bạn.",
+    "expand_menu": "Mở rộng túi",
+    "remove_menu": "Xoá túi này"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

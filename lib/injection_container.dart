@@ -33,6 +33,7 @@ import 'features/user/user_cart/domain/repositories/cart_repository.dart';
 import 'features/user/user_cart/domain/usecases/add_cart_bag.dart';
 import 'features/user/user_cart/domain/usecases/create_cart.dart';
 import 'features/user/user_cart/domain/usecases/delete_cart_bag.dart';
+import 'features/user/user_cart/domain/usecases/expand_cart_bag.dart';
 import 'features/user/user_cart/domain/usecases/get_cart.dart';
 import 'features/user/user_cart/domain/usecases/update_cart_bag.dart';
 import 'features/user/user_cart/presentation/cubits/cart/cart_cubit.dart';
@@ -191,7 +192,8 @@ Future<void> setUpServiceLocator() async {
   sl.registerLazySingleton(() => GetCartUsecase(sl()));
   sl.registerLazySingleton(() => DeleteCartBagUsecase(sl()));
   sl.registerLazySingleton(() => UpdateCartBagUsecase(sl()));
+  sl.registerLazySingleton(() => ExpandCartBagUsecase(sl(), sl()));
   // Bloc/Cubit
   sl.registerFactory(() => CartBagCubit(sl()));
-  sl.registerFactory(() => CartCubit(sl(), sl(), sl(), sl(), sl()));
+  sl.registerFactory(() => CartCubit(sl(), sl(), sl(), sl(), sl(), sl()));
 }

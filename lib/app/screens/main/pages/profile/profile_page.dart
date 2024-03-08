@@ -59,6 +59,7 @@ class ProfilePage extends StatelessWidget {
             margin: EdgeInsets.only(right: 20.w),
             child: SvgPicture.asset(
               Assets.icons.pencil,
+              height: 25.h,
               colorFilter: ColorFilter.mode(
                 context.theme.primaryColorDark,
                 BlendMode.srcIn,
