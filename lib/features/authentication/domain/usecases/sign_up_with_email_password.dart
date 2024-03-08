@@ -49,7 +49,7 @@ class SignUpWithEmailPasswordUsecase
 
         final addUserResult = await userRepository.addUserProfile(userEntity);
 
-        return addUserResult.fold(
+        return await addUserResult.fold(
           (fail) => Left(fail),
           (_) async {
             final addCartRes = await cartRepository.createCart(

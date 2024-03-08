@@ -50,7 +50,8 @@
     "save": "Save",
     "select": "Select",
     "skip": "Skip",
-    "view": "View"
+    "view": "View",
+    "yes_ofc": "Yes of course"
   },
   "on_board": {
     "get_started": "Get started",
@@ -211,8 +212,14 @@
     "vocab_store": "Vocabulary Store"
   },
   "cart": {
-    "user_cart": "{}'s cart",
-    "packed_your_cart_bag": "Packed your cart bag",
-    "cart": "Cart"
+    "packed_your_cart_bag": "Packed your word bag",
+    "cart": "Word cart",
+    "remove_cart_bag": "Remove word bag",
+    "remove_cart_bag_content": "This word bag contains {}. Are you sure you want to remove it?",
+    "remove_cart_bag_success": "Your word bag has been successfully removed.",
+    "user_bag": "{}'s bag",
+    "remove_word_title": "Remove word from word bag",
+    "remove_word_content": "Are you sure you want to remove \"{}\" from word bag?",
+    "word_bag_update_success": "Your word bag has been updated."
   }
 }

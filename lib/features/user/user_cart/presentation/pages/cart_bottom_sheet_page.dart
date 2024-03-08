@@ -67,7 +67,7 @@ class CartBottomSheetPage extends StatelessWidget {
                   initialChildSize: 1,
                   minChildSize: 0.2,
                   backgroundColor: context.backgroundColor,
-                  textTitle: LocaleKeys.cart_user_cart.tr(args: [entity.name]),
+                  textTitle: LocaleKeys.cart_user_bag.tr(args: [entity.name]),
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                   onAction: () => _onSaveCartBag(context, entity.uid),

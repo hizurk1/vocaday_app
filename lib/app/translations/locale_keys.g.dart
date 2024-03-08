@@ -46,6 +46,7 @@ abstract class  LocaleKeys {
   static const common_select = 'common.select';
   static const common_skip = 'common.skip';
   static const common_view = 'common.view';
+  static const common_yes_ofc = 'common.yes_ofc';
   static const on_board_get_started = 'on_board.get_started';
   static const on_board_onboard_body = 'on_board.onboard_body';
   static const on_board_onboard_title = 'on_board.onboard_title';
@@ -142,8 +143,14 @@ abstract class  LocaleKeys {
   static const activity_hold_for_detail = 'activity.hold_for_detail';
   static const activity_category = 'activity.category';
   static const activity_vocab_store = 'activity.vocab_store';
-  static const cart_user_cart = 'cart.user_cart';
   static const cart_packed_your_cart_bag = 'cart.packed_your_cart_bag';
   static const cart_cart = 'cart.cart';
+  static const cart_remove_cart_bag = 'cart.remove_cart_bag';
+  static const cart_remove_cart_bag_content = 'cart.remove_cart_bag_content';
+  static const cart_remove_cart_bag_success = 'cart.remove_cart_bag_success';
+  static const cart_user_bag = 'cart.user_bag';
+  static const cart_remove_word_title = 'cart.remove_word_title';
+  static const cart_remove_word_content = 'cart.remove_word_content';
+  static const cart_word_bag_update_success = 'cart.word_bag_update_success';
 
 }

@@ -66,7 +66,8 @@ class CodegenLoader extends AssetLoader{
     "save": "Save",
     "select": "Select",
     "skip": "Skip",
-    "view": "View"
+    "view": "View",
+    "yes_ofc": "Yes of course"
   },
   "on_board": {
     "get_started": "Get started",
@@ -227,9 +228,15 @@ class CodegenLoader extends AssetLoader{
     "vocab_store": "Vocabulary Store"
   },
   "cart": {
-    "user_cart": "{}'s cart",
-    "packed_your_cart_bag": "Packed your cart bag",
-    "cart": "Cart"
+    "packed_your_cart_bag": "Packed your word bag",
+    "cart": "Word cart",
+    "remove_cart_bag": "Remove word bag",
+    "remove_cart_bag_content": "This word bag contains {}. Are you sure you want to remove it?",
+    "remove_cart_bag_success": "Your word bag has been successfully removed.",
+    "user_bag": "{}'s bag",
+    "remove_word_title": "Remove word from word bag",
+    "remove_word_content": "Are you sure you want to remove \"{}\" from word bag?",
+    "word_bag_update_success": "Your word bag has been updated."
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -284,7 +291,8 @@ static const Map<String,dynamic> vi_VN = {
     "save": "Lưu",
     "select": "Chọn",
     "skip": "Bỏ qua",
-    "view": "Xem"
+    "view": "Xem",
+    "yes_ofc": "Đúng vậy"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -445,9 +453,15 @@ static const Map<String,dynamic> vi_VN = {
     "vocab_store": "Cửa hàng từ vựng"
   },
   "cart": {
-    "user_cart": "Giỏ hàng của {}",
-    "packed_your_cart_bag": "Đã đóng gói giỏ hàng của bạn",
-    "cart": "Giỏ hàng"
+    "packed_your_cart_bag": "Đã đóng gói túi từ vựng của bạn",
+    "cart": "Giỏ từ vựng",
+    "remove_cart_bag": "Xoá túi từ vựng",
+    "remove_cart_bag_content": "Túi từ vựng này chứa {}. Bạn có chắc muốn xoá nó?",
+    "remove_cart_bag_success": "Túi từ vựng của bạn đã được xoá thành công.",
+    "user_bag": "Túi của {}",
+    "remove_word_title": "Xoá từ khỏi túi từ vựng",
+    "remove_word_content": "Bạn có chắc muốn xoá \"{}\" khỏi túi từ vựng?",
+    "word_bag_update_success": "Túi từ vựng của bạn đã được cập nhật."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

@@ -43,7 +43,7 @@ class Navigators {
   /// * [maxLines]: The maximum number of lines to show.
   /// * [duration]: The duration of the message. Default is `3 seconds`.
   /// * [dismissDirection]: The direction to dismiss the message.
-  /// * [opacity]: The opacity for snackbar, default is `0.75`.
+  /// * [opacity]: The opacity for snackbar, default is `0.95`.
   /// * [actionText]: The text of the action button.
   /// * [onAction]: The action to take when the action button is pressed.
   showMessage(
@@ -53,7 +53,7 @@ class Navigators {
     int maxLines = 5,
     int duration = 3,
     DismissDirection dismissDirection = DismissDirection.down,
-    double opacity = 0.75,
+    double opacity = 0.95,
     String? actionText,
     VoidCallback? onAction,
   }) {
