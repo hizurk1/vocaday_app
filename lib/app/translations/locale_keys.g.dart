@@ -158,5 +158,8 @@ abstract class  LocaleKeys {
   static const cart_expand_this_bag_content = 'cart.expand_this_bag_content';
   static const cart_expand_menu = 'cart.expand_menu';
   static const cart_remove_menu = 'cart.remove_menu';
+  static const cart_my_word_bag_hint = 'cart.my_word_bag_hint';
+  static const cart_my_bag_default = 'cart.my_bag_default';
+  static const cart_name_your_word_bag = 'cart.name_your_word_bag';
 
 }

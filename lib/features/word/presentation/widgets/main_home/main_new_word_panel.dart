@@ -27,6 +27,8 @@ class MainNewWordPanelWidget extends StatefulWidget {
 }
 
 class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
+  bool _isFirst = true;
+
   void _onLearnMorePressed(BuildContext context) {
     final state = context.read<DailyWordCubit>().state;
     if (state is DailyWordLoadedState) {
@@ -60,9 +62,10 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
             return ErrorPage(text: state.message);
           }
           if (state is WordListLoadedState) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (_isFirst) {
+              _isFirst = false;
               context.read<DailyWordCubit>().getDailyWord(state.wordList);
-            });
+            }
 
             return Container(
               width: context.screenWidth,

@@ -85,7 +85,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
   }
 
   Future<void> _addToCartBag(String word) async {
-    await context.read<CartBagCubit>().addCartBag(word);
+    await context.read<CartBagCubit>().addToCartBag(word);
   }
 
   Future<void> _onKnewPressed() async {

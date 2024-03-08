@@ -16,7 +16,9 @@ import '../cubits/cart/cart_cubit.dart';
 import '../cubits/cart_bag/cart_bag_cubit.dart';
 
 class CartBottomSheetPage extends StatelessWidget {
-  const CartBottomSheetPage({super.key});
+  CartBottomSheetPage({super.key});
+
+  final ValueNotifier<String> bagNameNotifier = ValueNotifier("");
 
   void _onTapWordCartItem(BuildContext context, WordEntity entity) {
     context.showBottomSheet(
@@ -38,9 +40,25 @@ class CartBottomSheetPage extends StatelessWidget {
   }
 
   Future<void> _onSaveCartBag(BuildContext context, String uid) async {
-    Navigators().popDialog();
-    await Navigators().showLoading(
-      tasks: [context.read<CartCubit>().addCartBag(uid)],
+    Navigators().showDialogWithButton(
+      title: LocaleKeys.cart_name_your_word_bag.tr(),
+      showIcon: false,
+      body: BorderTextField(
+        hintText: LocaleKeys.cart_my_word_bag_hint.tr(),
+        autofocus: true,
+        maxLength: 20,
+        onChanged: (value) => bagNameNotifier.value = value,
+      ),
+      onAccept: () async {
+        final name = bagNameNotifier.value.trim();
+        Navigators().popDialog();
+        await Navigators().showLoading(
+          tasks: [
+            context.read<CartCubit>().addCartBag(
+                uid, name.isEmpty ? LocaleKeys.cart_my_bag_default.tr() : name)
+          ],
+        );
+      },
     );
   }
 

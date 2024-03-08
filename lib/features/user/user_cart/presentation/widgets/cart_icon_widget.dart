@@ -15,7 +15,7 @@ class CartIconWidget extends StatelessWidget {
 
   Future<void> _onOpenCartBottomSheet(BuildContext context) async {
     await context.showBottomSheet(
-      child: const CartBottomSheetPage(),
+      child: CartBottomSheetPage(),
     );
   }
 

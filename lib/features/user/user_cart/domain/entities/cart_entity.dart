@@ -29,21 +29,25 @@ class CartEntity extends Equatable {
 }
 
 class CartBagEntity extends Equatable {
+  final String label;
   final List<String> words;
   final DateTime dateTime;
   const CartBagEntity({
+    this.label = '',
     required this.words,
     required this.dateTime,
   });
 
   @override
-  List<Object> get props => [words, dateTime];
+  List<Object> get props => [label, words, dateTime];
 
   CartBagEntity copyWith({
+    String? label,
     List<String>? words,
     DateTime? dateTime,
   }) {
     return CartBagEntity(
+      label: label ?? this.label,
       words: words ?? this.words,
       dateTime: dateTime ?? this.dateTime,
     );

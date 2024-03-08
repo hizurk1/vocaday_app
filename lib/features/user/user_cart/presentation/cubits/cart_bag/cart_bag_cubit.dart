@@ -35,7 +35,7 @@ class CartBagCubit extends Cubit<CartBagState> {
     return [];
   }
 
-  Future<void> addCartBag(String word) async {
+  Future<void> addToCartBag(String word) async {
     emit(state.copyWith(status: CartBagStatus.loading));
     try {
       final localList = sharedPrefManager.getCartBags;

@@ -109,13 +109,14 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  Future<void> addCartBag(String uid) async {
+  Future<void> addCartBag(String uid, String label) async {
     emit(const CartLoadingState());
 
     final cartBagLocal = sharedPrefManager.getCartBags;
     final result = await addCartBagUsecase((
       uid,
       CartBagEntity(
+        label: label,
         words: cartBagLocal,
         dateTime: DateTime.now(),
       )

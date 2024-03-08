@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/extensions/build_context.dart';
-import '../constants/gen/assets.gen.dart';
 import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 
@@ -21,6 +20,8 @@ class BorderTextField extends StatelessWidget {
     this.inputType = TextInputType.text,
     this.isPasswordField = false,
     this.textCapitalization = TextCapitalization.none,
+    this.autofocus = false,
+    this.onChanged,
     this.onTap,
   });
 
@@ -34,6 +35,8 @@ class BorderTextField extends StatelessWidget {
   final TextCapitalization textCapitalization;
   final int? maxLength;
   final int maxLines;
+  final bool autofocus;
+  final void Function(String)? onChanged;
 
   /// If this value is set to `false`, the user can't type in this text field
   /// and an [InkWell] widget with [onTap] function will be available.
@@ -63,6 +66,8 @@ class BorderTextField extends StatelessWidget {
           builder: (context, value, _) {
             return TextField(
               controller: controller,
+              onChanged: onChanged,
+              autofocus: autofocus,
               maxLines: maxLines,
               maxLength: maxLength ?? 50,
               enabled: enable,
@@ -71,13 +76,15 @@ class BorderTextField extends StatelessWidget {
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(bottom: 2.h),
-                icon: SvgPicture.asset(
-                  icon ?? Assets.icons.copy,
-                  height: 25.h,
-                  width: 25.w,
-                  colorFilter:
-                      ColorFilter.mode(context.colors.grey400, BlendMode.srcIn),
-                ),
+                icon: icon != null
+                    ? SvgPicture.asset(
+                        icon!,
+                        height: 25.h,
+                        width: 25.w,
+                        colorFilter: ColorFilter.mode(
+                            context.colors.grey400, BlendMode.srcIn),
+                      )
+                    : null,
                 hintText: hintText,
                 hintStyle: context.textStyle.bodyS.grey80,
                 counterText: '',

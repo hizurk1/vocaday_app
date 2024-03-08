@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/managers/navigation.dart';
@@ -65,24 +64,29 @@ class _CartPageBodyState extends State<CartPageBody> {
             }
             if (state is CartLoadedState) {
               final cartEntity = state.entity;
-              return RefreshIndicator(
-                onRefresh: _onRefresh,
-                child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: cartEntity.bags.length,
-                  itemBuilder: (context, index) {
-                    final wordItems = wordList
-                        .where((e) =>
-                            cartEntity.bags[index].words.contains(e.word))
-                        .toList();
-                    return _CartBagWidget(
-                      index: index,
-                      cartEntity: cartEntity,
-                      wordItems: wordItems,
+              return cartEntity.bags.isEmpty
+                  ? ErrorPage(
+                      text: LocaleKeys.search_not_found.tr(),
+                      image: Assets.jsons.notFoundDog,
+                    )
+                  : RefreshIndicator(
+                      onRefresh: _onRefresh,
+                      child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: cartEntity.bags.length,
+                        itemBuilder: (context, index) {
+                          final wordItems = wordList
+                              .where((e) =>
+                                  cartEntity.bags[index].words.contains(e.word))
+                              .toList();
+                          return _CartBagWidget(
+                            index: index,
+                            cartEntity: cartEntity,
+                            wordItems: wordItems,
+                          );
+                        },
+                      ),
                     );
-                  },
-                ),
-              );
             }
             return Container();
           },
@@ -200,27 +204,23 @@ class _CartBagWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              SvgPicture.asset(
-                Assets.icons.calendarOutline,
-                height: 20.h,
-                colorFilter: const ColorFilter.mode(
-                  Colors.white,
-                  BlendMode.srcIn,
-                ),
-              ),
-              Gap(width: 10.w),
               Expanded(
                 child: TextCustom(
-                  cartEntity.bags[index].dateTime.ddMMyyyyHHmmaa,
-                  style: context.textStyle.bodyS.bold.white,
+                  cartEntity.bags[index].label,
+                  style: context.textStyle.bodyM.bold.white,
                 ),
               ),
               const Gap(width: 12),
               _buildPopupMenu(context),
             ],
           ),
+          const Gap(height: 5),
+          TextCustom(
+            cartEntity.bags[index].dateTime.ddMMyyyyHHmmaa,
+            style: context.textStyle.caption.grey300,
+          ),
           DashedLineCustom(
-            margin: EdgeInsets.symmetric(vertical: 20.h),
+            margin: EdgeInsets.only(top: 12.h, bottom: 15.h),
           ),
           Column(
             mainAxisSize: MainAxisSize.min,

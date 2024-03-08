@@ -238,11 +238,14 @@ class CodegenLoader extends AssetLoader{
     "remove_word_title": "Remove word from word bag",
     "remove_word_content": "Are you sure you want to remove \"{}\" from word bag?",
     "word_bag_update_success": "Your word bag has been updated.",
-    "expand_bag_message": "Added {} to your current word bag.\\nGo to Word Store to add some new words.",
+    "expand_bag_message": "Added {} to your current word bag. Go to Word Store to add some new words.",
     "expand_this_bag": "Expand this bag",
     "expand_this_bag_content": "All of words in this bag will be unpacked and added to your current word bag.",
     "expand_menu": "Expand this bag",
-    "remove_menu": "Remove this bag"
+    "remove_menu": "Remove this bag",
+    "my_word_bag_hint": "Default: My bag",
+    "my_bag_default": "My bag",
+    "name_your_word_bag": "Name your word bag"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -469,11 +472,14 @@ static const Map<String,dynamic> vi_VN = {
     "remove_word_title": "Xoá từ khỏi túi từ vựng",
     "remove_word_content": "Bạn có chắc muốn xoá \"{}\" khỏi túi từ vựng?",
     "word_bag_update_success": "Túi từ vựng của bạn đã được cập nhật.",
-    "expand_bag_message": "Đã thêm {} vào túi từ vựng hiện tại của bạn.\\nĐến Cửa hàng từ vựng để thêm một vài từ mới.",
+    "expand_bag_message": "Đã thêm {} vào túi từ vựng hiện tại của bạn. Đến Cửa hàng từ vựng để thêm một vài từ mới.",
     "expand_this_bag": "Mở rộng túi này",
     "expand_this_bag_content": "Tất cả từ trong túi này sẽ được mở gói và thêm vào túi từ vựng hiện tại của bạn.",
     "expand_menu": "Mở rộng túi",
-    "remove_menu": "Xoá túi này"
+    "remove_menu": "Xoá túi này",
+    "my_word_bag_hint": "Mặc định: Túi của tôi",
+    "my_bag_default": "Túi của tôi",
+    "name_your_word_bag": "Đặt tên túi từ của bạn"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

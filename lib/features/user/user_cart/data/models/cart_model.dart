@@ -58,21 +58,25 @@ class CartModel extends Equatable {
 }
 
 class CartBagModel extends Equatable {
+  final String label;
   final List<String> words;
   final DateTime dateTime;
   const CartBagModel({
+    required this.label,
     required this.words,
     required this.dateTime,
   });
 
   @override
-  List<Object> get props => [words, dateTime];
+  List<Object> get props => [label, words, dateTime];
 
   CartBagModel copyWith({
+    String? label,
     List<String>? words,
     DateTime? dateTime,
   }) {
     return CartBagModel(
+      label: label ?? this.label,
       words: words ?? this.words,
       dateTime: dateTime ?? this.dateTime,
     );
@@ -80,6 +84,7 @@ class CartBagModel extends Equatable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'label': label,
       'words': words,
       'dateTime': dateTime.millisecondsSinceEpoch,
     };
@@ -87,17 +92,19 @@ class CartBagModel extends Equatable {
 
   factory CartBagModel.fromMap(Map<String, dynamic> map) {
     return CartBagModel(
+      label: map['label'] as String,
       words: (map['words'] as List).map((e) => e.toString()).toList(),
       dateTime: DateTime.fromMillisecondsSinceEpoch(map['dateTime'] as int),
     );
   }
 
   CartBagEntity toEntity() {
-    return CartBagEntity(words: words, dateTime: dateTime);
+    return CartBagEntity(label: label, words: words, dateTime: dateTime);
   }
 
   factory CartBagModel.fromEntity(CartBagEntity entity) {
     return CartBagModel(
+      label: entity.label,
       words: entity.words,
       dateTime: entity.dateTime,
     );
