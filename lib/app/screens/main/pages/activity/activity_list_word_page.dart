@@ -1,25 +1,43 @@
-import 'dart:math';
-
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/build_context.dart';
+import '../../../../../features/authentication/presentation/blocs/auth/auth_bloc.dart';
+import '../../../../../features/user/user_cart/presentation/cubits/cart/cart_cubit.dart';
+import '../../../../../features/user/user_cart/presentation/cubits/cart_bag/cart_bag_cubit.dart';
 import '../../../../../features/user/user_cart/presentation/widgets/cart_icon_widget.dart';
-import '../../../../../features/user/user_profile/domain/entities/user_entity.dart';
-import '../../../../../features/user/user_profile/presentation/cubits/user_data/user_data_cubit.dart';
 import '../../../../../features/word/domain/entities/word_entity.dart';
 import '../../../../../features/word/presentation/blocs/word_list/word_list_cubit.dart';
+import '../../../../../injection_container.dart';
 import '../../../../constants/app_const.dart';
+import '../../../../managers/shared_preferences.dart';
 import '../../../../routes/route_manager.dart';
 import '../../../../themes/app_color.dart';
 import '../../../../themes/app_text_theme.dart';
 import '../../../../translations/translations.dart';
 import '../../../../widgets/widgets.dart';
 
-class ActivityListWordPage extends StatelessWidget {
+class ActivityListWordPage extends StatefulWidget {
   const ActivityListWordPage({super.key});
+
+  @override
+  State<ActivityListWordPage> createState() => _ActivityListWordPageState();
+}
+
+class _ActivityListWordPageState extends State<ActivityListWordPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final uid = context.read<AuthBloc>().state.user?.uid;
+      if (uid != null) {
+        await context.read<CartCubit>().getCart(uid);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,45 +49,79 @@ class ActivityListWordPage extends StatelessWidget {
           textTitle: LocaleKeys.activity_vocab_store.tr(),
           action: const CartIconWidget(marginRight: 15),
         ),
-        body: BlocSelector<UserDataCubit, UserDataState, UserEntity?>(
-          selector: (state) {
-            return state is UserDataLoadedState ? state.entity : null;
-          },
-          builder: (context, UserEntity? userEntity) {
-            if (userEntity == null) {
-              return const LoadingIndicatorPage();
-            }
-            return BlocSelector<WordListCubit, WordListState, List<WordEntity>>(
-              selector: (state) {
-                return state is WordListLoadedState ? state.wordList : [];
-              },
-              builder: (context, List<WordEntity> wordList) {
-                return ListView(
-                  children: AppStringConst.alphabet.split("").map(
-                    (title) {
-                      final filtedList = wordList
-                          .where((e) => e.word.toLowerCase().startsWith(title))
-                          .toList()
-                        ..shuffle();
-                      return GestureDetector(
-                        onTap: () {
-                          context.push(AppRoutes.flashCard, extra: {
-                            'title': title,
-                            'words': filtedList,
-                          });
-                        },
-                        child: _ActivityListWordCardWidget(
-                          title: title,
-                          value: Random().nextInt(filtedList.length),
-                          total: filtedList.length,
-                        ),
-                      );
+        body: RefreshIndicator(
+          onRefresh: () async {},
+          child: BlocSelector<WordListCubit, WordListState, List<WordEntity>>(
+            selector: (state) {
+              return state is WordListLoadedState ? state.wordList : [];
+            },
+            builder: (context, List<WordEntity> wordList) {
+              if (wordList.isEmpty) {
+                return const LoadingIndicatorPage();
+              }
+              return BlocBuilder<CartBagCubit, CartBagState>(
+                buildWhen: (previous, current) =>
+                    current.status == CartBagStatus.loaded,
+                builder: (context, _) {
+                  return BlocBuilder<CartCubit, CartState>(
+                    builder: (context, state) {
+                      if (state is! CartLoadedState) {
+                        return const LoadingIndicatorPage();
+                      } else {
+                        final bags = (sl<SharedPrefManager>().getCartBags +
+                                state.entity.bags
+                                    .expand((bag) => bag.words)
+                                    .toList())
+                            .toSet();
+
+                        final excludeBagList = wordList
+                            .whereNot((e) => bags.contains(e.word))
+                            .toList();
+
+                        if (excludeBagList.isEmpty) {
+                          return const LoadingIndicatorPage();
+                        }
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: AppStringConst.alphabet.split("").map(
+                              (title) {
+                                final filtedList = excludeBagList
+                                    .where((e) =>
+                                        e.word.toLowerCase().startsWith(title))
+                                    .toList()
+                                  ..shuffle();
+                                final excludeKnown = filtedList.whereNot((e) =>
+                                    sl<SharedPrefManager>()
+                                        .getKnownWords
+                                        .contains(e.word));
+
+                                return GestureDetector(
+                                  onTap: () async {
+                                    await context
+                                        .push(AppRoutes.flashCard, extra: {
+                                      'title': title,
+                                      'words': excludeKnown.toList(),
+                                    });
+                                    if (mounted) setState(() {});
+                                  },
+                                  child: _ActivityListWordCardWidget(
+                                    title: title,
+                                    value:
+                                        filtedList.length - excludeKnown.length,
+                                    total: filtedList.length,
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        );
+                      }
                     },
-                  ).toList(),
-                );
-              },
-            );
-          },
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );

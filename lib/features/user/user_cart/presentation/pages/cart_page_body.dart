@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -71,20 +72,21 @@ class _CartPageBodyState extends State<CartPageBody> {
                     )
                   : RefreshIndicator(
                       onRefresh: _onRefresh,
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: cartEntity.bags.length,
-                        itemBuilder: (context, index) {
-                          final wordItems = wordList
-                              .where((e) =>
-                                  cartEntity.bags[index].words.contains(e.word))
-                              .toList();
-                          return _CartBagWidget(
-                            index: index,
-                            cartEntity: cartEntity,
-                            wordItems: wordItems,
-                          );
-                        },
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children:
+                              cartEntity.bags.mapIndexed((index, element) {
+                            final wordItems = wordList
+                                .where((e) => cartEntity.bags[index].words
+                                    .contains(e.word))
+                                .toList();
+                            return _CartBagWidget(
+                              index: index,
+                              cartEntity: cartEntity,
+                              wordItems: wordItems,
+                            );
+                          }).toList(),
+                        ),
                       ),
                     );
             }
