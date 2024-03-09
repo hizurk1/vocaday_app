@@ -3,15 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../config/app_logger.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../../core/extensions/color.dart';
 import '../../../../../features/user/user_cart/presentation/cubits/cart_bag/cart_bag_cubit.dart';
 import '../../../../../features/user/user_cart/presentation/widgets/cart_icon_widget.dart';
+import '../../../../../features/user/user_profile/presentation/widgets/known_word/known_word_button_widget.dart';
 import '../../../../../features/word/domain/entities/word_entity.dart';
 import '../../../../../features/word/presentation/pages/word_detail_bottom_sheet.dart';
+import '../../../../../injection_container.dart';
 import '../../../../constants/gen/assets.gen.dart';
+import '../../../../managers/shared_preferences.dart';
 import '../../../../themes/app_text_theme.dart';
 import '../../../../translations/translations.dart';
+import '../../../../utils/event_transformer.dart';
 import '../../../../widgets/widgets.dart';
 import 'widgets/activity_word_card_widget.dart';
 
@@ -34,6 +39,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
   final _flipController = FlipCardController();
   final wordCardsNotifier = ValueNotifier<List<WordCardWidget>>([]);
   final countIndex = ValueNotifier<int>(0);
+  final _debounce = Debouncer();
 
   @override
   void initState() {
@@ -53,6 +59,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
   @override
   void dispose() {
     _swipeController.dispose();
+    _debounce.dispose();
     super.dispose();
   }
 
@@ -91,7 +98,11 @@ class _FlashCardPageState extends State<FlashCardPage> {
   Future<void> _onKnewPressed() async {
     _swipeController.swipe(CardSwiperDirection.bottom);
     final fixedIndex = countIndex.value % wordCardsNotifier.value.length;
-    // logger.i(wordCardsNotifier.value[fixedIndex].entity.word);
+
+    await sl<SharedPrefManager>()
+        .addKnownWord(wordCardsNotifier.value[fixedIndex].entity.word);
+    logger.i("Known words: ${sl<SharedPrefManager>().getKnownWords}");
+
     wordCardsNotifier.value.removeAt(fixedIndex);
     wordCardsNotifier.value = List.from(wordCardsNotifier.value);
   }
@@ -141,7 +152,13 @@ class _FlashCardPageState extends State<FlashCardPage> {
         body: SafeArea(
           child: ValueListenableBuilder(
             valueListenable: wordCardsNotifier,
-            builder: (context, wordCards, _) {
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 20.h),
+              child: KnownWordButtonWidget(
+                onPressed: () => _onKnewPressed(),
+              ),
+            ),
+            builder: (context, wordCards, child) {
               if (wordCards.isEmpty) {
                 return ErrorPage(
                   text: LocaleKeys.activity_no_more_words_left.tr(),
@@ -172,14 +189,7 @@ class _FlashCardPageState extends State<FlashCardPage> {
                       },
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 30.w, vertical: 20.h),
-                    child: PushableButton(
-                      onPressed: _onKnewPressed,
-                      text: LocaleKeys.activity_i_knew.tr(),
-                    ),
-                  ),
+                  child!,
                 ],
               );
             },

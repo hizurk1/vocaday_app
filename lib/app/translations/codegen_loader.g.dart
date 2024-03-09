@@ -83,7 +83,8 @@ class CodegenLoader extends AssetLoader{
     "profile": "Profile",
     "search": "Search",
     "setting": "Setting",
-    "favourite": "Favourite"
+    "favourite": "Favourite",
+    "known_word": "Known word"
   },
   "profile": {
     "birthday": "Birthday",
@@ -202,7 +203,7 @@ class CodegenLoader extends AssetLoader{
     "add_to_favourite": "Added \"{}\" into your favourite list.",
     "remove_from_favourite": "Removed \"{}\" from your favourite list.",
     "favourites": "Favourites",
-    "clear_all_favourites": "Are you sure you want to clear all your favourite word list.",
+    "clear_all_favourites": "Are you sure you want to clear all your favourite word list?",
     "clear_all_fav_title": "Clear all favourite words",
     "clear_all": "Clear all favourites",
     "sync_data": "Sync data",
@@ -246,6 +247,15 @@ class CodegenLoader extends AssetLoader{
     "my_word_bag_hint": "Default: My bag",
     "my_bag_default": "My bag",
     "name_your_word_bag": "Name your word bag"
+  },
+  "known": {
+    "sync_data_success": "Data sync successfully",
+    "add_to_known": "Added \"{}\" into your known word list.",
+    "clear_all": "Clear all known words",
+    "clear_all_content": "Are you sure you want to clear all your known word list?",
+    "sync_data": "Sync data",
+    "knowns": "Known words",
+    "remove_from_knowns": "Removed \"{}\" from your known word list."
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -317,7 +327,8 @@ static const Map<String,dynamic> vi_VN = {
     "profile": "Hồ sơ",
     "search": "Tìm kiếm",
     "setting": "Cài đặt",
-    "favourite": "Yêu thích"
+    "favourite": "Yêu thích",
+    "known_word": "Từ đã biết"
   },
   "profile": {
     "birthday": "Sinh nhật",
@@ -436,7 +447,7 @@ static const Map<String,dynamic> vi_VN = {
     "add_to_favourite": "Đã thêm \"{}\" vào danh sách yêu thích của bạn.",
     "remove_from_favourite": "Đã xoá \"{}\" khỏi danh sách yêu thích của bạn.",
     "favourites": "Yêu thích",
-    "clear_all_favourites": "Bạn có chắc muốn xoá tất cả từ vựng yêu thích.",
+    "clear_all_favourites": "Bạn có chắc muốn xoá tất cả từ vựng yêu thích?",
     "clear_all_fav_title": "Xoá tất cả yêu thích",
     "clear_all": "Xoá tất cả yêu thích",
     "sync_data": "Đồng bộ dữ liệu",
@@ -480,6 +491,15 @@ static const Map<String,dynamic> vi_VN = {
     "my_word_bag_hint": "Mặc định: Túi của tôi",
     "my_bag_default": "Túi của tôi",
     "name_your_word_bag": "Đặt tên túi từ của bạn"
+  },
+  "known": {
+    "sync_data_success": "Đồng bộ dữ liệu thành công",
+    "add_to_known": "Đã thêm \"{}\" vào danh sách từ đã biết của bạn.",
+    "clear_all": "Xoá tất cả từ đã biết",
+    "clear_all_content": "Bạn có chắc chắn muốn xoá tất cả danh sách từ vựng đã biết?",
+    "sync_data": "Đồng bộ dữ liệu",
+    "knowns": "Từ đã biết",
+    "remove_from_knowns": "Đã xoá \"{}\" khỏi danh sách từ đã biết của bạn."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

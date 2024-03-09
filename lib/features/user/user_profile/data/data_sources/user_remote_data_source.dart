@@ -31,7 +31,14 @@ abstract interface class UserRemoteDataSource {
     required Map<String, dynamic> map,
   });
 
+  Future<List<String>> syncKnowns({
+    required String uid,
+    required Map<String, dynamic> map,
+  });
+
   Future<void> removeAllFavourites({required String uid});
+
+  Future<void> removeAllKnowns({required String uid});
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
@@ -148,6 +155,39 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   Future<void> removeAllFavourites({required String uid}) async {
     try {
       await firestore.collection(_users).doc(uid).update({'favourites': null});
+    } on FirebaseException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
+    }
+  }
+
+  @override
+  Future<void> removeAllKnowns({required String uid}) async {
+    try {
+      await firestore.collection(_users).doc(uid).update({'knowns': null});
+    } on FirebaseException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
+    }
+  }
+
+  @override
+  Future<List<String>> syncKnowns({
+    required String uid,
+    required Map<String, dynamic> map,
+  }) async {
+    try {
+      List<String> localList = map['knowns'] as List<String>;
+      if (localList.isEmpty) {
+        final res = await firestore.collection(_users).doc(uid).get();
+        localList = UserModel.fromMap(res.data()!).knowns ?? [];
+      } else {
+        await firestore.collection(_users).doc(uid).update(map);
+      }
+
+      return localList;
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {

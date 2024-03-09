@@ -45,9 +45,12 @@ import 'features/user/user_profile/domain/usecases/add_attendance_date.dart';
 import 'features/user/user_profile/domain/usecases/get_list_users.dart';
 import 'features/user/user_profile/domain/usecases/get_user_data.dart';
 import 'features/user/user_profile/domain/usecases/remove_all_favourite_word_usecase.dart';
+import 'features/user/user_profile/domain/usecases/remove_all_known_word.dart';
 import 'features/user/user_profile/domain/usecases/sync_favourite_word_usecase.dart';
+import 'features/user/user_profile/domain/usecases/sync_known_word.dart';
 import 'features/user/user_profile/domain/usecases/update_user_profile.dart';
 import 'features/user/user_profile/presentation/cubits/favourite/word_favourite_cubit.dart';
+import 'features/user/user_profile/presentation/cubits/known/known_word_cubit.dart';
 import 'features/user/user_profile/presentation/cubits/leader_board/leader_board_cubit.dart';
 import 'features/user/user_profile/presentation/cubits/user_data/user_data_cubit.dart';
 import 'features/word/data/data_sources/word_local_data_source.dart';
@@ -86,7 +89,14 @@ Future<void> setUpServiceLocator() async {
   sl.registerLazySingleton(() => SyncFavouriteWordUsecase(repository: sl()));
   sl.registerLazySingleton(() => RemoveAllFavouriteWordUsecase(sl()));
   // Cubit
-  sl.registerFactory(() => WordFavouriteCubit(sl(), sl(), sl()));
+  sl.registerFactory(() => WordFavouriteCubit(sl(), sl(), sl(), sl()));
+
+  //! Features - known
+  // Usecase
+  sl.registerLazySingleton(() => SyncKnownWordUsecase(sl()));
+  sl.registerLazySingleton(() => RemoveAllKnownWordUsecase(sl()));
+  // Cubit
+  sl.registerFactory(() => KnownWordCubit(sl(), sl(), sl(), sl()));
 
   //! Features - word
   // Data source

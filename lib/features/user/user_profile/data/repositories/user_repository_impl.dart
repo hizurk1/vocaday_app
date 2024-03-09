@@ -142,4 +142,39 @@ class UserRepositoryImpl implements UserRepository {
       return Left(DatabaseFailure(e.toString()));
     }
   }
+
+  @override
+  FutureEither<void> removeAllKnowns({required String uid}) async {
+    try {
+      return Right(
+        await userRemoteDataSource.removeAllKnowns(uid: uid),
+      );
+    } on FirebaseException catch (e) {
+      return Left(
+        FirebaseFailure(e.message ?? 'FirebaseFailure: removeAllKnowns'),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
+
+  @override
+  FutureEither<List<String>> syncKnowns({
+    required String uid,
+    required List<String> knowns,
+  }) async {
+    try {
+      final res = await userRemoteDataSource.syncKnowns(
+        uid: uid,
+        map: {'knowns': knowns},
+      );
+      return Right(res);
+    } on FirebaseException catch (e) {
+      return Left(
+        FirebaseFailure(e.message ?? 'FirebaseFailure: syncKnowns'),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
 }

@@ -6,6 +6,7 @@ class AppRoutes {
   static const authentication = '/authentication';
   static const setting = '/setting';
   static const favourite = '/favourite';
+  static const knownWord = '/knownWord';
   static const changePassword = '/changePassword';
   static const listWord = '/listWord';
   static const flashCard = '/flashCard';

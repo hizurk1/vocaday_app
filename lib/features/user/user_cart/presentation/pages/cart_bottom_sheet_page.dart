@@ -49,6 +49,7 @@ class CartBottomSheetPage extends StatelessWidget {
         maxLength: 20,
         onChanged: (value) => bagNameNotifier.value = value,
       ),
+      acceptText: LocaleKeys.common_save.tr(),
       onAccept: () async {
         final name = bagNameNotifier.value.trim();
         Navigators().popDialog();

@@ -5,6 +5,7 @@ import '../../config/app_logger.dart';
 import '../../features/authentication/presentation/pages/authentication_page.dart';
 import '../../features/authentication/presentation/pages/change_password_page.dart';
 import '../../features/user/user_profile/presentation/pages/favourite/favourite_page.dart';
+import '../../features/user/user_profile/presentation/pages/known_word/known_word_page.dart';
 import '../../injection_container.dart';
 import '../managers/navigation.dart';
 import '../managers/shared_preferences.dart';
@@ -70,6 +71,20 @@ class AppRouter {
             context: context,
             state: state,
             child: const FavouritePage(),
+          );
+        },
+        routes: const [],
+      ),
+      //? Route: '/knownWord'
+      GoRoute(
+        path: AppRoutes.knownWord,
+        pageBuilder: (context, state) {
+          logger.f(state.fullPath);
+
+          return slideTransitionPage(
+            context: context,
+            state: state,
+            child: const KnownWordPage(),
           );
         },
         routes: const [],

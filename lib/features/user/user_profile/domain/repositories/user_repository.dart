@@ -24,5 +24,12 @@ abstract interface class UserRepository {
     required List<String> favourites,
   });
 
+  FutureEither<List<String>> syncKnowns({
+    required String uid,
+    required List<String> knowns,
+  });
+
   FutureEither<void> removeAllFavourites({required String uid});
+
+  FutureEither<void> removeAllKnowns({required String uid});
 }

@@ -13,19 +13,19 @@ import '../../../../../../injection_container.dart';
 import '../../../../../authentication/presentation/blocs/auth/auth_bloc.dart';
 import '../../../../../word/domain/entities/word_entity.dart';
 import '../../../../../word/presentation/pages/word_detail_bottom_sheet.dart';
-import '../../cubits/favourite/word_favourite_cubit.dart';
+import '../../cubits/known/known_word_cubit.dart';
 
-enum FavouriteMenu { sync, clearAll }
+enum KnownWordMenu { sync, clearAll }
 
-class FavouritePage extends StatefulWidget {
-  const FavouritePage({super.key});
+class KnownWordPage extends StatefulWidget {
+  const KnownWordPage({super.key});
 
   @override
-  State<FavouritePage> createState() => _FavouritePageState();
+  State<KnownWordPage> createState() => _KnownWordPageState();
 }
 
-class _FavouritePageState extends State<FavouritePage> {
-  final ValueNotifier<List<WordEntity>> favouriteNotifer = ValueNotifier([]);
+class _KnownWordPageState extends State<KnownWordPage> {
+  final ValueNotifier<List<WordEntity>> knownNotifier = ValueNotifier([]);
 
   Future<void> _onRefresh(
     BuildContext context, {
@@ -33,7 +33,7 @@ class _FavouritePageState extends State<FavouritePage> {
   }) async {
     Navigators().showLoading(
       tasks: [
-        context.read<WordFavouriteCubit>().getAllFavouriteWords(),
+        context.read<KnownWordCubit>().getAllKnownWords(),
       ],
       delay: delay,
     );
@@ -47,32 +47,32 @@ class _FavouritePageState extends State<FavouritePage> {
 
   Future<void> _onSearch(BuildContext context, String input) async {
     if (input.isNotEmpty) {
-      favouriteNotifer.value = favouriteNotifer.value
+      knownNotifier.value = knownNotifier.value
           .where((e) => e.word.toLowerCase().contains(input))
           .toList();
     } else {
-      await context.read<WordFavouriteCubit>().getAllFavouriteWords();
+      await context.read<KnownWordCubit>().getAllKnownWords();
     }
   }
 
   Future<void> _onRemoveItem(String word) async {
     await Navigators().showLoading(tasks: [
-      sl<SharedPrefManager>().removeFavouriteWord(word),
+      sl<SharedPrefManager>().removeKnownWord(word),
     ], delay: Durations.medium2);
-    favouriteNotifer.value = List<WordEntity>.from(favouriteNotifer.value)
+    knownNotifier.value = List<WordEntity>.from(knownNotifier.value)
       ..removeWhere((e) => e.word == word);
   }
 
   Future<void> _onClearAll(BuildContext context) async {
     Navigators().showDialogWithButton(
-      title: LocaleKeys.favourite_clear_all_fav_title.tr(),
-      subtitle: LocaleKeys.favourite_clear_all_favourites.tr(),
+      title: LocaleKeys.known_clear_all.tr(),
+      subtitle: LocaleKeys.known_clear_all_content.tr(),
       acceptText: LocaleKeys.common_accept.tr(),
       onAccept: () async {
         final uid = context.read<AuthBloc>().state.user?.uid;
         if (uid != null) {
-          await context.read<WordFavouriteCubit>().removeAllFavourites(uid);
-          favouriteNotifer.value = [];
+          await context.read<KnownWordCubit>().removeAllKnowns(uid);
+          knownNotifier.value = [];
         }
       },
     );
@@ -81,16 +81,16 @@ class _FavouritePageState extends State<FavouritePage> {
   Future<void> _onSyncData(BuildContext context) async {
     final uid = context.read<AuthBloc>().state.user?.uid;
     if (uid != null) {
-      await context.read<WordFavouriteCubit>().syncFavourites(uid);
+      await context.read<KnownWordCubit>().syncKnowns(uid);
     }
   }
 
-  void _onSelectMenu(FavouriteMenu item, BuildContext context) {
+  void _onSelectMenu(KnownWordMenu item, BuildContext context) {
     switch (item) {
-      case FavouriteMenu.sync:
+      case KnownWordMenu.sync:
         _onSyncData(context);
         break;
-      case FavouriteMenu.clearAll:
+      case KnownWordMenu.clearAll:
         _onClearAll(context);
         break;
       default:
@@ -101,25 +101,25 @@ class _FavouritePageState extends State<FavouritePage> {
   Widget build(BuildContext context) {
     return StatusBar(
       child: BlocProvider(
-        create: (_) => sl<WordFavouriteCubit>()..getAllFavouriteWords(),
+        create: (_) => sl<KnownWordCubit>()..getAllKnownWords(),
         child: Builder(builder: (context) {
           return Scaffold(
             backgroundColor: context.backgroundColor,
             appBar: AppBarCustom(
               leading: const BackButton(),
-              textTitle: LocaleKeys.favourite_favourites.tr(),
+              textTitle: LocaleKeys.known_knowns.tr(),
               action: _buildPopupMenu(context),
             ),
-            body: BlocBuilder<WordFavouriteCubit, WordFavouriteState>(
+            body: BlocBuilder<KnownWordCubit, KnownWordState>(
               builder: (context, state) {
-                if (state is WordFavouriteLoadingState) {
+                if (state is KnownWordLoadingState) {
                   return const LoadingIndicatorPage();
                 }
-                if (state is WordFavouriteErrorState) {
+                if (state is KnownWordErrorState) {
                   return ErrorPage(text: state.message);
                 }
-                if (state is WordFavouriteLoadedState) {
-                  favouriteNotifer.value = state.words;
+                if (state is KnownWordLoadedState) {
+                  knownNotifier.value = state.words;
                   return RefreshIndicator(
                     onRefresh: () async => _onRefresh(context),
                     child: Column(
@@ -139,7 +139,7 @@ class _FavouritePageState extends State<FavouritePage> {
                           ),
                         ),
                         Expanded(
-                          child: _buildFavourites(),
+                          child: _buildKnownWords(),
                         ),
                       ],
                     ),
@@ -162,24 +162,24 @@ class _FavouritePageState extends State<FavouritePage> {
         _buildMenuItem(
           context: context,
           icon: Icons.cloud_sync_outlined,
-          text: LocaleKeys.favourite_sync_data.tr(),
-          value: FavouriteMenu.sync,
+          text: LocaleKeys.known_sync_data.tr(),
+          value: KnownWordMenu.sync,
         ),
         _buildMenuItem(
           context: context,
           icon: Icons.remove_done_outlined,
-          text: LocaleKeys.favourite_clear_all.tr(),
-          value: FavouriteMenu.clearAll,
+          text: LocaleKeys.known_clear_all.tr(),
+          value: KnownWordMenu.clearAll,
         ),
       ],
     );
   }
 
-  PopupMenuItem<FavouriteMenu> _buildMenuItem({
+  PopupMenuItem<KnownWordMenu> _buildMenuItem({
     required BuildContext context,
     required IconData icon,
     required String text,
-    required FavouriteMenu value,
+    required KnownWordMenu value,
   }) {
     return PopupMenuItem(
       value: value,
@@ -201,26 +201,26 @@ class _FavouritePageState extends State<FavouritePage> {
     );
   }
 
-  Widget _buildFavourites() {
+  Widget _buildKnownWords() {
     return ValueListenableBuilder(
-      valueListenable: favouriteNotifer,
-      builder: (context, favourites, _) {
-        if (favourites.isEmpty) {
+      valueListenable: knownNotifier,
+      builder: (context, knownWords, _) {
+        if (knownWords.isEmpty) {
           return ErrorPage(
             text: LocaleKeys.search_not_found.tr(),
             image: Assets.jsons.notFoundDog,
           );
         }
         return ListView.builder(
-          itemCount: favourites.length,
+          itemCount: knownWords.length,
           // physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
             return Container(
               margin: EdgeInsets.only(top: 10.w, left: 15.w, right: 15.w),
               child: WordSmallCardWidget(
-                text: favourites[index].word.toLowerCase(),
-                onTap: () => _onOpenWordDetail(context, favourites[index]),
-                onRemove: () => _onRemoveItem(favourites[index].word),
+                text: knownWords[index].word.toLowerCase(),
+                onTap: () => _onOpenWordDetail(context, knownWords[index]),
+                onRemove: () => _onRemoveItem(knownWords[index].word),
               ),
             );
           },

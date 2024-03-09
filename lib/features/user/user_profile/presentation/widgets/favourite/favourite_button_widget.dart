@@ -1,13 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:like_button/like_button.dart';
 
 import '../../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../../app/managers/navigation.dart';
 import '../../../../../../app/managers/shared_preferences.dart';
 import '../../../../../../app/themes/app_color.dart';
 import '../../../../../../app/translations/translations.dart';
+import '../../../../../../app/utils/event_transformer.dart';
 import '../../../../../../config/app_logger.dart';
 import '../../../../../../injection_container.dart';
 
@@ -22,8 +24,8 @@ class FavouriteButtonWidget extends StatefulWidget {
 }
 
 class _FavouriteButtonWidgetState extends State<FavouriteButtonWidget> {
-  ValueNotifier<bool> favourite = ValueNotifier(false);
-  ValueNotifier<bool> executing = ValueNotifier(false);
+  final ValueNotifier<bool> favourite = ValueNotifier(false);
+  final Debouncer _debounce = Debouncer();
 
   @override
   void initState() {
@@ -33,8 +35,15 @@ class _FavouriteButtonWidgetState extends State<FavouriteButtonWidget> {
         sl<SharedPrefManager>().getFavouriteWords.contains(widget.word);
   }
 
+  @override
+  void dispose() {
+    _debounce.dispose();
+    super.dispose();
+  }
+
   Future<void> _onTapFavourite(bool isLiked) async {
-    if (!isLiked) {
+    favourite.value = !isLiked;
+    if (favourite.value) {
       await sl<SharedPrefManager>().addFavouriteWord(widget.word);
       Navigators().showMessage(
         LocaleKeys.favourite_add_to_favourite.tr(
@@ -55,8 +64,6 @@ class _FavouriteButtonWidgetState extends State<FavouriteButtonWidget> {
         duration: 2,
       );
     }
-    executing.value = false;
-    favourite.value = !isLiked;
     logger.d('Favourites: ${sl<SharedPrefManager>().getFavouriteWords}');
   }
 
@@ -65,24 +72,14 @@ class _FavouriteButtonWidgetState extends State<FavouriteButtonWidget> {
     return ValueListenableBuilder(
       valueListenable: favourite,
       builder: (context, bool isLiked, _) {
-        return LikeButton(
-          size: 28.h,
-          isLiked: isLiked,
-          onTap: (isLiked) async {
-            if (!executing.value) {
-              executing.value = true;
-              await _onTapFavourite(isLiked);
-              return isLiked;
-            }
-            return null;
-          },
-          likeBuilder: (_) {
-            final color = isLiked ? AppColor().red : AppColor().grey400;
-            return SvgPicture.asset(
-              isLiked ? Assets.icons.loved : Assets.icons.love,
-              colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-            );
-          },
+        final color = isLiked ? AppColor().red : AppColor().grey400;
+        return GestureDetector(
+          onTap: () => _debounce.run(() => _onTapFavourite(isLiked)),
+          child: SvgPicture.asset(
+            isLiked ? Assets.icons.loved : Assets.icons.love,
+            height: 28.h,
+            colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+          ),
         );
       },
     );

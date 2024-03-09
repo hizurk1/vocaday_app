@@ -82,6 +82,32 @@ class SharedPrefManager {
   void clearAllFavouriteWords() =>
       prefs.remove(AppPrefsKey.favouriteWordStringL);
 
+  //! Favourite word
+  List<String> get getKnownWords =>
+      prefs.getStringList(AppPrefsKey.knownWordStringL) ?? [];
+
+  Future<void> addKnownWord(String word) async {
+    Set<String> list =
+        prefs.getStringList(AppPrefsKey.knownWordStringL)?.toSet() ?? {};
+    list.add(word);
+    await prefs.setStringList(AppPrefsKey.knownWordStringL, list.toList());
+  }
+
+  Future<void> saveKnownWord(List<String> words) async {
+    await prefs.setStringList(AppPrefsKey.knownWordStringL, words);
+  }
+
+  Future<void> removeKnownWord(String word) async {
+    Set<String> list =
+        prefs.getStringList(AppPrefsKey.knownWordStringL)?.toSet() ?? {};
+    if (list.isNotEmpty) {
+      list.removeWhere((element) => element == word);
+      await prefs.setStringList(AppPrefsKey.knownWordStringL, list.toList());
+    }
+  }
+
+  void clearAllKnownWords() => prefs.remove(AppPrefsKey.knownWordStringL);
+
   //! Cart
   Future<void> setCartBags(List<String> list) async {
     await prefs.setStringList(AppPrefsKey.cartBagWordStringL, list);

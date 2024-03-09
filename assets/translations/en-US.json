@@ -67,7 +67,8 @@
     "profile": "Profile",
     "search": "Search",
     "setting": "Setting",
-    "favourite": "Favourite"
+    "favourite": "Favourite",
+    "known_word": "Known word"
   },
   "profile": {
     "birthday": "Birthday",
@@ -186,7 +187,7 @@
     "add_to_favourite": "Added \"{}\" into your favourite list.",
     "remove_from_favourite": "Removed \"{}\" from your favourite list.",
     "favourites": "Favourites",
-    "clear_all_favourites": "Are you sure you want to clear all your favourite word list.",
+    "clear_all_favourites": "Are you sure you want to clear all your favourite word list?",
     "clear_all_fav_title": "Clear all favourite words",
     "clear_all": "Clear all favourites",
     "sync_data": "Sync data",
@@ -230,5 +231,14 @@
     "my_word_bag_hint": "Default: My bag",
     "my_bag_default": "My bag",
     "name_your_word_bag": "Name your word bag"
+  },
+  "known": {
+    "sync_data_success": "Data sync successfully",
+    "add_to_known": "Added \"{}\" into your known word list.",
+    "clear_all": "Clear all known words",
+    "clear_all_content": "Are you sure you want to clear all your known word list?",
+    "sync_data": "Sync data",
+    "knowns": "Known words",
+    "remove_from_knowns": "Removed \"{}\" from your known word list."
   }
 }

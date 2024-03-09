@@ -59,6 +59,7 @@ abstract class  LocaleKeys {
   static const page_search = 'page.search';
   static const page_setting = 'page.setting';
   static const page_favourite = 'page.favourite';
+  static const page_known_word = 'page.known_word';
   static const profile_birthday = 'profile.birthday';
   static const profile_completion_progress = 'profile.completion_progress';
   static const profile_created_date = 'profile.created_date';
@@ -161,5 +162,12 @@ abstract class  LocaleKeys {
   static const cart_my_word_bag_hint = 'cart.my_word_bag_hint';
   static const cart_my_bag_default = 'cart.my_bag_default';
   static const cart_name_your_word_bag = 'cart.name_your_word_bag';
+  static const known_sync_data_success = 'known.sync_data_success';
+  static const known_add_to_known = 'known.add_to_known';
+  static const known_clear_all = 'known.clear_all';
+  static const known_clear_all_content = 'known.clear_all_content';
+  static const known_sync_data = 'known.sync_data';
+  static const known_knowns = 'known.knowns';
+  static const known_remove_from_knowns = 'known.remove_from_knowns';
 
 }

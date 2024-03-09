@@ -37,6 +37,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/add_send.svg
   String get addSend => 'assets/icons/add_send.svg';
 
+  /// File path: assets/icons/approve.svg
+  String get approve => 'assets/icons/approve.svg';
+
   /// File path: assets/icons/arranger_icon.svg
   String get arrangerIcon => 'assets/icons/arranger_icon.svg';
 
@@ -344,6 +347,7 @@ class $AssetsIconsGen {
         activityFill,
         activityOutline,
         addSend,
+        approve,
         arrangerIcon,
         arrowDown,
         arrowHorizontal,
