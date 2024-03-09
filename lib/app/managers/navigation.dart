@@ -38,7 +38,6 @@ class Navigators {
   ///
   /// * [text]: The message to show.
   /// * [type]: The type of message to show.
-  /// * [showAction]: Whether to show an action button.
   /// * [showClose]: Whether to show a close button.
   /// * [maxLines]: The maximum number of lines to show.
   /// * [duration]: The duration of the message. Default is `3 seconds`.

@@ -31,7 +31,7 @@ class _SettingNotificationState extends State<_SettingNotification> {
           showNofi.value = true;
           Navigators().showMessage(
             LocaleKeys.setting_notification_set_to.tr(
-              args: [pickedTime.getHHmm],
+              args: [pickedTime.getHHmmaa],
             ),
             type: MessageType.success,
           );
@@ -80,7 +80,7 @@ class _SettingNotificationState extends State<_SettingNotification> {
           if (time != null) {
             return TextCustom(
               LocaleKeys.setting_remind_at.tr(
-                args: [time.getHHmm],
+                args: [time.getHHmmaa],
               ),
               style: context.textStyle.caption.grey,
             );

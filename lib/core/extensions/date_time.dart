@@ -5,6 +5,12 @@ extension TimeOfDayExt on TimeOfDay {
   String get getHHmm {
     return '$hour:${minute < 10 ? '0$minute' : minute}';
   }
+
+  String get getHHmmaa {
+    final hourOfDay = hourOfPeriod;
+    final period = hour < 12 ? 'AM' : 'PM';
+    return '${hourOfDay < 10 ? '0$hourOfDay' : hourOfDay}:${minute < 10 ? '0$minute' : minute} $period';
+  }
 }
 
 extension DateTimeNExt on DateTime? {
