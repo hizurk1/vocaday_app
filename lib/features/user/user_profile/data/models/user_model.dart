@@ -18,6 +18,7 @@ class UserModel extends Equatable {
   final List<DateTime>? attendance;
   final DateTime? createdDate;
   final List<String>? favourites;
+  final List<String>? knowns;
 
   const UserModel({
     required this.uid,
@@ -33,6 +34,7 @@ class UserModel extends Equatable {
     this.attendance,
     this.createdDate,
     this.favourites,
+    this.knowns,
   });
 
   UserModel copyWith({
@@ -49,6 +51,7 @@ class UserModel extends Equatable {
     List<DateTime>? attendance,
     DateTime? createdDate,
     List<String>? favourites,
+    List<String>? knowns,
   }) {
     return UserModel(
       uid: uid,
@@ -64,6 +67,7 @@ class UserModel extends Equatable {
       attendance: attendance ?? attendance,
       createdDate: createdDate ?? this.createdDate,
       favourites: favourites ?? this.favourites,
+      knowns: knowns ?? this.knowns,
     );
   }
 
@@ -82,6 +86,7 @@ class UserModel extends Equatable {
       attendance: attendance,
       createdDate: createdDate,
       favourites: favourites,
+      knowns: knowns,
     );
   }
 
@@ -100,6 +105,7 @@ class UserModel extends Equatable {
       attendance: entity.attendance,
       createdDate: entity.createdDate,
       favourites: entity.favourites,
+      knowns: entity.knowns,
     );
   }
 
@@ -118,6 +124,7 @@ class UserModel extends Equatable {
       'attendance': attendance?.map((x) => x.millisecondsSinceEpoch).toList(),
       'createdDate': createdDate?.millisecondsSinceEpoch,
       'favourites': favourites,
+      'knowns': knowns,
     };
   }
 
@@ -161,6 +168,9 @@ class UserModel extends Equatable {
               .map((e) => e.toString())
               .toList()
           : null,
+      knowns: map['knowns'] != null
+          ? (map['knowns'] as List<dynamic>).map((e) => e.toString()).toList()
+          : null,
     );
   }
 
@@ -179,5 +189,6 @@ class UserModel extends Equatable {
         attendance,
         createdDate,
         favourites,
+        knowns,
       ];
 }

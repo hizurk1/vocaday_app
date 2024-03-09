@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../app/constants/gen/assets.gen.dart';
-import '../../../../../app/managers/navigation.dart';
-import '../../../../../app/managers/shared_preferences.dart';
-import '../../../../../app/themes/app_text_theme.dart';
-import '../../../../../app/translations/translations.dart';
-import '../../../../../app/widgets/widgets.dart';
-import '../../../../../core/extensions/build_context.dart';
-import '../../../../../injection_container.dart';
-import '../../../../authentication/presentation/blocs/auth/auth_bloc.dart';
-import '../../../../word/domain/entities/word_entity.dart';
-import '../../../../word/presentation/pages/word_detail_bottom_sheet.dart';
-import '../cubit/word_favourite_cubit.dart';
+import '../../../../../../app/constants/gen/assets.gen.dart';
+import '../../../../../../app/managers/navigation.dart';
+import '../../../../../../app/managers/shared_preferences.dart';
+import '../../../../../../app/themes/app_text_theme.dart';
+import '../../../../../../app/translations/translations.dart';
+import '../../../../../../app/widgets/widgets.dart';
+import '../../../../../../core/extensions/build_context.dart';
+import '../../../../../../injection_container.dart';
+import '../../../../../authentication/presentation/blocs/auth/auth_bloc.dart';
+import '../../../../../word/domain/entities/word_entity.dart';
+import '../../../../../word/presentation/pages/word_detail_bottom_sheet.dart';
+import '../../cubits/favourite/word_favourite_cubit.dart';
 
 enum FavouriteMenu { sync, clearAll }
 

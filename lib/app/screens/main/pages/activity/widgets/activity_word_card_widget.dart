@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../core/extensions/build_context.dart';
 import '../../../../../../core/extensions/string.dart';
-import '../../../../../../features/user/user_favourite/presentation/widgets/favourite_button_widget.dart';
+import '../../../../../../features/user/user_profile/presentation/widgets/favourite/favourite_button_widget.dart';
 import '../../../../../../features/word/domain/entities/word_entity.dart';
 import '../../../../../constants/gen/assets.gen.dart';
 import '../../../../../themes/app_color.dart';

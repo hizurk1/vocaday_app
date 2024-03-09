@@ -12,7 +12,7 @@ import '../../../../app/translations/translations.dart';
 import '../../../../app/utils/util_functions.dart';
 import '../../../../app/widgets/widgets.dart';
 import '../../../../core/extensions/build_context.dart';
-import '../../../user/user_favourite/presentation/widgets/favourite_button_widget.dart';
+import '../../../user/user_profile/presentation/widgets/favourite/favourite_button_widget.dart';
 import '../../domain/entities/word_entity.dart';
 
 class WordDetailBottomSheet extends StatelessWidget {

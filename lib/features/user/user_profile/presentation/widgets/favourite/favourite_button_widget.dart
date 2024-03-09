@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:like_button/like_button.dart';
 
-import '../../../../../app/constants/gen/assets.gen.dart';
-import '../../../../../app/managers/navigation.dart';
-import '../../../../../app/managers/shared_preferences.dart';
-import '../../../../../app/themes/app_color.dart';
-import '../../../../../app/translations/translations.dart';
-import '../../../../../config/app_logger.dart';
-import '../../../../../injection_container.dart';
+import '../../../../../../app/constants/gen/assets.gen.dart';
+import '../../../../../../app/managers/navigation.dart';
+import '../../../../../../app/managers/shared_preferences.dart';
+import '../../../../../../app/themes/app_color.dart';
+import '../../../../../../app/translations/translations.dart';
+import '../../../../../../config/app_logger.dart';
+import '../../../../../../injection_container.dart';
 
 class FavouriteButtonWidget extends StatefulWidget {
   const FavouriteButtonWidget({super.key, required this.word});
@@ -41,7 +41,7 @@ class _FavouriteButtonWidgetState extends State<FavouriteButtonWidget> {
           args: [widget.word.toLowerCase()],
         ),
         type: MessageType.info,
-        opacity: 0.9,
+        opacity: 1,
         duration: 2,
       );
     } else {
@@ -51,7 +51,7 @@ class _FavouriteButtonWidgetState extends State<FavouriteButtonWidget> {
           args: [widget.word.toLowerCase()],
         ),
         type: MessageType.info,
-        opacity: 0.9,
+        opacity: 1,
         duration: 2,
       );
     }

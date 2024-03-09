@@ -1,6 +1,6 @@
 import '../../../../../core/typedef/typedefs.dart';
 import '../../../../../core/usecases/usecases.dart';
-import '../../../user_profile/domain/repositories/user_repository.dart';
+import '../repositories/user_repository.dart';
 
 class SyncFavouriteWordUsecase
     extends Usecases<List<String>, (String, List<String>)> {

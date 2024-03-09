@@ -1,6 +1,6 @@
 import '../../../../../core/typedef/typedefs.dart';
 import '../../../../../core/usecases/usecases.dart';
-import '../../../user_profile/domain/repositories/user_repository.dart';
+import '../repositories/user_repository.dart';
 
 class RemoveAllFavouriteWordUsecase extends Usecases<void, String> {
   final UserRepository repository;
