@@ -4,8 +4,11 @@ import 'package:go_router/go_router.dart';
 import '../../config/app_logger.dart';
 import '../../features/authentication/presentation/pages/authentication_page.dart';
 import '../../features/authentication/presentation/pages/change_password_page.dart';
+import '../../features/mini_game/presentation/pages/quiz/game_quiz_page.dart';
+import '../../features/mini_game/presentation/pages/quiz/game_quiz_summery_page.dart';
 import '../../features/user/user_profile/presentation/pages/favourite/favourite_page.dart';
 import '../../features/user/user_profile/presentation/pages/known_word/known_word_page.dart';
+import '../../features/word/domain/entities/word_entity.dart';
 import '../../injection_container.dart';
 import '../managers/navigation.dart';
 import '../managers/shared_preferences.dart';
@@ -145,6 +148,36 @@ class AppRouter {
             context: context,
             state: state,
             child: const CartPage(),
+          );
+        },
+        routes: const [],
+      ),
+      //? Route: '/quiz'
+      GoRoute(
+        path: AppRoutes.quiz,
+        pageBuilder: (context, state) {
+          logger.f("${state.fullPath}");
+          final args = state.extra as List<WordEntity>?;
+
+          return slideTransitionPage(
+            context: context,
+            state: state,
+            child: GameQuizPage(words: args ?? []),
+          );
+        },
+        routes: const [],
+      ),
+      //? Route: '/quizSummery'
+      GoRoute(
+        path: AppRoutes.quizSummery,
+        pageBuilder: (context, state) {
+          logger.f("${state.fullPath}");
+          final args = state.extra as List<QuizEntity>?;
+
+          return slideTransitionPage(
+            context: context,
+            state: state,
+            child: GameQuizSummeryPage(quizs: args ?? []),
           );
         },
         routes: const [],

@@ -52,7 +52,8 @@
     "skip": "Skip",
     "view": "View",
     "yes_ofc": "Yes of course",
-    "go": "Go"
+    "go": "Go",
+    "back": "Back"
   },
   "on_board": {
     "get_started": "Get started",
@@ -214,7 +215,8 @@
     "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
     "no_word_bag_found": "No word bag found! Please add some to continue to play the game. \\nNote: The bag should has at least {}.",
     "select_word_bag_play_game": "Select word bags to start",
-    "select_word_bag_play_game_note": "The bag should has at least {}."
+    "select_word_bag_play_game_note": "The bag should has at least {}.",
+    "you_have_to_select_one_bag": "You have to select at least one bag."
   },
   "cart": {
     "packed_your_cart_bag": "Packed your word bag",
@@ -243,5 +245,14 @@
     "sync_data": "Sync data",
     "knowns": "Known words",
     "remove_from_knowns": "Removed \"{}\" from your known word list."
+  },
+  "game": {
+    "select_your_answer": "Select your answer",
+    "question_th": "Question {}/{}",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "wrong": "Wrong",
+    "result": "Result",
+    "congrats_you_got_point": "Congratulation! You got "
   }
 }

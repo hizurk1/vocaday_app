@@ -52,7 +52,8 @@
     "skip": "Bỏ qua",
     "view": "Xem",
     "yes_ofc": "Đúng vậy",
-    "go": "Đi"
+    "go": "Đi",
+    "back": "Quay lại"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -214,7 +215,8 @@
     "word_store_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
     "no_word_bag_found": "Không tìm thấy túi từ! Hãy thêm một vài túi để tiếp tục chơi trò chơi này. \\nLưu ý: Túi từ phải có ít nhất {}.",
     "select_word_bag_play_game": "Chọn các túi từ để bắt đầu",
-    "select_word_bag_play_game_note": "Túi phải có ít nhất {}."
+    "select_word_bag_play_game_note": "Túi phải có ít nhất {}.",
+    "you_have_to_select_one_bag": "Bạn phải chọn ít nhất một túi."
   },
   "cart": {
     "packed_your_cart_bag": "Đã đóng gói túi từ vựng của bạn",
@@ -243,5 +245,14 @@
     "sync_data": "Đồng bộ dữ liệu",
     "knowns": "Từ đã biết",
     "remove_from_knowns": "Đã xoá \"{}\" khỏi danh sách từ đã biết của bạn."
+  },
+  "game": {
+    "select_your_answer": "Chọn đáp án của bạn",
+    "question_th": "Câu hỏi {}/{}",
+    "correct": "Đúng",
+    "incorrect": "Không đúng",
+    "wrong": "Sai",
+    "result": "Kết quả",
+    "congrats_you_got_point": "Chúc mừng! Bạn được "
   }
 }

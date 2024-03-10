@@ -7,6 +7,7 @@ class AppValueConst {
   static const maxImgUploadSize = 5242880;
   static const maxItemLoad = 50;
   static const minWordInBagToPlay = 5;
+  static const timeForQuiz = 30; // seconds
 }
 
 class AppStringConst {

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../app/constants/app_const.dart';
 import '../../../../../app/constants/gen/assets.gen.dart';
+import '../../../../../app/managers/navigation.dart';
+import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/translations/translations.dart';
 import '../../../../../app/widgets/widgets.dart';
-import '../../../../../config/app_logger.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../../core/extensions/string.dart';
 import '../../../../word/domain/entities/word_entity.dart';
@@ -94,7 +96,10 @@ class _GameSelectWordBagPageState extends State<GameSelectWordBagPage> {
                       style: context.textStyle.bodyS.grey,
                     ),
                     const Gap(height: 10),
-                    _WordBagCheckBoxListTile(wordBags: wordBags),
+                    _WordBagCheckBoxListTile(
+                      route: widget.route,
+                      wordBags: wordBags,
+                    ),
                   ],
                 ),
               );
@@ -107,8 +112,12 @@ class _GameSelectWordBagPageState extends State<GameSelectWordBagPage> {
 }
 
 class _WordBagCheckBoxListTile extends StatefulWidget {
-  const _WordBagCheckBoxListTile({required this.wordBags});
+  const _WordBagCheckBoxListTile({
+    required this.route,
+    required this.wordBags,
+  });
 
+  final String route;
   final List<WordBag> wordBags;
 
   @override
@@ -117,6 +126,24 @@ class _WordBagCheckBoxListTile extends StatefulWidget {
 }
 
 class _WordBagCheckBoxListTileState extends State<_WordBagCheckBoxListTile> {
+  void _onPlayPressed() {
+    final list = widget.wordBags
+        .where((e) => e.isSelected)
+        .expand((e) => e.words)
+        .toList()
+      ..shuffle();
+    if (list.isEmpty) {
+      Navigators().showMessage(
+        LocaleKeys.activity_you_have_to_select_one_bag.tr(),
+        type: MessageType.info,
+        opacity: 1,
+      );
+    } else {
+      Navigators().popDialog();
+      context.push(widget.route, extra: list);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -133,11 +160,13 @@ class _WordBagCheckBoxListTileState extends State<_WordBagCheckBoxListTile> {
               children: widget.wordBags
                   .map(
                     (e) => Material(
+                      color: Colors.transparent,
                       child: CheckboxListTile(
                         contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
                         value: e.isSelected,
-                        enabled: e.words.length >= 5,
-                        activeColor: context.theme.primaryColor,
+                        enabled:
+                            e.words.length >= AppValueConst.minWordInBagToPlay,
+                        activeColor: context.colors.blue,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.r)),
                         selectedTileColor: context.theme.primaryColorLight,
@@ -149,9 +178,10 @@ class _WordBagCheckBoxListTileState extends State<_WordBagCheckBoxListTile> {
                         },
                         title: TextCustom(
                           e.name,
-                          style: e.words.length >= 5
-                              ? context.textStyle.bodyM.bw
-                              : context.textStyle.bodyM.grey80,
+                          style:
+                              e.words.length >= AppValueConst.minWordInBagToPlay
+                                  ? context.textStyle.bodyM.bw
+                                  : context.textStyle.bodyM.grey80,
                         ),
                         subtitle: TextCustom(
                           LocaleKeys.activity_word.plural(e.words.length),
@@ -166,13 +196,7 @@ class _WordBagCheckBoxListTileState extends State<_WordBagCheckBoxListTile> {
         ),
         const Gap(height: 10),
         PushableButton(
-          onPressed: () {
-            final list = widget.wordBags
-                .where((e) => e.isSelected)
-                .expand((e) => e.words)
-                .toList();
-            logger.i(list.map((e) => e.word).toList());
-          },
+          onPressed: _onPlayPressed,
           text: LocaleKeys.activity_play.tr(),
         ),
       ],

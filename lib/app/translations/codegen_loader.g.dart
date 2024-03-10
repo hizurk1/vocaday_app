@@ -68,7 +68,8 @@ class CodegenLoader extends AssetLoader{
     "skip": "Skip",
     "view": "View",
     "yes_ofc": "Yes of course",
-    "go": "Go"
+    "go": "Go",
+    "back": "Back"
   },
   "on_board": {
     "get_started": "Get started",
@@ -230,7 +231,8 @@ class CodegenLoader extends AssetLoader{
     "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
     "no_word_bag_found": "No word bag found! Please add some to continue to play the game. \\nNote: The bag should has at least {}.",
     "select_word_bag_play_game": "Select word bags to start",
-    "select_word_bag_play_game_note": "The bag should has at least {}."
+    "select_word_bag_play_game_note": "The bag should has at least {}.",
+    "you_have_to_select_one_bag": "You have to select at least one bag."
   },
   "cart": {
     "packed_your_cart_bag": "Packed your word bag",
@@ -259,6 +261,15 @@ class CodegenLoader extends AssetLoader{
     "sync_data": "Sync data",
     "knowns": "Known words",
     "remove_from_knowns": "Removed \"{}\" from your known word list."
+  },
+  "game": {
+    "select_your_answer": "Select your answer",
+    "question_th": "Question {}/{}",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "wrong": "Wrong",
+    "result": "Result",
+    "congrats_you_got_point": "Congratulation! You got "
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -315,7 +326,8 @@ static const Map<String,dynamic> vi_VN = {
     "skip": "Bỏ qua",
     "view": "Xem",
     "yes_ofc": "Đúng vậy",
-    "go": "Đi"
+    "go": "Đi",
+    "back": "Quay lại"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -477,7 +489,8 @@ static const Map<String,dynamic> vi_VN = {
     "word_store_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
     "no_word_bag_found": "Không tìm thấy túi từ! Hãy thêm một vài túi để tiếp tục chơi trò chơi này. \\nLưu ý: Túi từ phải có ít nhất {}.",
     "select_word_bag_play_game": "Chọn các túi từ để bắt đầu",
-    "select_word_bag_play_game_note": "Túi phải có ít nhất {}."
+    "select_word_bag_play_game_note": "Túi phải có ít nhất {}.",
+    "you_have_to_select_one_bag": "Bạn phải chọn ít nhất một túi."
   },
   "cart": {
     "packed_your_cart_bag": "Đã đóng gói túi từ vựng của bạn",
@@ -506,6 +519,15 @@ static const Map<String,dynamic> vi_VN = {
     "sync_data": "Đồng bộ dữ liệu",
     "knowns": "Từ đã biết",
     "remove_from_knowns": "Đã xoá \"{}\" khỏi danh sách từ đã biết của bạn."
+  },
+  "game": {
+    "select_your_answer": "Chọn đáp án của bạn",
+    "question_th": "Câu hỏi {}/{}",
+    "correct": "Đúng",
+    "incorrect": "Không đúng",
+    "wrong": "Sai",
+    "result": "Kết quả",
+    "congrats_you_got_point": "Chúc mừng! Bạn được "
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

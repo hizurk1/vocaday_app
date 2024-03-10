@@ -13,6 +13,7 @@ class AppRoutes {
   static const cart = '/cart';
 
   static const quiz = '/quiz';
+  static const quizSummery = '/quizSummery';
   static const saviour = '/saviour';
   static const wordJumble = '/wordJumble';
 

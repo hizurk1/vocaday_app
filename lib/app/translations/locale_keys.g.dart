@@ -48,6 +48,7 @@ abstract class  LocaleKeys {
   static const common_view = 'common.view';
   static const common_yes_ofc = 'common.yes_ofc';
   static const common_go = 'common.go';
+  static const common_back = 'common.back';
   static const on_board_get_started = 'on_board.get_started';
   static const on_board_onboard_body = 'on_board.onboard_body';
   static const on_board_onboard_title = 'on_board.onboard_title';
@@ -148,6 +149,7 @@ abstract class  LocaleKeys {
   static const activity_no_word_bag_found = 'activity.no_word_bag_found';
   static const activity_select_word_bag_play_game = 'activity.select_word_bag_play_game';
   static const activity_select_word_bag_play_game_note = 'activity.select_word_bag_play_game_note';
+  static const activity_you_have_to_select_one_bag = 'activity.you_have_to_select_one_bag';
   static const cart_packed_your_cart_bag = 'cart.packed_your_cart_bag';
   static const cart_cart = 'cart.cart';
   static const cart_remove_cart_bag = 'cart.remove_cart_bag';
@@ -172,5 +174,12 @@ abstract class  LocaleKeys {
   static const known_sync_data = 'known.sync_data';
   static const known_knowns = 'known.knowns';
   static const known_remove_from_knowns = 'known.remove_from_knowns';
+  static const game_select_your_answer = 'game.select_your_answer';
+  static const game_question_th = 'game.question_th';
+  static const game_correct = 'game.correct';
+  static const game_incorrect = 'game.incorrect';
+  static const game_wrong = 'game.wrong';
+  static const game_result = 'game.result';
+  static const game_congrats_you_got_point = 'game.congrats_you_got_point';
 
 }

@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../../core/errors/failure.dart';
@@ -74,6 +74,7 @@ class UserRepositoryImpl implements UserRepository {
           map: {
             'attendance':
                 attendance.map((x) => x.millisecondsSinceEpoch).toList(),
+            'point': FieldValue.increment(1),
           },
         ),
       );
