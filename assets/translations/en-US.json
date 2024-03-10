@@ -235,7 +235,9 @@
     "remove_menu": "Remove this bag",
     "my_word_bag_hint": "Default: My bag",
     "my_bag_default": "My bag",
-    "name_your_word_bag": "Name your word bag"
+    "name_your_word_bag": "Name your word bag",
+    "rename_this_bag_title": "Rename this bag",
+    "rename_menu": "Rename"
   },
   "known": {
     "sync_data_success": "Data sync successfully",

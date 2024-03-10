@@ -251,7 +251,9 @@ class CodegenLoader extends AssetLoader{
     "remove_menu": "Remove this bag",
     "my_word_bag_hint": "Default: My bag",
     "my_bag_default": "My bag",
-    "name_your_word_bag": "Name your word bag"
+    "name_your_word_bag": "Name your word bag",
+    "rename_this_bag_title": "Rename this bag",
+    "rename_menu": "Rename"
   },
   "known": {
     "sync_data_success": "Data sync successfully",
@@ -511,7 +513,9 @@ static const Map<String,dynamic> vi_VN = {
     "remove_menu": "Xoá túi này",
     "my_word_bag_hint": "Mặc định: Túi của tôi",
     "my_bag_default": "Túi của tôi",
-    "name_your_word_bag": "Đặt tên túi từ của bạn"
+    "name_your_word_bag": "Đặt tên túi từ của bạn",
+    "rename_this_bag_title": "Đổi tên túi này",
+    "rename_menu": "Đổi tên"
   },
   "known": {
     "sync_data_success": "Đồng bộ dữ liệu thành công",

@@ -18,7 +18,7 @@ import '../../domain/entities/cart_entity.dart';
 import '../cubits/cart/cart_cubit.dart';
 import '../cubits/cart_bag/cart_bag_cubit.dart';
 
-enum CartBagMenu { expand, remove }
+enum CartBagMenu { rename, expand, remove }
 
 class CartPageBody extends StatefulWidget {
   const CartPageBody({
@@ -99,7 +99,7 @@ class _CartPageBodyState extends State<CartPageBody> {
 }
 
 class _CartBagWidget extends StatelessWidget {
-  const _CartBagWidget({
+  _CartBagWidget({
     required this.index,
     required this.cartEntity,
     required this.wordItems,
@@ -109,6 +109,8 @@ class _CartBagWidget extends StatelessWidget {
   final CartEntity cartEntity;
   final List<WordEntity> wordItems;
 
+  final bagNameNotifier = ValueNotifier("");
+
   void _onTapWordCartItem(BuildContext context, WordEntity entity) {
     context.showBottomSheet(
       child: WordDetailBottomSheet(wordEntity: entity),
@@ -117,6 +119,9 @@ class _CartBagWidget extends StatelessWidget {
 
   void _onSelectMenu(CartBagMenu item, BuildContext context) {
     switch (item) {
+      case CartBagMenu.rename:
+        _onRenameCartBag(context);
+        break;
       case CartBagMenu.expand:
         _onExpandCartBag(context);
         break;
@@ -125,6 +130,36 @@ class _CartBagWidget extends StatelessWidget {
         break;
       default:
     }
+  }
+
+  Future<void> _onRenameCartBag(BuildContext context) async {
+    Navigators().showDialogWithButton(
+      title: LocaleKeys.cart_rename_this_bag_title.tr(),
+      showIcon: false,
+      body: BorderTextField(
+        hintText: LocaleKeys.cart_my_word_bag_hint.tr(),
+        autofocus: true,
+        maxLength: 20,
+        onChanged: (value) => bagNameNotifier.value = value,
+      ),
+      acceptText: LocaleKeys.common_save.tr(),
+      onAccept: () async {
+        final name = bagNameNotifier.value.trim();
+        final uid = context.read<AuthBloc>().state.user?.uid;
+        if (uid != null) {
+          await Navigators().showLoading(
+            tasks: [
+              context.read<CartCubit>().renameCartBag(
+                    uid,
+                    name.isEmpty ? LocaleKeys.cart_my_bag_default.tr() : name,
+                    cartEntity,
+                    cartEntity.bags[index],
+                  ),
+            ],
+          );
+        }
+      },
+    );
   }
 
   Future<void> _onRemoveCartBag(BuildContext context) async {
@@ -252,6 +287,12 @@ class _CartBagWidget extends StatelessWidget {
       surfaceTintColor: context.theme.cardColor,
       onSelected: (val) => _onSelectMenu(val, context),
       itemBuilder: (context) => [
+        _buildMenuItem(
+          context: context,
+          icon: Icons.edit_note_rounded,
+          text: LocaleKeys.cart_rename_menu.tr(),
+          value: CartBagMenu.rename,
+        ),
         _buildMenuItem(
           context: context,
           icon: Icons.playlist_add_rounded,

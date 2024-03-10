@@ -34,6 +34,26 @@ class CartCubit extends Cubit<CartState> {
     this.sharedPrefManager,
   ) : super(const CartEmptyState());
 
+  Future<void> renameCartBag(
+    String uid,
+    String name,
+    CartEntity cartEntity,
+    CartBagEntity cartBagEntity,
+  ) async {
+    emit(const CartLoadingState());
+
+    final newCartBag = cartBagEntity.copyWith(label: name);
+    final result = await updateCartBagUsecase((uid, cartEntity, newCartBag));
+    result.fold(
+      (failure) => emit(CartErrorState(failure.message)),
+      (cart) {
+        Navigators().showMessage(LocaleKeys.cart_word_bag_update_success.tr(),
+            type: MessageType.success);
+        emit(CartLoadedState(cart));
+      },
+    );
+  }
+
   Future<void> expandCartBag(
     String uid,
     CartEntity cartEntity,
