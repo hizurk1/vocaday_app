@@ -15,8 +15,8 @@ import '../../../user_profile/presentation/cubits/user_data/user_data_cubit.dart
 import '../cubits/cart/cart_cubit.dart';
 import '../cubits/cart_bag/cart_bag_cubit.dart';
 
-class CartBottomSheetPage extends StatelessWidget {
-  CartBottomSheetPage({super.key});
+class WordBagBottomSheetPage extends StatelessWidget {
+  WordBagBottomSheetPage({super.key});
 
   final ValueNotifier<String> bagNameNotifier = ValueNotifier("");
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/extensions/list.dart';
+import '../../../../../core/extensions/string.dart';
 import '../../../../../injection_container.dart';
 import '../../../../managers/navigation.dart';
 import '../../../../managers/notification.dart';
@@ -28,7 +29,7 @@ class ScheduleNotificationCubit extends Cubit<ScheduleNotificationState> {
           title: LocaleKeys.setting_time_to_learn_notification.tr(),
           body: LocaleKeys.setting_new_word_today.tr(
             args: [localWord!.first.toLowerCase(), localWord[1]],
-          ).replaceAll(r'\n', '\n'),
+          ).fixBreakLine,
           payload: 'payload',
           scheduleDate: scheduleDate,
         );

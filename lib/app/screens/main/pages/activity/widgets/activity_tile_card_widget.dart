@@ -3,7 +3,8 @@ part of '../activity_page.dart';
 class ActivityCard {
   final String icon;
   final String title;
-  ActivityCard(this.icon, this.title);
+  final String route;
+  ActivityCard(this.icon, this.title, this.route);
 }
 
 class _ActivityTileCardWidget extends StatelessWidget {

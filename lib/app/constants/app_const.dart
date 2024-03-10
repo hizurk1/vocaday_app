@@ -6,6 +6,7 @@ class AppValueConst {
   /// Convert to MB: maxImgUploadSize / 1024 / 1024
   static const maxImgUploadSize = 5242880;
   static const maxItemLoad = 50;
+  static const minWordInBagToPlay = 5;
 }
 
 class AppStringConst {
@@ -15,6 +16,11 @@ class AppStringConst {
   static const notificationMethodChannel =
       "com.vocaday.vocaday_app/notification_service";
   static const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  // Mini Game
+  static const quiz = "Quiz";
+  static const saviour = "Saviour";
+  static const wordJumble = "Word Jumble";
 
   // Error message
   static const unexpectedErrorMessage = 'Unexpected Error';

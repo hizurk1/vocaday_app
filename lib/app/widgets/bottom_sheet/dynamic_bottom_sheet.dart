@@ -13,7 +13,8 @@ import '../unfocus.dart';
 class DynamicBottomSheetCustom extends StatelessWidget {
   const DynamicBottomSheetCustom({
     super.key,
-    required this.children,
+    this.children = const [],
+    this.child,
     this.showDragHandle = false,
     this.backgroundColor,
     this.padding,
@@ -39,6 +40,10 @@ class DynamicBottomSheetCustom extends StatelessWidget {
 
   /// The body of bottom sheet. Excludes bottom sheet title.
   final List<Widget> children;
+
+  /// The body of bottom sheet if children is empty. Excludes bottom sheet title.
+  /// If you want to put `Column` inside this child, the mainAxisSize should be set to min.
+  final Widget? child;
 
   /// Text for action button on the right.
   final String? textAction;
@@ -85,10 +90,11 @@ class DynamicBottomSheetCustom extends StatelessWidget {
               padding: padding,
               child: SingleChildScrollView(
                 child: UnfocusArea(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: children,
-                  ),
+                  child: child ??
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: children,
+                      ),
                 ),
               ),
             ),

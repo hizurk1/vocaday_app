@@ -145,6 +145,9 @@ abstract class  LocaleKeys {
   static const activity_vocab_store = 'activity.vocab_store';
   static const activity_word_store_title = 'activity.word_store_title';
   static const activity_word_store_content = 'activity.word_store_content';
+  static const activity_no_word_bag_found = 'activity.no_word_bag_found';
+  static const activity_select_word_bag_play_game = 'activity.select_word_bag_play_game';
+  static const activity_select_word_bag_play_game_note = 'activity.select_word_bag_play_game_note';
   static const cart_packed_your_cart_bag = 'cart.packed_your_cart_bag';
   static const cart_cart = 'cart.cart';
   static const cart_remove_cart_bag = 'cart.remove_cart_bag';

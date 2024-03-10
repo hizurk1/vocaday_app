@@ -6,7 +6,7 @@ import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/widgets/text.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../cubits/cart_bag/cart_bag_cubit.dart';
-import '../pages/cart_bottom_sheet_page.dart';
+import '../pages/word_bag_bottom_sheet_page.dart';
 
 class CartIconWidget extends StatelessWidget {
   const CartIconWidget({super.key, this.marginRight});
@@ -15,7 +15,7 @@ class CartIconWidget extends StatelessWidget {
 
   Future<void> _onOpenCartBottomSheet(BuildContext context) async {
     await context.showBottomSheet(
-      child: CartBottomSheetPage(),
+      child: WordBagBottomSheetPage(),
     );
   }
 

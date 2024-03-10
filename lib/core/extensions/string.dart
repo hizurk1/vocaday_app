@@ -29,6 +29,10 @@ extension StringNullExt on String? {
 }
 
 extension StringExtension on String {
+  /// Short of `replaceAll(r'\n', '\n')`
+  String get fixBreakLine => replaceAll(r'\n', '\n');
+
+  /// Format: `1000` to `1,000`
   String get formatedThousand {
     List<String> parts = split(' ');
     int number = int.tryParse(parts.first) ?? 0;

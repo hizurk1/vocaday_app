@@ -49,7 +49,7 @@ class ActivityLearnNewWordWidget extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SvgPicture.asset(
-                            Assets.icons.bookOutline,
+                            Assets.icons.store,
                             height: 16.h,
                             width: 16.w,
                             colorFilter: ColorFilter.mode(

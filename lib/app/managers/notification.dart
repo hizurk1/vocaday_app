@@ -52,8 +52,8 @@ class NotificationService {
 
   static get _notificationDetails => const NotificationDetails(
         android: AndroidNotificationDetails(
-          'channel id',
-          'channel name',
+          'vocaday-reminder',
+          'Vocabulary Reminder',
           importance: Importance.max,
           priority: Priority.max,
           icon: '@mipmap/ic_launcher',

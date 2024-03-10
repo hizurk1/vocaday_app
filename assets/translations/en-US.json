@@ -211,7 +211,10 @@
     "category": "Category: {}",
     "vocab_store": "Vocabulary Store",
     "word_store_title": "Word store",
-    "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence."
+    "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
+    "no_word_bag_found": "No word bag found! Please add some to continue to play the game. \\nNote: The bag should has at least {}.",
+    "select_word_bag_play_game": "Select word bags to start",
+    "select_word_bag_play_game_note": "The bag should has at least {}."
   },
   "cart": {
     "packed_your_cart_bag": "Packed your word bag",

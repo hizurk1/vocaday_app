@@ -6,6 +6,7 @@ import '../../../../../../app/managers/navigation.dart';
 import '../../../../../../app/managers/shared_preferences.dart';
 import '../../../../../../app/routes/route_manager.dart';
 import '../../../../../../app/translations/translations.dart';
+import '../../../../../../core/extensions/string.dart';
 import '../../../../../word/domain/entities/word_entity.dart';
 import '../../../domain/entities/cart_entity.dart';
 import '../../../domain/usecases/add_cart_bag.dart';
@@ -47,7 +48,7 @@ class CartCubit extends Cubit<CartState> {
         Navigators().showMessage(
           LocaleKeys.cart_expand_bag_message.tr(
             args: [LocaleKeys.activity_word.plural(cartBagEntity.words.length)],
-          ).replaceAll(r'\n', '\n'),
+          ).fixBreakLine,
           duration: 8,
           type: MessageType.success,
           actionText: LocaleKeys.common_go.tr(),

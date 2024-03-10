@@ -12,6 +12,10 @@ class AppRoutes {
   static const flashCard = '/flashCard';
   static const cart = '/cart';
 
+  static const quiz = '/quiz';
+  static const saviour = '/saviour';
+  static const wordJumble = '/wordJumble';
+
   static const main = '/main';
   static const home = '$main/home';
   static const search = '$main/search';

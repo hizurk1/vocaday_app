@@ -227,7 +227,10 @@ class CodegenLoader extends AssetLoader{
     "category": "Category: {}",
     "vocab_store": "Vocabulary Store",
     "word_store_title": "Word store",
-    "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence."
+    "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
+    "no_word_bag_found": "No word bag found! Please add some to continue to play the game. \\nNote: The bag should has at least {}.",
+    "select_word_bag_play_game": "Select word bags to start",
+    "select_word_bag_play_game_note": "The bag should has at least {}."
   },
   "cart": {
     "packed_your_cart_bag": "Packed your word bag",
@@ -471,7 +474,10 @@ static const Map<String,dynamic> vi_VN = {
     "category": "Danh mục: {}",
     "vocab_store": "Cửa hàng từ vựng",
     "word_store_title": "Cửa hàng từ vựng",
-    "word_store_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu."
+    "word_store_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
+    "no_word_bag_found": "Không tìm thấy túi từ! Hãy thêm một vài túi để tiếp tục chơi trò chơi này. \\nLưu ý: Túi từ phải có ít nhất {}.",
+    "select_word_bag_play_game": "Chọn các túi từ để bắt đầu",
+    "select_word_bag_play_game_note": "Túi phải có ít nhất {}."
   },
   "cart": {
     "packed_your_cart_bag": "Đã đóng gói túi từ vựng của bạn",

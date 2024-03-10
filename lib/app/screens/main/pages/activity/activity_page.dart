@@ -1,12 +1,18 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/extensions/build_context.dart';
+import '../../../../../features/authentication/presentation/blocs/auth/auth_bloc.dart';
+import '../../../../../features/user/user_cart/presentation/cubits/cart/cart_cubit.dart';
+import '../../../../../features/user/user_cart/presentation/pages/game_select_word_bag_page.dart';
 import '../../../../../features/user/user_profile/presentation/widgets/main_activity/activity_point_gold_widget.dart';
 import '../../../../../features/word/presentation/widgets/main_activity/activity_learn_new_word_widget.dart';
+import '../../../../constants/app_const.dart';
 import '../../../../constants/gen/assets.gen.dart';
+import '../../../../routes/route_manager.dart';
 import '../../../../themes/app_color.dart';
 import '../../../../themes/app_text_theme.dart';
 import '../../../../translations/translations.dart';
@@ -21,15 +27,37 @@ class ActivityPage extends StatefulWidget {
   State<ActivityPage> createState() => _ActivityPageState();
 }
 
-class _ActivityPageState extends State<ActivityPage> {
+class _ActivityPageState extends State<ActivityPage>
+    with AutomaticKeepAliveClientMixin {
   final activities = [
-    ActivityCard(Assets.icons.quizIcon, "Quiz"),
-    ActivityCard(Assets.icons.saviourIcon, "Saviour"),
-    ActivityCard(Assets.icons.arrangerIcon, "Word Jumble"),
+    ActivityCard(Assets.icons.quizIcon, AppStringConst.quiz, AppRoutes.quiz),
+    ActivityCard(
+        Assets.icons.saviourIcon, AppStringConst.saviour, AppRoutes.saviour),
+    ActivityCard(Assets.icons.arrangerIcon, AppStringConst.wordJumble,
+        AppRoutes.wordJumble),
   ];
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final uid = context.read<AuthBloc>().state.user?.uid;
+      if (uid != null) {
+        await context.read<CartCubit>().getCart(uid);
+      }
+    });
+  }
+
+  _onPlayTap(String route) {
+    context.showBottomSheet(child: GameSelectWordBagPage(route: route));
+  }
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       backgroundColor:
           context.isDarkTheme ? context.colors.blue900 : context.colors.blue,
@@ -98,7 +126,7 @@ class _ActivityPageState extends State<ActivityPage> {
             (index, e) => _ActivityTileCardWidget(
               title: e.title,
               icon: e.icon,
-              onPlayTap: () {},
+              onPlayTap: () => _onPlayTap(e.route),
             ),
           ),
         ],
