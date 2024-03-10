@@ -13,8 +13,8 @@ import '../screens/cart/cart_page.dart';
 import '../screens/entry/entry_page.dart';
 import '../screens/main/main_page.dart';
 import '../screens/main/pages/activity/activity_flash_card_page.dart';
-import '../screens/main/pages/activity/activity_list_word_page.dart';
 import '../screens/main/pages/activity/activity_page.dart';
+import '../screens/main/pages/activity/activity_word_store_page.dart';
 import '../screens/main/pages/home/home_page.dart';
 import '../screens/main/pages/profile/profile_page.dart';
 import '../screens/main/pages/search/search_page.dart';
@@ -112,7 +112,7 @@ class AppRouter {
           return slideTransitionPage(
             context: context,
             state: state,
-            child: const ActivityListWordPage(),
+            child: const ActivityWordStorePage(),
           );
         },
         routes: const [],

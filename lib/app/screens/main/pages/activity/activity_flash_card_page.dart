@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
@@ -44,7 +45,18 @@ class _FlashCardPageState extends State<FlashCardPage> {
   @override
   void initState() {
     super.initState();
-    wordCardsNotifier.value = widget.words
+    wordCardsNotifier.value = _renderCards(widget.words);
+  }
+
+  @override
+  void dispose() {
+    _swipeController.dispose();
+    _debounce.dispose();
+    super.dispose();
+  }
+
+  List<WordCardWidget> _renderCards(List<WordEntity> list) {
+    return list
         .map((entity) => WordCardWidget(
               entity: entity,
               controller: _flipController,
@@ -54,13 +66,6 @@ class _FlashCardPageState extends State<FlashCardPage> {
               ),
             ))
         .toList();
-  }
-
-  @override
-  void dispose() {
-    _swipeController.dispose();
-    _debounce.dispose();
-    super.dispose();
   }
 
   Future<bool> _onSwipe(
@@ -76,11 +81,10 @@ class _FlashCardPageState extends State<FlashCardPage> {
       if (direction == CardSwiperDirection.top) {
         //! To avoid out of range
         final fixedIndex = previousIndex % wordCardsNotifier.value.length;
-        // logger.i(wordCardsNotifier.value[fixedIndex].entity.word);
         await _addToCartBag(wordCardsNotifier.value[fixedIndex].entity.word);
 
-        wordCardsNotifier.value.removeAt(fixedIndex);
-        wordCardsNotifier.value = List.from(wordCardsNotifier.value);
+        // wordCardsNotifier.value.removeAt(fixedIndex);
+        // wordCardsNotifier.value = List.from(wordCardsNotifier.value);
         return false;
       } else {
         countIndex.value =
@@ -110,91 +114,107 @@ class _FlashCardPageState extends State<FlashCardPage> {
   @override
   Widget build(BuildContext context) {
     return StatusBar(
-      child: Scaffold(
-        backgroundColor:
-            context.backgroundColor.darken(context.isDarkTheme ? 0 : .05),
-        appBar: AppBarCustom(
-          leading: const BackButton(),
-          action: const CartIconWidget(),
-          title: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextCustom(
-                LocaleKeys.activity_category.tr(
-                  args: [widget.title],
-                ),
-                style: context.textStyle.bodyM.bold.bw,
-              ),
-              const Gap(height: 3),
-              ValueListenableBuilder(
-                valueListenable: wordCardsNotifier,
-                builder: (context, list, _) {
-                  if (list.isEmpty) {
-                    return TextCustom(
-                      "${list.length}/${list.length}",
-                      style: context.textStyle.labelL.grey,
-                    );
-                  }
-                  return ValueListenableBuilder(
-                    valueListenable: countIndex,
-                    builder: (context, index, _) {
-                      return TextCustom(
-                        "${(index % list.length) + 1}/${list.length}",
-                        style: context.textStyle.labelL.grey,
+      child: BlocSelector<CartBagCubit, CartBagState, List<WordEntity>?>(
+        selector: (state) {
+          if (state.status == CartBagStatus.loaded) {
+            final bags = state.entity?.words ?? [];
+            return widget.words.whereNot((e) => bags.contains(e.word)).toList();
+          }
+          return null;
+        },
+        builder: (context, exBags) {
+          if (exBags != null) {
+            wordCardsNotifier.value = _renderCards(exBags);
+          }
+
+          return Scaffold(
+            backgroundColor:
+                context.backgroundColor.darken(context.isDarkTheme ? 0 : .05),
+            appBar: AppBarCustom(
+              leading: const BackButton(),
+              action: const CartIconWidget(),
+              title: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextCustom(
+                    LocaleKeys.activity_category.tr(
+                      args: [widget.title],
+                    ),
+                    style: context.textStyle.bodyM.bold.bw,
+                  ),
+                  const Gap(height: 3),
+                  ValueListenableBuilder(
+                    valueListenable: wordCardsNotifier,
+                    builder: (context, list, _) {
+                      if (list.isEmpty) {
+                        return TextCustom(
+                          "${list.length}/${list.length}",
+                          style: context.textStyle.labelL.grey,
+                        );
+                      }
+                      return ValueListenableBuilder(
+                        valueListenable: countIndex,
+                        builder: (context, index, _) {
+                          return TextCustom(
+                            "${(index % list.length) + 1}/${list.length}",
+                            style: context.textStyle.labelL.grey,
+                          );
+                        },
                       );
                     },
+                  ),
+                ],
+              ),
+            ),
+            body: SafeArea(
+              child: ValueListenableBuilder(
+                valueListenable: wordCardsNotifier,
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 30.w, vertical: 20.h),
+                  child: KnownWordButtonWidget(
+                    onPressed: () => _onKnewPressed(),
+                  ),
+                ),
+                builder: (context, wordCards, child) {
+                  if (wordCards.isEmpty) {
+                    return ErrorPage(
+                      text: LocaleKeys.activity_no_more_words_left.tr(),
+                      image: Assets.jsons.notFoundDog,
+                    );
+                  }
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: CardSwiper(
+                          controller: _swipeController,
+                          cardsCount: wordCards.length,
+                          numberOfCardsDisplayed: wordCards.length > 1 ? 2 : 1,
+                          onSwipe: _onSwipe,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 30.w,
+                            vertical: 35.h,
+                          ).copyWith(bottom: 20.h),
+                          cardBuilder: (
+                            context,
+                            index,
+                            horizontalOffsetPercentage,
+                            verticalOffsetPercentage,
+                          ) {
+                            //! To avoid out of range
+                            final fixedIndex = index % wordCards.length;
+                            return wordCards[fixedIndex];
+                          },
+                        ),
+                      ),
+                      child!,
+                    ],
                   );
                 },
               ),
-            ],
-          ),
-        ),
-        body: SafeArea(
-          child: ValueListenableBuilder(
-            valueListenable: wordCardsNotifier,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 20.h),
-              child: KnownWordButtonWidget(
-                onPressed: () => _onKnewPressed(),
-              ),
             ),
-            builder: (context, wordCards, child) {
-              if (wordCards.isEmpty) {
-                return ErrorPage(
-                  text: LocaleKeys.activity_no_more_words_left.tr(),
-                  image: Assets.jsons.notFoundDog,
-                );
-              }
-              return Column(
-                children: [
-                  Expanded(
-                    child: CardSwiper(
-                      controller: _swipeController,
-                      cardsCount: wordCards.length,
-                      numberOfCardsDisplayed: wordCards.length > 1 ? 2 : 1,
-                      onSwipe: _onSwipe,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 30.w,
-                        vertical: 35.h,
-                      ).copyWith(bottom: 20.h),
-                      cardBuilder: (
-                        context,
-                        index,
-                        horizontalOffsetPercentage,
-                        verticalOffsetPercentage,
-                      ) {
-                        //! To avoid out of range
-                        final fixedIndex = index % wordCards.length;
-                        return wordCards[fixedIndex];
-                      },
-                    ),
-                  ),
-                  child!,
-                ],
-              );
-            },
-          ),
-        ),
+          );
+        },
       ),
     );
   }

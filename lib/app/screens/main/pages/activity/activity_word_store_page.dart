@@ -20,14 +20,14 @@ import '../../../../themes/app_text_theme.dart';
 import '../../../../translations/translations.dart';
 import '../../../../widgets/widgets.dart';
 
-class ActivityListWordPage extends StatefulWidget {
-  const ActivityListWordPage({super.key});
+class ActivityWordStorePage extends StatefulWidget {
+  const ActivityWordStorePage({super.key});
 
   @override
-  State<ActivityListWordPage> createState() => _ActivityListWordPageState();
+  State<ActivityWordStorePage> createState() => _ActivityWordStorePageState();
 }
 
-class _ActivityListWordPageState extends State<ActivityListWordPage> {
+class _ActivityWordStorePageState extends State<ActivityWordStorePage> {
   @override
   void initState() {
     super.initState();
