@@ -253,6 +253,8 @@
     "incorrect": "Không đúng",
     "wrong": "Sai",
     "result": "Kết quả",
-    "congrats_you_got_point": "Chúc mừng! Bạn được "
+    "congrats_you_got_point": "Chúc mừng! Bạn được ",
+    "view_result": "Xem kết quả",
+    "correct_answer": "{} câu đúng"
   }
 }

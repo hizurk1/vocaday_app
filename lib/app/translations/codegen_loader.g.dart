@@ -269,7 +269,9 @@ class CodegenLoader extends AssetLoader{
     "incorrect": "Incorrect",
     "wrong": "Wrong",
     "result": "Result",
-    "congrats_you_got_point": "Congratulation! You got "
+    "congrats_you_got_point": "Congratulation! You got ",
+    "view_result": "View result",
+    "correct_answer": "{} correct answers"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -527,7 +529,9 @@ static const Map<String,dynamic> vi_VN = {
     "incorrect": "Không đúng",
     "wrong": "Sai",
     "result": "Kết quả",
-    "congrats_you_got_point": "Chúc mừng! Bạn được "
+    "congrats_you_got_point": "Chúc mừng! Bạn được ",
+    "view_result": "Xem kết quả",
+    "correct_answer": "{} câu đúng"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

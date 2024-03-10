@@ -3,9 +3,11 @@ import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../../app/constants/app_const.dart';
 import '../../../../../app/constants/gen/assets.gen.dart';
@@ -16,10 +18,12 @@ import '../../../../../app/translations/translations.dart';
 import '../../../../../app/widgets/select_option_tile.dart';
 import '../../../../../app/widgets/timer_count_down.dart';
 import '../../../../../app/widgets/widgets.dart';
-import '../../../../../config/app_logger.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../../core/extensions/color.dart';
+import '../../../../../injection_container.dart';
+import '../../../../authentication/presentation/blocs/auth/auth_bloc.dart';
 import '../../../../word/domain/entities/word_entity.dart';
+import '../../cubits/quiz/game_quiz_cubit.dart';
 
 class QuizEntity {
   final String word;
@@ -76,50 +80,162 @@ class _GameQuizPageState extends State<GameQuizPage> {
     );
   }
 
-  _onCompleteQuiz() {
-    final point =
+  _onCompleteQuiz(BuildContext context) async {
+    final correct =
         quizs.where((element) => element.selectedAnswer == element.word).length;
-    logger.i(point);
-    context.pushReplacement(AppRoutes.quizSummery, extra: quizs);
+    final gold = correct ~/ AppValueConst.minWordInBagToPlay +
+        (correct == quizs.length ? 2 : 0);
+
+    final uid = context.read<AuthBloc>().state.user?.uid;
+    if (uid != null) {
+      await context.read<GameQuizCubit>().calculateResult(
+            uid: uid,
+            point: correct,
+            gold: gold,
+          );
+    }
   }
 
-  void _onNextQuiz(int current) {
+  void _onNextQuiz(BuildContext context, int current) {
     if (current < quizs.length - 1) {
       if (quizs[current].selectedAnswer.isNotEmpty) {
         currentQuestion.value++;
         selectedIndex.value = -1;
       }
     } else {
-      _onCompleteQuiz();
+      _onCompleteQuiz(context);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return StatusBar(
-      child: Scaffold(
-        backgroundColor: context.colors.blue900.darken(.05),
-        appBar: _buildAppBar(context),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 3.h),
+    return BlocProvider(
+      create: (_) => sl<GameQuizCubit>(),
+      child: Builder(builder: (context) {
+        return StatusBar(
+          child: BlocBuilder<GameQuizCubit, GameQuizState>(
+            builder: (context, state) {
+              if (state.status == GameQuizStatus.loading) {
+                return Scaffold(
+                  backgroundColor: context.colors.blue900.darken(.05),
+                  body: const LoadingIndicatorPage(),
+                );
+              }
+              if (state.status == GameQuizStatus.error) {
+                return Scaffold(
+                  backgroundColor: context.colors.blue900.darken(.05),
+                  body: ErrorPage(text: state.message ?? ''),
+                );
+              }
+              if (state.status == GameQuizStatus.success) {
+                final correct =
+                    quizs.where((e) => e.selectedAnswer == e.word).length;
+
+                return _buildSuccess(context, correct);
+              }
+
+              return Scaffold(
+                backgroundColor: context.colors.blue900.darken(.05),
+                appBar: _buildAppBar(context),
+                body: SingleChildScrollView(
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 3.h),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ValueListenableBuilder(
+                          valueListenable: currentQuestion,
+                          builder: (context, value, _) {
+                            return LinearProgressIndicator(
+                              value: (value + 1) / quizs.length,
+                              color: context.colors.green,
+                              backgroundColor:
+                                  context.colors.grey.withOpacity(.15),
+                              borderRadius: BorderRadius.circular(8.r),
+                              minHeight: 12.h,
+                            );
+                          },
+                        ),
+                        const Gap(height: 20),
+                        _buildCardQuestionAnswer(context),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      }),
+    );
+  }
+
+  Widget _buildSuccess(BuildContext context, int correct) {
+    return Scaffold(
+      backgroundColor: context.colors.blue900.darken(.05),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 30.w),
+        child: Center(
+          child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                ValueListenableBuilder(
-                  valueListenable: currentQuestion,
-                  builder: (context, value, _) {
-                    return LinearProgressIndicator(
-                      value: (value + 1) / quizs.length,
-                      color: context.colors.green,
-                      backgroundColor: context.colors.grey.withOpacity(.15),
-                      borderRadius: BorderRadius.circular(8.r),
-                      minHeight: 12.h,
-                    );
-                  },
+                LottieBuilder.asset(
+                  Assets.jsons.surprise,
+                  height: context.screenHeight / 4,
+                ),
+                TextCustom(
+                  LocaleKeys.game_correct_answer.tr(
+                    args: ["$correct/${quizs.length}"],
+                  ),
+                  style: context.textStyle.bodyL.white,
+                ),
+                const Gap(height: 15),
+                TextCustom(
+                  LocaleKeys.game_congrats_you_got_point.tr(),
+                  style: context.textStyle.titleM.bold.white,
+                  maxLines: 2,
+                ),
+                const Gap(height: 10),
+                TextCustom(
+                  LocaleKeys.user_data_point.plural(correct),
+                  style: context.textStyle.headingS.bold.copyWith(
+                    color: context.colors.green400,
+                  ),
+                ),
+                if (correct ~/ AppValueConst.minWordInBagToPlay > 0) ...[
+                  const Gap(height: 10),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        Assets.icons.gold,
+                        height: 30.h,
+                        width: 30.w,
+                      ),
+                      const Gap(width: 5),
+                      TextCustom(
+                        "+${correct ~/ AppValueConst.minWordInBagToPlay}",
+                        style: context.textStyle.bodyL.white.bold,
+                      ),
+                    ],
+                  ),
+                ],
+                const Gap(height: 20),
+                PushableButton(
+                  onPressed: () => context.pushReplacement(
+                    AppRoutes.quizSummery,
+                    extra: quizs,
+                  ),
+                  text: LocaleKeys.game_view_result.tr(),
                 ),
                 const Gap(height: 20),
-                _buildCardQuestionAnswer(context),
+                PushableButton(
+                  onPressed: () => context.pop(),
+                  text: LocaleKeys.common_back.tr(),
+                  type: PushableButtonType.white,
+                ),
               ],
             ),
           ),
@@ -159,7 +275,7 @@ class _GameQuizPageState extends State<GameQuizPage> {
               ),
               child: TimeCountDownWidget(
                 onFinish: () {
-                  logger.i("STOP");
+                  _onCompleteQuiz(context);
                 },
                 durationInSeconds: timeDuration,
                 style: context.textStyle.caption.white,
@@ -234,7 +350,7 @@ class _GameQuizPageState extends State<GameQuizPage> {
             valueListenable: selectedIndex,
             builder: (context, selected, _) {
               return PushableButton(
-                onPressed: () => _onNextQuiz(current),
+                onPressed: () => _onNextQuiz(context, current),
                 width: context.screenWidth / 3,
                 type: quizs[current].selectedAnswer.isNotEmpty ||
                         current == quizs.length - 1

@@ -75,6 +75,7 @@ class UserRepositoryImpl implements UserRepository {
             'attendance':
                 attendance.map((x) => x.millisecondsSinceEpoch).toList(),
             'point': FieldValue.increment(1),
+            'gold': FieldValue.increment(1),
           },
         ),
       );

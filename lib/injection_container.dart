@@ -27,6 +27,12 @@ import 'features/authentication/domain/usecases/sign_up_with_email_password.dart
 import 'features/authentication/presentation/blocs/auth/auth_bloc.dart';
 import 'features/authentication/presentation/blocs/sign_in/sign_in_bloc.dart';
 import 'features/authentication/presentation/blocs/sign_up/sign_up_bloc.dart';
+import 'features/mini_game/data/data_sources/game_remote_data_source.dart';
+import 'features/mini_game/data/repositories/game_repository_impl.dart';
+import 'features/mini_game/domain/repositories/game_repository.dart';
+import 'features/mini_game/domain/usecases/update_user_gold.dart';
+import 'features/mini_game/domain/usecases/update_user_point.dart';
+import 'features/mini_game/presentation/cubits/quiz/game_quiz_cubit.dart';
 import 'features/user/user_cart/data/data_sources/cart_remote_data_source.dart';
 import 'features/user/user_cart/data/repositories/cart_repository_impl.dart';
 import 'features/user/user_cart/domain/repositories/cart_repository.dart';
@@ -206,4 +212,17 @@ Future<void> setUpServiceLocator() async {
   // Bloc/Cubit
   sl.registerFactory(() => CartBagCubit(sl()));
   sl.registerFactory(() => CartCubit(sl(), sl(), sl(), sl(), sl(), sl()));
+
+  //! Feature - game
+  // Data source
+  sl.registerLazySingleton<GameRemoteDataSource>(
+    () => GameRemoteDataSourceImpl(sl()),
+  );
+  // Repository
+  sl.registerLazySingleton<GameRepository>(() => GameRepositoryImpl(sl()));
+  // Usecase
+  sl.registerLazySingleton(() => UpdateUserPointUsecase(sl()));
+  sl.registerLazySingleton(() => UpdateUserGoldUsecase(sl()));
+  // Cubit
+  sl.registerFactory(() => GameQuizCubit(sl(), sl()));
 }

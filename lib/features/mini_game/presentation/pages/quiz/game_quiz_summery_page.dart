@@ -185,27 +185,7 @@ class GameQuizSummeryPage extends StatelessWidget {
           );
         },
       ),
-      action: Padding(
-        padding: EdgeInsets.only(right: 5.w),
-        child: ValueListenableBuilder(
-          valueListenable: currentQuestion,
-          builder: (context, value, _) {
-            if (value >= quizs.length - 1) {
-              return SizedBox(width: 60.w);
-            }
-            return TextButton(
-              onPressed: () {
-                currentQuestion.value++;
-              },
-              child: TextCustom(
-                LocaleKeys.common_skip.tr(),
-                style: context.textStyle.bodyS.white,
-                textAlign: TextAlign.center,
-              ),
-            );
-          },
-        ),
-      ),
+      action: SizedBox(width: 50.w),
     );
   }
 }
