@@ -124,8 +124,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       FilterUserType.point => collection
           .where(field, isGreaterThan: 0)
           .orderBy(field, descending: true),
-      FilterUserType.attendance =>
-        collection.where(field, isNull: false).orderBy(field, descending: true),
+      FilterUserType.attendance => collection.where(field, isNull: false),
     };
   }
 

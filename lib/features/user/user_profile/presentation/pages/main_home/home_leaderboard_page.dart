@@ -46,7 +46,9 @@ class _HomeLeaderboardPageState extends State<HomeLeaderboardPage>
           if (state is LeaderBoardLoadedState) {
             final listUser = widget.type == FilterUserType.point
                 ? state.points
-                : state.attendances;
+                : state.attendances
+              ..sort((a, b) =>
+                  b.attendance!.length.compareTo(a.attendance!.length));
             final topList = listUser.getRange(0, listUser.length).toList();
 
             return Wrap(
