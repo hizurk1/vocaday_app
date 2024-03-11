@@ -172,6 +172,8 @@ class _GameQuizPageState extends State<GameQuizPage> {
   }
 
   Widget _buildSuccess(BuildContext context, int correct) {
+    final gold = correct ~/ AppValueConst.minWordInBagToPlay +
+        (correct == quizs.length ? 2 : 0);
     return Scaffold(
       backgroundColor: context.colors.blue900.darken(.05),
       body: Padding(
@@ -216,7 +218,7 @@ class _GameQuizPageState extends State<GameQuizPage> {
                       ),
                       const Gap(width: 5),
                       TextCustom(
-                        "+${correct ~/ AppValueConst.minWordInBagToPlay}",
+                        "+$gold",
                         style: context.textStyle.bodyL.white.bold,
                       ),
                     ],
