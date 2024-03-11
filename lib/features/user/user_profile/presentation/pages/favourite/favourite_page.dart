@@ -100,56 +100,59 @@ class _FavouritePageState extends State<FavouritePage> {
   @override
   Widget build(BuildContext context) {
     return StatusBar(
-      child: BlocProvider(
-        create: (_) => sl<WordFavouriteCubit>()..getAllFavouriteWords(),
-        child: Builder(builder: (context) {
-          return Scaffold(
-            backgroundColor: context.backgroundColor,
-            appBar: AppBarCustom(
-              leading: const BackButton(),
-              textTitle: LocaleKeys.favourite_favourites.tr(),
-              action: _buildPopupMenu(context),
-            ),
-            body: BlocBuilder<WordFavouriteCubit, WordFavouriteState>(
-              builder: (context, state) {
-                if (state is WordFavouriteLoadingState) {
-                  return const LoadingIndicatorPage();
-                }
-                if (state is WordFavouriteErrorState) {
-                  return ErrorPage(text: state.message);
-                }
-                if (state is WordFavouriteLoadedState) {
-                  favouriteNotifer.value = state.words;
-                  return RefreshIndicator(
-                    onRefresh: () async => _onRefresh(context),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          height: 50.h,
-                          width: context.screenWidth,
-                          margin: EdgeInsets.symmetric(
-                            vertical: 5.h,
-                            horizontal: 15.w,
-                          ).copyWith(top: 15.h),
-                          child: SearchWidget(
-                            hintText: LocaleKeys.search_search_for_words.tr(),
-                            onSearch: (value) => _onSearch(context, value),
-                          ),
-                        ),
-                        Expanded(
-                          child: _buildFavourites(),
-                        ),
-                      ],
+      child: Scaffold(
+        backgroundColor: context.backgroundColor,
+        appBar: AppBarCustom(
+          leading: const BackButton(),
+          textTitle: LocaleKeys.favourite_favourites.tr(),
+          action: _buildPopupMenu(context),
+        ),
+        body: BlocConsumer<WordFavouriteCubit, WordFavouriteState>(
+          listener: (context, state) {
+            if (state is WordFavouriteLoadedState) {
+              Navigators().showMessage(
+                LocaleKeys.favourite_sync_data_success.tr(),
+                type: MessageType.success,
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is WordFavouriteLoadingState) {
+              return const LoadingIndicatorPage();
+            }
+            if (state is WordFavouriteErrorState) {
+              return ErrorPage(text: state.message);
+            }
+            if (state is WordFavouriteLoadedState) {
+              favouriteNotifer.value = state.words;
+              return RefreshIndicator(
+                onRefresh: () async => _onRefresh(context),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      height: 50.h,
+                      width: context.screenWidth,
+                      margin: EdgeInsets.symmetric(
+                        vertical: 5.h,
+                        horizontal: 15.w,
+                      ).copyWith(top: 15.h),
+                      child: SearchWidget(
+                        hintText: LocaleKeys.search_search_for_words.tr(),
+                        onSearch: (value) => _onSearch(context, value),
+                      ),
                     ),
-                  );
-                }
-                return Container();
-              },
-            ),
-          );
-        }),
+                    Expanded(
+                      child: _buildFavourites(),
+                    ),
+                  ],
+                ),
+              );
+            }
+            return Container();
+          },
+        ),
       ),
     );
   }

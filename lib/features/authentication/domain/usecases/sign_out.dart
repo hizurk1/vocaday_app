@@ -12,6 +12,8 @@ class SignOutUsecase extends UsecasesNoParam<void> {
   @override
   FutureEither<void> call() async {
     sharedPrefManager.clearAllFavouriteWords();
+    sharedPrefManager.clearAllKnownWords();
+    sharedPrefManager.removeLocalCartBags();
     return await repository.signOut();
   }
 }

@@ -20,28 +20,10 @@ import '../cubits/cart_bag/cart_bag_cubit.dart';
 
 enum CartBagMenu { rename, expand, remove }
 
-class CartPageBody extends StatefulWidget {
-  const CartPageBody({
-    super.key,
-  });
+class CartPageBody extends StatelessWidget {
+  const CartPageBody({super.key});
 
-  @override
-  State<CartPageBody> createState() => _CartPageBodyState();
-}
-
-class _CartPageBodyState extends State<CartPageBody> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final uid = context.read<AuthBloc>().state.user?.uid;
-      if (uid != null) {
-        await context.read<CartCubit>().getCart(uid);
-      }
-    });
-  }
-
-  Future<void> _onRefresh() async {
+  Future<void> _onRefresh(BuildContext context) async {
     final uid = context.read<AuthBloc>().state.user?.uid;
     if (uid != null) {
       await context.read<CartCubit>().getCart(uid);
@@ -71,7 +53,7 @@ class _CartPageBodyState extends State<CartPageBody> {
                       image: Assets.jsons.notFoundDog,
                     )
                   : RefreshIndicator(
-                      onRefresh: _onRefresh,
+                      onRefresh: () => _onRefresh(context),
                       child: SingleChildScrollView(
                         child: Column(
                           children:

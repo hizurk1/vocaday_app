@@ -3,6 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../features/authentication/presentation/blocs/auth/auth_bloc.dart';
 import '../../../../features/authentication/presentation/pages/authentication_page.dart';
+import '../../../features/user/user_cart/presentation/cubits/cart/cart_cubit.dart';
+import '../../../features/user/user_cart/presentation/cubits/cart_bag/cart_bag_cubit.dart';
+import '../../../features/user/user_profile/presentation/cubits/favourite/word_favourite_cubit.dart';
+import '../../../features/user/user_profile/presentation/cubits/known/known_word_cubit.dart';
 import '../../../features/user/user_profile/presentation/cubits/user_data/user_data_cubit.dart';
 import '../../../injection_container.dart';
 import '../../managers/shared_preferences.dart';
@@ -42,8 +46,7 @@ class _EntryPageState extends State<EntryPage> {
         listener: (_, state) {},
         builder: (context, state) {
           if (state is AuthenticatedState) {
-            context.read<UserDataCubit>().initDataStream(state.user?.uid);
-            return const MainPage();
+            return const AuthenticatedEntryPage(child: MainPage());
           } else {
             context.read<UserDataCubit>().cancelDataStream();
             return const AuthenticationPage();
@@ -51,5 +54,39 @@ class _EntryPageState extends State<EntryPage> {
         },
       ),
     );
+  }
+}
+
+class AuthenticatedEntryPage extends StatefulWidget {
+  final Widget child;
+  const AuthenticatedEntryPage({super.key, required this.child});
+
+  @override
+  State<AuthenticatedEntryPage> createState() => _AuthenticatedEntryPageState();
+}
+
+class _AuthenticatedEntryPageState extends State<AuthenticatedEntryPage> {
+  @override
+  void initState() {
+    super.initState();
+    _initialize();
+  }
+
+  Future<void> _initialize() async {
+    final uid = context.read<AuthBloc>().state.user?.uid;
+    if (uid != null) {
+      context.read<UserDataCubit>().initDataStream(uid);
+      context.read<CartBagCubit>().getCartBag();
+      await Future.wait([
+        context.read<WordFavouriteCubit>().syncFavourites(uid),
+        context.read<KnownWordCubit>().syncKnowns(uid),
+        context.read<CartCubit>().getCart(uid),
+      ]);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return widget.child;
   }
 }

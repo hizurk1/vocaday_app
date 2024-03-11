@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../app/managers/navigation.dart';
 import '../../../../../../app/managers/shared_preferences.dart';
-import '../../../../../../app/translations/translations.dart';
 import '../../../../../word/domain/entities/word_entity.dart';
 import '../../../../../word/domain/usecases/get_all_words.dart';
 import '../../../domain/usecases/remove_all_known_word.dart';
@@ -48,10 +46,6 @@ class KnownWordCubit extends Cubit<KnownWordState> {
             //? Save to local
             await sharedPrefManager.saveKnownWord(newKnowns);
 
-            Navigators().showMessage(
-              LocaleKeys.known_sync_data_success.tr(),
-              type: MessageType.success,
-            );
             emit(
               KnownWordLoadedState(knowns.toList().reversed.toList()),
             );

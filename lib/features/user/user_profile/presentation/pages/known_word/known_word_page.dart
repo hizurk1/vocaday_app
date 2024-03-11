@@ -100,56 +100,59 @@ class _KnownWordPageState extends State<KnownWordPage> {
   @override
   Widget build(BuildContext context) {
     return StatusBar(
-      child: BlocProvider(
-        create: (_) => sl<KnownWordCubit>()..getAllKnownWords(),
-        child: Builder(builder: (context) {
-          return Scaffold(
-            backgroundColor: context.backgroundColor,
-            appBar: AppBarCustom(
-              leading: const BackButton(),
-              textTitle: LocaleKeys.known_knowns.tr(),
-              action: _buildPopupMenu(context),
-            ),
-            body: BlocBuilder<KnownWordCubit, KnownWordState>(
-              builder: (context, state) {
-                if (state is KnownWordLoadingState) {
-                  return const LoadingIndicatorPage();
-                }
-                if (state is KnownWordErrorState) {
-                  return ErrorPage(text: state.message);
-                }
-                if (state is KnownWordLoadedState) {
-                  knownNotifier.value = state.words;
-                  return RefreshIndicator(
-                    onRefresh: () async => _onRefresh(context),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          height: 50.h,
-                          width: context.screenWidth,
-                          margin: EdgeInsets.symmetric(
-                            vertical: 5.h,
-                            horizontal: 15.w,
-                          ).copyWith(top: 15.h),
-                          child: SearchWidget(
-                            hintText: LocaleKeys.search_search_for_words.tr(),
-                            onSearch: (value) => _onSearch(context, value),
-                          ),
-                        ),
-                        Expanded(
-                          child: _buildKnownWords(),
-                        ),
-                      ],
+      child: Scaffold(
+        backgroundColor: context.backgroundColor,
+        appBar: AppBarCustom(
+          leading: const BackButton(),
+          textTitle: LocaleKeys.known_knowns.tr(),
+          action: _buildPopupMenu(context),
+        ),
+        body: BlocConsumer<KnownWordCubit, KnownWordState>(
+          listener: (context, state) {
+            if (state is KnownWordLoadedState) {
+              Navigators().showMessage(
+                LocaleKeys.known_sync_data_success.tr(),
+                type: MessageType.success,
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is KnownWordLoadingState) {
+              return const LoadingIndicatorPage();
+            }
+            if (state is KnownWordErrorState) {
+              return ErrorPage(text: state.message);
+            }
+            if (state is KnownWordLoadedState) {
+              knownNotifier.value = state.words;
+              return RefreshIndicator(
+                onRefresh: () async => _onRefresh(context),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      height: 50.h,
+                      width: context.screenWidth,
+                      margin: EdgeInsets.symmetric(
+                        vertical: 5.h,
+                        horizontal: 15.w,
+                      ).copyWith(top: 15.h),
+                      child: SearchWidget(
+                        hintText: LocaleKeys.search_search_for_words.tr(),
+                        onSearch: (value) => _onSearch(context, value),
+                      ),
                     ),
-                  );
-                }
-                return Container();
-              },
-            ),
-          );
-        }),
+                    Expanded(
+                      child: _buildKnownWords(),
+                    ),
+                  ],
+                ),
+              );
+            }
+            return Container();
+          },
+        ),
       ),
     );
   }
