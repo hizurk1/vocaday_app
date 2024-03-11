@@ -6,6 +6,7 @@ import '../../features/authentication/presentation/pages/authentication_page.dar
 import '../../features/authentication/presentation/pages/change_password_page.dart';
 import '../../features/mini_game/presentation/pages/quiz/game_quiz_page.dart';
 import '../../features/mini_game/presentation/pages/quiz/game_quiz_summery_page.dart';
+import '../../features/mini_game/presentation/pages/sliding_puzzle/sliding_puzzle_page.dart';
 import '../../features/user/user_profile/presentation/pages/favourite/favourite_page.dart';
 import '../../features/user/user_profile/presentation/pages/known_word/known_word_page.dart';
 import '../../features/word/domain/entities/word_entity.dart';
@@ -178,6 +179,21 @@ class AppRouter {
             context: context,
             state: state,
             child: GameQuizSummeryPage(quizs: args ?? []),
+          );
+        },
+        routes: const [],
+      ),
+      //? Route: '/slidingPuzzle'
+      GoRoute(
+        path: AppRoutes.slidingPuzzle,
+        pageBuilder: (context, state) {
+          logger.f("${state.fullPath}");
+          final args = state.extra as List<WordEntity>?;
+
+          return slideTransitionPage(
+            context: context,
+            state: state,
+            child: SlidingPuzzlePage(words: args ?? []),
           );
         },
         routes: const [],

@@ -20,8 +20,8 @@ class AppStringConst {
 
   // Mini Game
   static const quiz = "Quiz";
-  static const saviour = "Saviour";
-  static const wordJumble = "Word Jumble";
+  static const slidingPuzzle = "Sliding Puzzle";
+  static const slidingPuzzleEmpty = "#";
 
   // Error message
   static const unexpectedErrorMessage = 'Unexpected Error';

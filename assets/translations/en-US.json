@@ -257,6 +257,7 @@
     "result": "Result",
     "congrats_you_got_point": "Congratulation! You got ",
     "view_result": "View result",
-    "correct_answer": "{} correct answers"
+    "correct_answer": "{} correct answers",
+    "hint": "Hint"
   }
 }

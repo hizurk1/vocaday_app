@@ -7,7 +7,7 @@ import '../themes/app_color.dart';
 import '../themes/app_text_theme.dart';
 import 'text.dart';
 
-enum PushableButtonType { primary, accent, grey, white, disable }
+enum PushableButtonType { primary, success, accent, grey, white, disable }
 
 class PushableButton extends StatefulWidget {
   const PushableButton({
@@ -55,6 +55,7 @@ class _PushableButtonState extends State<PushableButton> {
   Decoration? get _boxDecoration {
     final backgroundColor = switch (widget.type) {
       PushableButtonType.primary => context.theme.primaryColor,
+      PushableButtonType.success => context.colors.green,
       PushableButtonType.accent =>
         context.isDarkTheme ? context.colors.red600 : context.colors.red,
       PushableButtonType.grey =>
@@ -85,11 +86,9 @@ class _PushableButtonState extends State<PushableButton> {
       onTapDown: (_) => setState(() => _elevation = 0.0),
       onTapUp: (_) => setState(() => _elevation = widget.elevation.h),
       child: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(widget.borderRadius.r),
-          topRight: Radius.circular(widget.borderRadius.r),
-          bottomLeft: Radius.circular(_borderRadiusFixed),
-          bottomRight: Radius.circular(_borderRadiusFixed),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(widget.borderRadius.r),
+          bottom: Radius.circular(_borderRadiusFixed),
         ),
         child: AnimatedContainer(
           height: widget.height.h,

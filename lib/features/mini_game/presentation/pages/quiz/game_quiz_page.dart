@@ -184,7 +184,7 @@ class _GameQuizPageState extends State<GameQuizPage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 LottieBuilder.asset(
-                  Assets.jsons.surprise,
+                  Assets.jsons.trophy,
                   height: context.screenHeight / 4,
                 ),
                 TextCustom(

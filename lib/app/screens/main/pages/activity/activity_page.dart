@@ -31,10 +31,8 @@ class _ActivityPageState extends State<ActivityPage>
     with AutomaticKeepAliveClientMixin {
   final activities = [
     ActivityCard(Assets.icons.quizIcon, AppStringConst.quiz, AppRoutes.quiz),
-    ActivityCard(
-        Assets.icons.saviourIcon, AppStringConst.saviour, AppRoutes.saviour),
-    ActivityCard(Assets.icons.arrangerIcon, AppStringConst.wordJumble,
-        AppRoutes.wordJumble),
+    ActivityCard(Assets.icons.saviourIcon, AppStringConst.slidingPuzzle,
+        AppRoutes.slidingPuzzle),
   ];
 
   @override

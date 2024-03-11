@@ -14,8 +14,7 @@ class AppRoutes {
 
   static const quiz = '/quiz';
   static const quizSummery = '/quizSummery';
-  static const saviour = '/saviour';
-  static const wordJumble = '/wordJumble';
+  static const slidingPuzzle = '/slidingPuzzle';
 
   static const main = '/main';
   static const home = '$main/home';

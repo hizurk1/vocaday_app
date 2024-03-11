@@ -273,7 +273,8 @@ class CodegenLoader extends AssetLoader{
     "result": "Result",
     "congrats_you_got_point": "Congratulation! You got ",
     "view_result": "View result",
-    "correct_answer": "{} correct answers"
+    "correct_answer": "{} correct answers",
+    "hint": "Hint"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -535,7 +536,8 @@ static const Map<String,dynamic> vi_VN = {
     "result": "Kết quả",
     "congrats_you_got_point": "Chúc mừng! Bạn được ",
     "view_result": "Xem kết quả",
-    "correct_answer": "{} câu đúng"
+    "correct_answer": "{} câu đúng",
+    "hint": "Gợi ý"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

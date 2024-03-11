@@ -568,6 +568,9 @@ class $AssetsJsonsGen {
   /// File path: assets/jsons/book-loading.json
   String get bookLoading => 'assets/jsons/book-loading.json';
 
+  /// File path: assets/jsons/cow.json
+  String get cow => 'assets/jsons/cow.json';
+
   /// File path: assets/jsons/cute-astronaut-in-space-mug-cartoon.json
   String get cuteAstronautInSpaceMugCartoon =>
       'assets/jsons/cute-astronaut-in-space-mug-cartoon.json';
@@ -631,6 +634,7 @@ class $AssetsJsonsGen {
   /// List of all assets
   List<String> get values => [
         bookLoading,
+        cow,
         cuteAstronautInSpaceMugCartoon,
         error,
         flyingRocket,
