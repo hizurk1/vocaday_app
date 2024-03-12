@@ -258,6 +258,9 @@
     "congrats_you_got_point": "Chúc mừng! Bạn được ",
     "view_result": "Xem kết quả",
     "correct_answer": "{} câu đúng",
-    "hint": "Gợi ý"
+    "hint": "Gợi ý",
+    "background_music": "Nhạc nền",
+    "sound_effect": "Hiệu ứng âm thanh",
+    "quit_message": "Này! Bạn có chắc muốn thoát khỏi màn hình này chứ?"
   }
 }

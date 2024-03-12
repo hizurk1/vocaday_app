@@ -76,6 +76,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/birthday.svg
   String get birthday => 'assets/icons/birthday.svg';
 
+  /// File path: assets/icons/block.svg
+  String get block => 'assets/icons/block.svg';
+
   /// File path: assets/icons/book.svg
   String get book => 'assets/icons/book.svg';
 
@@ -360,6 +363,7 @@ class $AssetsIconsGen {
         bell,
         bin,
         birthday,
+        block,
         book,
         bookFill,
         bookIcon,
@@ -657,6 +661,22 @@ class $AssetsJsonsGen {
       ];
 }
 
+class $AssetsSoundsGen {
+  const $AssetsSoundsGen();
+
+  /// File path: assets/sounds/button_click.mp3
+  String get buttonClick => 'assets/sounds/button_click.mp3';
+
+  /// File path: assets/sounds/congrats.mp3
+  String get congrats => 'assets/sounds/congrats.mp3';
+
+  /// File path: assets/sounds/music_background.mp3
+  String get musicBackground => 'assets/sounds/music_background.mp3';
+
+  /// List of all assets
+  List<String> get values => [buttonClick, congrats, musicBackground];
+}
+
 class $AssetsTranslationsGen {
   const $AssetsTranslationsGen();
 
@@ -677,6 +697,7 @@ class Assets {
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsJsonsGen jsons = $AssetsJsonsGen();
+  static const $AssetsSoundsGen sounds = $AssetsSoundsGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
 }
 

@@ -12,6 +12,8 @@ class SlidingPuzzleState extends Equatable {
     this.list = const [],
     this.isCompleted = false,
     this.message,
+    this.playSound = false,
+    this.playMusic = false,
   });
 
   final SlidingPuzzleStatus status;
@@ -21,10 +23,21 @@ class SlidingPuzzleState extends Equatable {
   final List<String> list;
   final bool isCompleted;
   final String? message;
+  final bool playSound;
+  final bool playMusic;
 
   @override
-  List<Object?> get props =>
-      [status, index, gridSize, count, list, isCompleted, message];
+  List<Object?> get props => [
+        status,
+        index,
+        gridSize,
+        count,
+        list,
+        isCompleted,
+        message,
+        playSound,
+        playMusic
+      ];
 
   SlidingPuzzleState copyWith({
     SlidingPuzzleStatus? status,
@@ -34,6 +47,8 @@ class SlidingPuzzleState extends Equatable {
     List<String>? list,
     bool? isCompleted,
     String? message,
+    bool? playSound,
+    bool? playMusic,
   }) {
     return SlidingPuzzleState(
       status: status ?? this.status,
@@ -43,6 +58,8 @@ class SlidingPuzzleState extends Equatable {
       list: list ?? this.list,
       isCompleted: isCompleted ?? this.isCompleted,
       message: message ?? this.message,
+      playSound: playSound ?? this.playSound,
+      playMusic: playMusic ?? this.playMusic,
     );
   }
 }

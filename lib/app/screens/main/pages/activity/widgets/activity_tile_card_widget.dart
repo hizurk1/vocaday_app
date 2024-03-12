@@ -35,14 +35,15 @@ class _ActivityTileCardWidget extends StatelessWidget {
           ),
         ],
       ),
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
       child: ListTileCustom(
-        leading: SizedBox(
-          height: 45.h,
-          width: 45.w,
+        leading: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 2.h),
           child: SvgPicture.asset(
             icon,
-            fit: BoxFit.contain,
+            height: 42.h,
+            width: 42.w,
+            fit: BoxFit.cover,
           ),
         ),
         titlePadding: EdgeInsets.symmetric(horizontal: 15.w),

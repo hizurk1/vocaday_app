@@ -117,4 +117,19 @@ class SharedPrefManager {
       prefs.getStringList(AppPrefsKey.cartBagWordStringL) ?? [];
 
   void removeLocalCartBags() => prefs.remove(AppPrefsKey.cartBagWordStringL);
+
+  //! Sliding puzzle
+  Future<void> slidingPuzzleMusic(bool isOn) async {
+    await prefs.setBool(AppPrefsKey.slidingPuzzleMusic, isOn);
+  }
+
+  bool get getSlidingPuzzleMusic =>
+      prefs.getBool(AppPrefsKey.slidingPuzzleMusic) ?? true;
+
+  Future<void> slidingPuzzleSound(bool isOn) async {
+    await prefs.setBool(AppPrefsKey.slidingPuzzleSound, isOn);
+  }
+
+  bool get getSlidingPuzzleSound =>
+      prefs.getBool(AppPrefsKey.slidingPuzzleSound) ?? true;
 }

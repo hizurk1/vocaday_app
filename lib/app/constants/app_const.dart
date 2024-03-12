@@ -43,4 +43,6 @@ class AppPrefsKey {
   static const favouriteWordStringL = 'favourite_word_string_l';
   static const knownWordStringL = 'known_word_string_l';
   static const cartBagWordStringL = 'cart_bag_word_string_l';
+  static const slidingPuzzleMusic = 'sliding_puzzle_music';
+  static const slidingPuzzleSound = 'sliding_puzzle_sound';
 }

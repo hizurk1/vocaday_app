@@ -31,7 +31,7 @@ class _ActivityPageState extends State<ActivityPage>
     with AutomaticKeepAliveClientMixin {
   final activities = [
     ActivityCard(Assets.icons.quizIcon, AppStringConst.quiz, AppRoutes.quiz),
-    ActivityCard(Assets.icons.saviourIcon, AppStringConst.slidingPuzzle,
+    ActivityCard(Assets.icons.block, AppStringConst.slidingPuzzle,
         AppRoutes.slidingPuzzle),
   ];
 
@@ -107,16 +107,16 @@ class _ActivityPageState extends State<ActivityPage>
                   style: context.textStyle.labelL.white.bold,
                 ),
               ),
-              const Spacer(),
-              SvgPicture.asset(
-                Assets.icons.questionMark,
-                height: 25.h,
-                width: 25.w,
-                colorFilter: ColorFilter.mode(
-                  context.greyColor.withOpacity(.7),
-                  BlendMode.srcIn,
-                ),
-              ),
+              // const Spacer(),
+              // SvgPicture.asset(
+              //   Assets.icons.questionMark,
+              //   height: 25.h,
+              //   width: 25.w,
+              //   colorFilter: ColorFilter.mode(
+              //     context.greyColor.withOpacity(.7),
+              //     BlendMode.srcIn,
+              //   ),
+              // ),
             ],
           ),
           const Gap(height: 8),

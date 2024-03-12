@@ -8,6 +8,7 @@ environment:
   sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
+  audioplayers: ^5.2.1
   cached_network_image: ^3.3.0
   cloud_firestore: ^4.13.6
   collection: ^1.18.0
@@ -72,6 +73,7 @@ flutter:
     - assets/jsons/
     - assets/translations/
     - assets/data/
+    - assets/sounds/
 
   fonts:
     # - family: Roboto_300 # Light - w300

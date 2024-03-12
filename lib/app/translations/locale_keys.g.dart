@@ -186,5 +186,8 @@ abstract class  LocaleKeys {
   static const game_view_result = 'game.view_result';
   static const game_correct_answer = 'game.correct_answer';
   static const game_hint = 'game.hint';
+  static const game_background_music = 'game.background_music';
+  static const game_sound_effect = 'game.sound_effect';
+  static const game_quit_message = 'game.quit_message';
 
 }

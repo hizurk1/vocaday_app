@@ -258,6 +258,9 @@
     "congrats_you_got_point": "Congratulation! You got ",
     "view_result": "View result",
     "correct_answer": "{} correct answers",
-    "hint": "Hint"
+    "hint": "Hint",
+    "background_music": "Background music",
+    "sound_effect": "Sound effect",
+    "quit_message": "Hey! Are you sure you want to quit this screen?"
   }
 }
