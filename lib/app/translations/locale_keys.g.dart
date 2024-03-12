@@ -89,6 +89,7 @@ abstract class  LocaleKeys {
   static const utils_check_your_internet_connection = 'utils.check_your_internet_connection';
   static const utils_no_internet_connection = 'utils.no_internet_connection';
   static const utils_you_back_online = 'utils.you_back_online';
+  static const utils_word_not_found_in_dictionary = 'utils.word_not_found_in_dictionary';
   static const home_tab_points = 'home.tab_points';
   static const home_tab_attendances = 'home.tab_attendances';
   static const home_day = 'home.day';

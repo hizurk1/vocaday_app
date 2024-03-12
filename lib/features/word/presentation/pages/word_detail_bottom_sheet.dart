@@ -2,10 +2,12 @@
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../app/constants/gen/assets.gen.dart';
+import '../../../../app/managers/navigation.dart';
 import '../../../../app/themes/app_color.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
@@ -15,6 +17,7 @@ import '../../../../core/extensions/build_context.dart';
 import '../../../user/user_cart/presentation/widgets/add_to_bag_button_widget.dart';
 import '../../../user/user_profile/presentation/widgets/favourite/favourite_button_widget.dart';
 import '../../domain/entities/word_entity.dart';
+import '../blocs/word_list/word_list_cubit.dart';
 
 class WordDetailBottomSheet extends StatelessWidget {
   const WordDetailBottomSheet({super.key, required this.wordEntity});
@@ -30,6 +33,25 @@ class WordDetailBottomSheet extends StatelessWidget {
 
   void _onCopyToClipboard() {
     UtilFunction.copyToClipboard(wordEntity.word.toLowerCase());
+  }
+
+  _onTapChipItem(BuildContext context, String text) {
+    final state = context.read<WordListCubit>().state;
+    if (state is WordListLoadedState) {
+      final result =
+          state.wordList.firstWhereOrNull((e) => e.word == text.toUpperCase());
+      if (result != null) {
+        context.showBottomSheet(
+            child: WordDetailBottomSheet(wordEntity: result));
+      } else {
+        Navigators().showMessage(
+          LocaleKeys.utils_word_not_found_in_dictionary.tr(
+            args: [text.toLowerCase()],
+          ),
+          type: MessageType.info,
+        );
+      }
+    }
   }
 
   @override
@@ -116,26 +138,29 @@ class WordDetailBottomSheet extends StatelessWidget {
       runSpacing: 8.h,
       children: items
           .map(
-            (text) => Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 3.h,
-                horizontal: 8.w,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.r),
-                border: Border.all(
-                  color: context.isDarkTheme
-                      ? context.colors.blue400
-                      : context.colors.blue,
-                  width: 1.5,
+            (text) => GestureDetector(
+              onTap: () => _onTapChipItem(context, text),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: 3.h,
+                  horizontal: 8.w,
                 ),
-              ),
-              child: TextCustom(
-                text.toLowerCase(),
-                style: context.textStyle.bodyS.bold.copyWith(
-                  color: context.isDarkTheme
-                      ? context.colors.blue400
-                      : context.colors.blue,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.r),
+                  border: Border.all(
+                    color: context.isDarkTheme
+                        ? context.colors.blue400
+                        : context.colors.blue,
+                    width: 1.5,
+                  ),
+                ),
+                child: TextCustom(
+                  text.toLowerCase(),
+                  style: context.textStyle.bodyS.bold.copyWith(
+                    color: context.isDarkTheme
+                        ? context.colors.blue400
+                        : context.colors.blue,
+                  ),
                 ),
               ),
             ),

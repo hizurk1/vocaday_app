@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../app/constants/gen/assets.gen.dart';
-import '../../../../../core/extensions/build_context.dart';
+import '../../../../../app/themes/app_color.dart';
 import '../cubits/cart_bag/cart_bag_cubit.dart';
 
 class AddToBagButtonWidget extends StatelessWidget {
@@ -32,7 +32,7 @@ class AddToBagButtonWidget extends StatelessWidget {
                       Assets.icons.addCircle,
                       height: 28.h,
                       colorFilter: ColorFilter.mode(
-                          context.theme.primaryColorDark, BlendMode.srcIn),
+                          context.colors.grey400, BlendMode.srcIn),
                     ),
                   ),
                 );

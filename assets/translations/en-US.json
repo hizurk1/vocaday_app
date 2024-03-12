@@ -110,7 +110,8 @@
   "utils": {
     "check_your_internet_connection": "Check your internet connection",
     "no_internet_connection": "No internet connection",
-    "you_back_online": "Woohoo! You are back online."
+    "you_back_online": "Woohoo! You are back online.",
+    "word_not_found_in_dictionary": "The word \"{}\" was not found in the dictionary."
   },
   "home": {
     "tab_points": "Points",

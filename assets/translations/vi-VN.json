@@ -110,7 +110,8 @@
   "utils": {
     "check_your_internet_connection": "Kiểm tra kết nối mạng của bạn",
     "no_internet_connection": "Không có kết nối mạng",
-    "you_back_online": "Hú hú! Đã có kết nối mạng."
+    "you_back_online": "Hú hú! Đã có kết nối mạng.",
+    "word_not_found_in_dictionary": "Từ \"{}\" không được tìm thấy trong từ điển."
   },
   "home": {
     "tab_points": "Điểm",

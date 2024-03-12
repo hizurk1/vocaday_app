@@ -126,7 +126,8 @@ class CodegenLoader extends AssetLoader{
   "utils": {
     "check_your_internet_connection": "Check your internet connection",
     "no_internet_connection": "No internet connection",
-    "you_back_online": "Woohoo! You are back online."
+    "you_back_online": "Woohoo! You are back online.",
+    "word_not_found_in_dictionary": "The word \"{}\" was not found in the dictionary."
   },
   "home": {
     "tab_points": "Points",
@@ -393,7 +394,8 @@ static const Map<String,dynamic> vi_VN = {
   "utils": {
     "check_your_internet_connection": "Kiểm tra kết nối mạng của bạn",
     "no_internet_connection": "Không có kết nối mạng",
-    "you_back_online": "Hú hú! Đã có kết nối mạng."
+    "you_back_online": "Hú hú! Đã có kết nối mạng.",
+    "word_not_found_in_dictionary": "Từ \"{}\" không được tìm thấy trong từ điển."
   },
   "home": {
     "tab_points": "Điểm",
