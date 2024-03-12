@@ -53,7 +53,8 @@
     "view": "Xem",
     "yes_ofc": "Đúng vậy",
     "go": "Đi",
-    "back": "Quay lại"
+    "back": "Quay lại",
+    "start": "Bắt đầu"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -263,6 +264,11 @@
     "hint": "Gợi ý",
     "background_music": "Nhạc nền",
     "sound_effect": "Hiệu ứng âm thanh",
-    "quit_message": "Này! Bạn có chắc muốn thoát khỏi màn hình này chứ?"
+    "quit_message": "Này! Bạn có chắc muốn thoát khỏi màn hình này chứ?",
+    "well_done": "Giỏi lắm",
+    "amazing": "Tuyệt vời",
+    "unbelievable": "Không thể tin nổi",
+    "incredible": "Ghê thật",
+    "my_suggestion": "Gợi ý của tôi"
   }
 }

@@ -47,7 +47,7 @@ class CartBagCubit extends Cubit<CartBagState> {
         LocaleKeys.cart_added_to_word_bag.tr(
           args: [word.toLowerCase()],
         ),
-        type: MessageType.success,
+        type: MessageType.info,
         duration: 2,
       );
       emit(state.copyWith(

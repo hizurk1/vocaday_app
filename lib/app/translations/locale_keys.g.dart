@@ -49,6 +49,7 @@ abstract class  LocaleKeys {
   static const common_yes_ofc = 'common.yes_ofc';
   static const common_go = 'common.go';
   static const common_back = 'common.back';
+  static const common_start = 'common.start';
   static const on_board_get_started = 'on_board.get_started';
   static const on_board_onboard_body = 'on_board.onboard_body';
   static const on_board_onboard_title = 'on_board.onboard_title';
@@ -191,5 +192,10 @@ abstract class  LocaleKeys {
   static const game_background_music = 'game.background_music';
   static const game_sound_effect = 'game.sound_effect';
   static const game_quit_message = 'game.quit_message';
+  static const game_well_done = 'game.well_done';
+  static const game_amazing = 'game.amazing';
+  static const game_unbelievable = 'game.unbelievable';
+  static const game_incredible = 'game.incredible';
+  static const game_my_suggestion = 'game.my_suggestion';
 
 }

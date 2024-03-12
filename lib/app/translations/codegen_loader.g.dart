@@ -69,7 +69,8 @@ class CodegenLoader extends AssetLoader{
     "view": "View",
     "yes_ofc": "Yes of course",
     "go": "Go",
-    "back": "Back"
+    "back": "Back",
+    "start": "Start"
   },
   "on_board": {
     "get_started": "Get started",
@@ -279,7 +280,12 @@ class CodegenLoader extends AssetLoader{
     "hint": "Hint",
     "background_music": "Background music",
     "sound_effect": "Sound effect",
-    "quit_message": "Hey! Are you sure you want to quit this screen?"
+    "quit_message": "Hey! Are you sure you want to quit this screen?",
+    "well_done": "Well done",
+    "amazing": "Amazing",
+    "unbelievable": "Unbelievable",
+    "incredible": "Incredible",
+    "my_suggestion": "My suggestion"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -337,7 +343,8 @@ static const Map<String,dynamic> vi_VN = {
     "view": "Xem",
     "yes_ofc": "Đúng vậy",
     "go": "Đi",
-    "back": "Quay lại"
+    "back": "Quay lại",
+    "start": "Bắt đầu"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -547,7 +554,12 @@ static const Map<String,dynamic> vi_VN = {
     "hint": "Gợi ý",
     "background_music": "Nhạc nền",
     "sound_effect": "Hiệu ứng âm thanh",
-    "quit_message": "Này! Bạn có chắc muốn thoát khỏi màn hình này chứ?"
+    "quit_message": "Này! Bạn có chắc muốn thoát khỏi màn hình này chứ?",
+    "well_done": "Giỏi lắm",
+    "amazing": "Tuyệt vời",
+    "unbelievable": "Không thể tin nổi",
+    "incredible": "Ghê thật",
+    "my_suggestion": "Gợi ý của tôi"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

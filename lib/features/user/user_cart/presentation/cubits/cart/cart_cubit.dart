@@ -156,8 +156,7 @@ class CartCubit extends Cubit<CartState> {
           opacity: 1,
           actionText: LocaleKeys.common_view.tr(),
           duration: 5,
-          onAction: () =>
-              Navigators().currentContext!.pushReplacement(AppRoutes.cart),
+          onAction: () => Navigators().currentContext!.push(AppRoutes.cart),
         );
         emit(CartLoadedState(cart));
       },

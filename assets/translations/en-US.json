@@ -53,7 +53,8 @@
     "view": "View",
     "yes_ofc": "Yes of course",
     "go": "Go",
-    "back": "Back"
+    "back": "Back",
+    "start": "Start"
   },
   "on_board": {
     "get_started": "Get started",
@@ -263,6 +264,11 @@
     "hint": "Hint",
     "background_music": "Background music",
     "sound_effect": "Sound effect",
-    "quit_message": "Hey! Are you sure you want to quit this screen?"
+    "quit_message": "Hey! Are you sure you want to quit this screen?",
+    "well_done": "Well done",
+    "amazing": "Amazing",
+    "unbelievable": "Unbelievable",
+    "incredible": "Incredible",
+    "my_suggestion": "My suggestion"
   }
 }

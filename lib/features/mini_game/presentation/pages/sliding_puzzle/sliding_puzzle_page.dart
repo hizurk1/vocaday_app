@@ -27,12 +27,18 @@ import '../../cubits/sliding_puzzle/sliding_puzzle_cubit.dart';
 import 'widgets/sliding_puzzle_board.dart';
 
 class SlidingPuzzlePage extends StatelessWidget {
-  const SlidingPuzzlePage({
+  SlidingPuzzlePage({
     super.key,
     required this.words,
   });
 
   final List<WordEntity> words;
+  final List<String> cowMsg = [
+    LocaleKeys.game_amazing.tr(),
+    LocaleKeys.game_incredible.tr(),
+    LocaleKeys.game_unbelievable.tr(),
+    LocaleKeys.game_well_done.tr(),
+  ];
 
   _onBack() async {
     final res = await Navigators().showDialogWithButton(
@@ -329,11 +335,42 @@ class SlidingPuzzlePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            GestureDetector(
-              onTap: () => _onTapCow(context, state),
-              child: LottieBuilder.asset(
-                Assets.jsons.cow,
-                height: context.screenHeight / 8,
+            Container(
+              width: context.screenWidth * 0.8,
+              padding: EdgeInsets.only(top: 10.h),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () => _onTapCow(context, state),
+                    child: LottieBuilder.asset(
+                      Assets.jsons.cow,
+                      height: context.screenHeight / 8,
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: context.screenWidth / 4,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 6.w, vertical: 3.h),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6.r).copyWith(
+                          bottomRight: const Radius.circular(0),
+                        ),
+                        color: context.theme.cardColor,
+                      ),
+                      child: TextCustom(
+                        state.isCompleted
+                            ? cowMsg.getRandom ?? ''
+                            : LocaleKeys.game_my_suggestion.tr(),
+                        maxLines: 3,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(

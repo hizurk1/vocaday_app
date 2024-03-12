@@ -197,7 +197,7 @@ class _WordBagCheckBoxListTileState extends State<_WordBagCheckBoxListTile> {
         const Gap(height: 10),
         PushableButton(
           onPressed: _onPlayPressed,
-          text: LocaleKeys.activity_play.tr(),
+          text: LocaleKeys.common_start.tr(),
         ),
       ],
     );
