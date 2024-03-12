@@ -48,10 +48,18 @@ dev_dependencies:
   bloc_test: ^9.1.5
   build_runner: ^2.4.7
   flutter_gen: ^5.4.0
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png"
+  adaptive_icon_foreground: "assets/images/1024.png"
+  adaptive_icon_background: "#ff3b47de"
 
 flutter_gen:
   output: lib/app/constants/gen/ # Optional (default: lib/gen/)

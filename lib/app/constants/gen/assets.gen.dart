@@ -37,14 +37,8 @@ class $AssetsIconsGen {
   /// File path: assets/icons/add_circle.svg
   String get addCircle => 'assets/icons/add_circle.svg';
 
-  /// File path: assets/icons/add_send.svg
-  String get addSend => 'assets/icons/add_send.svg';
-
   /// File path: assets/icons/approve.svg
   String get approve => 'assets/icons/approve.svg';
-
-  /// File path: assets/icons/arranger_icon.svg
-  String get arrangerIcon => 'assets/icons/arranger_icon.svg';
 
   /// File path: assets/icons/arrow_down.svg
   String get arrowDown => 'assets/icons/arrow_down.svg';
@@ -94,9 +88,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/book_outline.svg
   String get bookOutline => 'assets/icons/book_outline.svg';
 
-  /// File path: assets/icons/bot_avatar.svg
-  String get botAvatar => 'assets/icons/bot_avatar.svg';
-
   /// File path: assets/icons/calendar.svg
   String get calendar => 'assets/icons/calendar.svg';
 
@@ -112,14 +103,8 @@ class $AssetsIconsGen {
   /// File path: assets/icons/chart_up.svg
   String get chartUp => 'assets/icons/chart_up.svg';
 
-  /// File path: assets/icons/chatbot.svg
-  String get chatbot => 'assets/icons/chatbot.svg';
-
   /// File path: assets/icons/chatbot_2.svg
   String get chatbot2 => 'assets/icons/chatbot_2.svg';
-
-  /// File path: assets/icons/chatbot_3.svg
-  String get chatbot3 => 'assets/icons/chatbot_3.svg';
 
   /// File path: assets/icons/check.svg
   String get check => 'assets/icons/check.svg';
@@ -154,20 +139,11 @@ class $AssetsIconsGen {
   /// File path: assets/icons/english_round.svg
   String get englishRound => 'assets/icons/english_round.svg';
 
-  /// File path: assets/icons/envelop_close.svg
-  String get envelopClose => 'assets/icons/envelop_close.svg';
-
-  /// File path: assets/icons/envelop_open.svg
-  String get envelopOpen => 'assets/icons/envelop_open.svg';
-
   /// File path: assets/icons/eye_close.svg
   String get eyeClose => 'assets/icons/eye_close.svg';
 
   /// File path: assets/icons/eye_open.svg
   String get eyeOpen => 'assets/icons/eye_open.svg';
-
-  /// File path: assets/icons/facebook.svg
-  String get facebook => 'assets/icons/facebook.svg';
 
   /// File path: assets/icons/favorites.svg
   String get favorites => 'assets/icons/favorites.svg';
@@ -193,12 +169,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/hand_point.svg
   String get handPoint => 'assets/icons/hand_point.svg';
 
-  /// File path: assets/icons/handbook.svg
-  String get handbook => 'assets/icons/handbook.svg';
-
-  /// File path: assets/icons/handbook2.svg
-  String get handbook2 => 'assets/icons/handbook2.svg';
-
   /// File path: assets/icons/help.svg
   String get help => 'assets/icons/help.svg';
 
@@ -207,9 +177,6 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/home_outline.svg
   String get homeOutline => 'assets/icons/home_outline.svg';
-
-  /// File path: assets/icons/job.svg
-  String get job => 'assets/icons/job.svg';
 
   /// File path: assets/icons/language.svg
   String get language => 'assets/icons/language.svg';
@@ -310,9 +277,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/search_outline.svg
   String get searchOutline => 'assets/icons/search_outline.svg';
 
-  /// File path: assets/icons/send_icon.svg
-  String get sendIcon => 'assets/icons/send_icon.svg';
-
   /// File path: assets/icons/settings.svg
   String get settings => 'assets/icons/settings.svg';
 
@@ -353,9 +317,7 @@ class $AssetsIconsGen {
         activityFill,
         activityOutline,
         addCircle,
-        addSend,
         approve,
-        arrangerIcon,
         arrowDown,
         arrowHorizontal,
         arrowRight,
@@ -372,15 +334,12 @@ class $AssetsIconsGen {
         bookFill,
         bookIcon,
         bookOutline,
-        botAvatar,
         calendar,
         calendarOutline,
         camera,
         changePassword,
         chartUp,
-        chatbot,
         chatbot2,
-        chatbot3,
         check,
         checkAll,
         checkIn,
@@ -392,11 +351,8 @@ class $AssetsIconsGen {
         deleteAcc,
         email,
         englishRound,
-        envelopClose,
-        envelopOpen,
         eyeClose,
         eyeOpen,
-        facebook,
         favorites,
         flipBackButton,
         flipIcon,
@@ -405,12 +361,9 @@ class $AssetsIconsGen {
         google,
         hand,
         handPoint,
-        handbook,
-        handbook2,
         help,
         homeFill,
         homeOutline,
-        job,
         language,
         later,
         leftArrowLong,
@@ -444,7 +397,6 @@ class $AssetsIconsGen {
         saviourIcon,
         searchFill,
         searchOutline,
-        sendIcon,
         settings,
         sharedUp,
         shoppingCart,
@@ -469,41 +421,6 @@ class $AssetsImagesGen {
   AssetGenImage get defaultAvatar =>
       const AssetGenImage('assets/images/default_avatar.png');
 
-  /// File path: assets/images/demo_new_word.png
-  AssetGenImage get demoNewWord =>
-      const AssetGenImage('assets/images/demo_new_word.png');
-
-  /// File path: assets/images/dictionary.png
-  AssetGenImage get dictionary =>
-      const AssetGenImage('assets/images/dictionary.png');
-
-  /// File path: assets/images/firebase_icon_white.png
-  AssetGenImage get firebaseIconWhite =>
-      const AssetGenImage('assets/images/firebase_icon_white.png');
-
-  /// File path: assets/images/float_platform_1.png
-  AssetGenImage get floatPlatform1 =>
-      const AssetGenImage('assets/images/float_platform_1.png');
-
-  /// File path: assets/images/float_platform_2.png
-  AssetGenImage get floatPlatform2 =>
-      const AssetGenImage('assets/images/float_platform_2.png');
-
-  /// File path: assets/images/float_platform_3.png
-  AssetGenImage get floatPlatform3 =>
-      const AssetGenImage('assets/images/float_platform_3.png');
-
-  /// File path: assets/images/float_platform_4.png
-  AssetGenImage get floatPlatform4 =>
-      const AssetGenImage('assets/images/float_platform_4.png');
-
-  /// File path: assets/images/float_platform_5.png
-  AssetGenImage get floatPlatform5 =>
-      const AssetGenImage('assets/images/float_platform_5.png');
-
-  /// File path: assets/images/girl_glass.svg
-  String get girlGlass => 'assets/images/girl_glass.svg';
-
   /// File path: assets/images/language_select.svg
   String get languageSelect => 'assets/images/language_select.svg';
 
@@ -513,31 +430,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/login_background.svg
   String get loginBackground => 'assets/images/login_background.svg';
 
-  /// File path: assets/images/logo_vocaday_blue.svg
-  String get logoVocadayBlue => 'assets/images/logo_vocaday_blue.svg';
-
-  /// File path: assets/images/logo_vocaday_full.svg
-  String get logoVocadayFull => 'assets/images/logo_vocaday_full.svg';
-
-  /// File path: assets/images/logo_vocaday_round.svg
-  String get logoVocadayRound => 'assets/images/logo_vocaday_round.svg';
-
-  /// File path: assets/images/logo_vocaday_white.svg
-  String get logoVocadayWhite => 'assets/images/logo_vocaday_white.svg';
-
   /// File path: assets/images/logo_white_nobg.png
   AssetGenImage get logoWhiteNobg =>
       const AssetGenImage('assets/images/logo_white_nobg.png');
 
-  /// File path: assets/images/part_popper.svg
-  String get partPopper => 'assets/images/part_popper.svg';
-
   /// File path: assets/images/question_mark.svg
   String get questionMark => 'assets/images/question_mark.svg';
-
-  /// File path: assets/images/space_bg.png
-  AssetGenImage get spaceBg =>
-      const AssetGenImage('assets/images/space_bg.png');
 
   /// File path: assets/images/to_the_goals.svg
   String get toTheGoals => 'assets/images/to_the_goals.svg';
@@ -546,26 +444,11 @@ class $AssetsImagesGen {
   List<dynamic> get values => [
         computerPassword,
         defaultAvatar,
-        demoNewWord,
-        dictionary,
-        firebaseIconWhite,
-        floatPlatform1,
-        floatPlatform2,
-        floatPlatform3,
-        floatPlatform4,
-        floatPlatform5,
-        girlGlass,
         languageSelect,
         leaderboardBox,
         loginBackground,
-        logoVocadayBlue,
-        logoVocadayFull,
-        logoVocadayRound,
-        logoVocadayWhite,
         logoWhiteNobg,
-        partPopper,
         questionMark,
-        spaceBg,
         toTheGoals
       ];
 }
@@ -578,10 +461,6 @@ class $AssetsJsonsGen {
 
   /// File path: assets/jsons/cow.json
   String get cow => 'assets/jsons/cow.json';
-
-  /// File path: assets/jsons/cute-astronaut-in-space-mug-cartoon.json
-  String get cuteAstronautInSpaceMugCartoon =>
-      'assets/jsons/cute-astronaut-in-space-mug-cartoon.json';
 
   /// File path: assets/jsons/error.json
   String get error => 'assets/jsons/error.json';
@@ -633,9 +512,6 @@ class $AssetsJsonsGen {
   /// File path: assets/jsons/trophy.json
   String get trophy => 'assets/jsons/trophy.json';
 
-  /// File path: assets/jsons/typing-in-chat.json
-  String get typingInChat => 'assets/jsons/typing-in-chat.json';
-
   /// File path: assets/jsons/well-done.json
   String get wellDone => 'assets/jsons/well-done.json';
 
@@ -643,7 +519,6 @@ class $AssetsJsonsGen {
   List<String> get values => [
         bookLoading,
         cow,
-        cuteAstronautInSpaceMugCartoon,
         error,
         flyingRocket,
         jumpingDots,
@@ -660,7 +535,6 @@ class $AssetsJsonsGen {
         sadStar,
         surprise,
         trophy,
-        typingInChat,
         wellDone
       ];
 }

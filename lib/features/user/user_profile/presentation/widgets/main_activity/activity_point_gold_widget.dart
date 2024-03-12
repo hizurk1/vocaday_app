@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../app/constants/gen/assets.gen.dart';
+import '../../../../../../app/managers/language.dart';
 import '../../../../../../app/themes/app_text_theme.dart';
 import '../../../../../../app/translations/translations.dart';
 import '../../../../../../app/widgets/gap.dart';
@@ -18,6 +19,7 @@ class ActivityPointGoldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<LanguageCubit>();
     return BlocSelector<UserDataCubit, UserDataState, UserEntity?>(
       selector: (state) {
         return state is UserDataLoadedState ? state.entity : null;

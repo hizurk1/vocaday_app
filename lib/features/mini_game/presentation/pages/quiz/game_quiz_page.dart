@@ -11,6 +11,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../../app/constants/app_const.dart';
 import '../../../../../app/constants/gen/assets.gen.dart';
+import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/routes/route_manager.dart';
 import '../../../../../app/themes/app_color.dart';
 import '../../../../../app/themes/app_text_theme.dart';
@@ -107,67 +108,81 @@ class _GameQuizPageState extends State<GameQuizPage> {
     }
   }
 
+  _onBack() async {
+    final res = await Navigators().showDialogWithButton(
+      title: LocaleKeys.game_quit_message.tr(),
+      acceptText: LocaleKeys.common_yes_ofc.tr(),
+    );
+    if (res != null && res) {
+      Navigators().popDialog();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<GameQuizCubit>(),
-      child: Builder(builder: (context) {
-        return StatusBar(
-          child: BlocBuilder<GameQuizCubit, GameQuizState>(
-            builder: (context, state) {
-              if (state.status == GameQuizStatus.loading) {
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (_) => _onBack(),
+      child: BlocProvider(
+        create: (_) => sl<GameQuizCubit>(),
+        child: Builder(builder: (context) {
+          return StatusBar(
+            child: BlocBuilder<GameQuizCubit, GameQuizState>(
+              builder: (context, state) {
+                if (state.status == GameQuizStatus.loading) {
+                  return Scaffold(
+                    backgroundColor: context.colors.blue900.darken(.05),
+                    body: const LoadingIndicatorPage(),
+                  );
+                }
+                if (state.status == GameQuizStatus.error) {
+                  return Scaffold(
+                    backgroundColor: context.colors.blue900.darken(.05),
+                    body: ErrorPage(text: state.message ?? ''),
+                  );
+                }
+                if (state.status == GameQuizStatus.success) {
+                  final correct =
+                      quizs.where((e) => e.selectedAnswer == e.word).length;
+
+                  return _buildSuccess(context, correct);
+                }
+
                 return Scaffold(
                   backgroundColor: context.colors.blue900.darken(.05),
-                  body: const LoadingIndicatorPage(),
-                );
-              }
-              if (state.status == GameQuizStatus.error) {
-                return Scaffold(
-                  backgroundColor: context.colors.blue900.darken(.05),
-                  body: ErrorPage(text: state.message ?? ''),
-                );
-              }
-              if (state.status == GameQuizStatus.success) {
-                final correct =
-                    quizs.where((e) => e.selectedAnswer == e.word).length;
-
-                return _buildSuccess(context, correct);
-              }
-
-              return Scaffold(
-                backgroundColor: context.colors.blue900.darken(.05),
-                appBar: _buildAppBar(context),
-                body: SingleChildScrollView(
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 3.h),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ValueListenableBuilder(
-                          valueListenable: currentQuestion,
-                          builder: (context, value, _) {
-                            return LinearProgressIndicator(
-                              value: (value + 1) / quizs.length,
-                              color: context.colors.green,
-                              backgroundColor:
-                                  context.colors.grey.withOpacity(.15),
-                              borderRadius: BorderRadius.circular(8.r),
-                              minHeight: 12.h,
-                            );
-                          },
-                        ),
-                        const Gap(height: 20),
-                        _buildCardQuestionAnswer(context),
-                      ],
+                  appBar: _buildAppBar(context),
+                  body: SingleChildScrollView(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20.w, vertical: 3.h),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ValueListenableBuilder(
+                            valueListenable: currentQuestion,
+                            builder: (context, value, _) {
+                              return LinearProgressIndicator(
+                                value: (value + 1) / quizs.length,
+                                color: context.colors.green,
+                                backgroundColor:
+                                    context.colors.grey.withOpacity(.15),
+                                borderRadius: BorderRadius.circular(8.r),
+                                minHeight: 12.h,
+                              );
+                            },
+                          ),
+                          const Gap(height: 20),
+                          _buildCardQuestionAnswer(context),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-          ),
-        );
-      }),
+                );
+              },
+            ),
+          );
+        }),
+      ),
     );
   }
 

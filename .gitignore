@@ -31,6 +31,8 @@ migrate_working_dir/
 .pub/
 /build/
 devtools_options.yaml
+/android/app/upload-keystore.jks
+/android/key.properties
 
 # Symbolication related
 app.*.symbols
