@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "536281899166-dg7sjng1r6lijpr2uuk8hg3jvfv2aml5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vocaday.vocaday_app",
+            "certificate_hash": "1071926556ca6ae536223494f652bee1ac286af4"
+          }
+        },
+        {
           "client_id": "536281899166-h725d24969uf7salmhm1u8vcu3su6mf5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
