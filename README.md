@@ -8,7 +8,7 @@
 
 Download `apk` file for ``Android`` 👉 [vocaday_app.apk](https://github.com/helkaloic/vocaday_app/releases)
 
-Download from `Google Play Store` 👉 [Vocaday: English vocabulary](https://play.google.com/store/apps/details?id=com.vocaday.vocadayapp)
+Download from `Google Play Store` 👉 [Vocaday: English vocabulary](https://play.google.com/store/apps/details?id=com.vocaday.vocaday_app)
 
 ## ⚙️ Setup
 
@@ -182,11 +182,17 @@ vocaday_app/
 
 Vocaday currently offers a clean and intuitive user interface with two main pages:
 
-1. **Home Page:**
-    - [Image Placeholder]
+1. **Main Page (Home, Activity, Search):**
 
-2. **Feature Page:**
-    - [Image Placeholder]
+![home](screenshots/home_activity_search.png)
+
+2. **Learning Page (Quiz, Puzzle, Flashcard):**
+
+![learning](screenshots/quiz_puzzle_card.png)
+
+3. **Word Page (Detail, Wordbag, Setting):**
+
+![word](screenshots/detail_bag_mode.png)
 
 
 **Happy learning with Vocaday! 🚀**
