@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../app/managers/navigation.dart';
 import '../../../../../../app/managers/shared_preferences.dart';
+import '../../../../../../app/translations/translations.dart';
 import '../../../domain/entities/cart_entity.dart';
 
 part 'cart_bag_state.dart';
@@ -41,6 +43,13 @@ class CartBagCubit extends Cubit<CartBagState> {
       final localList = sharedPrefManager.getCartBags;
       localList.add(word);
       await sharedPrefManager.setCartBags(localList);
+      Navigators().showMessage(
+        LocaleKeys.cart_added_to_word_bag.tr(
+          args: [word.toLowerCase()],
+        ),
+        type: MessageType.success,
+        duration: 2,
+      );
       emit(state.copyWith(
         status: CartBagStatus.loaded,
         entity: CartBagEntity(

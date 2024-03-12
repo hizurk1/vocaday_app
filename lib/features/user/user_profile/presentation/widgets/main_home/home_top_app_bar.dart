@@ -6,6 +6,7 @@ import '../../../../../../app/themes/app_color.dart';
 import '../../../../../../app/themes/app_text_theme.dart';
 import '../../../../../../app/translations/translations.dart';
 import '../../../../../../app/widgets/widgets.dart';
+import '../../../../user_cart/presentation/widgets/cart_icon_widget.dart';
 import '../../../domain/entities/user_entity.dart';
 import '../../cubits/user_data/user_data_cubit.dart';
 
@@ -15,17 +16,14 @@ class HomeTopAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h)
+          .copyWith(right: 0),
       child: Row(
         children: [
           Expanded(
             child: _buildUserInfoTile(),
           ),
-          Container(
-            color: Colors.transparent,
-            width: 50,
-            height: 50,
-          ),
+          const CartIconWidget(),
         ],
       ),
     );

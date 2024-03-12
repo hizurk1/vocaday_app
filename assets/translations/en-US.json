@@ -237,7 +237,8 @@
     "my_bag_default": "My bag",
     "name_your_word_bag": "Name your word bag",
     "rename_this_bag_title": "Rename this bag",
-    "rename_menu": "Rename"
+    "rename_menu": "Rename",
+    "added_to_word_bag": "Added \"{}\" to your current word bag."
   },
   "known": {
     "sync_data_success": "Data sync successfully",

@@ -12,6 +12,7 @@ import '../../../../app/translations/translations.dart';
 import '../../../../app/utils/util_functions.dart';
 import '../../../../app/widgets/widgets.dart';
 import '../../../../core/extensions/build_context.dart';
+import '../../../user/user_cart/presentation/widgets/add_to_bag_button_widget.dart';
 import '../../../user/user_profile/presentation/widgets/favourite/favourite_button_widget.dart';
 import '../../domain/entities/word_entity.dart';
 
@@ -44,11 +45,15 @@ class WordDetailBottomSheet extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TextCustom(
-              "($getTypes)",
-              style: context.textStyle.bodyS.grey,
+            Expanded(
+              child: TextCustom(
+                "($getTypes)",
+                style: context.textStyle.bodyS.grey,
+                maxLines: 2,
+              ),
             ),
             FavouriteButtonWidget(word: wordEntity.word),
+            AddToBagButtonWidget(word: wordEntity.word),
           ],
         ),
         DashedLineCustom(

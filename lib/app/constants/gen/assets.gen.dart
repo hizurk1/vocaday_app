@@ -34,6 +34,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/activity_outline.svg
   String get activityOutline => 'assets/icons/activity_outline.svg';
 
+  /// File path: assets/icons/add_circle.svg
+  String get addCircle => 'assets/icons/add_circle.svg';
+
   /// File path: assets/icons/add_send.svg
   String get addSend => 'assets/icons/add_send.svg';
 
@@ -349,6 +352,7 @@ class $AssetsIconsGen {
         aboutUs,
         activityFill,
         activityOutline,
+        addCircle,
         addSend,
         approve,
         arrangerIcon,

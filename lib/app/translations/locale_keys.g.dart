@@ -169,6 +169,7 @@ abstract class  LocaleKeys {
   static const cart_name_your_word_bag = 'cart.name_your_word_bag';
   static const cart_rename_this_bag_title = 'cart.rename_this_bag_title';
   static const cart_rename_menu = 'cart.rename_menu';
+  static const cart_added_to_word_bag = 'cart.added_to_word_bag';
   static const known_sync_data_success = 'known.sync_data_success';
   static const known_add_to_known = 'known.add_to_known';
   static const known_clear_all = 'known.clear_all';
