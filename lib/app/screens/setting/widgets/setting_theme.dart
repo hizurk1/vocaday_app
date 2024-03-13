@@ -17,7 +17,7 @@ class _SettingTheme extends StatelessWidget {
         context.isDarkTheme
             ? Icons.dark_mode_outlined
             : Icons.light_mode_outlined,
-        size: 25,
+        size: 25.r,
       ),
       titlePadding: EdgeInsets.symmetric(horizontal: 20.w),
       title: TextCustom(

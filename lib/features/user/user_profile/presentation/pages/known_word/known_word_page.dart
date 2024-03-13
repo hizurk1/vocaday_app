@@ -103,7 +103,9 @@ class _KnownWordPageState extends State<KnownWordPage> {
       child: Scaffold(
         backgroundColor: context.backgroundColor,
         appBar: AppBarCustom(
-          leading: const BackButton(),
+          leading: BackButton(
+            style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+          ),
           textTitle: LocaleKeys.known_knowns.tr(),
           action: _buildPopupMenu(context),
         ),

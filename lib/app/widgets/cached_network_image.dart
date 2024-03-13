@@ -48,10 +48,12 @@ class CachedNetworkImageCustom extends StatelessWidget {
           borderRadius: BorderRadius.circular((radius ?? 1000).r),
           border: Border.all(color: color ?? context.greyColor.withOpacity(.3)),
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular((radius ?? 1000).r),
-          child: child,
-        ),
+        child: radius != null
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular((radius ?? 1000).r),
+                child: child,
+              )
+            : ClipOval(child: child),
       ),
     );
   }
@@ -80,8 +82,8 @@ class CachedNetworkImageCustom extends StatelessWidget {
         : CachedNetworkImage(
             imageUrl: url!,
             placeholder: (context, url) => Container(
-              height: size?.h,
-              width: size?.w,
+              height: size?.r,
+              width: size?.r,
               color: context.backgroundColor,
             ),
             errorWidget: (context, url, error) => _defaultAvatar(size),
@@ -89,8 +91,8 @@ class CachedNetworkImageCustom extends StatelessWidget {
               'CachedNetworkImageCustom._buildAvatarImage',
               error: error,
             ),
-            height: size?.h,
-            width: size?.w,
+            height: size?.r,
+            width: size?.r,
             fit: BoxFit.cover,
           );
     return child;
@@ -101,14 +103,14 @@ class CachedNetworkImageCustom extends StatelessWidget {
     return file.path.isNotEmpty
         ? Image.file(
             file,
-            width: size?.w,
-            height: size?.h,
+            width: size?.r,
+            height: size?.r,
             fit: BoxFit.cover,
           )
         : Image.asset(
             Assets.images.defaultAvatar.path,
-            height: size?.h,
-            width: size?.w,
+            height: size?.r,
+            width: size?.r,
             fit: BoxFit.cover,
           );
   }

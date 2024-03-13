@@ -13,3 +13,7 @@ extension DoubleExtension on double {
     return '${formatter.format(percentage)}%';
   }
 }
+
+extension IntExt on int {
+  String get to99plus => this > 99 ? "99+" : toString();
+}

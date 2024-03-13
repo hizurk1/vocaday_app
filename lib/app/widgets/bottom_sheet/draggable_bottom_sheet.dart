@@ -198,7 +198,9 @@ class _DraggableBottomSheetCustomState
             //* Title
             Row(
               children: [
-                const CloseButton(),
+                CloseButton(
+                  style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+                ),
                 const Gap(width: 5),
                 Expanded(
                   child: Center(

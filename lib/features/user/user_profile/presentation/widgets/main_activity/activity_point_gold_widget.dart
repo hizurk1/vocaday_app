@@ -27,65 +27,68 @@ class ActivityPointGoldWidget extends StatelessWidget {
       builder: (context, entity) {
         return SafeArea(
           bottom: false,
-          child: Stack(
-            alignment: Alignment.centerLeft,
-            children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: SvgPicture.asset(
-                  Assets.images.toTheGoals,
-                  fit: BoxFit.contain,
-                  height: context.screenHeight * 0.3,
+          child: SizedBox(
+            height: context.screenHeight / 3,
+            child: Stack(
+              alignment: Alignment.centerLeft,
+              children: [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: SvgPicture.asset(
+                    Assets.images.toTheGoals,
+                    fit: BoxFit.contain,
+                    height: context.screenHeight * 0.3,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 20.w),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextCustom(
-                      LocaleKeys.activity_you_got_points.tr(),
-                      style: context.textStyle.titleL.white,
-                    ),
-                    TextCustom(
-                      (entity?.point ?? 0).toString().formatedThousand,
-                      style: context.textStyle.headingXL.bold.copyWith(
-                        color: Colors.yellow,
-                      ),
-                    ),
-                    TextCustom(
-                      LocaleKeys.user_data_point
-                          .plural(entity?.point ?? 0)
-                          .split(' ')
-                          .last,
-                      style: context.textStyle.titleL.white,
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                left: 0,
-                child: Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 20.w),
-                  child: Row(
+                  child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SvgPicture.asset(
-                        Assets.icons.gold,
-                        height: 30.h,
-                        width: 30.w,
-                      ),
-                      const Gap(width: 5),
                       TextCustom(
-                        "x${entity?.gold ?? 0}",
-                        style: context.textStyle.bodyL.white.bold,
+                        LocaleKeys.activity_you_got_points.tr(),
+                        style: context.textStyle.titleL.white,
+                      ),
+                      TextCustom(
+                        (entity?.point ?? 0).toString().formatedThousand,
+                        style: context.textStyle.headingXL.bold.copyWith(
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      TextCustom(
+                        LocaleKeys.user_data_point
+                            .plural(entity?.point ?? 0)
+                            .split(' ')
+                            .last,
+                        style: context.textStyle.titleL.white,
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 20.w),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset(
+                          Assets.icons.gold,
+                          height: 30.h,
+                          width: 30.w,
+                        ),
+                        const Gap(width: 5),
+                        TextCustom(
+                          "x${entity?.gold ?? 0}",
+                          style: context.textStyle.bodyL.white.bold,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },

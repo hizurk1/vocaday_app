@@ -43,14 +43,14 @@ class HomeTopAppBar extends StatelessWidget {
             style: context.textStyle.bodyS.bold.bw,
           ),
           subTitle: Container(
-            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+            padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.r),
               color: AppColor().red,
             ),
             child: TextCustom(
               LocaleKeys.user_data_point.plural(userEntity?.point ?? 0),
-              style: context.textStyle.labelM.white,
+              style: context.textStyle.labelS.white,
             ),
           ),
         );

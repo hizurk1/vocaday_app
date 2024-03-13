@@ -179,7 +179,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           ),
           margin: EdgeInsets.symmetric(
             vertical: 12.h,
-            horizontal: 12.w,
+            horizontal: 18.w,
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),

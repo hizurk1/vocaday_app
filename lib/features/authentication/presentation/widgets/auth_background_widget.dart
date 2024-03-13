@@ -18,7 +18,8 @@ class AuthBackgroundWidget extends StatelessWidget {
         children: [
           SvgPicture.asset(
             Assets.images.loginBackground,
-            fit: BoxFit.cover,
+            fit: BoxFit.fitHeight,
+            height: context.screenHeight,
           ),
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),

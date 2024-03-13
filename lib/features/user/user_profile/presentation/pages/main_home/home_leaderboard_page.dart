@@ -84,7 +84,7 @@ class _TopRankingBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 390.h,
+      height: 385.dm,
       child: LayoutBuilder(builder: (context, constraints) {
         return Stack(
           children: [
@@ -100,7 +100,7 @@ class _TopRankingBlock extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 15.h,
+              top: constraints.maxHeight * 0.03,
               left: constraints.maxWidth * 0.05,
               right: constraints.maxWidth * 0.05,
               child: LayoutBuilder(builder: (context, inConstraints) {
@@ -159,7 +159,7 @@ class _TopUserRank extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        top: outConstraints.maxHeight * 0.1 * index,
+        top: outConstraints.maxHeight * 0.12 * 0.75 * index,
       ),
       width: inConstraints.maxWidth / 3 - 10.w,
       child: entity != null
@@ -195,7 +195,7 @@ class _TopUserRank extends StatelessWidget {
                                 .plural(entity?.attendance?.length ?? 0)
                                 .formatedThousand
                         : '',
-                    style: context.textStyle.bodyS.bold.white,
+                    style: context.textStyle.caption.bold.white,
                   ),
                 ),
               ],
@@ -254,8 +254,8 @@ class _LeaderBoardTileWidget extends StatelessWidget {
           style: context.textStyle.labelL.grey,
         ),
         trailing: Container(
-          height: 30.h,
-          width: 30.w,
+          height: 30.dm,
+          width: 30.dm,
           margin: EdgeInsets.only(left: 10.w, right: 15.w),
           decoration: BoxDecoration(
             color: context.theme.cardColor,

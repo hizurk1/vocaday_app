@@ -31,7 +31,7 @@ class BorderDropdownField extends StatelessWidget {
     notifier.value = initialValue;
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: 10.w,
+        horizontal: 10.w
       ),
       decoration: BoxDecoration(
         border: Border.all(

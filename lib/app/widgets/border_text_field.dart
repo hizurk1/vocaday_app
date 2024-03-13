@@ -75,12 +75,12 @@ class BorderTextField extends StatelessWidget {
               style: context.textStyle.bodyS.bw,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.only(bottom: 2.h),
+                contentPadding: EdgeInsets.symmetric(vertical: 12.h),
                 icon: icon != null
                     ? SvgPicture.asset(
                         icon!,
-                        height: 25.h,
-                        width: 25.w,
+                        height: 25.r,
+                        width: 25.r,
                         colorFilter: ColorFilter.mode(
                             context.colors.grey400, BlendMode.srcIn),
                       )
@@ -96,6 +96,8 @@ class BorderTextField extends StatelessWidget {
                           child: SvgPicture.asset(
                             'assets/icons/eye_${value ? 'open' : 'close'}.svg',
                             fit: BoxFit.scaleDown,
+                            height: 25.r,
+                            width: 25.r,
                           ),
                         ),
                       )

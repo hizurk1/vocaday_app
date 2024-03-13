@@ -93,7 +93,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             color: context.colors.grey,
           ),
           counterText: '',
-          contentPadding: EdgeInsets.zero,
+          contentPadding: EdgeInsets.symmetric(vertical: 5.dm),
           suffixIcon: ValueListenableBuilder<bool>(
             valueListenable: showClearIcon,
             builder: (context, isShow, _) {

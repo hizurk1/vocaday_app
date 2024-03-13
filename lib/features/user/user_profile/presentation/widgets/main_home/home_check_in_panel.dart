@@ -182,26 +182,27 @@ class CheckInPanel extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             borderRadius: BorderRadius.circular(45.r),
-            child: Container(
-              height: 45.h,
-              width: 45.w,
-              padding: EdgeInsets.all(9.w),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(45.r / 2),
-                color: context.theme.primaryColor
-                    .lighten(context.isDarkTheme ? 0.08 : 0.05),
-                boxShadow: [
-                  BoxShadow(
-                    color: context.colors.blue600.withOpacity(.5),
-                    spreadRadius: .1,
-                    blurRadius: 1.5,
-                    offset: const Offset(0.5, 0.5),
-                  ),
-                ],
-              ),
-              child: SvgPicture.asset(
-                icon,
-                fit: BoxFit.scaleDown,
+            child: ClipOval(
+              child: Container(
+                height: 45.dm,
+                width: 45.dm,
+                padding: EdgeInsets.all(9.dm),
+                decoration: BoxDecoration(
+                  color: context.theme.primaryColor
+                      .lighten(context.isDarkTheme ? 0.08 : 0.05),
+                  boxShadow: [
+                    BoxShadow(
+                      color: context.colors.blue600.withOpacity(.5),
+                      spreadRadius: .1,
+                      blurRadius: 1.5,
+                      offset: const Offset(0.5, 0.5),
+                    ),
+                  ],
+                ),
+                child: SvgPicture.asset(
+                  icon,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),

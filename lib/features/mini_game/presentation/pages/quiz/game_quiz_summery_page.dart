@@ -154,12 +154,15 @@ class GameQuizSummeryPage extends StatelessWidget {
                     ),
                   ),
           ),
-          PushableButton(
-            onPressed: () => _onNextQuiz(context, current),
+          SizedBox(
             width: context.screenWidth / 3,
-            text: current == quizs.length - 1
-                ? LocaleKeys.common_done.tr()
-                : LocaleKeys.common_next.tr(),
+            child: PushableButton(
+              onPressed: () => _onNextQuiz(context, current),
+              width: context.screenWidth / 3,
+              text: current == quizs.length - 1
+                  ? LocaleKeys.common_done.tr()
+                  : LocaleKeys.common_next.tr(),
+            ),
           ),
         ],
       ),
@@ -171,7 +174,9 @@ class GameQuizSummeryPage extends StatelessWidget {
       transparent: true,
       // enablePadding: true,
       leading: BackButton(
-        color: context.colors.white,
+        style: ButtonStyle(
+            iconSize: MaterialStateProperty.all(24.w),
+            iconColor: MaterialStateProperty.all(context.colors.white)),
       ),
       title: ValueListenableBuilder(
         valueListenable: currentQuestion,

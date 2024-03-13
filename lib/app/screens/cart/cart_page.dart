@@ -19,7 +19,9 @@ class CartPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: context.backgroundColor,
         appBar: AppBarCustom(
-          leading: const BackButton(),
+          leading: BackButton(
+            style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+          ),
           textTitle: LocaleKeys.cart_cart.tr(),
           action: GestureDetector(
             onTap: () => context.pushReplacement(AppRoutes.listWord),

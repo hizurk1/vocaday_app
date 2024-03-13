@@ -292,6 +292,7 @@ class SlidingPuzzlePage extends StatelessWidget {
               ? const SizedBox()
               : BackButton(
                   color: context.colors.white,
+                  style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
                 );
         },
       ),

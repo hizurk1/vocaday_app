@@ -51,15 +51,18 @@ class _ActivityTileCardWidget extends StatelessWidget {
           title,
           style: context.textStyle.bodyM.bold.primaryDark,
         ),
-        trailing: PushableButton(
-          onPressed: onPlayTap,
+        trailing: SizedBox(
           width: 75.w,
-          height: 38.h,
-          elevation: 3,
-          borderRadius: 8,
-          type: PushableButtonType.accent,
-          text: LocaleKeys.activity_play.tr(),
-          textStyle: context.textStyle.caption.white,
+          child: PushableButton(
+            onPressed: onPlayTap,
+            width: 75.w,
+            height: 38.h,
+            elevation: 3,
+            borderRadius: 8,
+            type: PushableButtonType.accent,
+            text: LocaleKeys.activity_play.tr(),
+            textStyle: context.textStyle.caption.white,
+          ),
         ),
       ),
     );

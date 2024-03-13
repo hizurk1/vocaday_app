@@ -131,7 +131,9 @@ class _FlashCardPageState extends State<FlashCardPage> {
             backgroundColor:
                 context.backgroundColor.darken(context.isDarkTheme ? 0 : .05),
             appBar: AppBarCustom(
-              leading: const BackButton(),
+              leading: BackButton(
+                style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+              ),
               action: const CartIconWidget(),
               title: Column(
                 mainAxisSize: MainAxisSize.min,

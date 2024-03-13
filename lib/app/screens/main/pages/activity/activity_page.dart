@@ -11,6 +11,7 @@ import '../../../../../features/user/user_cart/presentation/pages/game_select_wo
 import '../../../../../features/user/user_profile/presentation/widgets/main_activity/activity_point_gold_widget.dart';
 import '../../../../../features/word/presentation/widgets/main_activity/activity_learn_new_word_widget.dart';
 import '../../../../constants/app_const.dart';
+import '../../../../constants/app_element.dart';
 import '../../../../constants/gen/assets.gen.dart';
 import '../../../../routes/route_manager.dart';
 import '../../../../themes/app_color.dart';
@@ -69,6 +70,7 @@ class _ActivityPageState extends State<ActivityPage>
             const ActivityLearnNewWordWidget(),
             const Gap(height: 15),
             _buildActivityCard(context),
+            Gap(height: AppElement.navBarSafeSize.h),
           ],
         ),
       ),

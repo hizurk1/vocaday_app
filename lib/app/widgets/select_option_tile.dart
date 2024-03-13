@@ -54,15 +54,15 @@ class SelectOptionTileWidget extends StatelessWidget {
           children: [
             AnimatedContainer(
               duration: Durations.medium2,
-              height: 24.h,
-              width: 24.w,
+              height: 24.r,
+              width: 24.r,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.r),
+                borderRadius: BorderRadius.circular(1000.r),
                 border: Border.all(
                   color: isSelected
                       ? (color ?? context.colors.blue)
                       : context.theme.dividerColor.withOpacity(.4),
-                  width: isSelected ? 8.w : 2.w,
+                  width: isSelected ? 8.r : 2.r,
                   strokeAlign: BorderSide.strokeAlignInside,
                 ),
               ),

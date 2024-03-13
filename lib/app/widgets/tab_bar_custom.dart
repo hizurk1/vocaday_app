@@ -19,9 +19,9 @@ class TabBarCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppElement.tabBarSize.h,
+      height: AppElement.tabBarSize.dm,
       width: context.screenWidth,
-      padding: EdgeInsets.all(5.h),
+      padding: EdgeInsets.all(5.dm),
       margin: EdgeInsets.symmetric(horizontal: (horizontalMargin ?? 20).w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),

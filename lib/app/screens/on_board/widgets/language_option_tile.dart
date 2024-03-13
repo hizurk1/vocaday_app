@@ -50,15 +50,15 @@ class LanguageOptionWidget extends StatelessWidget {
           children: [
             AnimatedContainer(
               duration: Durations.medium2,
-              height: 24,
-              width: 24,
+              height: 24.dm,
+              width: 24.dm,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(360),
+                borderRadius: BorderRadius.circular(24.dm),
                 border: Border.all(
                   color: isSelected
                       ? context.theme.primaryColor
                       : context.theme.dividerColor.withOpacity(.4),
-                  width: isSelected ? 8 : 2,
+                  width: isSelected ? 8.r : 2.r,
                   strokeAlign: BorderSide.strokeAlignInside,
                 ),
               ),

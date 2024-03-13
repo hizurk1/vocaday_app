@@ -44,8 +44,8 @@ class MenuDrawerTile extends StatelessWidget {
             ListTile(
               leading: SvgPicture.asset(
                 icon,
-                height: 25,
-                width: 25,
+                height: 25.r,
+                width: 25.r,
                 colorFilter:
                     ColorFilter.mode(context.colors.white, BlendMode.srcIn),
               ),

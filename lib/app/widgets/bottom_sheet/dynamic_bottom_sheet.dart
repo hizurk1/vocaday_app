@@ -156,7 +156,9 @@ class DynamicBottomSheetCustom extends StatelessWidget {
             //* Title
             Row(
               children: [
-                const CloseButton(),
+                CloseButton(
+                    style: ButtonStyle(
+                        iconSize: MaterialStateProperty.all(24.dm))),
                 const Gap(width: 5),
                 Expanded(
                   child: Center(

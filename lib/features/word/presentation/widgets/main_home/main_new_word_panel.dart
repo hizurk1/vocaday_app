@@ -69,7 +69,7 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
 
             return Container(
               width: context.screenWidth,
-              height: 205.h,
+              height: 205.dm,
               margin: EdgeInsets.symmetric(vertical: 20.h),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.r),
@@ -119,7 +119,7 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
               padding: EdgeInsets.all(16.w),
               child: SvgPicture.asset(
                 Assets.icons.reload,
-                height: 24.h,
+                height: 24.dm,
                 colorFilter: ColorFilter.mode(
                   AppColor().white.withOpacity(.5),
                   BlendMode.srcIn,
@@ -136,13 +136,14 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
     return Align(
       alignment: Alignment.bottomRight,
       child: Container(
+        width: max(100.w, context.screenWidth * 0.3),
         margin: EdgeInsets.only(bottom: 20.h, right: 20.w),
         child: PushableButton(
           onPressed: () => _onLearnMorePressed(context),
           text: LocaleKeys.home_learn_more.tr(),
-          width: max(100, context.screenWidth * 0.3),
-          height: 46,
-          elevation: 3,
+          width: max(100.w, context.screenWidth * 0.3),
+          height: 46.r,
+          elevation: 3.h,
           textStyle: context.textStyle.caption.white,
         ),
       ),

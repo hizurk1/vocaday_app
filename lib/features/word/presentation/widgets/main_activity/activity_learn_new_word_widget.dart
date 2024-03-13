@@ -79,6 +79,7 @@ class ActivityLearnNewWordWidget extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward_rounded,
                       color: context.theme.primaryColorDark,
+                      size: 24.w,
                     )
                   ],
                 ),

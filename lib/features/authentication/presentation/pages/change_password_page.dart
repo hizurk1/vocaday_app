@@ -171,7 +171,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             horizontal: 10.w,
             vertical: 10.h,
           ),
-          child: const BackButton(),
+          child: BackButton(
+            style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+          ),
         ),
       ),
     );

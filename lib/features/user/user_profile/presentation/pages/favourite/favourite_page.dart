@@ -103,7 +103,9 @@ class _FavouritePageState extends State<FavouritePage> {
       child: Scaffold(
         backgroundColor: context.backgroundColor,
         appBar: AppBarCustom(
-          leading: const BackButton(),
+          leading: BackButton(
+            style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+          ),
           textTitle: LocaleKeys.favourite_favourites.tr(),
           action: _buildPopupMenu(context),
         ),

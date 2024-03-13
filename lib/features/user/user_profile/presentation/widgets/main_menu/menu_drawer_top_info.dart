@@ -38,13 +38,10 @@ class MenuDrawerTopInfo extends StatelessWidget {
           ),
           trailing: GestureDetector(
             onTap: onClosed,
-            child: SizedBox(
-              height: 25.h,
-              width: 25.w,
-              child: const Icon(
-                Icons.close_rounded,
-                color: Colors.white,
-              ),
+            child: Icon(
+              Icons.close_rounded,
+              color: Colors.white,
+              size: 25.r,
             ),
           ),
         );

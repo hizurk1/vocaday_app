@@ -32,8 +32,8 @@ class LoadingIndicatorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size?.height ?? 25.h,
-      width: size?.width ?? 25.w,
+      height: size?.height.r ?? 25.r,
+      width: size?.width.r ?? 25.r,
       child: CircularProgressIndicator(
         strokeWidth: 2.5,
         color: context.theme.primaryColor,

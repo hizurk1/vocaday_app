@@ -148,9 +148,13 @@ class _SignInPageState extends State<SignInPage>
                                       color:
                                           context.theme.scaffoldBackgroundColor,
                                       child: Padding(
-                                        padding: EdgeInsets.all(5.w),
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 5.h,
+                                          vertical: 5.w,
+                                        ),
                                         child: SvgPicture.asset(
                                           Assets.icons.google,
+                                          height: 30.h,
                                         ),
                                       ),
                                     ),

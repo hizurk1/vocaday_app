@@ -288,7 +288,7 @@ class _GameQuizPageState extends State<GameQuizPage> {
               padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
               decoration: BoxDecoration(
                 color: context.theme.primaryColor,
-                borderRadius: BorderRadius.circular(5.r),
+                borderRadius: BorderRadius.circular(6.r),
               ),
               child: TimeCountDownWidget(
                 onFinish: () {
@@ -366,16 +366,19 @@ class _GameQuizPageState extends State<GameQuizPage> {
           ValueListenableBuilder(
             valueListenable: selectedIndex,
             builder: (context, selected, _) {
-              return PushableButton(
-                onPressed: () => _onNextQuiz(context, current),
+              return SizedBox(
                 width: context.screenWidth / 3,
-                type: quizs[current].selectedAnswer.isNotEmpty ||
-                        current == quizs.length - 1
-                    ? PushableButtonType.primary
-                    : PushableButtonType.grey,
-                text: current == quizs.length - 1
-                    ? LocaleKeys.common_done.tr()
-                    : LocaleKeys.common_next.tr(),
+                child: PushableButton(
+                  onPressed: () => _onNextQuiz(context, current),
+                  width: context.screenWidth / 3,
+                  type: quizs[current].selectedAnswer.isNotEmpty ||
+                          current == quizs.length - 1
+                      ? PushableButtonType.primary
+                      : PushableButtonType.grey,
+                  text: current == quizs.length - 1
+                      ? LocaleKeys.common_done.tr()
+                      : LocaleKeys.common_next.tr(),
+                ),
               );
             },
           ),
@@ -389,7 +392,9 @@ class _GameQuizPageState extends State<GameQuizPage> {
       transparent: true,
       // enablePadding: true,
       leading: BackButton(
-        color: context.colors.white,
+        style: ButtonStyle(
+            iconSize: MaterialStateProperty.all(24.w),
+            iconColor: MaterialStateProperty.all(context.colors.white)),
       ),
       title: ValueListenableBuilder(
         valueListenable: currentQuestion,

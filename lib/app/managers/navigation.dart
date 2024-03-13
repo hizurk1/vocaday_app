@@ -253,8 +253,8 @@ class Navigators {
           : AppColor().black.withOpacity(0.6),
       builder: (context) => Center(
         child: SizedBox(
-          height: 25.h,
-          width: 25.w,
+          height: 25.r,
+          width: 25.r,
           child: CircularProgressIndicator(
             strokeWidth: 2.5,
             color: context.colors.white,

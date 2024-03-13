@@ -66,7 +66,7 @@ class SliverTabView extends StatelessWidget {
                     right: padding ?? 0,
                     left: padding ?? 0,
                     top: padding ?? 0,
-                  ),
+                  ).dm,
                   child: topChild,
                 ),
               ),
