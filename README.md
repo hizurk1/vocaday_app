@@ -4,6 +4,8 @@
 
 **Vocaday** is designed to make your English vocabulary learning experience **effective and enjoyable**. Whether you're a beginner or looking to enhance your language skills, Vocaday has got you covered.
 
+To quickly view the user interface: [link](https://github.com/helkaloic/vocaday_app?tab=readme-ov-file#-user-interface)
+
 ## ⬇️ Download
 
 Download `apk` file for ``Android`` 👉 [vocaday_app.apk](https://github.com/helkaloic/vocaday_app/releases)
@@ -169,7 +171,7 @@ vocaday_app/
     flutter pub get
     ```
 
-    Then open **Android Studio**: android -> Open in Android Studio:
+    Then open **Android Studio**: `android` -> Open in Android Studio:
 
     ``` bash
     flutter clean
@@ -180,7 +182,7 @@ vocaday_app/
 
 ## 👀 User Interface
 
-Vocaday currently offers a clean and intuitive user interface with two main pages:
+Vocaday currently offers a clean and intuitive user interface with these main pages:
 
 1. **Main Page (Home, Activity, Search):**
 
