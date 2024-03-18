@@ -44,6 +44,7 @@ class _EntryPageState extends State<EntryPage> {
     return StatusBar(
       child: BlocConsumer<AuthBloc, AuthState>(
         listener: (_, state) {},
+        buildWhen: (previous, current) => previous != current,
         builder: (context, state) {
           if (state is AuthenticatedState) {
             return const AuthenticatedEntryPage(child: MainPage());

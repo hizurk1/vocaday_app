@@ -27,6 +27,12 @@ class FavouritePage extends StatefulWidget {
 class _FavouritePageState extends State<FavouritePage> {
   final ValueNotifier<List<WordEntity>> favouriteNotifer = ValueNotifier([]);
 
+  @override
+  void initState() {
+    super.initState();
+    context.read<WordFavouriteCubit>().getAllFavouriteWords();
+  }
+
   Future<void> _onRefresh(
     BuildContext context, {
     Duration delay = Durations.long4,
@@ -109,15 +115,7 @@ class _FavouritePageState extends State<FavouritePage> {
           textTitle: LocaleKeys.favourite_favourites.tr(),
           action: _buildPopupMenu(context),
         ),
-        body: BlocConsumer<WordFavouriteCubit, WordFavouriteState>(
-          listener: (context, state) {
-            if (state is WordFavouriteLoadedState) {
-              Navigators().showMessage(
-                LocaleKeys.favourite_sync_data_success.tr(),
-                type: MessageType.success,
-              );
-            }
-          },
+        body: BlocBuilder<WordFavouriteCubit, WordFavouriteState>(
           builder: (context, state) {
             if (state is WordFavouriteLoadingState) {
               return const LoadingIndicatorPage();

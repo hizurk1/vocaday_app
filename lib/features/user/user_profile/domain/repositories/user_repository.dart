@@ -5,6 +5,8 @@ import '../entities/user_entity.dart';
 abstract interface class UserRepository {
   FutureEither<void> addUserProfile(UserEntity userEntity);
 
+  FutureEither<void> deleteUserProfile(String uid);
+
   Stream<UserEntity?> getUserData(String uid);
 
   FutureEither<void> updateUserProfile(UserEntity userEntity);

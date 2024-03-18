@@ -27,6 +27,12 @@ class KnownWordPage extends StatefulWidget {
 class _KnownWordPageState extends State<KnownWordPage> {
   final ValueNotifier<List<WordEntity>> knownNotifier = ValueNotifier([]);
 
+  @override
+  void initState() {
+    super.initState();
+    context.read<KnownWordCubit>().getAllKnownWords();
+  }
+
   Future<void> _onRefresh(
     BuildContext context, {
     Duration delay = Durations.long4,
@@ -109,15 +115,7 @@ class _KnownWordPageState extends State<KnownWordPage> {
           textTitle: LocaleKeys.known_knowns.tr(),
           action: _buildPopupMenu(context),
         ),
-        body: BlocConsumer<KnownWordCubit, KnownWordState>(
-          listener: (context, state) {
-            if (state is KnownWordLoadedState) {
-              Navigators().showMessage(
-                LocaleKeys.known_sync_data_success.tr(),
-                type: MessageType.success,
-              );
-            }
-          },
+        body: BlocBuilder<KnownWordCubit, KnownWordState>(
           builder: (context, state) {
             if (state is KnownWordLoadingState) {
               return const LoadingIndicatorPage();

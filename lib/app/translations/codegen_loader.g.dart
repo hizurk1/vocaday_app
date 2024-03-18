@@ -49,7 +49,11 @@ class CodegenLoader extends AssetLoader{
     "enter_new_pass_below": "Enter your new password below.",
     "we_sent_verfication_code_to_email": "We have just sent you a verification code into your email: {}",
     "enter_verification_code": "Enter verification code",
-    "enter_email_to_reset_password": "Enter your email address below, we will send you a verification code to reset your password."
+    "enter_email_to_reset_password": "Enter your email address below, we will send you a verification code to reset your password.",
+    "enter_your_to_confirm_the_action": "Enter your {} to confirm the action.",
+    "password": "password",
+    "deleted_your_account": "Your account has been successfully deleted.",
+    "are_you_want_to_delete_acc": "Are you sure you want to delete your account {}?"
   },
   "common": {
     "accept": "Accept",
@@ -323,7 +327,11 @@ static const Map<String,dynamic> vi_VN = {
     "enter_new_pass_below": "Nhập mật khẩu mới của bạn bên dưới.",
     "we_sent_verfication_code_to_email": "Chúng tôi vừa gửi bạn một mã xác nhận vào email của bạn: {}",
     "enter_verification_code": "Nhập mã xác nhận",
-    "enter_email_to_reset_password": "Nhập địa chỉ email của bạn bên dưới, chúng tôi sẽ gửi bạn một mã xác minh để đặt lại mật khẩu."
+    "enter_email_to_reset_password": "Nhập địa chỉ email của bạn bên dưới, chúng tôi sẽ gửi bạn một mã xác minh để đặt lại mật khẩu.",
+    "enter_your_to_confirm_the_action": "Nhập {} của bạn để xác nhận hành động.",
+    "password": "mật khẩu",
+    "deleted_your_account": "Tài khoản của bạn đã được xoá thành công.",
+    "are_you_want_to_delete_acc": "Bạn có chắc muốn xoá tài khoản {}?"
   },
   "common": {
     "accept": "Đồng ý",

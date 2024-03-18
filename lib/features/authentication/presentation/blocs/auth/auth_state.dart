@@ -6,18 +6,8 @@ class AuthState extends Equatable {
 
   const AuthState(this.user, this.isAuthenticating);
 
-  AuthState copyWith({
-    User? user,
-    bool? isAuthenticating,
-  }) {
-    return AuthState(
-      user ?? this.user,
-      isAuthenticating ?? this.isAuthenticating,
-    );
-  }
-
   @override
-  List<Object?> get props => [user, isAuthenticating];
+  List<Object?> get props => [user];
 }
 
 final class UnauthenticatedState extends AuthState {
@@ -25,5 +15,16 @@ final class UnauthenticatedState extends AuthState {
 }
 
 final class AuthenticatedState extends AuthState {
-  const AuthenticatedState(User user) : super(user, false);
+  const AuthenticatedState({required User user, bool isAuthing = false})
+      : super(user, isAuthing);
+
+  AuthenticatedState copyWith({
+    User? user,
+    bool? isAuthenticating,
+  }) {
+    return AuthenticatedState(
+      user: user ?? this.user!,
+      isAuthing: isAuthenticating ?? this.isAuthenticating ?? false,
+    );
+  }
 }

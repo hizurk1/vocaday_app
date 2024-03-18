@@ -33,7 +33,11 @@
     "enter_new_pass_below": "Nhập mật khẩu mới của bạn bên dưới.",
     "we_sent_verfication_code_to_email": "Chúng tôi vừa gửi bạn một mã xác nhận vào email của bạn: {}",
     "enter_verification_code": "Nhập mã xác nhận",
-    "enter_email_to_reset_password": "Nhập địa chỉ email của bạn bên dưới, chúng tôi sẽ gửi bạn một mã xác minh để đặt lại mật khẩu."
+    "enter_email_to_reset_password": "Nhập địa chỉ email của bạn bên dưới, chúng tôi sẽ gửi bạn một mã xác minh để đặt lại mật khẩu.",
+    "enter_your_to_confirm_the_action": "Nhập {} của bạn để xác nhận hành động.",
+    "password": "mật khẩu",
+    "deleted_your_account": "Tài khoản của bạn đã được xoá thành công.",
+    "are_you_want_to_delete_acc": "Bạn có chắc muốn xoá tài khoản {}?"
   },
   "common": {
     "accept": "Đồng ý",

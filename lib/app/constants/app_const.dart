@@ -20,6 +20,7 @@ class AppStringConst {
   static const privacyPolicyUrl =
       "https://sites.google.com/view/vocaday-privacypolicy";
   static const aboutUsUrl = "https://github.com/helkaloic/vocaday_app";
+  static const email = "email";
 
   // Mini Game
   static const quiz = "Quiz";

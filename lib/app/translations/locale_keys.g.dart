@@ -31,6 +31,10 @@ abstract class  LocaleKeys {
   static const auth_we_sent_verfication_code_to_email = 'auth.we_sent_verfication_code_to_email';
   static const auth_enter_verification_code = 'auth.enter_verification_code';
   static const auth_enter_email_to_reset_password = 'auth.enter_email_to_reset_password';
+  static const auth_enter_your_to_confirm_the_action = 'auth.enter_your_to_confirm_the_action';
+  static const auth_password = 'auth.password';
+  static const auth_deleted_your_account = 'auth.deleted_your_account';
+  static const auth_are_you_want_to_delete_acc = 'auth.are_you_want_to_delete_acc';
   static const common_accept = 'common.accept';
   static const common_browse = 'common.browse';
   static const common_cancel = 'common.cancel';

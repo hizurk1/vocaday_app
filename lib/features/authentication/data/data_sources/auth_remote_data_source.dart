@@ -19,6 +19,7 @@ abstract interface class AuthRemoteDataSource {
   Future<void> updatePassword(String password);
   Future<void> reauthenticateWithCredential(String email, String password);
   Future<void> sendCodeToEmail(String email);
+  Future<void> deleteUserAuth();
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -178,6 +179,17 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       rethrow;
     } on UnimplementedError catch (e) {
       throw ServerException(e.message ?? 'sendCodeToEmail');
+    }
+  }
+
+  @override
+  Future<void> deleteUserAuth() async {
+    try {
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw ServerException(e.message ?? 'deleteUserAuth');
     }
   }
 }

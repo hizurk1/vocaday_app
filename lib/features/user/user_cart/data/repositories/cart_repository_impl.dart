@@ -69,4 +69,19 @@ class CartRepositoryImpl implements CartRepository {
       return Left(DatabaseFailure(e.toString()));
     }
   }
+
+  @override
+  FutureEither<void> deleteCart(String uid) async {
+    try {
+      return Right(
+        await remoteDataSource.deleteCart(uid),
+      );
+    } on FirebaseException catch (e) {
+      return Left(
+        FirebaseFailure(e.message ?? 'FirebaseFailure: deleteCart'),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
 }

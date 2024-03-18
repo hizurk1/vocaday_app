@@ -28,3 +28,10 @@ final class RequestChangePasswordEvent extends AuthEvent {
 }
 
 final class RequestSignOutEvent extends AuthEvent {}
+
+final class RequestDeleteAccountEvent extends AuthEvent {
+  final UserEntity entity;
+  final String password;
+
+  const RequestDeleteAccountEvent(this.entity, this.password);
+}

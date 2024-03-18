@@ -7,8 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../app/managers/navigation.dart';
 import '../../../../../app/translations/translations.dart';
 import '../../../../../app/utils/validator.dart';
+import '../../../../user/user_profile/domain/entities/user_entity.dart';
+import '../../../data/models/auth_model.dart';
 import '../../../domain/usecases/auth_state_changed.dart';
 import '../../../domain/usecases/change_password.dart';
+import '../../../domain/usecases/delete_account.dart';
 import '../../../domain/usecases/re_authentication.dart';
 import '../../../domain/usecases/sign_out.dart';
 
@@ -20,6 +23,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignOutUsecase signOutUsecase;
   final ReAuthenticationUsecase reAuthenticationUsecase;
   final ChangePasswordUsecase changePasswordUsecase;
+  final DeleteAccountUsecase deleteAccountUsecase;
 
   StreamSubscription? _streamSubscription;
 
@@ -28,10 +32,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     this.signOutUsecase,
     this.changePasswordUsecase,
     this.reAuthenticationUsecase,
+    this.deleteAccountUsecase,
   ) : super(const UnauthenticatedState()) {
     on<AuthStateChangedEvent>((event, emit) {
       if (event.user != null) {
-        emit(AuthenticatedState(event.user!));
+        emit(AuthenticatedState(user: event.user!));
       } else {
         emit(const UnauthenticatedState());
       }
@@ -49,7 +54,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<RequestChangePasswordEvent>((event, emit) async {
-      emit(state.copyWith(isAuthenticating: true));
+      emit((state as AuthenticatedState).copyWith(isAuthenticating: true));
 
       final reAuth =
           await reAuthenticationUsecase((event.email, event.currPassword));
@@ -89,8 +94,40 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           }
         },
       );
-      emit(state.copyWith(isAuthenticating: false));
     });
+
+    on<RequestDeleteAccountEvent>((event, emit) async {
+      await Navigators().popDialog();
+      if (event.entity.method == SignInMethod.email.name) {
+        final reAuth =
+            await reAuthenticationUsecase((event.entity.email, event.password));
+        await reAuth.fold(
+          (fail) =>
+              Navigators().showMessage(fail.message, type: MessageType.error),
+          (_) async {
+            await Navigators()
+                .showLoading(tasks: [_deleteUserAccount(event.entity.uid)]);
+          },
+        );
+      } else {
+        await Navigators()
+            .showLoading(tasks: [_deleteUserAccount(event.entity.uid)]);
+      }
+    });
+  }
+
+  Future<void> _deleteUserAccount(String uid) async {
+    final deleteEither = await deleteAccountUsecase(uid);
+    await deleteEither.fold(
+      (failure) =>
+          Navigators().showMessage(failure.message, type: MessageType.error),
+      (_) async {
+        await Navigators().popDialog(); // Pop changepasswordpage
+        add(RequestSignOutEvent()); // SignOut & navigate
+        Navigators().showMessage(LocaleKeys.auth_deleted_your_account.tr(),
+            type: MessageType.success);
+      },
+    );
   }
 
   void initAuthStream() {

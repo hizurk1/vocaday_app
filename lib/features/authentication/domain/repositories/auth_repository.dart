@@ -14,4 +14,5 @@ abstract interface class AuthRepository {
   FutureEither<void> reauthenticateWithCredential(
       String email, String password);
   FutureEither<void> sendCodeToEmail(String email);
+  FutureEither<void> deleteUserAuth();
 }

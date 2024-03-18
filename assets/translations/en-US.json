@@ -33,7 +33,11 @@
     "enter_new_pass_below": "Enter your new password below.",
     "we_sent_verfication_code_to_email": "We have just sent you a verification code into your email: {}",
     "enter_verification_code": "Enter verification code",
-    "enter_email_to_reset_password": "Enter your email address below, we will send you a verification code to reset your password."
+    "enter_email_to_reset_password": "Enter your email address below, we will send you a verification code to reset your password.",
+    "enter_your_to_confirm_the_action": "Enter your {} to confirm the action.",
+    "password": "password",
+    "deleted_your_account": "Your account has been successfully deleted.",
+    "are_you_want_to_delete_acc": "Are you sure you want to delete your account {}?"
   },
   "common": {
     "accept": "Accept",

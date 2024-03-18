@@ -9,6 +9,8 @@ abstract interface class UserRemoteDataSource {
     required Map<String, dynamic> map,
   });
 
+  Future<void> deleteUserProfile({required String uid});
+
   Stream<Map<String, dynamic>?> getUserData(String uid);
 
   Future<void> updateUserProfile({
@@ -187,6 +189,17 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       }
 
       return localList;
+    } on FirebaseException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
+    }
+  }
+
+  @override
+  Future<void> deleteUserProfile({required String uid}) async {
+    try {
+      await firestore.collection(_users).doc(uid).delete();
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {

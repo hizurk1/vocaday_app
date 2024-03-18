@@ -179,4 +179,17 @@ class UserRepositoryImpl implements UserRepository {
       return Left(DatabaseFailure(e.toString()));
     }
   }
+
+  @override
+  FutureEither<void> deleteUserProfile(String uid) async {
+    try {
+      return Right(await userRemoteDataSource.deleteUserProfile(uid: uid));
+    } on FirebaseException catch (e) {
+      return Left(
+        FirebaseFailure(e.message ?? 'FirebaseFailure: deleteUserProfile'),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
 }

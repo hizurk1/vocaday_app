@@ -123,4 +123,17 @@ class AuthRepositoryImpl implements AuthRepository {
       return Left(UnknownFailure(e.toString()));
     }
   }
+
+  @override
+  FutureEither<void> deleteUserAuth() async {
+    try {
+      return Right(await remoteDataSource.deleteUserAuth());
+    } on FirebaseAuthException catch (e) {
+      return Left(ServerFailure(e.message ?? e.code));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      return Left(UnknownFailure(e.toString()));
+    }
+  }
 }

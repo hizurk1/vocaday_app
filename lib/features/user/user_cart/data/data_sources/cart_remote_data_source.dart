@@ -8,6 +8,7 @@ abstract class CartRemoteDataSource {
   Future<Map<String, dynamic>> getCart(String uid);
   Future<void> clearCart(String uid);
   Future<void> updateCart(String uid, Map<String, dynamic> map);
+  Future<void> deleteCart(String uid);
 }
 
 class CartRemoteDataSourceImpl implements CartRemoteDataSource {
@@ -61,6 +62,17 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   Future<void> updateCart(String uid, Map<String, dynamic> map) async {
     try {
       await firestore.collection(_carts).doc(uid).update(map);
+    } on FirebaseException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
+    }
+  }
+
+  @override
+  Future<void> deleteCart(String uid) async {
+    try {
+      await firestore.collection(_carts).doc(uid).delete();
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {
