@@ -87,7 +87,13 @@ class _KnownWordPageState extends State<KnownWordPage> {
   Future<void> _onSyncData(BuildContext context) async {
     final uid = context.read<AuthBloc>().state.user?.uid;
     if (uid != null) {
-      await context.read<KnownWordCubit>().syncKnowns(uid);
+      final result = await context.read<KnownWordCubit>().syncKnowns(uid);
+      if (result) {
+        Navigators().showMessage(
+          LocaleKeys.known_sync_data_success.tr(),
+          type: MessageType.success,
+        );
+      }
     }
   }
 

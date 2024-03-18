@@ -57,6 +57,8 @@ class SettingDeleteAccountBottomSheet extends StatelessWidget {
                           args: [userEntity.email],
                         ),
                         style: context.textStyle.bodyS.grey,
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
                       ),
                       const Gap(height: 5),
                       TextCustom(
@@ -67,7 +69,9 @@ class SettingDeleteAccountBottomSheet extends StatelessWidget {
                                 : AppStringConst.email
                           ],
                         ),
+                        textAlign: TextAlign.center,
                         style: context.textStyle.bodyS.grey,
+                        maxLines: 2,
                       ),
                       const Gap(height: 20),
                       BorderTextField(

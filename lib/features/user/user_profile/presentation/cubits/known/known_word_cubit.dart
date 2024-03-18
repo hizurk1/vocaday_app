@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../app/managers/navigation.dart';
 import '../../../../../../app/managers/shared_preferences.dart';
-import '../../../../../../app/translations/translations.dart';
 import '../../../../../word/domain/entities/word_entity.dart';
 import '../../../../../word/domain/usecases/get_all_words.dart';
 import '../../../domain/usecases/remove_all_known_word.dart';
@@ -23,19 +21,25 @@ class KnownWordCubit extends Cubit<KnownWordState> {
     this.sharedPrefManager,
   ) : super(const KnownWordEmptyState());
 
-  Future<void> syncKnowns(String uid) async {
+  Future<bool> syncKnowns(String uid) async {
     emit(const KnownWordLoadingState());
 
     final wordEither = await getAllWordsUsecase();
 
-    wordEither.fold(
-      (failure) => emit(KnownWordErrorState(failure.message)),
+    return await wordEither.fold(
+      (failure) async {
+        emit(KnownWordErrorState(failure.message));
+        return false;
+      },
       (wordList) async {
         final knownList = sharedPrefManager.getKnownWords;
         final result = await syncKnownWordUsecase((uid, knownList));
 
-        result.fold(
-          (failure) => emit(KnownWordErrorState(failure.message)),
+        return await result.fold(
+          (failure) {
+            emit(KnownWordErrorState(failure.message));
+            return false;
+          },
           (newKnowns) async {
             Set<WordEntity> knowns = {};
 
@@ -48,13 +52,10 @@ class KnownWordCubit extends Cubit<KnownWordState> {
             //? Save to local
             await sharedPrefManager.saveKnownWord(newKnowns);
 
-            Navigators().showMessage(
-              LocaleKeys.known_sync_data_success.tr(),
-              type: MessageType.success,
-            );
             emit(
               KnownWordLoadedState(knowns.toList().reversed.toList()),
             );
+            return true;
           },
         );
       },

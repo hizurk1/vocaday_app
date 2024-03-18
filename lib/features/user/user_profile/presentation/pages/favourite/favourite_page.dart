@@ -87,7 +87,14 @@ class _FavouritePageState extends State<FavouritePage> {
   Future<void> _onSyncData(BuildContext context) async {
     final uid = context.read<AuthBloc>().state.user?.uid;
     if (uid != null) {
-      await context.read<WordFavouriteCubit>().syncFavourites(uid);
+      final result =
+          await context.read<WordFavouriteCubit>().syncFavourites(uid);
+      if (result) {
+        Navigators().showMessage(
+          LocaleKeys.favourite_sync_data_success.tr(),
+          type: MessageType.success,
+        );
+      }
     }
   }
 
