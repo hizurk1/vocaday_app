@@ -89,7 +89,11 @@ class WordBagBottomSheetPage extends StatelessWidget {
                   textTitle: LocaleKeys.cart_user_bag.tr(args: [entity.name]),
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                  onAction: () => _onSaveCartBag(context, entity.uid),
+                  onAction: () {
+                    if (bagList.isNotEmpty) {
+                      _onSaveCartBag(context, entity.uid);
+                    }
+                  },
                   children: [
                     if (state.status == CartBagStatus.error) ...[
                       ErrorPage(text: state.message ?? ''),
