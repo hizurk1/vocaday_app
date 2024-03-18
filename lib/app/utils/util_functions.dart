@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart' as launcher;
 
 import '../managers/navigation.dart';
 import '../translations/translations.dart';
@@ -56,4 +57,18 @@ class UtilFunction {
   /// Unfocus text field on the screen.
   static void unFocusTextField() =>
       FocusManager.instance.primaryFocus?.unfocus();
+
+  /// Launch url
+  static Future<void> launchUrl(String url) async {
+    try {
+      final uri = Uri.parse(url);
+      if (await launcher.canLaunchUrl(uri)) {
+        if (!await launcher.launchUrl(uri)) {
+          throw Exception('Could not launch $url');
+        }
+      }
+    } catch (e) {
+      Navigators().showMessage(e.toString(), type: MessageType.error);
+    }
+  }
 }

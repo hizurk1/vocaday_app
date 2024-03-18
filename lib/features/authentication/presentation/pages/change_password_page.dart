@@ -48,10 +48,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
           return StatusBar(
             child: Scaffold(
               backgroundColor: context.backgroundColor,
-              appBar: AppBar(
+              appBar: AppBarCustom(
                 leading: _buildBackButton(),
-                backgroundColor: Colors.transparent,
-                surfaceTintColor: Colors.transparent,
+                transparent: true,
               ),
               extendBodyBehindAppBar: true,
               body: _buildBody(
@@ -164,17 +163,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
   Widget _buildBackButton() {
     return SafeArea(
-      child: Align(
-        alignment: Alignment.topLeft,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 10.w,
-            vertical: 10.h,
-          ),
-          child: BackButton(
-            style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
-          ),
-        ),
+      child: BackButton(
+        style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
       ),
     );
   }

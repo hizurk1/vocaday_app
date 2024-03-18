@@ -17,6 +17,9 @@ class AppStringConst {
   static const notificationMethodChannel =
       "com.vocaday.vocaday_app/notification_service";
   static const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  static const privacyPolicyUrl =
+      "https://sites.google.com/view/vocaday-privacypolicy";
+  static const aboutUsUrl = "https://github.com/helkaloic/vocaday_app";
 
   // Mini Game
   static const quiz = "Quiz";

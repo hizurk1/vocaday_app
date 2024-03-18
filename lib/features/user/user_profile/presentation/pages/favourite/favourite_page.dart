@@ -177,6 +177,10 @@ class _FavouritePageState extends State<FavouritePage> {
           value: FavouriteMenu.clearAll,
         ),
       ],
+      child: Padding(
+        padding: EdgeInsets.only(right: 8.w),
+        child: Icon(Icons.more_vert_rounded, size: 24.r),
+      ),
     );
   }
 
@@ -197,9 +201,12 @@ class _FavouritePageState extends State<FavouritePage> {
               color: context.theme.primaryColor,
             ),
           ),
-          TextCustom(
-            text,
-            style: context.textStyle.bodyS.bw,
+          Expanded(
+            child: TextCustom(
+              text,
+              style: context.textStyle.bodyS.bw,
+              maxLines: 2,
+            ),
           ),
         ],
       ),
