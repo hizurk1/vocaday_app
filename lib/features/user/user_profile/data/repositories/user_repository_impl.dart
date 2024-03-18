@@ -90,14 +90,10 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   FutureEither<List<UserEntity>> getListUsers({
-    required FilterUserType type,
     required int limit,
   }) async {
     try {
-      final data = await userRemoteDataSource.getListUsers(
-        type: type,
-        limit: limit,
-      );
+      final data = await userRemoteDataSource.getListUsers(limit: limit);
       final entities = data.map((map) => UserModel.fromMap(map).toEntity());
 
       return Right(entities.toList());

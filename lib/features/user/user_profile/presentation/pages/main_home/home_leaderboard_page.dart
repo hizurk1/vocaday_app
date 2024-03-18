@@ -10,12 +10,13 @@ import '../../../../../../app/translations/translations.dart';
 import '../../../../../../app/widgets/widgets.dart';
 import '../../../../../../core/extensions/build_context.dart';
 import '../../../../../../core/extensions/string.dart';
-import '../../../data/models/user_model.dart';
 import '../../../domain/entities/user_entity.dart';
 import '../../cubits/leader_board/leader_board_cubit.dart';
 
+enum LeaderboardType { point, attendance }
+
 class HomeLeaderboardPage extends StatefulWidget {
-  final FilterUserType type;
+  final LeaderboardType type;
   const HomeLeaderboardPage({
     super.key,
     required this.type,
@@ -44,11 +45,9 @@ class _HomeLeaderboardPageState extends State<HomeLeaderboardPage>
             return Wrap(children: [ErrorPage(text: state.message)]);
           }
           if (state is LeaderBoardLoadedState) {
-            final listUser = widget.type == FilterUserType.point
+            final listUser = widget.type == LeaderboardType.point
                 ? state.points
-                : state.attendances
-              ..sort((a, b) =>
-                  b.attendance!.length.compareTo(a.attendance!.length));
+                : state.attendances;
             final topList = listUser.getRange(0, listUser.length).toList();
 
             return Wrap(
@@ -77,7 +76,7 @@ class _HomeLeaderboardPageState extends State<HomeLeaderboardPage>
 
 class _TopRankingBlock extends StatelessWidget {
   final List<UserEntity> topUsers;
-  final FilterUserType type;
+  final LeaderboardType type;
 
   const _TopRankingBlock({required this.topUsers, required this.type});
 
@@ -145,7 +144,7 @@ class _TopUserRank extends StatelessWidget {
   final BoxConstraints outConstraints;
   final int index;
   final UserEntity? entity;
-  final FilterUserType type;
+  final LeaderboardType type;
 
   const _TopUserRank({
     required this.inConstraints,
@@ -187,7 +186,7 @@ class _TopUserRank extends StatelessWidget {
                   ),
                   child: TextCustom(
                     entity != null
-                        ? type == FilterUserType.point
+                        ? type == LeaderboardType.point
                             ? LocaleKeys.user_data_point
                                 .plural(entity?.point ?? 0)
                                 .formatedThousand
@@ -206,7 +205,7 @@ class _TopUserRank extends StatelessWidget {
 }
 
 class _LeaderBoardTileWidget extends StatelessWidget {
-  final FilterUserType type;
+  final LeaderboardType type;
   final UserEntity entity;
   final int index;
 
@@ -248,7 +247,7 @@ class _LeaderBoardTileWidget extends StatelessWidget {
           style: context.textStyle.bodyS.bold.bw,
         ),
         subTitle: TextCustom(
-          type == FilterUserType.point
+          type == LeaderboardType.point
               ? LocaleKeys.user_data_point.plural(entity.point).formatedThousand
               : LocaleKeys.home_time.plural(entity.attendance?.length ?? 0),
           style: context.textStyle.labelL.grey,

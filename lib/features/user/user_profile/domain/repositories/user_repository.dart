@@ -1,5 +1,4 @@
 import '../../../../../core/typedef/typedefs.dart';
-import '../../data/models/user_model.dart';
 import '../entities/user_entity.dart';
 
 abstract interface class UserRepository {
@@ -17,7 +16,6 @@ abstract interface class UserRepository {
   });
 
   FutureEither<List<UserEntity>> getListUsers({
-    required FilterUserType type,
     required int limit,
   });
 

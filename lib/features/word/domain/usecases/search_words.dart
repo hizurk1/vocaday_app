@@ -64,7 +64,7 @@ class SearchWordsUsecase
           keyword,
           entity.word,
         );
-        if (1 <= step && step <= min(3, keyword.length - 1)) {
+        if (1 <= step && step <= min(2, keyword.length - 2)) {
           results[entity] = step;
         }
       }

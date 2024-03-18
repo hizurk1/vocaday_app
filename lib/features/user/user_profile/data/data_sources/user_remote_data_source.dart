@@ -24,7 +24,6 @@ abstract interface class UserRemoteDataSource {
   });
 
   Future<List<Map<String, dynamic>>> getListUsers({
-    required FilterUserType type,
     required int limit,
   });
 
@@ -104,11 +103,13 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
   @override
   Future<List<Map<String, dynamic>>> getListUsers({
-    required FilterUserType type,
     required int limit,
   }) async {
     try {
-      final query = _queryListUsers(type).limit(limit);
+      final query = firestore
+          .collection(_users)
+          .where("attendance", isNull: false)
+          .limit(limit);
       final snapshots = await query.get();
       return snapshots.docs.map((e) => e.data()).toList();
     } on FirebaseException {
@@ -116,18 +117,6 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     } catch (e) {
       throw DatabaseException(e.toString());
     }
-  }
-
-  Query<Map<String, dynamic>> _queryListUsers(FilterUserType type) {
-    final collection = firestore.collection(_users);
-    final field = type.name;
-    return switch (type) {
-      FilterUserType.name => collection.orderBy(field),
-      FilterUserType.point => collection
-          .where(field, isGreaterThan: 0)
-          .orderBy(field, descending: true),
-      FilterUserType.attendance => collection.where(field, isNull: false),
-    };
   }
 
   @override

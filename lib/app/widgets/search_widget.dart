@@ -11,10 +11,12 @@ class SearchWidget extends StatefulWidget {
     super.key,
     required this.hintText,
     required this.onSearch,
+    this.autofocus = false,
   });
 
   final String hintText;
   final Function(String input) onSearch;
+  final bool autofocus;
 
   @override
   State<SearchWidget> createState() => _SearchWidgetState();
@@ -71,7 +73,7 @@ class _SearchWidgetState extends State<SearchWidget> {
         onSubmitted: (value) => widget.onSearch(value),
         maxLines: 1,
         maxLength: 20,
-        // autofocus: true,
+        autofocus: widget.autofocus,
         textInputAction: TextInputAction.search,
         style: context.textTheme.bodyMedium?.copyWith(
           fontSize: 16.sp,

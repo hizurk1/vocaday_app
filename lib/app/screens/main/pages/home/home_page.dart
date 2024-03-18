@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/extensions/build_context.dart';
-import '../../../../../features/user/user_profile/data/models/user_model.dart';
 import '../../../../../features/user/user_profile/presentation/cubits/leader_board/leader_board_cubit.dart';
 import '../../../../../features/user/user_profile/presentation/pages/main_home/home_check_in_bottom_sheet.dart';
 import '../../../../../features/user/user_profile/presentation/pages/main_home/home_leaderboard_page.dart';
@@ -85,8 +84,8 @@ class _HomePageState extends State<HomePage>
             tabBarView: const TabBarView(
               physics: ClampingScrollPhysics(),
               children: [
-                HomeLeaderboardPage(type: FilterUserType.point),
-                HomeLeaderboardPage(type: FilterUserType.attendance),
+                HomeLeaderboardPage(type: LeaderboardType.point),
+                HomeLeaderboardPage(type: LeaderboardType.attendance),
               ],
             ),
           ),

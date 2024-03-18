@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/models/user_model.dart';
 import '../../../domain/entities/user_entity.dart';
 import '../../../domain/usecases/get_list_users.dart';
 
@@ -15,19 +14,22 @@ class LeaderBoardCubit extends Cubit<LeaderBoardState> {
   Future<void> getListUsers() async {
     emit(LeaderBoardLoadingState());
 
-    final pointResults = await getListUsersUsecase((FilterUserType.point, 10));
+    final results = await getListUsersUsecase(10);
 
-    pointResults.fold((failure) => emit(LeaderBoardErrorState(failure.message)),
-        (points) async {
-      final attResults =
-          await getListUsersUsecase((FilterUserType.attendance, 10));
+    results.fold(
+      (failure) => emit(LeaderBoardErrorState(failure.message)),
+      (list) {
+        final points = List<UserEntity>.from(list)
+            .where((e) => e.point >= 0)
+            .toList()
+          ..sort((a, b) => b.point.compareTo(a.point));
 
-      attResults.fold(
-        (failure) => emit(LeaderBoardErrorState(failure.message)),
-        (atts) {
-          emit(LeaderBoardLoadedState(points: points, attendances: atts));
-        },
-      );
-    });
+        final attendances = List<UserEntity>.from(list)
+          ..sort(
+              (a, b) => b.attendance!.length.compareTo(a.attendance!.length));
+
+        emit(LeaderBoardLoadedState(points: points, attendances: attendances));
+      },
+    );
   }
 }

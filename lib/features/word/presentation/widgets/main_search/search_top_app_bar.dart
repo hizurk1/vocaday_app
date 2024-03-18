@@ -18,6 +18,7 @@ class SearchTopAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SearchWidget(
+        autofocus: true,
         hintText: LocaleKeys.search_search_for_words.tr(),
         onSearch: (value) => _onSubmitEvent(context, value),
       ),
