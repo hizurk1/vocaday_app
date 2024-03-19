@@ -14,19 +14,19 @@ class LeaderBoardCubit extends Cubit<LeaderBoardState> {
   Future<void> getListUsers() async {
     emit(LeaderBoardLoadingState());
 
-    final results = await getListUsersUsecase(10);
+    final results = await getListUsersUsecase();
 
     results.fold(
       (failure) => emit(LeaderBoardErrorState(failure.message)),
       (list) {
-        final points = List<UserEntity>.from(list)
-            .where((e) => e.point >= 0)
-            .toList()
-          ..sort((a, b) => b.point.compareTo(a.point));
+        final points =
+            List<UserEntity>.from(list).where((e) => e.point >= 0).toList()
+              ..sort((a, b) => b.point.compareTo(a.point))
+              ..take(10);
 
         final attendances = List<UserEntity>.from(list)
-          ..sort(
-              (a, b) => b.attendance!.length.compareTo(a.attendance!.length));
+          ..sort((a, b) => b.attendance!.length.compareTo(a.attendance!.length))
+          ..take(10);
 
         emit(LeaderBoardLoadedState(points: points, attendances: attendances));
       },

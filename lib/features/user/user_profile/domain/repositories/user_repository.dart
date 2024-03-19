@@ -15,9 +15,7 @@ abstract interface class UserRepository {
     required List<DateTime> attendance,
   });
 
-  FutureEither<List<UserEntity>> getListUsers({
-    required int limit,
-  });
+  FutureEither<List<UserEntity>> getListUsers();
 
   FutureEither<List<String>> syncFavourites({
     required String uid,

@@ -23,9 +23,7 @@ abstract interface class UserRemoteDataSource {
     required Map<String, dynamic> map,
   });
 
-  Future<List<Map<String, dynamic>>> getListUsers({
-    required int limit,
-  });
+  Future<List<Map<String, dynamic>>> getListUsers();
 
   Future<List<String>> syncFavourites({
     required String uid,
@@ -102,14 +100,10 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<List<Map<String, dynamic>>> getListUsers({
-    required int limit,
-  }) async {
+  Future<List<Map<String, dynamic>>> getListUsers() async {
     try {
-      final query = firestore
-          .collection(_users)
-          .where("attendance", isNull: false)
-          .limit(limit);
+      final query =
+          firestore.collection(_users).where("attendance", isNull: false);
       final snapshots = await query.get();
       return snapshots.docs.map((e) => e.data()).toList();
     } on FirebaseException {
