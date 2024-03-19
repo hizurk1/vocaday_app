@@ -9,8 +9,10 @@ import '../../../../../core/extensions/build_context.dart';
 import '../../../../../core/extensions/color.dart';
 import '../../../../../features/user/user_cart/presentation/cubits/cart_bag/cart_bag_cubit.dart';
 import '../../../../../features/user/user_cart/presentation/widgets/cart_icon_widget.dart';
+import '../../../../../features/user/user_profile/presentation/cubits/known/known_word_cubit.dart';
 import '../../../../../features/user/user_profile/presentation/widgets/known_word/known_word_button_widget.dart';
 import '../../../../../features/word/domain/entities/word_entity.dart';
+import '../../../../../features/word/presentation/blocs/word_list/word_list_cubit.dart';
 import '../../../../../features/word/presentation/pages/word_detail_bottom_sheet.dart';
 import '../../../../../injection_container.dart';
 import '../../../../constants/gen/assets.gen.dart';
@@ -99,12 +101,13 @@ class _FlashCardPageState extends State<FlashCardPage> {
     await context.read<CartBagCubit>().addToCartBag(word);
   }
 
-  Future<void> _onKnewPressed() async {
+  Future<void> _onKnewPressed(List<WordEntity> list) async {
     _swipeController.swipe(CardSwiperDirection.bottom);
     final fixedIndex = countIndex.value % wordCardsNotifier.value.length;
 
-    await sl<SharedPrefManager>()
-        .addKnownWord(wordCardsNotifier.value[fixedIndex].entity.word);
+    await context
+        .read<KnownWordCubit>()
+        .addKnownWord(wordCardsNotifier.value[fixedIndex].entity.word, list);
     logger.i("Known words: ${sl<SharedPrefManager>().getKnownWords}");
 
     wordCardsNotifier.value.removeAt(fixedIndex);
@@ -174,8 +177,15 @@ class _FlashCardPageState extends State<FlashCardPage> {
                 child: Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 30.w, vertical: 20.h),
-                  child: KnownWordButtonWidget(
-                    onPressed: () => _onKnewPressed(),
+                  child: BlocSelector<WordListCubit, WordListState,
+                      List<WordEntity>>(
+                    selector: (state) =>
+                        state is WordListLoadedState ? state.wordList : [],
+                    builder: (context, list) {
+                      return KnownWordButtonWidget(
+                        onPressed: () => _onKnewPressed(list),
+                      );
+                    },
                   ),
                 ),
                 builder: (context, wordCards, child) {

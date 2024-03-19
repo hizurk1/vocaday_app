@@ -16,6 +16,7 @@ import '../../../../app/widgets/widgets.dart';
 import '../../../../core/extensions/build_context.dart';
 import '../../../user/user_cart/presentation/widgets/add_to_bag_button_widget.dart';
 import '../../../user/user_profile/presentation/widgets/favourite/favourite_button_widget.dart';
+import '../../../user/user_profile/presentation/widgets/known_word/known_word_icon_widget.dart';
 import '../../domain/entities/word_entity.dart';
 import '../blocs/word_list/word_list_cubit.dart';
 
@@ -75,6 +76,7 @@ class WordDetailBottomSheet extends StatelessWidget {
               ),
             ),
             FavouriteButtonWidget(word: wordEntity.word),
+            KnownWordIconWidget(word: wordEntity.word),
             AddToBagButtonWidget(word: wordEntity.word),
           ],
         ),

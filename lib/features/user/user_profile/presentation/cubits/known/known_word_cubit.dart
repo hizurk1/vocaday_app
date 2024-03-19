@@ -21,6 +21,25 @@ class KnownWordCubit extends Cubit<KnownWordState> {
     this.sharedPrefManager,
   ) : super(const KnownWordEmptyState());
 
+  Future<void> addKnownWord(String word, List<WordEntity> wordList) async {
+    emit(const KnownWordLoadingState());
+    try {
+      await sharedPrefManager.addKnownWord(word);
+
+      List<WordEntity> knowns = [];
+      final local = sharedPrefManager.getKnownWords;
+
+      for (String element in local) {
+        final word = wordList.firstWhere((e) => e.word == element);
+        knowns.add(word);
+      }
+
+      emit(KnownWordLoadedState(knowns.reversed.toList()));
+    } on UnimplementedError catch (e) {
+      emit(KnownWordErrorState(e.message ?? ''));
+    }
+  }
+
   Future<bool> syncKnowns(String uid) async {
     emit(const KnownWordLoadingState());
 

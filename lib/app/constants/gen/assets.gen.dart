@@ -112,6 +112,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/check_all.svg
   String get checkAll => 'assets/icons/check_all.svg';
 
+  /// File path: assets/icons/check_circle.svg
+  String get checkCircle => 'assets/icons/check_circle.svg';
+
   /// File path: assets/icons/check_in.svg
   String get checkIn => 'assets/icons/check_in.svg';
 
@@ -342,6 +345,7 @@ class $AssetsIconsGen {
         chatbot2,
         check,
         checkAll,
+        checkCircle,
         checkIn,
         checkUpdate,
         clean,
@@ -430,6 +434,13 @@ class $AssetsImagesGen {
   /// File path: assets/images/login_background.svg
   String get loginBackground => 'assets/images/login_background.svg';
 
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/logo_1024.png
+  AssetGenImage get logo1024 =>
+      const AssetGenImage('assets/images/logo_1024.png');
+
   /// File path: assets/images/logo_white_nobg.png
   AssetGenImage get logoWhiteNobg =>
       const AssetGenImage('assets/images/logo_white_nobg.png');
@@ -447,6 +458,8 @@ class $AssetsImagesGen {
         languageSelect,
         leaderboardBox,
         loginBackground,
+        logo,
+        logo1024,
         logoWhiteNobg,
         questionMark,
         toTheGoals

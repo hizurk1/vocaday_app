@@ -2,7 +2,7 @@ name: vocaday_app
 description: "An English Vocabulary learing app."
 publish_to: "none"
 
-version: 1.0.2+3
+version: 1.0.4+5
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
@@ -59,7 +59,7 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/images/logo.png"
-  adaptive_icon_foreground: "assets/images/1024.png"
+  adaptive_icon_foreground: "assets/images/logo_1024.png"
   adaptive_icon_background: "#ff3b47de"
 
 flutter_gen:
