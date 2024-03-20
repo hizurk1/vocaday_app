@@ -21,6 +21,7 @@ import '../../../../../app/widgets/timer_count_down.dart';
 import '../../../../../app/widgets/widgets.dart';
 import '../../../../../core/extensions/build_context.dart';
 import '../../../../../core/extensions/color.dart';
+import '../../../../../core/extensions/list.dart';
 import '../../../../../injection_container.dart';
 import '../../../../authentication/presentation/blocs/auth/auth_bloc.dart';
 import '../../../../word/domain/entities/word_entity.dart';
@@ -66,11 +67,13 @@ class _GameQuizPageState extends State<GameQuizPage> {
         final answers = List<String>.from(list)
           ..remove(widget.words[index].word)
           ..shuffle();
+        final meaningEntity = widget.words[index].meanings.getRandom ??
+            widget.words[index].meanings.first;
 
         return QuizEntity(
           word: widget.words[index].word,
           question:
-              "(${widget.words[index].meanings.first.type.toLowerCase()}) ${widget.words[index].meanings.first.meaning}",
+              "(${meaningEntity.type.toLowerCase()}) ${meaningEntity.meaning}",
           answers: answers.take(3).toList()
             ..insert(
               Random().nextInt(4),
