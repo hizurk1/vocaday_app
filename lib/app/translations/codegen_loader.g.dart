@@ -260,7 +260,9 @@ class CodegenLoader extends AssetLoader{
     "name_your_word_bag": "Name your word bag",
     "rename_this_bag_title": "Rename this bag",
     "rename_menu": "Rename",
-    "added_to_word_bag": "Added \"{}\" to your current word bag."
+    "added_to_word_bag": "Added \"{}\" to your current word bag.",
+    "mark_all_as_known": "Mark all as known",
+    "mark_all_as_known_content": "The words in this bag will be marked as known and will be removed from this cart."
   },
   "known": {
     "sync_data_success": "Data sync successfully",
@@ -538,7 +540,9 @@ static const Map<String,dynamic> vi_VN = {
     "name_your_word_bag": "Đặt tên túi từ của bạn",
     "rename_this_bag_title": "Đổi tên túi này",
     "rename_menu": "Đổi tên",
-    "added_to_word_bag": "Đã thêm \"{}\" vào túi hiện tại của bạn."
+    "added_to_word_bag": "Đã thêm \"{}\" vào túi hiện tại của bạn.",
+    "mark_all_as_known": "Đánh dấu tất cả đã biết",
+    "mark_all_as_known_content": "Các từ trong túi sẽ được đánh dấu là đã biết và sẽ bị xoá khỏi giỏ."
   },
   "known": {
     "sync_data_success": "Đồng bộ dữ liệu thành công",

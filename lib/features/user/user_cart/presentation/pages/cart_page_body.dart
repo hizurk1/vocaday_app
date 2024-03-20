@@ -14,11 +14,12 @@ import '../../../../authentication/presentation/blocs/auth/auth_bloc.dart';
 import '../../../../word/domain/entities/word_entity.dart';
 import '../../../../word/presentation/blocs/word_list/word_list_cubit.dart';
 import '../../../../word/presentation/pages/word_detail_bottom_sheet.dart';
+import '../../../user_profile/presentation/cubits/known/known_word_cubit.dart';
 import '../../domain/entities/cart_entity.dart';
 import '../cubits/cart/cart_cubit.dart';
 import '../cubits/cart_bag/cart_bag_cubit.dart';
 
-enum CartBagMenu { rename, expand, remove }
+enum CartBagMenu { rename, expand, remove, known }
 
 class CartPageBody extends StatelessWidget {
   const CartPageBody({super.key});
@@ -110,8 +111,30 @@ class _CartBagWidget extends StatelessWidget {
       case CartBagMenu.remove:
         _onRemoveCartBag(context);
         break;
+      case CartBagMenu.known:
+        _onMarkAsKnown(context);
+        break;
       default:
     }
+  }
+
+  Future<void> _onMarkAsKnown(BuildContext context) async {
+    Navigators().showDialogWithButton(
+      title: LocaleKeys.cart_mark_all_as_known.tr(),
+      subtitle: LocaleKeys.cart_mark_all_as_known_content.tr(),
+      onAccept: () async {
+        final uid = context.read<AuthBloc>().state.user?.uid;
+        if (uid != null) {
+          final wordsOfBag = cartEntity.bags[index].words;
+          await Future.wait([
+            context.read<KnownWordCubit>().addKnownWordList(uid, wordsOfBag),
+            context
+                .read<CartCubit>()
+                .deleteCartBag(uid, cartEntity, cartEntity.bags[index]),
+          ]);
+        }
+      },
+    );
   }
 
   Future<void> _onRenameCartBag(BuildContext context) async {
@@ -286,6 +309,12 @@ class _CartBagWidget extends StatelessWidget {
           icon: Icons.playlist_remove_rounded,
           text: LocaleKeys.cart_remove_menu.tr(),
           value: CartBagMenu.remove,
+        ),
+        _buildMenuItem(
+          context: context,
+          icon: Icons.playlist_add_check,
+          text: LocaleKeys.cart_mark_all_as_known.tr(),
+          value: CartBagMenu.known,
         ),
       ],
       child: const Icon(Icons.more_vert_rounded, color: Colors.white),

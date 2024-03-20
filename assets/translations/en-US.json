@@ -244,7 +244,9 @@
     "name_your_word_bag": "Name your word bag",
     "rename_this_bag_title": "Rename this bag",
     "rename_menu": "Rename",
-    "added_to_word_bag": "Added \"{}\" to your current word bag."
+    "added_to_word_bag": "Added \"{}\" to your current word bag.",
+    "mark_all_as_known": "Mark all as known",
+    "mark_all_as_known_content": "The words in this bag will be marked as known and will be removed from this cart."
   },
   "known": {
     "sync_data_success": "Data sync successfully",

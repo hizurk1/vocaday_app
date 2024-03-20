@@ -22,6 +22,11 @@ abstract interface class UserRepository {
     required List<String> favourites,
   });
 
+  FutureEither<void> addKnownWords({
+    required String uid,
+    required List<String> knowns,
+  });
+
   FutureEither<List<String>> syncKnowns({
     required String uid,
     required List<String> knowns,

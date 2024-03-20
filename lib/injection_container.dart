@@ -49,6 +49,7 @@ import 'features/user/user_profile/data/data_sources/user_remote_data_source.dar
 import 'features/user/user_profile/data/repositories/user_repository_impl.dart';
 import 'features/user/user_profile/domain/repositories/user_repository.dart';
 import 'features/user/user_profile/domain/usecases/add_attendance_date.dart';
+import 'features/user/user_profile/domain/usecases/add_known_words.dart';
 import 'features/user/user_profile/domain/usecases/get_list_users.dart';
 import 'features/user/user_profile/domain/usecases/get_user_data.dart';
 import 'features/user/user_profile/domain/usecases/remove_all_favourite_word_usecase.dart';
@@ -100,10 +101,11 @@ Future<void> setUpServiceLocator() async {
 
   //! Features - known
   // Usecase
+  sl.registerLazySingleton(() => AddKnownWordsUsecase(sl(), sl()));
   sl.registerLazySingleton(() => SyncKnownWordUsecase(sl()));
   sl.registerLazySingleton(() => RemoveAllKnownWordUsecase(sl()));
   // Cubit
-  sl.registerFactory(() => KnownWordCubit(sl(), sl(), sl(), sl()));
+  sl.registerFactory(() => KnownWordCubit(sl(), sl(), sl(), sl(), sl()));
 
   //! Features - word
   // Data source

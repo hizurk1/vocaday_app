@@ -244,7 +244,9 @@
     "name_your_word_bag": "Đặt tên túi từ của bạn",
     "rename_this_bag_title": "Đổi tên túi này",
     "rename_menu": "Đổi tên",
-    "added_to_word_bag": "Đã thêm \"{}\" vào túi hiện tại của bạn."
+    "added_to_word_bag": "Đã thêm \"{}\" vào túi hiện tại của bạn.",
+    "mark_all_as_known": "Đánh dấu tất cả đã biết",
+    "mark_all_as_known_content": "Các từ trong túi sẽ được đánh dấu là đã biết và sẽ bị xoá khỏi giỏ."
   },
   "known": {
     "sync_data_success": "Đồng bộ dữ liệu thành công",

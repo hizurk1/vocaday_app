@@ -186,4 +186,23 @@ class UserRepositoryImpl implements UserRepository {
       return Left(DatabaseFailure(e.toString()));
     }
   }
+
+  @override
+  FutureEither<void> addKnownWords({
+    required String uid,
+    required List<String> knowns,
+  }) async {
+    try {
+      return Right(await userRemoteDataSource.addKnownWords(
+        uid: uid,
+        list: knowns,
+      ));
+    } on FirebaseException catch (e) {
+      return Left(
+        FirebaseFailure(e.message ?? 'FirebaseFailure: addKnownWords'),
+      );
+    } catch (e) {
+      return Left(DatabaseFailure(e.toString()));
+    }
+  }
 }

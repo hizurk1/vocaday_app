@@ -93,6 +93,13 @@ class SharedPrefManager {
     await prefs.setStringList(AppPrefsKey.knownWordStringL, list.toList());
   }
 
+  Future<void> addKnownWordList(List<String> words) async {
+    Set<String> list =
+        prefs.getStringList(AppPrefsKey.knownWordStringL)?.toSet() ?? {};
+    list.addAll(words);
+    await prefs.setStringList(AppPrefsKey.knownWordStringL, list.toList());
+  }
+
   Future<void> saveKnownWord(List<String> words) async {
     await prefs.setStringList(AppPrefsKey.knownWordStringL, words);
   }

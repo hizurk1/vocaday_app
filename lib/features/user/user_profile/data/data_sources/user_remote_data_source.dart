@@ -35,6 +35,11 @@ abstract interface class UserRemoteDataSource {
     required Map<String, dynamic> map,
   });
 
+  Future<void> addKnownWords({
+    required String uid,
+    required List<String> list,
+  });
+
   Future<void> removeAllFavourites({required String uid});
 
   Future<void> removeAllKnowns({required String uid});
@@ -183,6 +188,22 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   Future<void> deleteUserProfile({required String uid}) async {
     try {
       await firestore.collection(_users).doc(uid).delete();
+    } on FirebaseException {
+      rethrow;
+    } on UnimplementedError catch (e) {
+      throw DatabaseException(e.message ?? '');
+    }
+  }
+
+  @override
+  Future<void> addKnownWords({
+    required String uid,
+    required List<String> list,
+  }) async {
+    try {
+      await firestore.collection(_users).doc(uid).update({
+        'knowns': FieldValue.arrayUnion(list),
+      });
     } on FirebaseException {
       rethrow;
     } on UnimplementedError catch (e) {

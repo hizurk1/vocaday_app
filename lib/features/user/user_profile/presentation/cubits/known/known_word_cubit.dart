@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../app/managers/shared_preferences.dart';
 import '../../../../../word/domain/entities/word_entity.dart';
 import '../../../../../word/domain/usecases/get_all_words.dart';
+import '../../../domain/usecases/add_known_words.dart';
 import '../../../domain/usecases/remove_all_known_word.dart';
 import '../../../domain/usecases/sync_known_word.dart';
 
@@ -13,28 +14,59 @@ class KnownWordCubit extends Cubit<KnownWordState> {
   final GetAllWordsUsecase getAllWordsUsecase;
   final RemoveAllKnownWordUsecase removeAllKnownWordUsecase;
   final SyncKnownWordUsecase syncKnownWordUsecase;
+  final AddKnownWordsUsecase addKnownWordsUsecase;
   final SharedPrefManager sharedPrefManager;
   KnownWordCubit(
     this.getAllWordsUsecase,
     this.removeAllKnownWordUsecase,
     this.syncKnownWordUsecase,
+    this.addKnownWordsUsecase,
     this.sharedPrefManager,
   ) : super(const KnownWordEmptyState());
+
+  List<WordEntity> _filterWordEntityList(List<WordEntity> wordList) {
+    List<WordEntity> knowns = [];
+    final local = sharedPrefManager.getKnownWords;
+
+    for (String element in local) {
+      final word = wordList.firstWhere((e) => e.word == element);
+      knowns.add(word);
+    }
+    return knowns;
+  }
+
+  Future<void> addKnownWordList(String uid, List<String> knowns) async {
+    emit(const KnownWordLoadingState());
+    try {
+      final wordEither = await getAllWordsUsecase();
+
+      await wordEither.fold(
+        (failure) async => emit(KnownWordErrorState(failure.message)),
+        (wordList) async {
+          final result = await addKnownWordsUsecase((uid, knowns));
+          result.fold(
+            (failure) => emit(KnownWordErrorState(failure.message)),
+            (_) {
+              emit(KnownWordLoadedState(
+                _filterWordEntityList(wordList).reversed.toList(),
+              ));
+            },
+          );
+        },
+      );
+    } on UnimplementedError catch (e) {
+      emit(KnownWordErrorState(e.message ?? ''));
+    }
+  }
 
   Future<void> addKnownWord(String word, List<WordEntity> wordList) async {
     emit(const KnownWordLoadingState());
     try {
       await sharedPrefManager.addKnownWord(word);
 
-      List<WordEntity> knowns = [];
-      final local = sharedPrefManager.getKnownWords;
-
-      for (String element in local) {
-        final word = wordList.firstWhere((e) => e.word == element);
-        knowns.add(word);
-      }
-
-      emit(KnownWordLoadedState(knowns.reversed.toList()));
+      emit(KnownWordLoadedState(
+        _filterWordEntityList(wordList).reversed.toList(),
+      ));
     } on UnimplementedError catch (e) {
       emit(KnownWordErrorState(e.message ?? ''));
     }
