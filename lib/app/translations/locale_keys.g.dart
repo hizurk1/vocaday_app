@@ -131,6 +131,8 @@ abstract class  LocaleKeys {
   static const setting_remind_at = 'setting.remind_at';
   static const setting_notification_set_to = 'setting.notification_set_to';
   static const setting_cancel_all_noti = 'setting.cancel_all_noti';
+  static const setting_no_update_available = 'setting.no_update_available';
+  static const setting_update_success_please_restart = 'setting.update_success_please_restart';
   static const favourite_add_to_favourite = 'favourite.add_to_favourite';
   static const favourite_remove_from_favourite = 'favourite.remove_from_favourite';
   static const favourite_favourites = 'favourite.favourites';

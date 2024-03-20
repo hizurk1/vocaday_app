@@ -11,8 +11,8 @@ class _SettingPrivacyPolicy extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
         leading: SvgPicture.asset(
           Assets.icons.privacy,
-          height: 25.h,
-          width: 25.w,
+          height: 25.r,
+          width: 25.r,
           colorFilter: ColorFilter.mode(context.bwColor, BlendMode.srcIn),
         ),
         titlePadding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -23,7 +23,7 @@ class _SettingPrivacyPolicy extends StatelessWidget {
         trailing: Icon(
           Icons.arrow_forward_ios_rounded,
           color: context.greyColor,
-          size: 18,
+          size: 18.r,
         ),
       ),
     );

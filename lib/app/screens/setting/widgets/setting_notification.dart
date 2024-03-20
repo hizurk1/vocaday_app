@@ -65,8 +65,8 @@ class _SettingNotificationState extends State<_SettingNotification> {
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
       leading: SvgPicture.asset(
         Assets.icons.notification2,
-        height: 25.h,
-        width: 25.w,
+        height: 25.r,
+        width: 25.r,
         colorFilter: ColorFilter.mode(context.bwColor, BlendMode.srcIn),
       ),
       titlePadding: EdgeInsets.symmetric(horizontal: 20.w),

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:in_app_review/in_app_review.dart';
+import 'package:in_app_update/in_app_update.dart';
 
-import '../../../config/app_logger.dart';
 import '../../../core/extensions/build_context.dart';
 import '../../../core/extensions/date_time.dart';
 import '../../../features/authentication/presentation/widgets/setting_delete_account_bottom_sheet.dart';

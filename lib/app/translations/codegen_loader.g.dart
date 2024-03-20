@@ -204,7 +204,9 @@ class CodegenLoader extends AssetLoader{
     "new_word_today": "New word today: {}.\\nDefinition: {}",
     "remind_at": "Remind at: {}",
     "notification_set_to": "Notification will show at {} every day.",
-    "cancel_all_noti": "Canceled all notifications."
+    "cancel_all_noti": "Canceled all notifications.",
+    "no_update_available": "There are no updates available for your app.",
+    "update_success_please_restart": "Update successful. Please restart the app."
   },
   "favourite": {
     "add_to_favourite": "Added \"{}\" into your favourite list.",
@@ -484,7 +486,9 @@ static const Map<String,dynamic> vi_VN = {
     "new_word_today": "Từ mới hôm nay: {}.\\nĐịnh nghĩa: {}",
     "remind_at": "Nhắc nhở lúc: {}",
     "notification_set_to": "Thông báo sẽ hiển thị lúc {} mỗi ngày.",
-    "cancel_all_noti": "Huỷ tất cả thông báo."
+    "cancel_all_noti": "Huỷ tất cả thông báo.",
+    "no_update_available": "Không có bản cập nhật mới cho ứng dụng.",
+    "update_success_please_restart": "Cập nhật thành công. Hãy khởi động lại ứng dụng."
   },
   "favourite": {
     "add_to_favourite": "Đã thêm \"{}\" vào danh sách yêu thích của bạn.",
