@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../core/extensions/list.dart';
 import '../../../domain/entities/user_entity.dart';
 import '../../../domain/usecases/get_list_users.dart';
 
@@ -25,6 +26,8 @@ class LeaderBoardCubit extends Cubit<LeaderBoardState> {
               ..take(10);
 
         final attendances = List<UserEntity>.from(list)
+            .where((e) => e.attendance.isNotNullOrEmpty)
+            .toList()
           ..sort((a, b) => b.attendance!.length.compareTo(a.attendance!.length))
           ..take(10);
 

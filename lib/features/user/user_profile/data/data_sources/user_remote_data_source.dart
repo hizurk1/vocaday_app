@@ -107,9 +107,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   @override
   Future<List<Map<String, dynamic>>> getListUsers() async {
     try {
-      final query =
-          firestore.collection(_users).where("attendance", isNull: false);
-      final snapshots = await query.get();
+      final snapshots = await firestore.collection(_users).get();
       return snapshots.docs.map((e) => e.data()).toList();
     } on FirebaseException {
       rethrow;
