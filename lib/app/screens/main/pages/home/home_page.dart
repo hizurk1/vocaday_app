@@ -45,11 +45,11 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (sl<SharedPrefManager>().getCoachMarkHome) {
+    if (sl<SharedPrefManager>().getCoachMarkHome) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         _onShowCoachMark();
-      }
-    });
+      });
+    }
   }
 
   _onCompleteTutorialCoachMark() async {

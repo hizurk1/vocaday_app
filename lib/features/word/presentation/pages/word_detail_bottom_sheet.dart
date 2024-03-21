@@ -5,15 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '../../../../app/constants/gen/assets.gen.dart';
 import '../../../../app/managers/navigation.dart';
+import '../../../../app/managers/shared_preferences.dart';
 import '../../../../app/themes/app_color.dart';
 import '../../../../app/themes/app_text_theme.dart';
 import '../../../../app/translations/translations.dart';
 import '../../../../app/utils/util_functions.dart';
+import '../../../../app/widgets/custom_coach_message.dart';
 import '../../../../app/widgets/widgets.dart';
 import '../../../../core/extensions/build_context.dart';
+import '../../../../injection_container.dart';
 import '../../../user/user_cart/presentation/widgets/add_to_bag_button_widget.dart';
 import '../../../user/user_profile/presentation/widgets/favourite/favourite_button_widget.dart';
 import '../../../user/user_profile/presentation/widgets/known_word/known_word_icon_widget.dart';
@@ -75,9 +79,7 @@ class WordDetailBottomSheet extends StatelessWidget {
                 maxLines: 2,
               ),
             ),
-            FavouriteButtonWidget(word: wordEntity.word),
-            KnownWordIconWidget(word: wordEntity.word),
-            AddToBagButtonWidget(word: wordEntity.word),
+            _WordDetailActionsWidget(word: wordEntity.word),
           ],
         ),
         DashedLineCustom(
@@ -295,6 +297,120 @@ class WordDetailBottomSheet extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _WordDetailActionsWidget extends StatefulWidget {
+  const _WordDetailActionsWidget({required this.word});
+
+  final String word;
+
+  @override
+  State<_WordDetailActionsWidget> createState() =>
+      _WordDetailActionsWidgetState();
+}
+
+class _WordDetailActionsWidgetState extends State<_WordDetailActionsWidget> {
+  late TutorialCoachMark tutorialCoachMark;
+  final List<TargetFocus> targets = [];
+  final GlobalKey _favouriteKey = GlobalKey();
+  final GlobalKey _knewKey = GlobalKey();
+  final GlobalKey _addBagKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    if (sl<SharedPrefManager>().getCoachMarkWordDetail) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showTutorialCoachMark();
+      });
+    }
+  }
+
+  _onCompleteTutorialCoachMark() async {
+    await sl<SharedPrefManager>().saveCoachMarkWordDetail();
+  }
+
+  _showTutorialCoachMark() {
+    tutorialCoachMark = TutorialCoachMark(
+      pulseEnable: false,
+      textSkip: LocaleKeys.common_skip.tr(),
+      unFocusAnimationDuration: const Duration(milliseconds: 400),
+      opacityShadow: 0.9,
+      onFinish: () {
+        _onCompleteTutorialCoachMark();
+      },
+      onSkip: () {
+        _onCompleteTutorialCoachMark();
+        return true;
+      },
+      targets: targets
+        ..addAll([
+          TargetFocus(
+            identify: _favouriteKey.toString(),
+            keyTarget: _favouriteKey,
+            paddingFocus: 0,
+            contents: [
+              TargetContent(
+                padding: EdgeInsets.zero,
+                builder: (context, controller) {
+                  return CustomCoachMessageWidget(
+                    title: LocaleKeys.tutorial_favourite_title.tr(),
+                    onNext: () => controller.next(),
+                  );
+                },
+              ),
+            ],
+          ),
+          TargetFocus(
+            identify: _knewKey.toString(),
+            keyTarget: _knewKey,
+            paddingFocus: 0,
+            contents: [
+              TargetContent(
+                padding: EdgeInsets.zero,
+                builder: (context, controller) {
+                  return CustomCoachMessageWidget(
+                    title: LocaleKeys.tutorial_mark_as_known.tr(),
+                    onNext: () => controller.next(),
+                    onPrevious: () => controller.previous(),
+                  );
+                },
+              ),
+            ],
+          ),
+          TargetFocus(
+            identify: _addBagKey.toString(),
+            keyTarget: _addBagKey,
+            paddingFocus: 0,
+            contents: [
+              TargetContent(
+                padding: EdgeInsets.zero,
+                builder: (context, controller) {
+                  return CustomCoachMessageWidget(
+                    title: LocaleKeys.tutorial_add_to_bag.tr(),
+                    onNext: () => controller.next(),
+                    onPrevious: () => controller.previous(),
+                  );
+                },
+              ),
+            ],
+          ),
+        ]),
+    )..show(context: context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        FavouriteButtonWidget(key: _favouriteKey, word: widget.word),
+        const Gap(width: 15),
+        KnownWordIconWidget(key: _knewKey, word: widget.word),
+        const Gap(width: 15),
+        AddToBagButtonWidget(key: _addBagKey, word: widget.word),
+      ],
     );
   }
 }

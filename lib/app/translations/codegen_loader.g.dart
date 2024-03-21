@@ -308,7 +308,10 @@ class CodegenLoader extends AssetLoader{
     "check_in_title": "Check-in activity",
     "check_in_subtitle": "Upon checking in, you will receive {} and {}. This activity occurs daily.",
     "daily_word_title": "Daily vocabulary",
-    "daily_word_subtitle": "Each day, a random word will be presented for you to learn. Additionally, you have the option to acquire another word by clicking the reload icon."
+    "daily_word_subtitle": "Each day, a random word will be presented for you to learn. Additionally, you have the option to acquire another word by clicking the reload icon.",
+    "favourite_title": "Add this word to your favourite list",
+    "mark_as_known": "Mark this word as known",
+    "add_to_bag": "Add this word to your current word bag"
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -605,7 +608,10 @@ static const Map<String,dynamic> vi_VN = {
     "check_in_title": "Hoạt động điểm danh",
     "check_in_subtitle": "Mỗi lần điểm danh, bạn sẽ nhận {} và {}. Đây là hoạt động hằng ngày.",
     "daily_word_title": "Từ vựng mỗi ngày",
-    "daily_word_subtitle": "Mỗi ngày, một từ ngẫu nhiên sẽ được chọn để bạn học. Ngoài ra, bạn có thể yêu cầu một từ khác bằng cách nhấn vào biếu tượng tải lại."
+    "daily_word_subtitle": "Mỗi ngày, một từ ngẫu nhiên sẽ được chọn để bạn học. Ngoài ra, bạn có thể yêu cầu một từ khác bằng cách nhấn vào biếu tượng tải lại.",
+    "favourite_title": "Thêm từ này vào danh sách yêu thích của bạn",
+    "mark_as_known": "Đánh dấu từ này là đã biết",
+    "add_to_bag": "Thêm từ này vào túi hiện tại của bạn"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

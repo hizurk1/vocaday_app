@@ -30,14 +30,11 @@ class KnownWordIconWidget extends StatelessWidget {
                   return GestureDetector(
                     onTap: () =>
                         context.read<KnownWordCubit>().addKnownWord(word, list),
-                    child: Container(
-                      margin: EdgeInsets.only(left: 15.w),
-                      child: SvgPicture.asset(
-                        Assets.icons.checkCircle,
-                        height: 28.h,
-                        colorFilter: ColorFilter.mode(
-                            context.colors.grey400, BlendMode.srcIn),
-                      ),
+                    child: SvgPicture.asset(
+                      Assets.icons.checkCircle,
+                      height: 28.h,
+                      colorFilter: ColorFilter.mode(
+                          context.colors.grey400, BlendMode.srcIn),
                     ),
                   );
                 },

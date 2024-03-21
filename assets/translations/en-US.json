@@ -292,6 +292,9 @@
     "check_in_title": "Check-in activity",
     "check_in_subtitle": "Upon checking in, you will receive {} and {}. This activity occurs daily.",
     "daily_word_title": "Daily vocabulary",
-    "daily_word_subtitle": "Each day, a random word will be presented for you to learn. Additionally, you have the option to acquire another word by clicking the reload icon."
+    "daily_word_subtitle": "Each day, a random word will be presented for you to learn. Additionally, you have the option to acquire another word by clicking the reload icon.",
+    "favourite_title": "Add this word to your favourite list",
+    "mark_as_known": "Mark this word as known",
+    "add_to_bag": "Add this word to your current word bag"
   }
 }

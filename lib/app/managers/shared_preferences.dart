@@ -153,4 +153,11 @@ class SharedPrefManager {
   }
 
   bool get getCoachMarkHome => prefs.getBool(AppPrefsKey.coachMarkHome) ?? true;
+  // Word detail
+  Future<void> saveCoachMarkWordDetail() async {
+    await prefs.setBool(AppPrefsKey.coachMarkWordDetail, false);
+  }
+
+  bool get getCoachMarkWordDetail =>
+      prefs.getBool(AppPrefsKey.coachMarkWordDetail) ?? true;
 }

@@ -9,13 +9,13 @@ import 'text.dart';
 class CustomCoachMessageWidget extends StatefulWidget {
   const CustomCoachMessageWidget({
     super.key,
-    required this.title,
     required this.onNext,
     this.onPrevious,
+    this.title,
     this.subTitle,
   });
 
-  final String title;
+  final String? title;
   final String? subTitle;
   final void Function() onNext;
   final void Function()? onPrevious;
@@ -34,11 +34,13 @@ class _CustomCoachMessageWidgetState extends State<CustomCoachMessageWidget> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          TextCustom(
-            widget.title,
-            style: context.textStyle.titleS.white.bold,
-            maxLines: 3,
-          ),
+          if (widget.title != null) ...[
+            TextCustom(
+              widget.title!,
+              style: context.textStyle.titleS.white.bold,
+              maxLines: 3,
+            ),
+          ],
           if (widget.subTitle != null) ...[
             const Gap(height: 5),
             TextCustom(

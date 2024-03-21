@@ -213,5 +213,8 @@ abstract class  LocaleKeys {
   static const tutorial_check_in_subtitle = 'tutorial.check_in_subtitle';
   static const tutorial_daily_word_title = 'tutorial.daily_word_title';
   static const tutorial_daily_word_subtitle = 'tutorial.daily_word_subtitle';
+  static const tutorial_favourite_title = 'tutorial.favourite_title';
+  static const tutorial_mark_as_known = 'tutorial.mark_as_known';
+  static const tutorial_add_to_bag = 'tutorial.add_to_bag';
 
 }

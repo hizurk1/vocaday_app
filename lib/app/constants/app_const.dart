@@ -53,4 +53,5 @@ class AppPrefsKey {
   static const slidingPuzzleSound = 'sliding_puzzle_sound';
   static const coachMarkMain = 'coach_mark_main';
   static const coachMarkHome = 'coach_mark_home';
+  static const coachMarkWordDetail = 'coach_mark_word_detail';
 }

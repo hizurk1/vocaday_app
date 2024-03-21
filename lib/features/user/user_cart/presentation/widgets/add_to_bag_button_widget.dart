@@ -33,14 +33,11 @@ class AddToBagButtonWidget extends StatelessWidget {
                       //   size: 28.h,
                       //   color: context.colors.blue600,
                       // ),
-                      child: Container(
-                        margin: EdgeInsets.only(left: 15.w),
-                        child: SvgPicture.asset(
-                          Assets.icons.addCircle,
-                          height: 28.h,
-                          colorFilter: ColorFilter.mode(
-                              context.colors.grey400, BlendMode.srcIn),
-                        ),
+                      child: SvgPicture.asset(
+                        Assets.icons.addCircle,
+                        height: 28.h,
+                        colorFilter: ColorFilter.mode(
+                            context.colors.grey400, BlendMode.srcIn),
                       ),
                     );
             } else {
