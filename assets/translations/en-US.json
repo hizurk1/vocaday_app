@@ -58,7 +58,8 @@
     "yes_ofc": "Yes of course",
     "go": "Go",
     "back": "Back",
-    "start": "Start"
+    "start": "Start",
+    "previous": "Previous"
   },
   "on_board": {
     "get_started": "Get started",
@@ -110,6 +111,12 @@
       "one": "1 point",
       "other": "{} points",
       "zero": "No points"
+    },
+    "gold": {
+      "many": "{} golds",
+      "one": "1 gold",
+      "other": "{} golds",
+      "zero": "No golds"
     }
   },
   "utils": {
@@ -278,5 +285,13 @@
     "unbelievable": "Unbelievable",
     "incredible": "Incredible",
     "my_suggestion": "My suggestion"
+  },
+  "tutorial": {
+    "word_bag_title": "Your current word bag",
+    "word_bag_subtitle": "A bag holds a collection of vocabularies.\\nOnce stored, you can utilize this bag as a resource for the particular activity.",
+    "check_in_title": "Check-in activity",
+    "check_in_subtitle": "Upon checking in, you will receive {} and {}. This activity occurs daily.",
+    "daily_word_title": "Daily vocabulary",
+    "daily_word_subtitle": "Each day, a random word will be presented for you to learn. Additionally, you have the option to acquire another word by clicking the reload icon."
   }
 }

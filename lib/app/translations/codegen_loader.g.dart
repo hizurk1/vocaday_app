@@ -74,7 +74,8 @@ class CodegenLoader extends AssetLoader{
     "yes_ofc": "Yes of course",
     "go": "Go",
     "back": "Back",
-    "start": "Start"
+    "start": "Start",
+    "previous": "Previous"
   },
   "on_board": {
     "get_started": "Get started",
@@ -126,6 +127,12 @@ class CodegenLoader extends AssetLoader{
       "one": "1 point",
       "other": "{} points",
       "zero": "No points"
+    },
+    "gold": {
+      "many": "{} golds",
+      "one": "1 gold",
+      "other": "{} golds",
+      "zero": "No golds"
     }
   },
   "utils": {
@@ -294,6 +301,14 @@ class CodegenLoader extends AssetLoader{
     "unbelievable": "Unbelievable",
     "incredible": "Incredible",
     "my_suggestion": "My suggestion"
+  },
+  "tutorial": {
+    "word_bag_title": "Your current word bag",
+    "word_bag_subtitle": "A bag holds a collection of vocabularies.\\nOnce stored, you can utilize this bag as a resource for the particular activity.",
+    "check_in_title": "Check-in activity",
+    "check_in_subtitle": "Upon checking in, you will receive {} and {}. This activity occurs daily.",
+    "daily_word_title": "Daily vocabulary",
+    "daily_word_subtitle": "Each day, a random word will be presented for you to learn. Additionally, you have the option to acquire another word by clicking the reload icon."
   }
 };
 static const Map<String,dynamic> vi_VN = {
@@ -356,7 +371,8 @@ static const Map<String,dynamic> vi_VN = {
     "yes_ofc": "Đúng vậy",
     "go": "Đi",
     "back": "Quay lại",
-    "start": "Bắt đầu"
+    "start": "Bắt đầu",
+    "previous": "Trước"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -408,6 +424,12 @@ static const Map<String,dynamic> vi_VN = {
       "one": "1 điểm",
       "other": "{} điểm",
       "zero": "0 điểm"
+    },
+    "gold": {
+      "many": "{} vàng",
+      "one": "1 vàng",
+      "other": "{} vàng",
+      "zero": "0 vàng"
     }
   },
   "utils": {
@@ -576,6 +598,14 @@ static const Map<String,dynamic> vi_VN = {
     "unbelievable": "Không thể tin nổi",
     "incredible": "Ghê thật",
     "my_suggestion": "Gợi ý của tôi"
+  },
+  "tutorial": {
+    "word_bag_title": "Túi hiện tại của bạn",
+    "word_bag_subtitle": "Một chiếc túi chứa một bộ sưu tập các từ vựng.\\nSau khi lưu lại, bạn có thể sử dụng chiếc túi này làm nguồn tài liệu cho hoạt động cụ thể.",
+    "check_in_title": "Hoạt động điểm danh",
+    "check_in_subtitle": "Mỗi lần điểm danh, bạn sẽ nhận {} và {}. Đây là hoạt động hằng ngày.",
+    "daily_word_title": "Từ vựng mỗi ngày",
+    "daily_word_subtitle": "Mỗi ngày, một từ ngẫu nhiên sẽ được chọn để bạn học. Ngoài ra, bạn có thể yêu cầu một từ khác bằng cách nhấn vào biếu tượng tải lại."
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "vi_VN": vi_VN};

@@ -481,6 +481,9 @@ class $AssetsJsonsGen {
   /// File path: assets/jsons/flying-rocket.json
   String get flyingRocket => 'assets/jsons/flying-rocket.json';
 
+  /// File path: assets/jsons/hand_swipe.json
+  String get handSwipe => 'assets/jsons/hand_swipe.json';
+
   /// File path: assets/jsons/jumping_dots.json
   String get jumpingDots => 'assets/jsons/jumping_dots.json';
 
@@ -534,6 +537,7 @@ class $AssetsJsonsGen {
         cow,
         error,
         flyingRocket,
+        handSwipe,
         jumpingDots,
         loading19,
         loadingBlueDots,

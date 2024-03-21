@@ -1,12 +1,19 @@
+import 'dart:math' show pi;
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../core/extensions/build_context.dart';
 import '../../../core/extensions/color.dart';
+import '../../../injection_container.dart';
 import '../../constants/gen/assets.gen.dart';
+import '../../managers/shared_preferences.dart';
 import '../../themes/app_color.dart';
+import '../../themes/app_text_theme.dart';
+import '../../widgets/text.dart';
 import 'pages/activity/activity_page.dart';
 import 'pages/home/home_page.dart';
 import 'pages/profile/profile_page.dart';
@@ -23,6 +30,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   ValueNotifier<int> currentPage = ValueNotifier(0);
   ValueNotifier<bool> isMenuOpen = ValueNotifier(false);
+  ValueNotifier<bool> showCoachMark = ValueNotifier(false);
 
   late AnimationController _animationController;
   late PageController _pageController;
@@ -46,7 +54,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
     _pageController = PageController();
     pages = [
-      const HomePage(key: PageStorageKey("HomePage")),
+      HomePage(
+        key: const PageStorageKey("HomePage"),
+        onShowCoach: _onShowCoachMark,
+      ),
       const SearchPage(key: PageStorageKey("SearchPage")),
       const ActivityPage(key: PageStorageKey("ActivityPage")),
       const ProfilePage(key: PageStorageKey("ProfilePage")),
@@ -104,6 +115,21 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     _pageController.jumpToPage(0);
   }
 
+  void _onShowCoachMark() {
+    if (!showCoachMark.value && sl<SharedPrefManager>().getCoachMarkMain) {
+      showCoachMark.value = true;
+    }
+  }
+
+  Future<void> _onCloseCoachMark(DragEndDetails details) async {
+    if (details.primaryVelocity! > 0 && showCoachMark.value) {
+      showCoachMark.value = false;
+      await sl<SharedPrefManager>().saveCoachMarkMain();
+      _animationController.forward();
+      isMenuOpen.value = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     menuSize = context.screenWidth * 0.65;
@@ -155,6 +181,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                         ),
                       ),
                     ),
+                    _buildCoachMark(),
                   ],
                 );
               },
@@ -167,81 +194,125 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildBottomNavigationBar() {
-    return Transform.translate(
-      offset: Offset(0, bottomNavSize * 1.5 * movingAnimation.value),
-      child: SafeArea(
-        child: Container(
-          height: bottomNavSize,
-          padding: EdgeInsets.symmetric(
-            vertical: 10.h / 2,
-            horizontal: 10.w * 1.25,
-          ),
-          margin: EdgeInsets.symmetric(
-            vertical: 12.h,
-            horizontal: 18.w,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.r),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                context.theme.cardColor,
-                context.theme.cardColor.darken(.025),
+  Widget _buildCoachMark() {
+    return ValueListenableBuilder(
+      valueListenable: showCoachMark,
+      builder: (context, bool isShowCoachMark, child) {
+        return isShowCoachMark ? child! : const SizedBox();
+      },
+      child: GestureDetector(
+        onHorizontalDragEnd: (details) => _onCloseCoachMark(details),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              width: context.screenWidth,
+              height: context.screenHeight,
+              color: Colors.black.withOpacity(.9),
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Transform.rotate(
+                  angle: pi / 2,
+                  child: LottieBuilder.asset(
+                    Assets.jsons.handSwipe,
+                    height: context.screenHeight / 3,
+                  ),
+                ),
+                TextCustom(
+                  "Swipe right to open the menu",
+                  style: context.textStyle.bodyM.white.bold,
+                ),
               ],
             ),
-            boxShadow: [
-              BoxShadow(
-                color: context.colors.grey800.withOpacity(.05),
-              )
-            ],
-            border: Border.all(
-              color: context.colors.grey400
-                  .withOpacity(context.isDarkTheme ? 0.1 : 0.3),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomNavigationBar() {
+    return ValueListenableBuilder(
+      valueListenable: showCoachMark,
+      builder: (context, bool isShowCoachMark, child) {
+        return isShowCoachMark ? const SizedBox() : child!;
+      },
+      child: Transform.translate(
+        offset: Offset(0, bottomNavSize * 1.5 * movingAnimation.value),
+        child: SafeArea(
+          child: Container(
+            height: bottomNavSize,
+            padding: EdgeInsets.symmetric(
+              vertical: 10.h / 2,
+              horizontal: 10.w * 1.25,
             ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: navIcons
-                .mapIndexed(
-                  (index, icons) => Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      onTap: () => _onTapNavigateToPage(index),
-                      borderRadius: BorderRadius.circular(8.r),
-                      child: Container(
-                        height: 50.h,
-                        width: bottomNavSize,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 8.w,
-                          vertical: 8.h,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.r),
-                        ),
-                        child: ValueListenableBuilder<int>(
-                          valueListenable: currentPage,
-                          builder: (context, pageIndex, _) {
-                            return SvgPicture.asset(
-                              pageIndex == index ? icons.$1 : icons.$2,
-                              height: 25,
-                              width: 25,
-                              colorFilter: ColorFilter.mode(
-                                pageIndex == index
-                                    ? context.colors.blue
-                                    : context.colors.grey600,
-                                BlendMode.srcIn,
-                              ),
-                            );
-                          },
+            margin: EdgeInsets.symmetric(
+              vertical: 12.h,
+              horizontal: 18.w,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.r),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  context.theme.cardColor,
+                  context.theme.cardColor.darken(.025),
+                ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: context.colors.grey800.withOpacity(.05),
+                )
+              ],
+              border: Border.all(
+                color: context.colors.grey400
+                    .withOpacity(context.isDarkTheme ? 0.1 : 0.3),
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: navIcons
+                  .mapIndexed(
+                    (index, icons) => Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => _onTapNavigateToPage(index),
+                        borderRadius: BorderRadius.circular(8.r),
+                        child: Container(
+                          height: 50.h,
+                          width: bottomNavSize,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 8.w,
+                            vertical: 8.h,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                          child: ValueListenableBuilder<int>(
+                            valueListenable: currentPage,
+                            builder: (context, pageIndex, _) {
+                              return SvgPicture.asset(
+                                pageIndex == index ? icons.$1 : icons.$2,
+                                height: 25,
+                                width: 25,
+                                colorFilter: ColorFilter.mode(
+                                  pageIndex == index
+                                      ? context.colors.blue
+                                      : context.colors.grey600,
+                                  BlendMode.srcIn,
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                )
-                .toList(),
+                  )
+                  .toList(),
+            ),
           ),
         ),
       ),

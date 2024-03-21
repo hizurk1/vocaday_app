@@ -11,7 +11,9 @@ import '../../../domain/entities/user_entity.dart';
 import '../../cubits/user_data/user_data_cubit.dart';
 
 class HomeTopAppBar extends StatelessWidget {
-  const HomeTopAppBar({super.key});
+  const HomeTopAppBar({super.key, required this.bagKey});
+
+  final GlobalKey bagKey;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,10 @@ class HomeTopAppBar extends StatelessWidget {
           Expanded(
             child: _buildUserInfoTile(),
           ),
-          const CartIconWidget(),
+          Padding(
+            padding: EdgeInsets.only(right: 20.w),
+            child: CartIconWidget(key: bagKey, marginRight: 0),
+          ),
         ],
       ),
     );

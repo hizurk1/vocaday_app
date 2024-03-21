@@ -58,7 +58,8 @@
     "yes_ofc": "Đúng vậy",
     "go": "Đi",
     "back": "Quay lại",
-    "start": "Bắt đầu"
+    "start": "Bắt đầu",
+    "previous": "Trước"
   },
   "on_board": {
     "get_started": "Bắt đầu",
@@ -110,6 +111,12 @@
       "one": "1 điểm",
       "other": "{} điểm",
       "zero": "0 điểm"
+    },
+    "gold": {
+      "many": "{} vàng",
+      "one": "1 vàng",
+      "other": "{} vàng",
+      "zero": "0 vàng"
     }
   },
   "utils": {
@@ -278,5 +285,13 @@
     "unbelievable": "Không thể tin nổi",
     "incredible": "Ghê thật",
     "my_suggestion": "Gợi ý của tôi"
+  },
+  "tutorial": {
+    "word_bag_title": "Túi hiện tại của bạn",
+    "word_bag_subtitle": "Một chiếc túi chứa một bộ sưu tập các từ vựng.\\nSau khi lưu lại, bạn có thể sử dụng chiếc túi này làm nguồn tài liệu cho hoạt động cụ thể.",
+    "check_in_title": "Hoạt động điểm danh",
+    "check_in_subtitle": "Mỗi lần điểm danh, bạn sẽ nhận {} và {}. Đây là hoạt động hằng ngày.",
+    "daily_word_title": "Từ vựng mỗi ngày",
+    "daily_word_subtitle": "Mỗi ngày, một từ ngẫu nhiên sẽ được chọn để bạn học. Ngoài ra, bạn có thể yêu cầu một từ khác bằng cách nhấn vào biếu tượng tải lại."
   }
 }

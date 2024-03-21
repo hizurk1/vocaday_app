@@ -139,4 +139,18 @@ class SharedPrefManager {
 
   bool get getSlidingPuzzleSound =>
       prefs.getBool(AppPrefsKey.slidingPuzzleSound) ?? true;
+
+  //! Coach mark
+  // Main
+  Future<void> saveCoachMarkMain() async {
+    await prefs.setBool(AppPrefsKey.coachMarkMain, false);
+  }
+
+  bool get getCoachMarkMain => prefs.getBool(AppPrefsKey.coachMarkMain) ?? true;
+  // Home
+  Future<void> saveCoachMarkHome() async {
+    await prefs.setBool(AppPrefsKey.coachMarkHome, false);
+  }
+
+  bool get getCoachMarkHome => prefs.getBool(AppPrefsKey.coachMarkHome) ?? true;
 }

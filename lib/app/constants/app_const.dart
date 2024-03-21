@@ -8,6 +8,8 @@ class AppValueConst {
   static const maxItemLoad = 50;
   static const minWordInBagToPlay = 5;
   static const timeForQuiz = 30; // seconds
+  static const attendancePoint = 1;
+  static const attendanceGold = 1;
 }
 
 class AppStringConst {
@@ -49,4 +51,6 @@ class AppPrefsKey {
   static const cartBagWordStringL = 'cart_bag_word_string_l';
   static const slidingPuzzleMusic = 'sliding_puzzle_music';
   static const slidingPuzzleSound = 'sliding_puzzle_sound';
+  static const coachMarkMain = 'coach_mark_main';
+  static const coachMarkHome = 'coach_mark_home';
 }

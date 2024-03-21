@@ -70,7 +70,6 @@ class _MainNewWordPanelWidgetState extends State<MainNewWordPanelWidget> {
             return Container(
               width: context.screenWidth,
               height: 205.dm,
-              margin: EdgeInsets.symmetric(vertical: 20.h),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.r),
               ),

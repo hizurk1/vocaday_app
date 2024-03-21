@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fpdart/fpdart.dart';
 
+import '../../../../../app/constants/app_const.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/typedef/typedefs.dart';
 import '../../domain/entities/user_entity.dart';
@@ -74,8 +75,8 @@ class UserRepositoryImpl implements UserRepository {
           map: {
             'attendance':
                 attendance.map((x) => x.millisecondsSinceEpoch).toList(),
-            'point': FieldValue.increment(1),
-            'gold': FieldValue.increment(1),
+            'point': FieldValue.increment(AppValueConst.attendancePoint),
+            'gold': FieldValue.increment(AppValueConst.attendanceGold),
           },
         ),
       );

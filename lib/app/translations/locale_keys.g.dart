@@ -54,6 +54,7 @@ abstract class  LocaleKeys {
   static const common_go = 'common.go';
   static const common_back = 'common.back';
   static const common_start = 'common.start';
+  static const common_previous = 'common.previous';
   static const on_board_get_started = 'on_board.get_started';
   static const on_board_onboard_body = 'on_board.onboard_body';
   static const on_board_onboard_title = 'on_board.onboard_title';
@@ -91,6 +92,7 @@ abstract class  LocaleKeys {
   static const search_type_something = 'search.type_something';
   static const search_show_more = 'search.show_more';
   static const user_data_point = 'user_data.point';
+  static const user_data_gold = 'user_data.gold';
   static const utils_check_your_internet_connection = 'utils.check_your_internet_connection';
   static const utils_no_internet_connection = 'utils.no_internet_connection';
   static const utils_you_back_online = 'utils.you_back_online';
@@ -205,5 +207,11 @@ abstract class  LocaleKeys {
   static const game_unbelievable = 'game.unbelievable';
   static const game_incredible = 'game.incredible';
   static const game_my_suggestion = 'game.my_suggestion';
+  static const tutorial_word_bag_title = 'tutorial.word_bag_title';
+  static const tutorial_word_bag_subtitle = 'tutorial.word_bag_subtitle';
+  static const tutorial_check_in_title = 'tutorial.check_in_title';
+  static const tutorial_check_in_subtitle = 'tutorial.check_in_subtitle';
+  static const tutorial_daily_word_title = 'tutorial.daily_word_title';
+  static const tutorial_daily_word_subtitle = 'tutorial.daily_word_subtitle';
 
 }
