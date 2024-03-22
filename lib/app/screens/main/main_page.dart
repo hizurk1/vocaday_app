@@ -13,6 +13,7 @@ import '../../constants/gen/assets.gen.dart';
 import '../../managers/shared_preferences.dart';
 import '../../themes/app_color.dart';
 import '../../themes/app_text_theme.dart';
+import '../../translations/translations.dart';
 import '../../widgets/text.dart';
 import 'pages/activity/activity_page.dart';
 import 'pages/home/home_page.dart';
@@ -33,26 +34,23 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   ValueNotifier<bool> showCoachMark = ValueNotifier(false);
 
   late AnimationController _animationController;
-  late PageController _pageController;
   late Animation<double> movingAnimation;
   late Animation<double> scaleAnimation;
   late double menuSize;
   late double bottomNavSize;
-  late List<(String iconFill, String iconOutline)> navIcons;
   late List<Widget> pages;
+
+  final PageController _pageController = PageController();
+  final List<(String iconFill, String iconOutline)> navIcons = [
+    (Assets.icons.homeFill, Assets.icons.homeOutline),
+    (Assets.icons.searchFill, Assets.icons.searchOutline),
+    (Assets.icons.bookFill, Assets.icons.bookOutline),
+    (Assets.icons.profileFill, Assets.icons.profileOutline),
+  ];
 
   @override
   void initState() {
     super.initState();
-
-    navIcons = [
-      (Assets.icons.homeFill, Assets.icons.homeOutline),
-      (Assets.icons.searchFill, Assets.icons.searchOutline),
-      (Assets.icons.bookFill, Assets.icons.bookOutline),
-      (Assets.icons.profileFill, Assets.icons.profileOutline),
-    ];
-
-    _pageController = PageController();
     pages = [
       HomePage(
         key: const PageStorageKey("HomePage"),
@@ -221,7 +219,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                   ),
                 ),
                 TextCustom(
-                  "Swipe right to open the menu",
+                  LocaleKeys.home_swipe_right_open_menu.tr(),
                   style: context.textStyle.bodyM.white.bold,
                 ),
               ],

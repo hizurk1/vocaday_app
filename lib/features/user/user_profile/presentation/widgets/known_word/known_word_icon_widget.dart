@@ -10,8 +10,13 @@ import '../../../../../word/presentation/blocs/word_list/word_list_cubit.dart';
 import '../../cubits/known/known_word_cubit.dart';
 
 class KnownWordIconWidget extends StatelessWidget {
-  const KnownWordIconWidget({super.key, required this.word});
+  const KnownWordIconWidget({
+    super.key,
+    required this.knewKey,
+    required this.word,
+  });
 
+  final GlobalKey knewKey;
   final String word;
 
   @override
@@ -30,11 +35,15 @@ class KnownWordIconWidget extends StatelessWidget {
                   return GestureDetector(
                     onTap: () =>
                         context.read<KnownWordCubit>().addKnownWord(word, list),
-                    child: SvgPicture.asset(
-                      Assets.icons.checkCircle,
-                      height: 28.h,
-                      colorFilter: ColorFilter.mode(
-                          context.colors.grey400, BlendMode.srcIn),
+                    child: Container(
+                      margin: EdgeInsets.only(left: 15.w),
+                      child: SvgPicture.asset(
+                        Assets.icons.checkCircle,
+                        key: knewKey,
+                        height: 28.h,
+                        colorFilter: ColorFilter.mode(
+                            context.colors.grey400, BlendMode.srcIn),
+                      ),
                     ),
                   );
                 },

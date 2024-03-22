@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage>
     super.initState();
     if (sl<SharedPrefManager>().getCoachMarkHome) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _onShowCoachMark();
+        Future.delayed(const Duration(seconds: 2), () => _onShowCoachMark());
       });
     }
   }

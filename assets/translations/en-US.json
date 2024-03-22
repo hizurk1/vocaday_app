@@ -147,7 +147,8 @@
       "many": "{} times"
     },
     "learn_more": "Learn more",
-    "check_in_success": "Yay! Check-in successful."
+    "check_in_success": "Yay! Check-in successful.",
+    "swipe_right_open_menu": "Swipe right to open the menu"
   },
   "word_detail": {
     "examples": {

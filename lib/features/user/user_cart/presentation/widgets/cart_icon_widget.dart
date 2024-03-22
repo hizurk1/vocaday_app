@@ -37,11 +37,9 @@ class CartIconWidget extends StatelessWidget {
               size: 25.dm,
               color: context.theme.primaryColorDark,
             ),
-            BlocSelector<CartBagCubit, CartBagState, int>(
-              selector: (state) => state.status == CartBagStatus.loaded
-                  ? (state.entity?.words.length ?? 0)
-                  : 0,
-              builder: (context, int count) {
+            BlocBuilder<CartBagCubit, CartBagState>(
+              builder: (context, state) {
+                final count = state.entity?.words.length ?? 0;
                 return Positioned(
                   top: 2.r,
                   right: 2.r,

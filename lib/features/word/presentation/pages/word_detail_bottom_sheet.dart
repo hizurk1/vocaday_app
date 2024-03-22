@@ -323,7 +323,10 @@ class _WordDetailActionsWidgetState extends State<_WordDetailActionsWidget> {
     super.initState();
     if (sl<SharedPrefManager>().getCoachMarkWordDetail) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _showTutorialCoachMark();
+        Future.delayed(
+          const Duration(milliseconds: 500),
+          () => _showTutorialCoachMark(),
+        );
       });
     }
   }
@@ -406,10 +409,8 @@ class _WordDetailActionsWidgetState extends State<_WordDetailActionsWidget> {
     return Row(
       children: [
         FavouriteButtonWidget(key: _favouriteKey, word: widget.word),
-        const Gap(width: 15),
-        KnownWordIconWidget(key: _knewKey, word: widget.word),
-        const Gap(width: 15),
-        AddToBagButtonWidget(key: _addBagKey, word: widget.word),
+        KnownWordIconWidget(knewKey: _knewKey, word: widget.word),
+        AddToBagButtonWidget(bagKey: _addBagKey, word: widget.word),
       ],
     );
   }

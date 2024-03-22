@@ -163,7 +163,8 @@ class CodegenLoader extends AssetLoader{
       "many": "{} times"
     },
     "learn_more": "Learn more",
-    "check_in_success": "Yay! Check-in successful."
+    "check_in_success": "Yay! Check-in successful.",
+    "swipe_right_open_menu": "Swipe right to open the menu"
   },
   "word_detail": {
     "examples": {
@@ -463,7 +464,8 @@ static const Map<String,dynamic> vi_VN = {
       "many": "{} lần"
     },
     "learn_more": "Học thêm",
-    "check_in_success": "Ye! Điểm danh thành công."
+    "check_in_success": "Ye! Điểm danh thành công.",
+    "swipe_right_open_menu": "Vuốt sang phải để mở thanh menu"
   },
   "word_detail": {
     "examples": {

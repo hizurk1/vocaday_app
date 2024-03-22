@@ -109,6 +109,7 @@ abstract class  LocaleKeys {
   static const home_time = 'home.time';
   static const home_learn_more = 'home.learn_more';
   static const home_check_in_success = 'home.check_in_success';
+  static const home_swipe_right_open_menu = 'home.swipe_right_open_menu';
   static const word_detail_examples = 'word_detail.examples';
   static const word_detail_synonyms = 'word_detail.synonyms';
   static const word_detail_definitions = 'word_detail.definitions';

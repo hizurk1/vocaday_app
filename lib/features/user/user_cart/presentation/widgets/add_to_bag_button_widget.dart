@@ -9,8 +9,13 @@ import '../cubits/cart/cart_cubit.dart';
 import '../cubits/cart_bag/cart_bag_cubit.dart';
 
 class AddToBagButtonWidget extends StatelessWidget {
-  const AddToBagButtonWidget({super.key, required this.word});
+  const AddToBagButtonWidget({
+    super.key,
+    required this.bagKey,
+    required this.word,
+  });
 
+  final GlobalKey bagKey;
   final String word;
 
   @override
@@ -33,11 +38,15 @@ class AddToBagButtonWidget extends StatelessWidget {
                       //   size: 28.h,
                       //   color: context.colors.blue600,
                       // ),
-                      child: SvgPicture.asset(
-                        Assets.icons.addCircle,
-                        height: 28.h,
-                        colorFilter: ColorFilter.mode(
-                            context.colors.grey400, BlendMode.srcIn),
+                      child: Container(
+                        margin: EdgeInsets.only(left: 15.w),
+                        child: SvgPicture.asset(
+                          Assets.icons.addCircle,
+                          key: bagKey,
+                          height: 28.h,
+                          colorFilter: ColorFilter.mode(
+                              context.colors.grey400, BlendMode.srcIn),
+                        ),
                       ),
                     );
             } else {

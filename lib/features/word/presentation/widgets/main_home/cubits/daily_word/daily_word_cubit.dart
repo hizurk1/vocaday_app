@@ -26,7 +26,9 @@ class DailyWordCubit extends Cubit<DailyWordState> {
     result.fold(
       (failure) => emit(DailyWordErrorState(failure.message)),
       (list) async {
-        WordEntity? random = list.getRandom;
+        final knowns = sl<SharedPrefManager>().getKnownWords;
+        WordEntity? random =
+            list.where((e) => !knowns.contains(e.word)).toList().getRandom;
         if (random != null) {
           await _setDailyWordLocal(random);
           emit(DailyWordLoadedState(random));
@@ -50,7 +52,9 @@ class DailyWordCubit extends Cubit<DailyWordState> {
         if (entity != null) {
           emit(DailyWordLoadedState(entity));
         } else {
-          WordEntity? random = list.getRandom;
+          final knowns = sl<SharedPrefManager>().getKnownWords;
+          WordEntity? random =
+              list.where((e) => !knowns.contains(e.word)).toList().getRandom;
           if (random != null) {
             await _setDailyWordLocal(random);
             emit(DailyWordLoadedState(random));
