@@ -39,8 +39,7 @@ class CartRepositoryImpl implements CartRepository {
 
       //? Sort datetime desc (newest)
       final bags = cartEntity.bags
-        ..sort((e1, e2) => e2.dateTime.millisecondsSinceEpoch
-            .compareTo(e1.dateTime.millisecondsSinceEpoch));
+        ..sort((e1, e2) => e2.dateTime.compareTo(e1.dateTime));
 
       return Right(cartEntity.copyWith(bags: bags));
     } on FirebaseException catch (e) {

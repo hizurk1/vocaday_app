@@ -161,6 +161,7 @@ abstract class  LocaleKeys {
   static const activity_select_word_bag_play_game = 'activity.select_word_bag_play_game';
   static const activity_select_word_bag_play_game_note = 'activity.select_word_bag_play_game_note';
   static const activity_you_have_to_select_one_bag = 'activity.you_have_to_select_one_bag';
+  static const activity_open_your_bag = 'activity.open_your_bag';
   static const cart_packed_your_cart_bag = 'cart.packed_your_cart_bag';
   static const cart_cart = 'cart.cart';
   static const cart_remove_cart_bag = 'cart.remove_cart_bag';
@@ -183,6 +184,8 @@ abstract class  LocaleKeys {
   static const cart_added_to_word_bag = 'cart.added_to_word_bag';
   static const cart_mark_all_as_known = 'cart.mark_all_as_known';
   static const cart_mark_all_as_known_content = 'cart.mark_all_as_known_content';
+  static const cart_go_to_store = 'cart.go_to_store';
+  static const cart_not_found_item_in_bag = 'cart.not_found_item_in_bag';
   static const known_sync_data_success = 'known.sync_data_success';
   static const known_add_to_known = 'known.add_to_known';
   static const known_clear_all = 'known.clear_all';

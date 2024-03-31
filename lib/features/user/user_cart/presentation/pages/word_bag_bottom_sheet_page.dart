@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../app/constants/gen/assets.gen.dart';
 import '../../../../../app/managers/navigation.dart';
+import '../../../../../app/routes/route_manager.dart';
+import '../../../../../app/themes/app_text_theme.dart';
 import '../../../../../app/translations/translations.dart';
 import '../../../../../app/widgets/widgets.dart';
 import '../../../../../core/extensions/build_context.dart';
+import '../../../../../core/extensions/string.dart';
 import '../../../../word/domain/entities/word_entity.dart';
 import '../../../../word/presentation/blocs/word_list/word_list_cubit.dart';
 import '../../../../word/presentation/pages/word_detail_bottom_sheet.dart';
@@ -107,8 +111,19 @@ class WordBagBottomSheetPage extends StatelessWidget {
                       ...bagList.isEmpty
                           ? [
                               ErrorPage(
-                                text: LocaleKeys.search_not_found.tr(),
+                                text:
+                                    LocaleKeys.cart_not_found_item_in_bag.tr(),
                                 image: Assets.jsons.notFoundDog,
+                                info: TextButton(
+                                  onPressed: () =>
+                                      context.push(AppRoutes.listWord),
+                                  child: TextCustom(
+                                    LocaleKeys.cart_go_to_store
+                                        .tr()
+                                        .fixBreakLine,
+                                    style: context.textStyle.bodyM.primary.bold,
+                                  ),
+                                ),
                               )
                             ]
                           : bagList.reversed.map((entity) => Padding(

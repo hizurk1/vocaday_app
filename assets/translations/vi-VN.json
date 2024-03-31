@@ -229,10 +229,11 @@
     "vocab_store": "Cửa hàng từ vựng",
     "word_store_title": "Cửa hàng từ vựng",
     "word_store_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
-    "no_word_bag_found": "Không tìm thấy túi từ! Hãy thêm một vài túi để tiếp tục chơi trò chơi này. \\nLưu ý: Túi từ phải có ít nhất {}.",
+    "no_word_bag_found": "Không tìm thấy túi từ! Hãy thêm một vài túi để tiếp tục chơi trò chơi này. \\nLưu ý: Túi từ phải có ít nhất {} và đừng quên Lưu túi của bạn.",
     "select_word_bag_play_game": "Chọn các túi từ để bắt đầu",
     "select_word_bag_play_game_note": "Túi phải có ít nhất {}.",
-    "you_have_to_select_one_bag": "Bạn phải chọn ít nhất một túi."
+    "you_have_to_select_one_bag": "Bạn phải chọn ít nhất một túi.",
+    "open_your_bag": "Mở túi của bạn"
   },
   "cart": {
     "packed_your_cart_bag": "Đã đóng gói túi từ vựng của bạn",
@@ -256,7 +257,9 @@
     "rename_menu": "Đổi tên",
     "added_to_word_bag": "Đã thêm \"{}\" vào túi hiện tại của bạn.",
     "mark_all_as_known": "Đánh dấu tất cả đã biết",
-    "mark_all_as_known_content": "Các từ trong túi sẽ được đánh dấu là đã biết và sẽ bị xoá khỏi giỏ."
+    "mark_all_as_known_content": "Các từ trong túi sẽ được đánh dấu là đã biết và sẽ bị xoá khỏi giỏ.",
+    "go_to_store": "Đi đến cửa hàng",
+    "not_found_item_in_bag": "Bạn không có bất kỳ từ nào trong túi.\\nHãy đến cửa hàng để thêm một vài từ, hoặc bạn có thể nhấn vào biểu tượng dấu cộng (+) trên mỗi màn hình chi tiết từ vựng."
   },
   "known": {
     "sync_data_success": "Đồng bộ dữ liệu thành công",

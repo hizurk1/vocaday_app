@@ -15,6 +15,7 @@ import '../../../../../core/extensions/string.dart';
 import '../../../../word/domain/entities/word_entity.dart';
 import '../../../../word/presentation/blocs/word_list/word_list_cubit.dart';
 import '../cubits/cart/cart_cubit.dart';
+import 'word_bag_bottom_sheet_page.dart';
 
 class WordBag {
   final String name;
@@ -33,6 +34,12 @@ class GameSelectWordBagPage extends StatefulWidget {
 }
 
 class _GameSelectWordBagPageState extends State<GameSelectWordBagPage> {
+  Future<void> _onOpenCartBottomSheet(BuildContext context) async {
+    await context.showBottomSheet(
+      child: WordBagBottomSheetPage(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return DynamicBottomSheetCustom(
@@ -73,6 +80,13 @@ class _GameSelectWordBagPageState extends State<GameSelectWordBagPage> {
                     ],
                   ).fixBreakLine,
                   image: Assets.jsons.notFoundDog,
+                  info: TextButton(
+                    onPressed: () => _onOpenCartBottomSheet(context),
+                    child: TextCustom(
+                      LocaleKeys.activity_open_your_bag.tr(),
+                      style: context.textStyle.bodyM.primary.bold,
+                    ),
+                  ),
                 );
               }
               return Padding(

@@ -18,6 +18,7 @@ import '../../../user_profile/presentation/cubits/known/known_word_cubit.dart';
 import '../../domain/entities/cart_entity.dart';
 import '../cubits/cart/cart_cubit.dart';
 import '../cubits/cart_bag/cart_bag_cubit.dart';
+import 'word_bag_bottom_sheet_page.dart';
 
 enum CartBagMenu { rename, expand, remove, known }
 
@@ -31,6 +32,12 @@ class CartPageBody extends StatelessWidget {
       Navigators().showMessage(LocaleKeys.profile_everything_is_up_to_date.tr(),
           type: MessageType.success);
     }
+  }
+
+  Future<void> _onOpenCartBottomSheet(BuildContext context) async {
+    await context.showBottomSheet(
+      child: WordBagBottomSheetPage(),
+    );
   }
 
   @override
@@ -52,6 +59,13 @@ class CartPageBody extends StatelessWidget {
                   ? ErrorPage(
                       text: LocaleKeys.search_not_found.tr(),
                       image: Assets.jsons.notFoundDog,
+                      info: TextButton(
+                        onPressed: () => _onOpenCartBottomSheet(context),
+                        child: TextCustom(
+                          LocaleKeys.activity_open_your_bag.tr(),
+                          style: context.textStyle.bodyM.primary.bold,
+                        ),
+                      ),
                     )
                   : RefreshIndicator(
                       onRefresh: () => _onRefresh(context),

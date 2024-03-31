@@ -10,13 +10,16 @@ import 'text.dart';
 import 'unfocus.dart';
 
 class ErrorPage extends StatelessWidget {
-  const ErrorPage({super.key, required this.text, this.image});
+  const ErrorPage({super.key, required this.text, this.image, this.info});
 
   /// Error message.
   final String text;
 
   /// Must be using `Assets.json` for Lottie package.
   final String? image;
+
+  /// For more info widget that shows under the text widget.
+  final Widget? info;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +48,10 @@ class ErrorPage extends StatelessWidget {
                   maxLines: 5,
                   textAlign: TextAlign.center,
                 ),
+                if (info != null) ...[
+                  Gap(height: 5.h),
+                  info!,
+                ],
               ],
             ),
           ),

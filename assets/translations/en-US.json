@@ -229,10 +229,11 @@
     "vocab_store": "Vocabulary Store",
     "word_store_title": "Word store",
     "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
-    "no_word_bag_found": "No word bag found! Please add some to continue to play the game. \\nNote: The bag should has at least {}.",
+    "no_word_bag_found": "No word bag found! Please add some to continue to play the game. \\nNote: The bag should has at least {} and do not forget to Save your bag.",
     "select_word_bag_play_game": "Select word bags to start",
     "select_word_bag_play_game_note": "The bag should has at least {}.",
-    "you_have_to_select_one_bag": "You have to select at least one bag."
+    "you_have_to_select_one_bag": "You have to select at least one bag.",
+    "open_your_bag": "Open your bag"
   },
   "cart": {
     "packed_your_cart_bag": "Packed your word bag",
@@ -256,7 +257,9 @@
     "rename_menu": "Rename",
     "added_to_word_bag": "Added \"{}\" to your current word bag.",
     "mark_all_as_known": "Mark all as known",
-    "mark_all_as_known_content": "The words in this bag will be marked as known and will be removed from this cart."
+    "mark_all_as_known_content": "The words in this bag will be marked as known and will be removed from this cart.",
+    "go_to_store": "Go to the store",
+    "not_found_item_in_bag": "You don't have any words in your bag.\\nHead to the store to add a few words, or you can tap the add icon (+) on each vocabulary detail screen."
   },
   "known": {
     "sync_data_success": "Data sync successfully",

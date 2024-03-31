@@ -245,10 +245,11 @@ class CodegenLoader extends AssetLoader{
     "vocab_store": "Vocabulary Store",
     "word_store_title": "Word store",
     "word_store_content": "A variety of different English vocabulary including thousands of words with fully definition, synonyms, antonyms and examples in sentence.",
-    "no_word_bag_found": "No word bag found! Please add some to continue to play the game. \\nNote: The bag should has at least {}.",
+    "no_word_bag_found": "No word bag found! Please add some to continue to play the game. \\nNote: The bag should has at least {} and do not forget to Save your bag.",
     "select_word_bag_play_game": "Select word bags to start",
     "select_word_bag_play_game_note": "The bag should has at least {}.",
-    "you_have_to_select_one_bag": "You have to select at least one bag."
+    "you_have_to_select_one_bag": "You have to select at least one bag.",
+    "open_your_bag": "Open your bag"
   },
   "cart": {
     "packed_your_cart_bag": "Packed your word bag",
@@ -272,7 +273,9 @@ class CodegenLoader extends AssetLoader{
     "rename_menu": "Rename",
     "added_to_word_bag": "Added \"{}\" to your current word bag.",
     "mark_all_as_known": "Mark all as known",
-    "mark_all_as_known_content": "The words in this bag will be marked as known and will be removed from this cart."
+    "mark_all_as_known_content": "The words in this bag will be marked as known and will be removed from this cart.",
+    "go_to_store": "Go to the store",
+    "not_found_item_in_bag": "You don't have any words in your bag.\\nHead to the store to add a few words, or you can tap the add icon (+) on each vocabulary detail screen."
   },
   "known": {
     "sync_data_success": "Data sync successfully",
@@ -546,10 +549,11 @@ static const Map<String,dynamic> vi_VN = {
     "vocab_store": "Cửa hàng từ vựng",
     "word_store_title": "Cửa hàng từ vựng",
     "word_store_content": "Đa dạng từ vựng tiếng Anh bao gồm hàng nghìn từ vựng với đầy đủ định nghĩa, đồng nghĩa, trái nghĩa và ví dụ trong câu.",
-    "no_word_bag_found": "Không tìm thấy túi từ! Hãy thêm một vài túi để tiếp tục chơi trò chơi này. \\nLưu ý: Túi từ phải có ít nhất {}.",
+    "no_word_bag_found": "Không tìm thấy túi từ! Hãy thêm một vài túi để tiếp tục chơi trò chơi này. \\nLưu ý: Túi từ phải có ít nhất {} và đừng quên Lưu túi của bạn.",
     "select_word_bag_play_game": "Chọn các túi từ để bắt đầu",
     "select_word_bag_play_game_note": "Túi phải có ít nhất {}.",
-    "you_have_to_select_one_bag": "Bạn phải chọn ít nhất một túi."
+    "you_have_to_select_one_bag": "Bạn phải chọn ít nhất một túi.",
+    "open_your_bag": "Mở túi của bạn"
   },
   "cart": {
     "packed_your_cart_bag": "Đã đóng gói túi từ vựng của bạn",
@@ -573,7 +577,9 @@ static const Map<String,dynamic> vi_VN = {
     "rename_menu": "Đổi tên",
     "added_to_word_bag": "Đã thêm \"{}\" vào túi hiện tại của bạn.",
     "mark_all_as_known": "Đánh dấu tất cả đã biết",
-    "mark_all_as_known_content": "Các từ trong túi sẽ được đánh dấu là đã biết và sẽ bị xoá khỏi giỏ."
+    "mark_all_as_known_content": "Các từ trong túi sẽ được đánh dấu là đã biết và sẽ bị xoá khỏi giỏ.",
+    "go_to_store": "Đi đến cửa hàng",
+    "not_found_item_in_bag": "Bạn không có bất kỳ từ nào trong túi.\\nHãy đến cửa hàng để thêm một vài từ, hoặc bạn có thể nhấn vào biểu tượng dấu cộng (+) trên mỗi màn hình chi tiết từ vựng."
   },
   "known": {
     "sync_data_success": "Đồng bộ dữ liệu thành công",
