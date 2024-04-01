@@ -6,11 +6,81 @@
 
 To quickly view the user interface: [link](https://github.com/helkaloic/vocaday_app?tab=readme-ov-file#-user-interface)
 
+![banner](screenshots/banner.png)
+
+<p align="center">
+  <a href="https://github.com/helkaloic/vocaday_app/stargazers">
+     <img src="https://img.shields.io/github/stars/helkaloic/vocaday_app.svg?style=social" alt="GitHub stars">
+  </a>
+  <a href="https://github.com/helkaloic/vocaday_app/network/members">
+    <img src="https://img.shields.io/github/forks/helkaloic/vocaday_app.svg?style=social" alt="GitHub forks">
+  </a>
+  <a href="https://github.com/helkaloic/vocaday_app/watchers">
+    <img src="https://img.shields.io/github/watchers/helkaloic/vocaday_app.svg?style=social" alt="GitHub watchers">
+  </a>
+</p>
+
 ## ⬇️ Download
 
-Download `apk` file for ``Android`` 👉 [vocaday_app.apk](https://github.com/helkaloic/vocaday_app/releases)
+- Download `apk` file for ``Android`` 👉 [Download Latest Release APK](https://github.com/helkaloic/vocaday_app/releases/latest)
 
-Download from `Google Play Store` 👉 [Vocaday: English vocabulary](https://play.google.com/store/apps/details?id=com.vocaday.vocaday_app)
+- Download from `Google Play Store`
+
+<a href="https://play.google.com/store/apps/details?id=com.vocaday.vocaday_app">
+  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play" width="150">
+</a>
+
+## 📂 Folder Structure
+
+Here's a simple folder structure of this project.
+
+> _**Note**: it may has more folders and files in there_
+
+<details>
+
+<summary>Click to expand</summary>
+
+```plaintext
+vocaday_app/
+|-- assets/    # includes all asset or resource files
+|-- lib/
+|   |-- app/    # main 'things' in the app, will be changed dynamically
+|   |-- core/    # core interface or other base things
+|   |-- config/    # configs for the whole app
+|   |-- features/    # the main features in the app, it should be independent on each other
+|   |   |-- feature-1/
+|   |   |   |-- data/
+|   |   |   |   |-- data_sources/    # local or remote data call
+|   |   |   |   |-- models/          # model for mapping json data
+|   |   |   |   |-- repositories/    # implement interface of repositories in 'domain'
+|   |   |   |-- domain/
+|   |   |   |   |-- repositories/    # main function to handle result from 'data_source' and catch Exception then throw Failure
+|   |   |   |   |-- entities/        # entity that be used in the app
+|   |   |   |   |-- usecases/        # the usecase for each requirements
+|   |   |   |-- presentation/
+|   |   |   |   |-- blocs/           # state management
+|   |   |   |   |-- pages/           # includes concrete screen of this feature
+|   |   |   |   |-- widgets/         # includes local widget of this feature
+|   |   |-- feature-2/
+|   |   |-- ...
+|   |-- app.dart    # whole app endpoint, for setup
+|   |   ...
+|   |-- main.dart
+|-- test/    # to test (currently unit test)
+|-- pubspec.yaml
+```
+
+</details>
+
+## 🔗 Resource
+
+Here's some sources for `assets` folder.
+
+- `data` [English Dictionary Data](https://github.com/helkaloic/english-dictionary-data)
+- `fonts` [Google Fonts - Roboto](https://fonts.google.com/specimen/Roboto)
+- `icons` & `images` Icons from [Lunacy](https://icons8.com/lunacy)
+- `jsons` [Lotties](https://lottiefiles.com/)
+- `translations` created with the support of [i18n Manager](https://github.com/gilmarsquinelato/i18n-manager)
 
 ## ⚙️ Setup
 
@@ -112,54 +182,6 @@ Then use the `SHA-1/SHA-256` with tag **'Config: debug'** to update fingerprints
     fluttergen -c pubspec.yaml
     ```
 
-
-## 🔗 Resource
-
-Here's some sources for `assets` folder.
-
-- `data` [English Dictionary Data](https://github.com/helkaloic/english-dictionary-data)
-- `fonts` [Google Fonts - Roboto](https://fonts.google.com/specimen/Roboto)
-- `icons` & `images` Icons from [Lunacy](https://icons8.com/lunacy)
-- `jsons` [Lotties](https://lottiefiles.com/)
-- `translations` created with the support of [i18n Manager](https://github.com/gilmarsquinelato/i18n-manager)
-
-
-## 📂 Folder Structure
-
-Here's a simple folder structure of this project.
-
-> _**Note**: it may has more folders and files in there_
-
-```plaintext
-vocaday_app/
-|-- assets/    # includes all asset or resource files
-|-- lib/
-|   |-- app/    # main 'things' in the app, will be changed dynamically
-|   |-- core/    # core interface or other base things
-|   |-- config/    # configs for the whole app
-|   |-- features/    # the main features in the app, it should be independent on each other
-|   |   |-- feature-1/
-|   |   |   |-- data/
-|   |   |   |   |-- data_sources/    # local or remote data call
-|   |   |   |   |-- models/          # model for mapping json data
-|   |   |   |   |-- repositories/    # implement interface of repositories in 'domain'
-|   |   |   |-- domain/
-|   |   |   |   |-- repositories/    # main function to handle result from 'data_source' and catch Exception then throw Failure
-|   |   |   |   |-- entities/        # entity that be used in the app
-|   |   |   |   |-- usecases/        # the usecase for each requirements
-|   |   |   |-- presentation/
-|   |   |   |   |-- blocs/           # state management
-|   |   |   |   |-- pages/           # includes concrete screen of this feature
-|   |   |   |   |-- widgets/         # includes local widget of this feature
-|   |   |-- feature-2/
-|   |   |-- ...
-|   |-- app.dart    # whole app endpoint, for setup
-|   |   ...
-|   |-- main.dart
-|-- test/    # to test (currently unit test)
-|-- pubspec.yaml
-```
-
 ## ⛄️ FAQs
 
 1. **Q: How to fix "Gradle sync failed: Could not create task..." error when opening project with Android Studio?**
@@ -171,14 +193,14 @@ vocaday_app/
     flutter pub get
     ```
 
-    Then open **Android Studio**: `android` -> Open in Android Studio:
+    Right-click on the `android` folder and select `Open in Android Studio`.
 
     ``` bash
     flutter clean
     flutter pub cache repair
     ```
 
-    After that, open File -> Invalidate Caches... -> Tick all -> **Invalidate and Restart**.
+    After that, select `File` -> `Invalidate Caches...` -> ✓ Check all -> `Invalidate and Restart`.
 
 ## 👀 User Interface
 
@@ -196,5 +218,6 @@ Vocaday currently offers a clean and intuitive user interface with these main pa
 
 ![word](screenshots/detail_bag_mode.png)
 
+## Visitors
 
-**Happy learning with Vocaday! 🚀**
+![Visitor Count](https://profile-counter.glitch.me/helkaloic/count.svg)
