@@ -116,7 +116,7 @@ class _KnownWordPageState extends State<KnownWordPage> {
         backgroundColor: context.backgroundColor,
         appBar: AppBarCustom(
           leading: BackButton(
-            style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+            style: ButtonStyle(iconSize: WidgetStateProperty.all(24.r)),
           ),
           textTitle: LocaleKeys.known_knowns.tr(),
           action: _buildPopupMenu(context),

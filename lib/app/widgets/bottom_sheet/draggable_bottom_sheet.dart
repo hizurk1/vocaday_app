@@ -199,7 +199,7 @@ class _DraggableBottomSheetCustomState
             Row(
               children: [
                 CloseButton(
-                  style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+                  style: ButtonStyle(iconSize: WidgetStateProperty.all(24.r)),
                 ),
                 const Gap(width: 5),
                 Expanded(

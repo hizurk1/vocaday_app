@@ -8,8 +8,7 @@ import '../translations/translations.dart';
 class ConnectionChecker {
   FutureEither<bool> get isConnected async {
     final result = await Connectivity().checkConnectivity();
-    if (result != ConnectivityResult.none &&
-        result != ConnectivityResult.bluetooth) {
+    if (!result.contains(ConnectivityResult.none)) {
       return const Right(true);
     } else {
       return Left(ConnectionFailure(

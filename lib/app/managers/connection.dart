@@ -19,11 +19,8 @@ class ConnectionCubit extends Cubit<InternetState> {
         connectivity.onConnectivityChanged.listen(_checkConnection);
   }
 
-  _checkConnection(ConnectivityResult result) {
-    if (result != ConnectivityResult.wifi &&
-        result != ConnectivityResult.mobile &&
-        result != ConnectivityResult.ethernet &&
-        result != ConnectivityResult.vpn) {
+  _checkConnection(List<ConnectivityResult> result) {
+    if (result.contains(ConnectivityResult.none)) {
       emit(const InternetState.offline());
     } else {
       emit(const InternetState.online());

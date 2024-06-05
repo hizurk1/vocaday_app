@@ -22,6 +22,7 @@ class _SettingNotificationState extends State<_SettingNotification> {
     if (isTurnOn) {
       final pickedTime = await _onSelectScheduleTime();
       if (pickedTime != null && mounted) {
+        // ignore: use_build_context_synchronously
         final result = await context
             .read<ScheduleNotificationCubit>()
             .setScheduleNotification(pickedTime);

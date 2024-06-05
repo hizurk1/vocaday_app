@@ -23,7 +23,7 @@ class AppTheme {
       seedColor: AppColor().blue,
       brightness: Brightness.light,
       error: AppColor().red,
-      background: AppColor().white,
+      surface: AppColor().white,
     ),
     textTheme: const TextTheme().apply(
       displayColor: AppColor().black,
@@ -50,7 +50,7 @@ class AppTheme {
       seedColor: AppColor().blue,
       brightness: Brightness.dark,
       error: AppColor().red300,
-      background: AppColor().black,
+      surface: AppColor().black,
     ),
     textTheme: const TextTheme().apply(
       displayColor: AppColor().white,

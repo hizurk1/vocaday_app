@@ -20,7 +20,7 @@ class CartPage extends StatelessWidget {
         backgroundColor: context.backgroundColor,
         appBar: AppBarCustom(
           leading: BackButton(
-            style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+            style: ButtonStyle(iconSize: WidgetStateProperty.all(24.r)),
           ),
           textTitle: LocaleKeys.cart_cart.tr(),
           action: GestureDetector(

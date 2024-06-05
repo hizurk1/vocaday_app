@@ -164,7 +164,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   Widget _buildBackButton() {
     return SafeArea(
       child: BackButton(
-        style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+        style: ButtonStyle(iconSize: WidgetStateProperty.all(24.r)),
       ),
     );
   }

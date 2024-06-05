@@ -175,8 +175,9 @@ class GameQuizSummeryPage extends StatelessWidget {
       // enablePadding: true,
       leading: BackButton(
         style: ButtonStyle(
-            iconSize: MaterialStateProperty.all(24.w),
-            iconColor: MaterialStateProperty.all(context.colors.white)),
+          iconSize: WidgetStateProperty.all(24.w),
+          iconColor: WidgetStateProperty.all(context.colors.white),
+        ),
       ),
       title: ValueListenableBuilder(
         valueListenable: currentQuestion,

@@ -46,7 +46,7 @@ class _ActivityWordStorePageState extends State<ActivityWordStorePage> {
         backgroundColor: context.backgroundColor,
         appBar: AppBarCustom(
           leading: BackButton(
-            style: ButtonStyle(iconSize: MaterialStateProperty.all(24.r)),
+            style: ButtonStyle(iconSize: WidgetStateProperty.all(24.r)),
           ),
           textTitle: LocaleKeys.activity_vocab_store.tr(),
           action: const CartIconWidget(marginRight: 15),
